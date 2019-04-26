@@ -33,4 +33,4 @@ install node dependencies in public_html folder
      
  to insert default data in database run the following artisan command in private folder:
       
-          php artisan db:seed
+      php artisan db:seed
