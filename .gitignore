@@ -1,0 +1,17 @@
+/public_html/node_modules
+/public_html/hot
+/public_html/storage
+/public_html/packages
+/public_html/assets/elfinder
+/public_html/assets/tinymce
+/public_html/assets/admin/global_assets
+/public_html/storage/*.key
+/private/vendor
+/.idea
+/.vscode
+/.vagrant
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+/private/.phpunit.result.cache
