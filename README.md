@@ -26,3 +26,11 @@ install node dependencies in public_html folder
  DB_PASSWORD=
  
  ```  
+ 
+ to create database tables run the following artisan command in private folder:
+ 
+     php artisan migrate
+     
+ to insert default data in database run the following artisan command in private folder:
+      
+          php artisan db:seed
