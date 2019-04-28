@@ -36884,6 +36884,10 @@ var form = {
         setInfo: function setInfo(state, info) {
             state.info = info;
         },
+        setInfoValue: function setInfoValue(state, payload) {
+            __WEBPACK_IMPORTED_MODULE_1_vue___default.a.set(state.info[payload.index], payload.key, payload.value);
+            // console.log(payload, state.info[payload.index]);
+        },
         setAction: function setAction(state, action) {
             state.action = action;
         },
@@ -37051,7 +37055,6 @@ var form = {
                 });
             }
             context.commit('setInfo', info);
-            // console.log(info);
         },
         getFormData: function getFormData(context, id) {
             context.commit('setLoading', true);
@@ -37265,36 +37268,17 @@ var form = {
                         break;
                 }
                 switch (key_name) {
-                    case 'pages-template_id':
-                        context.dispatch('changePageTemplateId', payload);
+                    case 'static_menus-has_content':
+                        context.dispatch('changeStaticMenuHasContent', payload);
                         break;
                 }
                 switch (key_name) {
-                    case 'pages-master_page_id':
-                        context.dispatch('changePageMasterPageId', payload);
-                        break;
-                }
-                switch (key_name) {
-                    case 'pages-frame_id':
-                        context.dispatch('changePageFrameId', payload);
-                        break;
-                }
-                switch (key_name) {
-                    case 'pages-resource':
-                        context.dispatch('changePageResource', payload);
-                        break;
-                }
-                switch (key_name) {
-                    case 'pages-relations':
-                        context.dispatch('changePageRelations', payload);
-                        break;
-                }
-                switch (key_name) {
-                    case 'cities-country_id':
-                        context.dispatch('changeCityCountryId', payload);
+                    case 'static_menus-type':
+                        context.dispatch('changeStaticMenuType', payload);
                         break;
                 }
             }
+            // console.log(key_name);
         },
 
         //resources actions
@@ -37343,131 +37327,71 @@ var form = {
                 // console.log(error);
             });
         },
-        changePageTemplateId: function changePageTemplateId(context, payload) {
-            var url = context.rootGetters.main_url + '/' + context.rootGetters.resource + '/change_template';
-            var data = {};
-            data[payload.key] = payload.value;
-            context.dispatch('sendRequest', { url: url, data: data }, { root: true }).then(function (response) {
-                context.commit('updateOptions', { key: 'master_page_id', value: response.data.master_pages });
-                context.commit('updateOptions', { key: 'frame_id', value: response.data.frames });
-            }).catch(function (error) {
-                // console.log(error);
-            });
-        },
-        changePageMasterPageId: function changePageMasterPageId(context, payload) {
-            var url = context.rootGetters.main_url + '/' + context.rootGetters.resource + '/change_master_page';
-            var data = {};
-            data[payload.key] = payload.value;
-            data.page_id = context.getters.model.id;
-            context.dispatch('sendRequest', { url: url, data: data }, { root: true }).then(function (response) {
-                context.dispatch('setValueAtModel', { key: 'sections', value: response.data.sections });
-                var options = response.data.options;
-                if (options !== undefined && !Array.isArray(options)) {
-                    Object.keys(options).forEach(function (key) {
-                        context.commit('updateOptions', { key: key, value: options[key] });
-                    });
+        changeStaticMenuHasContent: function changeStaticMenuHasContent(context, payload) {
+            var info = context.state.info;
+            var type_index = null;
+            var page_id_index = null;
+            var link_index = null;
+            var type_value = null;
+            Object.keys(info).forEach(function (key) {
+                if (info[key]['name'] === 'type') {
+                    type_index = key;
                 }
-            }).catch(function (error) {
-                // console.log(error);
+                if (info[key]['name'] === 'page_id') {
+                    page_id_index = key;
+                }
+                if (info[key]['name'] === 'link') {
+                    link_index = key;
+                }
             });
-        },
-        changePageFrameId: function changePageFrameId(context, payload) {
-            var url = context.rootGetters.main_url + '/' + context.rootGetters.resource + '/change_frame';
-            var data = {};
-            data[payload.key] = payload.value;
-            context.dispatch('sendRequest', { url: url, data: data }, { root: true }).then(function (response) {
-                context.commit('updateOptions', {
-                    key: payload.prefix + '.' + payload.index + '.action_id',
-                    value: response.data
-                });
-            }).catch(function (error) {
-                // console.log(error);
-            });
-        },
-        changePageResource: function changePageResource(context, payload) {
-            var url = context.rootGetters.main_url + '/' + context.rootGetters.resource + '/change_resource';
-            var data = {};
-            data[payload.key] = payload.value;
 
-            if (data[payload.key] !== null && data[payload.key] !== '') {
-                context.dispatch('sendRequest', { url: url, data: data }, { root: true }).then(function (response) {
-                    context.commit('updateOptions', {
-                        key: payload.prefix + '.' + payload.index + '.relations',
-                        value: response.data.relations
-                    });
-
-                    if (Array.isArray(response.data.fields)) {
-
-                        context.commit('updateOptions', {
-                            key: payload.prefix + '.' + payload.index + '.fields',
-                            value: response.data.fields
-                        });
-
-                        var sort_items = [];
-                        response.data.fields.forEach(function (field) {
-
-                            if (field.indexOf('.') === -1) {
-                                sort_items.push(field);
-                            }
-                        });
-                        context.commit('updateOptions', {
-                            key: payload.prefix + '.' + payload.index + '.order_by',
-                            value: sort_items
-                        });
+            if (payload.value === 1) {
+                type_value = 'select';
+                if (context.state.model.type === 'page') {
+                    context.commit('setInfoValue', { index: page_id_index, key: 'type', value: 'text' });
+                } else {
+                    context.commit('setInfoValue', { index: page_id_index, key: 'type', value: 'hidden' });
+                }
+                if (context.state.model.type === 'link' || context.state.model.type === 'action') {
+                    if (context.state.model.type === 'link') {
+                        context.commit('setInfoValue', { index: link_index, key: 'type', value: 'text' });
                     } else {
-                        context.commit('updateOptions', {
-                            key: payload.prefix + '.' + payload.index + '.order_by',
-                            value: []
-                        });
-                        context.commit('updateOptions', {
-                            key: payload.prefix + '.' + payload.index + '.fields',
-                            value: []
-                        });
+                        context.commit('setInfoValue', { index: link_index, key: 'type', value: 'select' });
                     }
-                }).catch(function (error) {
-                    console.log(error);
-                });
-            } else {
-                context.commit('updateOptions', { key: payload.prefix + '.' + payload.index + '.relations', value: [] });
-                context.commit('updateOptions', { key: payload.prefix + '.' + payload.index + '.fields', value: [] });
-                context.commit('updateOptions', { key: payload.prefix + '.' + payload.index + '.order_by', value: [] });
+                } else {
+                    context.commit('setInfoValue', { index: link_index, key: 'type', value: 'hidden' });
+                }
+            } else if (payload.value === 0) {
+                type_value = 'hidden';
+                context.commit('setInfoValue', { index: page_id_index, key: 'type', value: 'hidden' });
+                context.commit('setInfoValue', { index: link_index, key: 'type', value: 'hidden' });
             }
-        },
-        changePageRelations: function changePageRelations(context, payload) {
-            var url = context.rootGetters.main_url + '/' + context.rootGetters.resource + '/change_relations';
-            var data = {};
 
-            var array_prefix = payload.prefix.split(".");
-            if (array_prefix.length === 3) {
-                var resource = context.getters.model[array_prefix[0]][array_prefix[1]][array_prefix[2]][payload.index].resource;
-                data['resource'] = resource;
-            }
-            data[payload.key] = payload.value;
-            if (data.resource) {
-                context.dispatch('sendRequest', { url: url, data: data }, { root: true }).then(function (response) {
-                    context.commit('updateOptions', {
-                        key: payload.prefix + '.' + payload.index + '.fields',
-                        value: response.data
-                    });
-                }).catch(function (error) {
-                    console.log(error);
-                });
-            } else {
-                context.commit('updateOptions', { key: payload.prefix + '.' + payload.index + '.fields', value: [] });
-            }
+            context.commit('setInfoValue', { index: type_index, key: 'type', value: type_value });
         },
-        changeCityCountryId: function changeCityCountryId(context, payload) {
-            var url = context.rootGetters.main_url + '/' + context.rootGetters.resource + '/change_country';
-            var data = {};
-            data[payload.key] = payload.value;
-            context.dispatch('sendRequest', { url: url, data: data }, { root: true }).then(function (response) {
-                context.commit('updateOptions', {
-                    key: 'state_id',
-                    value: response.data
-                });
-            }).catch(function (error) {
-                console.log(error);
+        changeStaticMenuType: function changeStaticMenuType(context, payload) {
+            var info = context.state.info;
+            var page_id_index = null;
+            var link_index = null;
+            Object.keys(info).forEach(function (key) {
+                if (info[key]['name'] === 'page_id') {
+                    page_id_index = key;
+                }
+                if (info[key]['name'] === 'link') {
+                    link_index = key;
+                }
             });
+
+            if (payload.value === 'page') {
+                context.commit('setInfoValue', { index: page_id_index, key: 'type', value: 'select' });
+                context.commit('setInfoValue', { index: link_index, key: 'type', value: 'hidden' });
+            } else if (payload.value === 'action') {
+                context.commit('setInfoValue', { index: page_id_index, key: 'type', value: 'hidden' });
+                context.commit('setInfoValue', { index: link_index, key: 'type', value: 'select' });
+            } else if (payload.value === 'link') {
+                context.commit('setInfoValue', { index: page_id_index, key: 'type', value: 'hidden' });
+                context.commit('setInfoValue', { index: link_index, key: 'type', value: 'text' });
+            }
         }
     }
 };

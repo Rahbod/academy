@@ -425,25 +425,61 @@ export default new VueRouter({
                 {
                     component: ListView,
                     path: 'list-view',
-                    name: 'tag-list-view',
+                    name: 'tags-list-view',
                     meta: {action: 'listView'},
                 },
                 {
                     component: FormView,
                     path: 'create',
-                    name: 'tag-create',
+                    name: 'tags-create',
                     meta: {action: 'create'},
                 },
                 {
                     component: FormView,
                     path: ':id/edit',
-                    name: 'tag-edit',
+                    name: 'tags-edit',
                     meta: {action: 'edit'},
                 },
                 {
                     component: ShowView,
                     path: ':id',
-                    name: 'tag-show',
+                    name: 'tags-show',
+                },
+
+            ]
+        },
+        {
+            component: RouterViewApp,
+            path: '/static_menus',
+            meta: {resource: 'static_menus'},
+            children: [
+                {
+                    component: ResourceView,
+                    path: '/',
+                    name: 'static_menus-resource-view',
+                },
+                {
+                    component: ListView,
+                    path: 'list-view',
+                    name: 'static_menus-list-view',
+                    meta: {action: 'listView'},
+                },
+                {
+                    component: FormView,
+                    path: 'create',
+                    name: 'static_menus-create',
+                    meta: {action: 'create'},
+                },
+                {
+                    component: FormView,
+                    path: ':id/edit',
+                    name: 'static_menus-edit',
+                    meta: {action: 'edit'},
+                },
+                {
+                    component: ShowView,
+                    path: ':id',
+                    name: 'static_menus-show',
                 },
 
             ]
