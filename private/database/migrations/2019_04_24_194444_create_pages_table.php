@@ -26,6 +26,10 @@ class CreatePagesTable extends Migration
             $table->tinyInteger('status')->defaule(1);
             $table->timestamps();
         });
+
+        Schema::table('static_menus', function (Blueprint $table) {
+            $table->foreign('page_id')->references('id')->on('pages')->onDelete('set null');
+        });
     }
 
     /**
@@ -37,6 +41,9 @@ class CreatePagesTable extends Migration
     {
         Schema::table('pages', function (Blueprint $table){
             $table->dropForeign(['author_id']);
+        });
+        Schema::table('static_menus', function (Blueprint $table){
+            $table->dropForeign(['page_id']);
         });
         Schema::dropIfExists('pages');
     }

@@ -155,12 +155,13 @@ class Comment extends Model
                 ],
                 [
                     'name' => 'lang',
-                    'type' => 'string',
-                    'input_type' => 'hidden',
+                    'type' => 'select',
+                    'input_type' => 'select',
+                    'options' => [['id' => 'fa', 'text' => 'fa'], ['id' => 'en', 'text' => 'en']],
                     'orderable' => true,
                     'searchable' => true,
                     'show_in_table' => false,
-                    'show_in_form' => false,
+                    'show_in_form' => true,
                 ],
 
             ]

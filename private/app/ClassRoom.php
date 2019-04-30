@@ -10,15 +10,9 @@ use Illuminate\Database\Eloquent\Model;
 class ClassRoom extends Model
 {
     use ModelTrait;
-    use GetImageAttributesTrait;
     use SetAndGetDateAttributesTrait;
 
     protected $fillable = ['author_id', 'teacher_id','course_id', 'title_fa','title_en', 'description_fa', 'description_en','image', 'capacity', 'price', 'registration_start_date', 'registration_end_date','course_start_date','course_end_date', 'status'];
-
-    protected function getScopeAttributes()
-    {
-        return ['lang'];
-    }
 
     public static function mainFields(){
         return [
@@ -26,8 +20,9 @@ class ClassRoom extends Model
             'items' => [
                 [
                     'name' => 'lang',
-                    'type' => 'string',
-                    'input_type' => 'hidden',
+                    'type' => 'select',
+                    'input_type' => 'select',
+                    'options' => [['id' => 'fa', 'text' => 'fa'], ['id' => 'en', 'text' => 'en']],
                     'orderable' => true,
                     'searchable' => true,
                     'show_in_table' => false,

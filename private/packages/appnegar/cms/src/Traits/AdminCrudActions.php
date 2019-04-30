@@ -20,7 +20,9 @@ trait AdminCrudActions
 
 
     protected function setRequest($request,$model){
-        $request['lang']=session('lang');
+        if (!$request['lang']){
+            $request['lang']=session('lang');
+        }
         if($request['id'] == 0){
             $user = session('user_info_' . session('department'));
             $request['author_id']=$user['id'];

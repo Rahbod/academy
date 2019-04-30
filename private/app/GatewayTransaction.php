@@ -3,30 +3,22 @@
 namespace App;
 
 use Appnegar\Cms\Traits\ModelTrait;
-use Appnegar\Cms\Traits\SetAndGetDateAttributesTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class Slider extends Model
+class GatewayTransaction extends Model
 {
     use ModelTrait;
-    use SetAndGetDateAttributesTrait;
+    protected $fillable=['port','price','ref_id','tracking_code','card_number','status','ip','payment_dat'];
 
-    protected $fillable = ['author_id', 'group_id', 'title', 'text', 'lang', 'link', 'image', 'order', 'status'];
+    public function transaction_log()
+    {
+        return $this->hasOne('App\GatewayTransactionsLog');
+    }
 
     public static function mainFields(){
         return [
             'name' => static ::getTableName(),
             'items' => [
-                [
-                    'name' => 'lang',
-                    'type' => 'select',
-                    'input_type' => 'select',
-                    'options' => [['id' => 'fa', 'text' => 'fa'], ['id' => 'en', 'text' => 'en']],
-                    'orderable' => true,
-                    'searchable' => true,
-                    'show_in_table' => false,
-                    'show_in_form' => true,
-                ],
                 [
                     'name' => 'id',
                     'type' => 'numeric',
@@ -38,66 +30,52 @@ class Slider extends Model
                     'show_in_form' => true
                 ],
                 [
-                    'name' => 'author_id',
-                    'type' => 'numeric',
-                    'input_type' => 'disable',
-                    'orderable' => true,
-                    'searchable' => true,
-                    'show_in_table' => false,
-                    'show_in_form' => true,
-                ],
-                [
-                    'name' => 'group_id',
+                    'name' => 'port',
                     'type' => 'select',
                     'input_type' => 'select',
                     'orderable' => true,
                     'searchable' => true,
-                    'show_in_table' => false,
+                    'show_in_table' => true,
                     'show_in_form' => true,
+                    'options'=>[
+                        ['id'=>'MELLAT','text'=>'MELLAT'],
+                        ['id'=>'SADAD','text'=>'SADAD'],
+                        ['id'=>'ZARINPAL','text'=>'ZARINPAL'],
+                        ['id'=>'PAYLINE','text'=>'PAYLINE'],
+                        ['id'=>'JAHANPAY','text'=>'JAHANPAY'],
+                        ['id'=>'PARSIAN','text'=>'PARSIAN'],
+                        ['id'=>'PASARGAD','text'=>'PASARGAD'],
+                        ['id'=>'SAMAN','text'=>'SAMAN'],
+                        ['id'=>'ASANPARDAKHT','text'=>'ASANPARDAKHT'],
+                        ['id'=>'PAYPAL','text'=>'PAYPAL'],
+                        ['id'=>'PAYIR','text'=>'PAYIR'],
+                    ]
                 ],
                 [
-                    'name' => 'title',
-                    'type' => 'string',
-                    'input_type' => 'text',
-                    'orderable' => true,
-                    'searchable' => true,
-                    'show_in_table' => true,
-                    'show_in_form' => true
-                ],
-                [
-                    'name' => 'text',
-                    'type' => 'string',
-                    'input_type' => 'textarea',
-                    'orderable' => true,
-                    'searchable' => true,
-                    'show_in_table' => true,
-                    'show_in_form' => true
-                ],
-                [
-                    'name' => 'link',
-                    'type' => 'string',
-                    'input_type' => 'text',
-                    'orderable' => false,
-                    'searchable' => false,
-                    'show_in_table' => false,
-                    'show_in_form' => true
-                ],
-                [
-                    'name' => 'image',
-                    'type' => 'string',
-                    'input_type' => 'image',
-                    'orderable' => false,
-                    'searchable' => false,
-                    'show_in_table' => false,
-                    'show_in_form' => true
-                ],
-                [
-                    'name' => 'order',
+                    'name' => 'price',
                     'type' => 'numeric',
-                    'input_type' => 'number',
+                    'input_type' => 'type',
                     'orderable' => true,
                     'searchable' => true,
                     'show_in_table' => true,
+                    'show_in_form' => true
+                ],
+                [
+                    'name' => 'tracking_code',
+                    'type' => 'string',
+                    'input_type' => 'text',
+                    'orderable' => true,
+                    'searchable' => true,
+                    'show_in_table' => false,
+                    'show_in_form' => true
+                ],
+                [
+                    'name' => 'card_number',
+                    'type' => 'string',
+                    'input_type' => 'text',
+                    'orderable' => true,
+                    'searchable' => true,
+                    'show_in_table' => false,
                     'show_in_form' => true
                 ],
                 [
@@ -108,7 +86,7 @@ class Slider extends Model
                     'searchable' => true,
                     'show_in_table' => false,
                     'show_in_form' => true,
-                    'options' => [['id' => 0, 'text' => 'inactive'], ['id' => 1, 'text' => 'active']]
+                    'options' => [['id' => 'SUCCEED', 'text' => 'SUCCEED'],['id' => 'SUCCEED', 'text' => 'SUCCEED'], ['id' => 1, 'text' => 'active']]
                 ],
                 [
                     'name' => 'created_at',
@@ -132,33 +110,43 @@ class Slider extends Model
         ];
     }
 
+
+
     public static function  relatedFields(){
         return [
             [
-                'name' => 'group',
-                'table' => SliderGroup::getTableName(),
-                'items' => SliderGroup::getSubFields(),
+                'name' => 'transaction',
+                'table' => GatewayTransaction::getTableName(),
                 'show_in_form' => false,
                 'show_in_table' => false,
+                'items' => GatewayTransaction::getSubFields()
             ],
             [
-                'name' => 'author',
+                'name' => 'user',
                 'table' => User::getTableName(),
-                'items' => User::getSubFields(),
                 'show_in_form' => false,
-                'show_in_table' => false,
-
+                'show_in_table' => true,
+                'items' => User::getSubFields()
             ],
+            [
+                'name' => 'class_room',
+                'table' => ClassRoom::getTableName(),
+                'show_in_form' => false,
+                'show_in_table' => true,
+                'items' => ClassRoom::getSubFields()
+            ]
         ];
     }
 
-    public function author()
-    {
-        return $this->belongsTo('App\User', 'author_id', 'id');
-    }
-
-    public function group()
-    {
-        return $this->belongsTo('App\SliderGroup', 'group_id');
-    }
+//    public function getPaymentDateAttribute($date)
+//    {
+//        if($date)
+//        {
+//            $dateTime =\jDate::forge($date)->format('H:i - Y/m/d ');
+//            $dateTime=\Morilog\Jalali\jDateTime::convertNumbers($dateTime);
+//            return $dateTime;
+//        }
+//        return null;
+//
+//    }
 }

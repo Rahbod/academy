@@ -3,30 +3,20 @@
 namespace App;
 
 use Appnegar\Cms\Traits\ModelTrait;
-use Appnegar\Cms\Traits\SetAndGetDateAttributesTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class Slider extends Model
+class UserClass extends Model
 {
     use ModelTrait;
-    use SetAndGetDateAttributesTrait;
 
-    protected $fillable = ['author_id', 'group_id', 'title', 'text', 'lang', 'link', 'image', 'order', 'status'];
+    public $timestamps = false;
+
+    protected $fillable = ['transaction_id','user_id','class_room_id','status'];
 
     public static function mainFields(){
         return [
             'name' => static ::getTableName(),
             'items' => [
-                [
-                    'name' => 'lang',
-                    'type' => 'select',
-                    'input_type' => 'select',
-                    'options' => [['id' => 'fa', 'text' => 'fa'], ['id' => 'en', 'text' => 'en']],
-                    'orderable' => true,
-                    'searchable' => true,
-                    'show_in_table' => false,
-                    'show_in_form' => true,
-                ],
                 [
                     'name' => 'id',
                     'type' => 'numeric',
@@ -38,66 +28,39 @@ class Slider extends Model
                     'show_in_form' => true
                 ],
                 [
-                    'name' => 'author_id',
-                    'type' => 'numeric',
-                    'input_type' => 'disable',
-                    'orderable' => true,
-                    'searchable' => true,
-                    'show_in_table' => false,
-                    'show_in_form' => true,
-                ],
-                [
-                    'name' => 'group_id',
+                    'name' => 'transaction_id',
                     'type' => 'select',
                     'input_type' => 'select',
                     'orderable' => true,
                     'searchable' => true,
                     'show_in_table' => false,
-                    'show_in_form' => true,
-                ],
-                [
-                    'name' => 'title',
-                    'type' => 'string',
-                    'input_type' => 'text',
-                    'orderable' => true,
-                    'searchable' => true,
-                    'show_in_table' => true,
                     'show_in_form' => true
                 ],
                 [
-                    'name' => 'text',
-                    'type' => 'string',
-                    'input_type' => 'textarea',
+                    'name' => 'user_id',
+                    'type' => 'select',
+                    'input_type' => 'select',
                     'orderable' => true,
                     'searchable' => true,
-                    'show_in_table' => true,
-                    'show_in_form' => true
-                ],
-                [
-                    'name' => 'link',
-                    'type' => 'string',
-                    'input_type' => 'text',
-                    'orderable' => false,
-                    'searchable' => false,
                     'show_in_table' => false,
                     'show_in_form' => true
                 ],
                 [
-                    'name' => 'image',
-                    'type' => 'string',
-                    'input_type' => 'image',
-                    'orderable' => false,
-                    'searchable' => false,
+                    'name' => 'class_room_id',
+                    'type' => 'select',
+                    'input_type' => 'select',
+                    'orderable' => true,
+                    'searchable' => true,
                     'show_in_table' => false,
                     'show_in_form' => true
                 ],
                 [
-                    'name' => 'order',
-                    'type' => 'numeric',
-                    'input_type' => 'number',
+                    'name' => 'class_room_id',
+                    'type' => 'select',
+                    'input_type' => 'select',
                     'orderable' => true,
                     'searchable' => true,
-                    'show_in_table' => true,
+                    'show_in_table' => false,
                     'show_in_form' => true
                 ],
                 [
@@ -132,33 +95,46 @@ class Slider extends Model
         ];
     }
 
+
+
     public static function  relatedFields(){
         return [
             [
-                'name' => 'group',
-                'table' => SliderGroup::getTableName(),
-                'items' => SliderGroup::getSubFields(),
+                'name' => 'transaction',
+                'table' => GatewayTransaction::getTableName(),
                 'show_in_form' => false,
                 'show_in_table' => false,
+                'items' => GatewayTransaction::getSubFields()
             ],
             [
-                'name' => 'author',
+                'name' => 'user',
                 'table' => User::getTableName(),
-                'items' => User::getSubFields(),
                 'show_in_form' => false,
-                'show_in_table' => false,
-
+                'show_in_table' => true,
+                'items' => User::getSubFields()
             ],
+            [
+                'name' => 'class_room',
+                'table' => ClassRoom::getTableName(),
+                'show_in_form' => false,
+                'show_in_table' => true,
+                'items' => ClassRoom::getSubFields()
+            ]
         ];
     }
 
-    public function author()
+    protected function transaction()
     {
-        return $this->belongsTo('App\User', 'author_id', 'id');
+        return $this->belongsTo('App\GatewayTransaction','transaction_id');
     }
 
-    public function group()
+    protected function user()
     {
-        return $this->belongsTo('App\SliderGroup', 'group_id');
+        return $this->belongsTo('App\User');
+    }
+
+    protected function class_room()
+    {
+        return $this->belongsTo('App\ClassRoom');
     }
 }

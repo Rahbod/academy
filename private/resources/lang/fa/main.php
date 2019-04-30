@@ -58,6 +58,8 @@ return [
         'female' => 'زن',
         'active' => 'فعال',
         'inactive' => 'غیر فعال',
+        'has'=>'دارد',
+        'has_not'=>'ندارد',
         'not_access' => 'عدم دسترسی',
         'limited_access' => 'دسترسی محدود',
         'normal_access' => 'دسترسی عادی',
@@ -75,6 +77,11 @@ return [
         'article'=>'مقاله',
         'news'=>'اخبار',
         'course'=>'دوره',
+        'page'=>'صفحه',
+        'action'=>'عملیات',
+        'link'=>'لینک',
+        'fa'=>'فارسی',
+        'en'=>'انگلیسی',
 
     ],
     'messages' => [

@@ -10,9 +10,6 @@ class TagController extends AdminController{
         $this->resource='Tag';
     }
 
-    protected function getTableConditions(){
-        return ['lang'=>session('lang')];
-    }
     protected function validationRules($request, $id = null)
     {
         return[

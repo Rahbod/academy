@@ -300,7 +300,12 @@ trait ModelTrait
                         $field['name'] = $item['name'];
                         $field['type'] = $item['input_type'];
                         if (isset($item['options'])) {
-                            $field['options'] = $item['options'];
+                            $options=$item['options'];
+                            foreach ($options as $index=>$option){
+                                $text=$options[$index]['text'];
+                                $options[$index]['text']=__('main.values.'.$text);
+                            }
+                            $field['options'] = $options;
                         }
                         $field['required'] = true;
                         if (!isset($item['required']) || $item['required'] == false) {
@@ -318,7 +323,12 @@ trait ModelTrait
                         $field['name'] = $item['name'];
                         $field['type'] = $item['input_type'];
                         if (isset($item['options'])) {
-                            $field['options'] = $item['options'];
+                            $options=$item['options'];
+                            foreach ($options as $index=>$option){
+                                $text=$options[$index]['text'];
+                                $options[$index]['text']=__('main.values.'.$text);
+                            }
+                            $field['options'] = $options;
                         }
                         $field['required'] = true;
                         if (!isset($item['required']) || $item['required'] == false) {

@@ -232,6 +232,7 @@ class ResourceTableSeeder extends Seeder
             'display_name' => 'داشبورد مدیریت محتوا'
         ]);
 
+
         /***********profile resources************/
         $resource_group = ResourceGroup::create([
             'department_id'=>$content_management_department->id,
@@ -242,6 +243,18 @@ class ResourceTableSeeder extends Seeder
             'resource_group_id' => $resource_group->id,
             'name' => 'Profile',
             'display_name' => 'پروفایل'
+        ]);
+
+        /***********Registers resources************/
+        $resource_group = ResourceGroup::create([
+            'department_id'=>$content_management_department->id,
+            'name' => 'user_class',
+            'display_name' => 'لیست ثبت نام ها',
+        ]);
+        Resource::create([
+            'resource_group_id' => $resource_group->id,
+            'name' => 'UserClass',
+            'display_name' => 'ثبت نام'
         ]);
 
 

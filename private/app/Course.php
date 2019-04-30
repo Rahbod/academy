@@ -25,6 +25,16 @@ class Course extends Model
             'name' => static ::getTableName(),
             'items' => [
                 [
+                    'name' => 'lang',
+                    'type' => 'select',
+                    'input_type' => 'select',
+                    'options' => [['id' => 'fa', 'text' => 'fa'], ['id' => 'en', 'text' => 'en']],
+                    'orderable' => true,
+                    'searchable' => true,
+                    'show_in_table' => false,
+                    'show_in_form' => true,
+                ],
+                [
                     'name' => 'id',
                     'type' => 'numeric',
                     'input_type' => 'hidden',
@@ -143,16 +153,6 @@ class Course extends Model
                     'searchable' => true,
                     'show_in_table' => false,
                     'show_in_form' => false,
-                ],
-
-                [
-                    'name' => 'lang',
-                    'type' => 'string',
-                    'input_type' => 'hidden',
-                    'orderable' => true,
-                    'searchable' => true,
-                    'show_in_table' => false,
-                    'show_in_form' => true,
                 ],
             ]
         ];

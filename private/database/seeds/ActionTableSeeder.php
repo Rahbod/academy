@@ -42,6 +42,7 @@ class ActionTableSeeder extends Seeder
             'Slider',
             'Tag',
             'NewsLetter',
+            'UserClass',
         ];
 
         $commentable_resources = ['Content', 'Page'];

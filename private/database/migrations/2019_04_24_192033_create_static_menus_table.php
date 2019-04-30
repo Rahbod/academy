@@ -25,6 +25,10 @@ class CreateStaticMenusTable extends Migration
             $table->text('description')->nullable();
             $table->integer('order');
             $table->tinyInteger('status')->defaule(0);
+            $table->tinyInteger('has_content')->defaule(0);
+            $table->enum('type',['page','action','link'])->nullable();
+            $table->string('link')->nullable();
+            $table->integer('page_id')->unsigned()->index()->nullable();
             $table->integer('_lft')->nullable();
             $table->integer('_rgt')->nullable();
             $table->timestamps();
@@ -42,6 +46,7 @@ class CreateStaticMenusTable extends Migration
             $table->dropForeign(['author_id']);
             $table->dropForeign(['parent_id']);
         });
+
         Schema::dropIfExists('static_menus');
     }
 }
