@@ -40607,6 +40607,34 @@ var UpdateSettingFormView = function UpdateSettingFormView(resolve) {
             path: ':id',
             name: 'static_menus-show'
         }]
+    }, {
+        component: __WEBPACK_IMPORTED_MODULE_1__view_components_RouterViewApp_vue___default.a,
+        path: '/user_classes',
+        meta: { resource: 'user_classes' },
+        children: [{
+            component: ResourceView,
+            path: '/',
+            name: 'user_classes-resource-view'
+        }, {
+            component: ListView,
+            path: 'list-view',
+            name: 'user_classes-list-view',
+            meta: { action: 'listView' }
+        }, {
+            component: FormView,
+            path: 'create',
+            name: 'user_classes-create',
+            meta: { action: 'create' }
+        }, {
+            component: FormView,
+            path: ':id/edit',
+            name: 'user_classes-edit',
+            meta: { action: 'edit' }
+        }, {
+            component: ShowView,
+            path: ':id',
+            name: 'user_classes-show'
+        }]
     }]
 }));
 

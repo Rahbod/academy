@@ -484,5 +484,41 @@ export default new VueRouter({
 
             ]
         },
+        {
+            component: RouterViewApp,
+            path: '/user_classes',
+            meta: {resource: 'user_classes'},
+            children: [
+                {
+                    component: ResourceView,
+                    path: '/',
+                    name: 'user_classes-resource-view',
+                },
+                {
+                    component: ListView,
+                    path: 'list-view',
+                    name: 'user_classes-list-view',
+                    meta: {action: 'listView'},
+                },
+                {
+                    component: FormView,
+                    path: 'create',
+                    name: 'user_classes-create',
+                    meta: {action: 'create'},
+                },
+                {
+                    component: FormView,
+                    path: ':id/edit',
+                    name: 'user_classes-edit',
+                    meta: {action: 'edit'},
+                },
+                {
+                    component: ShowView,
+                    path: ':id',
+                    name: 'user_classes-show',
+                },
+
+            ]
+        },
     ]
 });
