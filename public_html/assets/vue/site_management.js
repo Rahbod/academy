@@ -36355,15 +36355,7 @@ var staticRenderFns = [
         },
         [
           _c("span", { staticClass: "navbar-text" }, [
-            _c("a", { attrs: { href: "http://appnegar.net" } }, [
-              _vm._v("AppNegar CMS")
-            ]),
-            _vm._v(" by "),
-            _c(
-              "a",
-              { attrs: { href: "http://appnegar.net", target: "_blank" } },
-              [_vm._v("Hayatollah Rahimi")]
-            )
+            _c("a", { attrs: { href: "http://appnegar.net" } }, [_vm._v("CMS")])
           ])
         ]
       )

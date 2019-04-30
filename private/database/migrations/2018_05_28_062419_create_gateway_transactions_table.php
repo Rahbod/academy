@@ -27,6 +27,7 @@ class CreateGatewayTransactionsTable extends Migration
                 'ASANPARDAKHT',
                 'PAYPAL',
                 'PAYIR',
+                'CASH',
             ]);
             $table->decimal('price', 15, 2);
             $table->string('ref_id', 100)->nullable();

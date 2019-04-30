@@ -55,15 +55,6 @@ class UserClass extends Model
                     'show_in_form' => true
                 ],
                 [
-                    'name' => 'class_room_id',
-                    'type' => 'select',
-                    'input_type' => 'select',
-                    'orderable' => true,
-                    'searchable' => true,
-                    'show_in_table' => false,
-                    'show_in_form' => true
-                ],
-                [
                     'name' => 'status',
                     'type' => 'select',
                     'input_type' => 'radio',
@@ -100,16 +91,9 @@ class UserClass extends Model
     public static function  relatedFields(){
         return [
             [
-                'name' => 'transaction',
-                'table' => GatewayTransaction::getTableName(),
-                'show_in_form' => false,
-                'show_in_table' => false,
-                'items' => GatewayTransaction::getSubFields()
-            ],
-            [
                 'name' => 'user',
                 'table' => User::getTableName(),
-                'show_in_form' => false,
+                'show_in_form' => true,
                 'show_in_table' => true,
                 'items' => User::getSubFields()
             ],
@@ -119,7 +103,14 @@ class UserClass extends Model
                 'show_in_form' => false,
                 'show_in_table' => true,
                 'items' => ClassRoom::getSubFields()
-            ]
+            ],
+            [
+                'name' => 'transaction',
+                'table' => GatewayTransaction::getTableName(),
+                'show_in_form' => true,
+                'show_in_table' => false,
+                'items' => GatewayTransaction::getSubFields()
+            ],
         ];
     }
 

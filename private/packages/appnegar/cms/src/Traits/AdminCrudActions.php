@@ -166,7 +166,7 @@ trait AdminCrudActions
         foreach ($fields as $field) {
             if ( $field['name'] === $model_table || !isset($field['show_in_form'] ) || $field['show_in_form'] != true) {
                 if($field['name'] === $model_table &&  $id == null){
-                    $data=array_merge($data,$this->setDefaulValues($field['items']));
+                    $data=array_merge($data,$this->setDefaultValues($field['items']));
                 }
                 continue;
             }
@@ -179,7 +179,7 @@ trait AdminCrudActions
                 $data[$relation_info['name']] = [];
             }
             if ($relation_info['relation_type'] == 'HasOne') {
-                $data[$relation_info['name']] = $this->setDefaulValues($field['items']);
+                $data[$relation_info['name']] = $this->setDefaultValues($field['items']);
             }
         }
 
@@ -191,7 +191,7 @@ trait AdminCrudActions
 
     }
 
-    private function setDefaulValues($items){
+    private function setDefaultValues($items){
         $data=[];
         foreach ($items as $item){
             switch ($item['name']){

@@ -82,6 +82,18 @@ return [
         'link'=>'لینک',
         'fa'=>'فارسی',
         'en'=>'انگلیسی',
+        'MELLAT'=>'انگلیسی',
+        'SADAD'=>'انگلیسی',
+        'ZARINPAL'=>'انگلیسی',
+        'PAYLINE'=>'انگلیسی',
+        'JAHANPAY'=>'انگلیسی',
+        'PARSIAN'=>'انگلیسی',
+        'PASARGAD'=>'انگلیسی',
+        'SAMAN'=>'انگلیسی',
+        'ASANPARDAKHT'=>'انگلیسی',
+        'PAYPAL'=>'انگلیسی',
+        'PAYIR'=>'انگلیسی',
+        'CASH'=>'نقدی',
 
     ],
     'messages' => [
