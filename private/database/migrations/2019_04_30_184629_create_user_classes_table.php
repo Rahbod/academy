@@ -15,8 +15,6 @@ class CreateUserClassesTable extends Migration
     {
         Schema::create('user_classes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('transaction_id')->unsigned()->index()->nullable();
-            $table->foreign('transaction_id')->references('id')->on('gateway_transactions')->onDelete('set null');
             $table->integer('user_id')->unsigned()->index()->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
             $table->integer('class_room_id')->unsigned()->index()->nullable();
@@ -36,7 +34,6 @@ class CreateUserClassesTable extends Migration
     public function down()
     {
         Schema::table('user_classes', function (Blueprint $table){
-            $table->dropForeign(['transaction_id']);
             $table->dropForeign(['user_id']);
             $table->dropForeign(['class_room_id']);
         });

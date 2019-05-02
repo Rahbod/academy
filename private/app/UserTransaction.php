@@ -5,11 +5,9 @@ namespace App;
 use Appnegar\Cms\Traits\ModelTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class UserClass extends Model
+class UserTransaction extends Model
 {
     use ModelTrait;
-
-    protected $fillable = ['user_id','class_room_id','status'];
 
     public static function mainFields(){
         return [
@@ -27,31 +25,71 @@ class UserClass extends Model
                 ],
                 [
                     'name' => 'user_id',
-                    'type' => 'select',
+                    'type' => 'numeric',
+                    'input_type' => 'hidden',
+                    'orderable' => true,
+                    'searchable' => true,
+                    'show_in_table' => true,
+                    'show_in_form' => true,
+                ],
+                [
+                    'name' => 'transaction_id',
+                    'type' => 'numeric',
                     'input_type' => 'select',
                     'orderable' => true,
                     'searchable' => true,
-                    'show_in_table' => false,
+                    'show_in_table' => true,
                     'show_in_form' => true
                 ],
                 [
-                    'name' => 'class_room_id',
+                    'name' => 'user_class_id',
+                    'type' => 'numeric',
+                    'input_type' => 'hidden',
+                    'orderable' => true,
+                    'searchable' => true,
+                    'show_in_table' => true,
+                    'show_in_form' => false
+                ],
+                [
+                    'name' => 'type',
                     'type' => 'select',
                     'input_type' => 'select',
                     'orderable' => true,
                     'searchable' => true,
-                    'show_in_table' => false,
+                    'show_in_table' => true,
+                    'show_in_form' => true,
+                    'options'=>[
+                        ['id'=>'CRASH','text'=>'CRASH'],
+                        ['id'=>'GATEWAY','text'=>'GATEWAY'],
+                    ]
+                ],
+                [
+                    'name' => 'price',
+                    'type' => 'numeric',
+                    'input_type' => 'number',
+                    'orderable' => true,
+                    'searchable' => true,
+                    'show_in_table' => true,
+                    'show_in_form' => true
+                ],
+                [
+                    'name' => 'description',
+                    'type' => 'string',
+                    'input_type' => 'textarea',
+                    'orderable' => true,
+                    'searchable' => true,
+                    'show_in_table' => true,
                     'show_in_form' => true
                 ],
                 [
                     'name' => 'status',
                     'type' => 'select',
-                    'input_type' => 'radio',
+                    'input_type' => 'select',
                     'orderable' => true,
                     'searchable' => true,
                     'show_in_table' => false,
                     'show_in_form' => true,
-                    'options' => [['id' => 0, 'text' => 'inactive'], ['id' => 1, 'text' => 'active']]
+                    'options' => [['id' => 'INIT', 'text' => 'INIT'],['id' => 'SUCCEED', 'text' => 'SUCCEED'], ['id' => 'FAILED', 'text' => 'FAILED']]
                 ],
                 [
                     'name' => 'created_at',
@@ -75,8 +113,6 @@ class UserClass extends Model
         ];
     }
 
-
-
     public static function  relatedFields(){
         return [
             [
@@ -87,34 +123,21 @@ class UserClass extends Model
                 'items' => User::getSubFields()
             ],
             [
-                'name' => 'class_room',
-                'table' => ClassRoom::getTableName(),
+                'name' => 'transaction',
+                'table' => GatewayTransaction::getTableName(),
                 'show_in_form' => false,
                 'show_in_table' => true,
-                'items' => ClassRoom::getSubFields()
-            ],
-            [
-                'name' => 'transaction',
-                'table' => UserTransaction::getTableName(),
-                'show_in_form' => true,
-                'show_in_table' => false,
-                'items' => UserTransaction::getSubFields()
-            ],
+                'items' => GatewayTransaction::getSubFields()
+            ]
         ];
-    }
-
-    public function transaction()
-    {
-        return $this->hasOne('App\UserTransaction','user_class_id','id');
     }
 
     public function user()
     {
         return $this->belongsTo('App\User');
     }
-
-    public function class_room()
+    public function transaction()
     {
-        return $this->belongsTo('App\ClassRoom');
+        return $this->belongsTo('App\GatewayTransaction');
     }
 }

@@ -43,6 +43,8 @@ class ActionTableSeeder extends Seeder
             'Tag',
             'NewsLetter',
             'UserClass',
+            'TranslateRequest',
+            'Attachment',
         ];
 
         $commentable_resources = ['Content', 'Page'];

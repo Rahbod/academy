@@ -100,6 +100,16 @@ class User extends Authenticatable
                     'show_in_form' => true
                 ],
                 [
+                    'name' => 'type',
+                    'type' => 'select',
+                    'input_type' => 'select',
+                    'orderable' => true,
+                    'searchable' => true,
+                    'show_in_table' => false,
+                    'show_in_form' => true,
+                    'options' => [['id' => 'admin', 'text' => 'admin'], ['id' => 'operator', 'text' => 'operator'], ['id' => 'teacher', 'text' => 'teacher']]
+                ],
+                [
                     'name' => 'is_admin',
                     'type' => 'select',
                     'input_type' => 'radio',
@@ -116,6 +126,7 @@ class User extends Authenticatable
                     'orderable' => true,
                     'searchable' => true,
                     'show_in_table' => true,
+                    'show_in_sub_table' => false,
                     'show_in_form' => true,
                     'options' => [['id' => 0, 'text' => 'inactive'], ['id' => 1, 'text' => 'active']]
                 ],
@@ -136,6 +147,7 @@ class User extends Authenticatable
                     'orderable' => true,
                     'searchable' => true,
                     'show_in_table' => true,
+                    'show_in_sub_table' => false,
                     'show_in_form' => true,
                     'options' => [['id' => 0, 'text' => 'not_access'], ['id' => 0, 'text' => 'limited_access'], ['id' => 1, 'text' => 'normal_access'], ['id' => 2, 'text' => 'full_access']]
                 ],

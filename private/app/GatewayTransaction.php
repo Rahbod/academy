@@ -49,7 +49,6 @@ class GatewayTransaction extends Model
                         ['id'=>'ASANPARDAKHT','text'=>'ASANPARDAKHT'],
                         ['id'=>'PAYPAL','text'=>'PAYPAL'],
                         ['id'=>'PAYIR','text'=>'PAYIR'],
-                        ['id'=>'CASH','text'=>'CASH'],
                     ]
                 ],
                 [
@@ -133,13 +132,6 @@ class GatewayTransaction extends Model
 
     public static function  relatedFields(){
         return [
-            [
-                'name' => 'user',
-                'table' => User::getTableName(),
-                'show_in_form' => false,
-                'show_in_table' => true,
-                'items' => User::getSubFields()
-            ],
             [
                 'name' => 'transaction_log',
                 'table' => GatewayTransactionsLog::getTableName(),

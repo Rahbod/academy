@@ -33,10 +33,6 @@ class ClassRoomController extends AdminController{
     protected function getTableConditions(){
         return ['lang'=>session('lang')];
     }
-    protected function getOrderScopes()
-    {
-        return ['lang'];
-    }
 
     protected function setModel($model)
     {

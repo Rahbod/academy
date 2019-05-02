@@ -11,6 +11,7 @@ class ClassRoom extends Model
 {
     use ModelTrait;
     use SetAndGetDateAttributesTrait;
+    use GetImageAttributesTrait;
 
     protected $fillable = ['author_id', 'teacher_id','course_id', 'title_fa','title_en', 'description_fa', 'description_en','image', 'capacity', 'price', 'registration_start_date', 'registration_end_date','course_start_date','course_end_date', 'status'];
 

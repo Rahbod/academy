@@ -66,7 +66,11 @@ class Category extends Model
                     'name' => 'type',
                     'type' => 'select',
                     'input_type' => 'select',
-                    'options' => [['id' => 'article', 'text' => 'article'], ['id' => 'news', 'text' => 'news'], ['id' => 'course', 'text' => 'course']],
+                    'options' => [
+                        ['id' => 'article', 'text' => 'article'],
+                        ['id' => 'news', 'text' => 'news'],
+                        ['id' => 'course', 'text' => 'course'],
+                        ['id' => 'translate', 'text' => 'translate']],
                     'orderable' => true,
                     'searchable' => true,
                     'show_in_table' => true,

@@ -232,6 +232,15 @@ class MenuItemsTableSeeder extends Seeder
                 case 'feedbacks';
                     $menu_item->icon = 'icon-envelop5';
                     break;
+                case 'user_class';
+                    $menu_item->icon = 'icon-profile';
+                    break;
+                case 'attachment';
+                    $menu_item->icon = 'icon-attachment';
+                    break;
+                case 'translate_request';
+                    $menu_item->icon = 'icon-clipboard3';
+                    break;
                 default:
                     $this->setMenuIcon($menu_item);
                     break;

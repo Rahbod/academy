@@ -183,17 +183,6 @@
                                                             Route::get('/', ['uses' =>'DashboardController@index','as' =>'content_management.Dashboard.index'])->middleware('acl:108');
                                                                                 
                         
-                                                            Route::get('/user_classes/get_actions', ['uses' =>'UserClassController@getActions','as' =>'content_management.UserClass.get_actions']);
-                                                                                Route::get('/user_classes', ['uses' =>'UserClassController@index','as' =>'content_management.UserClass.index'])->middleware('acl:110');
-                                                                                Route::get('/user_classes/list-view', ['uses' =>'UserClassController@listView','as' =>'content_management.UserClass.list_view'])->middleware('acl:111');
-                                                                                Route::get('/user_classes/create', ['uses' =>'UserClassController@create','as' =>'content_management.UserClass.create'])->middleware('acl:112');
-                                                                                Route::post('/user_classes', ['uses' =>'UserClassController@create','as' =>'content_management.UserClass.store'])->middleware('acl:112');
-                                                                                Route::get('/user_classes/{id}', ['uses' =>'UserClassController@show','as' =>'content_management.UserClass.show'])->middleware('acl:113');
-                                                                                Route::get('/user_classes/{id}/edit', ['uses' =>'UserClassController@edit','as' =>'content_management.UserClass.edit'])->middleware('acl:114');
-                                                                                Route::put('/user_classes/{id}', ['uses' =>'UserClassController@edit','as' =>'content_management.UserClass.update'])->middleware('acl:114');
-                                                                                Route::delete('/user_classes/{id}', ['uses' =>'UserClassController@destroy','as' =>'content_management.UserClass.destroy'])->middleware('acl:115');
-                                                                                
-                        
                                                             Route::get('/profile/get_actions', ['uses' =>'ProfileController@getActions','as' =>'content_management.Profile.get_actions']);
                                                                                 Route::get('/profile', ['uses' =>'ProfileController@index','as' =>'content_management.Profile.index']);
                                                                                 Route::post('/profile/get_form_info', ['uses' =>'ProfileController@getFormInfo','as' =>'content_management.Profile.getFormInfo']);
@@ -201,6 +190,17 @@
                                                                                 Route::put('/profile/update_about_user', ['uses' =>'ProfileController@updateAboutUser','as' =>'content_management.Profile.updateAboutUser']);
                                                                                 Route::put('/profile/update_personal_info', ['uses' =>'ProfileController@updatePersonalInfo','as' =>'content_management.Profile.updatePersonalInfo']);
                                                                                 Route::put('/profile/update_password', ['uses' =>'ProfileController@updatePassword','as' =>'content_management.Profile.updatePassword']);
+                                                                                
+                        
+                                                            Route::get('/user_classes/get_actions', ['uses' =>'UserClassController@getActions','as' =>'content_management.UserClass.get_actions']);
+                                                                                Route::get('/user_classes', ['uses' =>'UserClassController@index','as' =>'content_management.UserClass.index'])->middleware('acl:117');
+                                                                                Route::get('/user_classes/list-view', ['uses' =>'UserClassController@listView','as' =>'content_management.UserClass.list_view'])->middleware('acl:118');
+                                                                                Route::get('/user_classes/create', ['uses' =>'UserClassController@create','as' =>'content_management.UserClass.create'])->middleware('acl:119');
+                                                                                Route::post('/user_classes', ['uses' =>'UserClassController@create','as' =>'content_management.UserClass.store'])->middleware('acl:119');
+                                                                                Route::get('/user_classes/{id}', ['uses' =>'UserClassController@show','as' =>'content_management.UserClass.show'])->middleware('acl:120');
+                                                                                Route::get('/user_classes/{id}/edit', ['uses' =>'UserClassController@edit','as' =>'content_management.UserClass.edit'])->middleware('acl:121');
+                                                                                Route::put('/user_classes/{id}', ['uses' =>'UserClassController@edit','as' =>'content_management.UserClass.update'])->middleware('acl:121');
+                                                                                Route::delete('/user_classes/{id}', ['uses' =>'UserClassController@destroy','as' =>'content_management.UserClass.destroy'])->middleware('acl:122');
                                                                                 
                         
                                                             Route::get('/categories/get_actions', ['uses' =>'CategoryController@getActions','as' =>'content_management.Category.get_actions']);
@@ -335,6 +335,28 @@
                                                                                 Route::get('/static_menus/{id}/edit', ['uses' =>'StaticMenuController@edit','as' =>'content_management.StaticMenu.edit'])->middleware('acl:209');
                                                                                 Route::put('/static_menus/{id}', ['uses' =>'StaticMenuController@edit','as' =>'content_management.StaticMenu.update'])->middleware('acl:209');
                                                                                 Route::delete('/static_menus/{id}', ['uses' =>'StaticMenuController@destroy','as' =>'content_management.StaticMenu.destroy'])->middleware('acl:210');
+                                                                                
+                        
+                                                            Route::get('/translate_requests/get_actions', ['uses' =>'TranslateRequestController@getActions','as' =>'content_management.TranslateRequest.get_actions']);
+                                                                                Route::get('/translate_requests', ['uses' =>'TranslateRequestController@index','as' =>'content_management.TranslateRequest.index'])->middleware('acl:212');
+                                                                                Route::get('/translate_requests/list-view', ['uses' =>'TranslateRequestController@listView','as' =>'content_management.TranslateRequest.list_view'])->middleware('acl:213');
+                                                                                Route::get('/translate_requests/create', ['uses' =>'TranslateRequestController@create','as' =>'content_management.TranslateRequest.create'])->middleware('acl:214');
+                                                                                Route::post('/translate_requests', ['uses' =>'TranslateRequestController@create','as' =>'content_management.TranslateRequest.store'])->middleware('acl:214');
+                                                                                Route::get('/translate_requests/{id}', ['uses' =>'TranslateRequestController@show','as' =>'content_management.TranslateRequest.show'])->middleware('acl:215');
+                                                                                Route::get('/translate_requests/{id}/edit', ['uses' =>'TranslateRequestController@edit','as' =>'content_management.TranslateRequest.edit'])->middleware('acl:216');
+                                                                                Route::put('/translate_requests/{id}', ['uses' =>'TranslateRequestController@edit','as' =>'content_management.TranslateRequest.update'])->middleware('acl:216');
+                                                                                Route::delete('/translate_requests/{id}', ['uses' =>'TranslateRequestController@destroy','as' =>'content_management.TranslateRequest.destroy'])->middleware('acl:217');
+                                                                                
+                        
+                                                            Route::get('/attachments/get_actions', ['uses' =>'AttachmentController@getActions','as' =>'content_management.Attachment.get_actions']);
+                                                                                Route::get('/attachments', ['uses' =>'AttachmentController@index','as' =>'content_management.Attachment.index'])->middleware('acl:219');
+                                                                                Route::get('/attachments/list-view', ['uses' =>'AttachmentController@listView','as' =>'content_management.Attachment.list_view'])->middleware('acl:220');
+                                                                                Route::get('/attachments/create', ['uses' =>'AttachmentController@create','as' =>'content_management.Attachment.create'])->middleware('acl:221');
+                                                                                Route::post('/attachments', ['uses' =>'AttachmentController@create','as' =>'content_management.Attachment.store'])->middleware('acl:221');
+                                                                                Route::get('/attachments/{id}', ['uses' =>'AttachmentController@show','as' =>'content_management.Attachment.show'])->middleware('acl:222');
+                                                                                Route::get('/attachments/{id}/edit', ['uses' =>'AttachmentController@edit','as' =>'content_management.Attachment.edit'])->middleware('acl:223');
+                                                                                Route::put('/attachments/{id}', ['uses' =>'AttachmentController@edit','as' =>'content_management.Attachment.update'])->middleware('acl:223');
+                                                                                Route::delete('/attachments/{id}', ['uses' =>'AttachmentController@destroy','as' =>'content_management.Attachment.destroy'])->middleware('acl:224');
                                                                             });
 
     

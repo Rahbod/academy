@@ -355,6 +355,30 @@ class ResourceTableSeeder extends Seeder
             'display_name' => 'منو های اصلی'
         ]);
 
+        /***********TranslateRequest Menu resources************/
+        $resource_group = ResourceGroup::create([
+            'department_id'=>$content_management_department->id,
+            'name' => 'translate_request',
+            'display_name' => 'درخواست ترجمه',
+        ]);
+        Resource::create([
+            'resource_group_id' => $resource_group->id,
+            'name' => 'TranslateRequest',
+            'display_name' => 'درخواست های ترجمه'
+        ]);
+
+        /***********TranslateRequest Menu resources************/
+        $resource_group = ResourceGroup::create([
+            'department_id'=>$content_management_department->id,
+            'name' => 'attachment',
+            'display_name' => 'فایل های پیوستی',
+        ]);
+        Resource::create([
+            'resource_group_id' => $resource_group->id,
+            'name' => 'Attachment',
+            'display_name' => 'فایل های پیوستی'
+        ]);
+
 
     }
 }
