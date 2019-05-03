@@ -357,6 +357,12 @@
                                                                                 Route::get('/attachments/{id}/edit', ['uses' =>'AttachmentController@edit','as' =>'content_management.Attachment.edit'])->middleware('acl:223');
                                                                                 Route::put('/attachments/{id}', ['uses' =>'AttachmentController@edit','as' =>'content_management.Attachment.update'])->middleware('acl:223');
                                                                                 Route::delete('/attachments/{id}', ['uses' =>'AttachmentController@destroy','as' =>'content_management.Attachment.destroy'])->middleware('acl:224');
+                                                                                Route::get('/attachments/file_manager/connector', ['uses' =>'AttachmentController@showFileManagerConnector','as' =>'content_management.Attachment.showFileManagerConnector'])->middleware('acl:225');
+                                                                                Route::post('/attachments/file_manager/connector', ['uses' =>'AttachmentController@showFileManagerConnector','as' =>'content_management.Attachment.showFileManagerConnector'])->middleware('acl:225');
+                                                                                Route::get('/attachments/file_manager/{view}/{input_id?}', ['uses' =>'AttachmentController@showFileManager','as' =>'content_management.Attachment.showFileManager'])->middleware('acl:226');
+                                                                                Route::get('/attachments/settings/form', ['uses' =>'AttachmentController@updateSettings','as' =>'content_management.Attachment.updateSettings'])->middleware('acl:227');
+                                                                                Route::put('/attachments/settings/update', ['uses' =>'AttachmentController@updateSettings','as' =>'content_management.Attachment.updateSettings'])->middleware('acl:227');
+                                                                                Route::post('/attachments/change_attachmentable_type', ['uses' =>'AttachmentController@changeAttachmentableType','as' =>'content_management.Attachment.changeAttachmentableType']);
                                                                             });
 
     

@@ -263,6 +263,19 @@ export default new VueRouter({
                             meta: { action: 'show' },
                         },
 
+                        {
+                            component: FileManagerView,
+                            path: 'file_manager/index',
+                            name: 'courses-file-manager-show',
+                            meta: {action: 'showFileManager'},
+                        },
+                        {
+                            component: UpdateSettingFormView,
+                            path: 'settings/form',
+                            name: 'courses-settings-form',
+                            meta: {action: 'updateSettings'},
+                        },
+
                     ]
                 },
                 {
@@ -516,6 +529,90 @@ export default new VueRouter({
                     component: ShowView,
                     path: ':id',
                     name: 'user_classes-show',
+                },
+
+            ]
+        },
+        {
+            component: RouterViewApp,
+            path: '/translate_requests',
+            meta: {resource: 'translate_requests'},
+            children: [
+                {
+                    component: ResourceView,
+                    path: '/',
+                    name: 'translate_requests-resource-view',
+                },
+                {
+                    component: ListView,
+                    path: 'list-view',
+                    name: 'translate_requests-list-view',
+                    meta: {action: 'listView'},
+                },
+                {
+                    component: FormView,
+                    path: 'create',
+                    name: 'translate_requests-create',
+                    meta: {action: 'create'},
+                },
+                {
+                    component: FormView,
+                    path: ':id/edit',
+                    name: 'translate_requests-edit',
+                    meta: {action: 'edit'},
+                },
+                {
+                    component: ShowView,
+                    path: ':id',
+                    name: 'translate_requests-show',
+                },
+
+            ]
+        },
+        {
+            component: RouterViewApp,
+            path: '/attachments',
+            meta: {resource: 'attachments'},
+            children: [
+                {
+                    component: ResourceView,
+                    path: '/',
+                    name: 'attachments-resource-view',
+                },
+                {
+                    component: ListView,
+                    path: 'list-view',
+                    name: 'attachments-list-view',
+                    meta: {action: 'listView'},
+                },
+                {
+                    component: FormView,
+                    path: 'create',
+                    name: 'attachments-create',
+                    meta: {action: 'create'},
+                },
+                {
+                    component: FormView,
+                    path: ':id/edit',
+                    name: 'attachments-edit',
+                    meta: {action: 'edit'},
+                },
+                {
+                    component: ShowView,
+                    path: ':id',
+                    name: 'attachments-show',
+                },
+                {
+                    component: FileManagerView,
+                    path: 'file_manager/index',
+                    name: 'attachments-file-manager-show',
+                    meta: {action: 'showFileManager'},
+                },
+                {
+                    component: UpdateSettingFormView,
+                    path: 'settings/form',
+                    name: 'attachments-settings-form',
+                    meta: {action: 'updateSettings'},
                 },
 
             ]

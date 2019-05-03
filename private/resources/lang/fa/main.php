@@ -99,9 +99,14 @@ return [
         'INIT'=>'نا تمام',
         'SUCCEED'=>'موفق',
         'FAILED'=>'نا موفق',
+        'REJECTED'=>'رد شده',
+        'TRANSLATED'=>'ترجمه شده',
         'admin'=>'مدیر',
         'operator'=>'کارمند',
         'teacher'=>'استاد',
+
+
+        'TranslateRequest'=>'درخواست ترجمه',
 
     ],
     'messages' => [

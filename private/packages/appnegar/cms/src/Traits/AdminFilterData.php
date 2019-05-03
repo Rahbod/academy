@@ -10,7 +10,6 @@ trait AdminFilterData
 
             foreach ($model as $key => $value) {
                 switch ($key) {
-                    case 'status':
                     case 'confirmed':
                     case 'archive':
                     case 'is_admin':
@@ -24,6 +23,40 @@ trait AdminFilterData
                         }
                         break;
                     }
+                    case 'status':{
+                        if ($model->{$key} === 1) {
+                            $model->{$key} = "<span class='badge badge-primary'>" . __('main.values.active') . "</span>";
+                        }
+                        if ($model->{$key} === 0) {
+                            $model->{$key} = "<span class='badge badge-danger'>" . __('main.values.inactive') . "</span>";
+                        }
+                        if ($model->{$key} === 'INIT') {
+                            $model->{$key} = "<span class='badge badge-primary'>" . __('main.values.INIT') . "</span>";
+                        }
+                        if ($model->{$key} === 'SUCCEED') {
+                            $model->{$key} = "<span class='badge badge-success'>" . __('main.values.SUCCEED') . "</span>";
+                        }
+                        if ($model->{$key} === 'FAILED') {
+                            $model->{$key} = "<span class='badge badge-danger'>" . __('main.values.FAILED') . "</span>";
+                        }
+                        if ($model->{$key} === 'translate') {
+                            $model->{$key} = "<span class='badge badge-info'>" . __('main.values.translate') . "</span>";
+                        }
+                        if ($model->{$key} === 'REJECTED') {
+                            $model->{$key} = "<span class='badge badge-danger'>" . __('main.values.REJECTED') . "</span>";
+                        }
+                        if ($model->{$key} === 'TRANSLATED') {
+                            $model->{$key} = "<span class='badge badge-info'>" . __('main.values.TRANSLATED') . "</span>";
+                        }
+                        if ($model->{$key} === 'CRASH') {
+                            $model->{$key} = "<span class='badge badge-info'>" . __('main.values.CRASH') . "</span>";
+                        }
+
+                        if ($model->{$key} === 'GATEWAY') {
+                            $model->{$key} = "<span class='badge badge-success'>" . __('main.values.GATEWAY') . "</span>";
+                        }
+                        break;
+                    }
                     case 'profile.gender': {
                         if ($model->{$key} === 1) {
                             $model->{$key} = __('main.values.female');
@@ -34,16 +67,39 @@ trait AdminFilterData
                         break;
                     }
                     case 'type': {
-                        if ($model->{$key} === 'general') {
-                            $model->{$key} = "<span class='badge badge-primary'>" . __('main.values.general') . "</span>";
+                        if ($model->{$key} === 'article') {
+                            $model->{$key} = "<span class='badge badge-primary'>" . __('main.values.article') . "</span>";
                         }
-                        if ($model->{$key} === 'page_loader') {
-                            $model->{$key} = "<span class='badge badge-success'>" . __('main.values.page_loader') . "</span>";
+                        if ($model->{$key} === 'news') {
+                            $model->{$key} = "<span class='badge badge-success'>" . __('main.values.news') . "</span>";
                         }
-                        if ($model->{$key} === 'frame_loader') {
-                            $model->{$key} = "<span class='badge badge-success'>" . __('main.values.frame_loader') . "</span>";
+                        if ($model->{$key} === 'course') {
+                            $model->{$key} = "<span class='badge badge-danger'>" . __('main.values.course') . "</span>";
+                        }
+                        if ($model->{$key} === 'translate') {
+                            $model->{$key} = "<span class='badge badge-info'>" . __('main.values.translate') . "</span>";
+                        }
+                        if ($model->{$key} === 'action') {
+                            $model->{$key} = "<span class='badge badge-primary'>" . __('main.values.action') . "</span>";
+                        }
+                        if ($model->{$key} === 'page') {
+                            $model->{$key} = "<span class='badge badge-success'>" . __('main.values.page') . "</span>";
+                        }
+                        if ($model->{$key} === 'link') {
+                            $model->{$key} = "<span class='badge badge-danger'>" . __('main.values.link') . "</span>";
                         }
                         break;
+                    }
+                    case 'lang': {
+                        if ($model->{$key} === 'fa') {
+                            $model->{$key} = "<span class='badge badge-primary'>" . __('main.values.fa') . "</span>";
+                        }
+                        if ($model->{$key} === 'en') {
+                            $model->{$key} = "<span class='badge badge-success'>" . __('main.values.en') . "</span>";
+                        }
+                        if ($model->{$key} === 'ar') {
+                            $model->{$key} = "<span class='badge badge-success'>" . __('main.values.ar') . "</span>";
+                        }
                     }
                     case 'access_level': {
                         switch ($model->{$key}) {

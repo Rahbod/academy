@@ -74,6 +74,7 @@ class Category extends Model
                     'orderable' => true,
                     'searchable' => true,
                     'show_in_table' => true,
+                    'show_in_sub_table' => false,
                     'show_in_form' => true,
                 ],
                 [
@@ -83,7 +84,6 @@ class Category extends Model
                     'orderable' => true,
                     'searchable' => true,
                     'show_in_table' => true,
-                    'show_in_sub_table' => false,
                     'show_in_form' => true
                 ],
                 [
@@ -113,6 +113,7 @@ class Category extends Model
                     'orderable' => true,
                     'searchable' => true,
                     'show_in_table' => true,
+                    'show_in_sub_table' => false,
                     'show_in_form' => true
                 ],
                 [
@@ -122,6 +123,7 @@ class Category extends Model
                     'orderable' => true,
                     'searchable' => true,
                     'show_in_table' => true,
+                    'show_in_sub_table' => false,
                     'show_in_form' => true,
                     'options' => [['id' => 0, 'text' => 'inactive'], ['id' => 1, 'text' => 'active']]
                 ],

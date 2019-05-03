@@ -48,8 +48,8 @@ class ActionTableSeeder extends Seeder
         ];
 
         $commentable_resources = ['Content', 'Page'];
-        $have_file_manager_resource = ['Content','Page','Course','ClassRoom', 'Slider'];
-        $have_settings = ['Content','Page', 'Course', 'ClassRoom', 'Slider'];
+        $have_file_manager_resource = ['Content','Page','Course','ClassRoom', 'Slider', 'Attachment'];
+        $have_settings = ['Content','Page', 'Course', 'ClassRoom', 'Slider', 'Attachment'];
         $profile_actions = [
             [
                 'name' => 'getActions',
@@ -388,6 +388,22 @@ class ActionTableSeeder extends Seeder
             'content_management' => [
                 'Dashboard' => $dashboard_actions,
                 'Profile' => $profile_actions,
+                'Attachment' => [
+                    [
+                        'name' => 'changeAttachmentableType',
+                        'display_name' => 'تغییر نوع فایل پیوست',
+                        'need_allow' => 0,
+                        'status' => 1,
+                        'paths' => [
+                            [
+                                'name' => 'Attachment.changeAttachmentableType',
+                                'display_name' => 'تغییر نوع فایل پیوست',
+                                'slug' => 'attachments/change_attachmentable_type',
+                                'method' => 'post',
+                            ]
+                        ]
+                    ],
+                ],
             ],
 
         ];

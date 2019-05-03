@@ -72,7 +72,7 @@ trait AdminFileEditor{
                 if ($status) {
                     return (['status' =>$status, 'data' => $name]);
                 } else {
-                    return (['status' => $status, 'data' => ['خطایی در دخیره ی عکس بوجود امده است.']]);
+                    return (['status' => $status, 'data' => ['خطایی در دخیره ی فایل بوجود امده است.']]);
                 }
 
             } else {

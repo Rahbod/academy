@@ -61,6 +61,13 @@ trait Dataviewer
                     case 'BelongsToMany':
                         $this->query_builder->leftJoin($relation_info['pivot_table'], $relation_info['local_key'], '=', $relation_info['pivot_local_key']);
                         $this->query_builder->leftJoin($relation_info['table'], $relation_info['pivot_foreign_key'], '=', $relation_info['foreign_key']);
+                        break;
+                    case 'MorphMany';
+                        $this->query_builder->leftJoin($relation_info['table'], function($q) use ($relation_info){
+                            $q->on( $relation_info['local_key'], '=', $relation_info['foreign_key']);
+                            $q->where($relation_info['morph_type'], '=', get_class($this->model));
+                        });
+                        break;
                 }
 
             }
@@ -91,7 +98,6 @@ trait Dataviewer
                 }
             }
         }
-//dd($this->selected_fields);
         $this->query_builder->select($this->selected_fields);
 
         $order_column = request('order_column');
@@ -160,7 +166,6 @@ trait Dataviewer
             }
         }
 
-
         return $this->relations = $relations;
     }
 
@@ -220,69 +225,68 @@ trait Dataviewer
         return (!isset($item['show_in_table']) || $item['show_in_table'] == true);
     }
 
-    protected function getRelationInfo($model=null,$relation_name)
-    {
-        if($model==null){
-            $model=$this->model;
-        }
-        $info = [
-            'table' => null,
-            'foreign_key' => null,
-            'local_key' => null,
-        ];
-
-        $relation = $model->$relation_name();
-
-
-        $related_model_name = get_class($relation->getRelated());
-        $related_model = (new $related_model_name());
-        $info['table'] = $related_model->getTable();
-
-
-        $relation_type = get_class($relation);
-        if ($pos = strrpos($relation_type, '\\')) {
-            $relation_type = substr($relation_type, $pos + 1);
-        }
-
-        $info['relation_type'] = $relation_type;
-        $info['name'] = $relation_name;
-        switch ($relation_type) {
-            case 'HasOne':
-                $info['foreign_key'] = $relation->getExistenceCompareKey();
-                $info['local_key'] = $relation->getQualifiedParentKeyName();
-                break;
-            case 'HasMany':
-                $info['foreign_key'] = $relation->getExistenceCompareKey();
-                $info['local_key'] = $relation->getQualifiedParentKeyName();
-                break;
-            case 'BelongsTo':
-                $info['foreign_key'] = $this->table . '.' . $relation->getForeignKey();
-                $info['local_key'] = $info['table'] . '.' . $related_model->getKeyName();
-                break;
-            case 'BelongsToMany':
-                $info['table'] = $related_model->getTable();
-                $info['pivot_table'] = $relation->getTable();
-                $info['foreign_key'] = $info['table'] . '.' . $related_model->getKeyName();
-                $info['pivot_foreign_key'] = $relation->getQualifiedRelatedPivotKeyName();
-                $info['pivot_local_key'] = $relation->getQualifiedForeignPivotKeyName();
-                $info['local_key'] = $relation->getQualifiedParentKeyName();
-                break;
-            default:
-
-                dd('relation is not valid');
-                break;
-        }
-
-        return $info;
-    }
+//    protected function getRelationInfo($model=null,$relation_name)
+//    {
+//        if($model==null){
+//            $model=$this->model;
+//        }
+//        $info = [
+//            'table' => null,
+//            'foreign_key' => null,
+//            'local_key' => null,
+//        ];
+//
+//        $relation = $model->$relation_name();
+//
+//
+//        $related_model_name = get_class($relation->getRelated());
+//        $related_model = (new $related_model_name());
+//        $info['table'] = $related_model->getTable();
+//
+//
+//        $relation_type = get_class($relation);
+//        if ($pos = strrpos($relation_type, '\\')) {
+//            $relation_type = substr($relation_type, $pos + 1);
+//        }
+//
+//        $info['relation_type'] = $relation_type;
+//        $info['name'] = $relation_name;
+//        switch ($relation_type) {
+//            case 'HasOne':
+//                $info['foreign_key'] = $relation->getExistenceCompareKey();
+//                $info['local_key'] = $relation->getQualifiedParentKeyName();
+//                break;
+//            case 'HasMany':
+//                $info['foreign_key'] = $relation->getExistenceCompareKey();
+//                $info['local_key'] = $relation->getQualifiedParentKeyName();
+//                break;
+//            case 'BelongsTo':
+//                $info['foreign_key'] = $this->table . '.' . $relation->getForeignKey();
+//                $info['local_key'] = $info['table'] . '.' . $related_model->getKeyName();
+//                break;
+//            case 'BelongsToMany':
+//                $info['table'] = $related_model->getTable();
+//                $info['pivot_table'] = $relation->getTable();
+//                $info['foreign_key'] = $info['table'] . '.' . $related_model->getKeyName();
+//                $info['pivot_foreign_key'] = $relation->getQualifiedRelatedPivotKeyName();
+//                $info['pivot_local_key'] = $relation->getQualifiedForeignPivotKeyName();
+//                $info['local_key'] = $relation->getQualifiedParentKeyName();
+//                break;
+//            default:
+//                dd('relation is not valid');
+//                break;
+//        }
+//
+//        return $info;
+//    }
 
     protected function makeFilter($filter)
     {
         if (strpos($filter['column'], '.') !== false) {
-            list($relation_name, $filter['column']) = explode('.', $filter['column']);
+            list($relation_name, $column) = explode('.', $filter['column']);
             $relation_info = $this->relations[$relation_name];
-
-            if ($filter['column'] == 'count') {
+            $filter['column']=$relation_info['table'].'.'.$column;
+            if ($column == 'count') {
                 $this->query_builder->whereExists(function ($query) use ($relation_name, $relation_info, $filter) {
                     $relation_count = $relation_name . '_count';
                     $query->select(\DB::raw("count(*) as {$relation_count}, status"))
@@ -321,6 +325,9 @@ trait Dataviewer
                 break;
             case 'BelongsToMany':
                 $query->whereRaw("{$relation_info['local_key']} = {$relation_info['pivot_local_key']} and {$relation_info['foreign_key']} = {$relation_info['pivot_foreign_key']}");
+                break;
+            case 'MorphMany':
+                $query->whereRaw("{$relation_info['local_key']} = {$relation_info['foreign_key']}");
                 break;
         }
     }

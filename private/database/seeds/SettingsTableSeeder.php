@@ -566,5 +566,41 @@ class SettingsTableSeeder extends Seeder
             'order' => $order++
         ]);
 
+        $setting_group = SettingGroup::create([
+            'name' => 'attachment',
+            'display_name' => 'تنظیمات فایل های ضمیمه',
+        ]);
+        $order = 1;
+        Setting::create([
+            'setting_group_id' => $setting_group->id,
+            'name' => 'attachment_size',
+            'display_name' => 'حجم فایل',
+            'value' => '500',
+            'details' => '',
+            'type' => 'text',
+            'direction' => 'inherit',
+            'order' => $order++
+        ]);
+        Setting::create([
+            'setting_group_id' => $setting_group->id,
+            'name' => 'attachment_extension',
+            'display_name' => 'پسوند های مجاز فایل',
+            'value' => "doc,docx,pdf,zip,rar,txt",
+            'details' => '',
+            'type' => 'text',
+            'direction' => 'inherit',
+            'order' => $order++
+        ]);
+        Setting::create([
+            'setting_group_id' => $setting_group->id,
+            'name' => 'attachment_destination',
+            'display_name' => 'مسیر ذخیره فایل ضمیمه',
+            'value' => "attachment/",
+            'details' => '',
+            'type' => 'text',
+            'direction' => 'ltr',
+            'order' => $order++
+        ]);
+
     }
 }

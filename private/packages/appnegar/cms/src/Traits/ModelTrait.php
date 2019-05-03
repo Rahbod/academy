@@ -77,6 +77,7 @@ trait ModelTrait
         $info['relation_type'] = $relation_type;
         $info['related_model_name'] = $related_model_name;
         $info['name'] = $relation_name;
+
         switch ($relation_type) {
             case 'HasOne':
                 $info['foreign_key'] = $relation->getExistenceCompareKey();
@@ -98,8 +99,13 @@ trait ModelTrait
                 $info['pivot_local_key'] = $relation->getQualifiedForeignPivotKeyName();
                 $info['local_key'] = $relation->getQualifiedParentKeyName();
                 break;
+            case 'MorphMany':
+                $info['table'] = $related_model->getTable();
+                $info['morph_type'] = $relation->getQualifiedMorphType();
+                $info['foreign_key'] = $relation->getQualifiedForeignKeyName();
+                $info['local_key'] = $this->getTable().'.'.$this->getKeyName();
+                break;
             default:
-
                 dd('relation is not valid');
                 break;
         }

@@ -68,6 +68,11 @@ return [
             'image_extension' =>  'jpg, jpeg, png',
             'image_destination' =>  'slider/image/',
         ],
+    'attachment' => [
+            'attachment_size' =>  '500',
+            'attachment_extension' =>  'doc,docx,pdf,zip,rar,txt',
+            'attachment_destination' =>  'attachment/',
+        ],
 
 'available_langs'=>['fa','en','ar'],
 ];

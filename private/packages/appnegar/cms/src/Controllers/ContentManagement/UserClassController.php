@@ -40,8 +40,8 @@ class UserClassController extends AdminController
                     return $query->where('class_room_id', $request->class_room_id)->where('id', '<>', $id);
                 })
             ],
-            'class_room_id' => 'nullable|exists:class_rooms,id',
-            'status' => 'nullable|numeric|min:0|max:1',
+            'class_room_id' => 'required|exists:class_rooms,id',
+            'status' => 'required|numeric|min:0|max:1',
             'transaction.transaction_id' => 'nullable|numeric|unique:gateway_transactions,id',
             'transaction.type' => 'required|in:CRASH,GATEWAY',
             'transaction.price' => 'required|numeric|min:0',

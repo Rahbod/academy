@@ -1,6 +1,7 @@
 <script>
     import basic_input from '../../view_components/forms/basic_form/inputs/BasicInput.vue'
     import file_selector_input from '../../view_components/forms/basic_form/inputs/FileSelectorInput.vue'
+    import file_picker_input from '../../view_components/forms/basic_form/inputs/FilePickerInput.vue'
     import radio_input from '../../view_components/forms/basic_form/inputs/RadioInput.vue'
     import hidden_input from '../../view_components/forms/basic_form/inputs/HiddenInput.vue'
     import textarea_input from '../../view_components/forms/basic_form/inputs/TextareaInput.vue'
@@ -47,7 +48,8 @@
             editor_input,
             simple_editor_input,
             icon_picker_input,
-            file_selector_input
+            file_selector_input,
+            file_picker_input,
         },
         methods:{
             getComponent(name) {
@@ -93,6 +95,9 @@
                         break;
                     case 'file_selector':
                         component_name = 'file_selector_input';
+                        break;
+                    case 'file':
+                        component_name = 'file_picker_input';
                         break;
                 }
                 return component_name;
