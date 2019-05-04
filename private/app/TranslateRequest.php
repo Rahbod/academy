@@ -53,6 +53,15 @@ class TranslateRequest extends Model
                     'show_in_form' => true
                 ],
                 [
+                    'name' => 'source_language',
+                    'type' => 'string',
+                    'input_type' => 'text',
+                    'orderable' => true,
+                    'searchable' => true,
+                    'show_in_table' => true,
+                    'show_in_form' => true
+                ],
+                [
                     'name' => 'translation_language',
                     'type' => 'string',
                     'input_type' => 'text',
