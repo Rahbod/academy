@@ -27,16 +27,7 @@ class ComposerServiceProvider extends ServiceProvider
 
         ];
 
-//        View::composer(
-//            $global_views,
-//            'App\Http\View\Composer\Categories'
-//        );
-//
-//        View::composer('errors/404', function ($view) {
-//            $last_news = \App\Content::where('lang', session('lang'))->where('status', 1)->where('is_news', 1)->take(15)->get();
-////            dd($last_news);
-//            $view->with('last_news', $last_news);
-//        });
+        View::composer('*','App\Http\View\Composer\Menus');
 
     }
 
