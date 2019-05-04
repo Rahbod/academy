@@ -1,5 +1,4 @@
 {
     "/assets/vue/system_management.js": "/assets/vue/system_management.js",
-    "/assets/vue/site_management.js": "/assets/vue/site_management.js",
-    "/assets/vue/content_management.js": "/assets/vue/content_management.js"
+    "/assets/vue/admin.js": "/assets/vue/admin.js"
 }

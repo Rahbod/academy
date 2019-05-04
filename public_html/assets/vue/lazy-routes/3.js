@@ -6,9 +6,9 @@ webpackJsonp([3],{
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(373)
+var __vue_script__ = __webpack_require__(367)
 /* template */
-var __vue_template__ = __webpack_require__(408)
+var __vue_template__ = __webpack_require__(402)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -48,7 +48,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 373:
+/***/ 367:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71,23 +71,23 @@ var FormView = function FormView(resolve) {
     }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var FileManagerView = function FileManagerView(resolve) {
-    __webpack_require__.e/* require.ensure */(7/* duplicate */).then((function () {
-        resolve(__webpack_require__(96));
+    __webpack_require__.e/* require.ensure */(6/* duplicate */).then((function () {
+        resolve(__webpack_require__(95));
     }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var UpdateSettingFormView = function UpdateSettingFormView(resolve) {
-    __webpack_require__.e/* require.ensure */(4/* duplicate */).then((function () {
-        resolve(__webpack_require__(93));
+    __webpack_require__.e/* require.ensure */(5/* duplicate */).then((function () {
+        resolve(__webpack_require__(96));
     }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var Profile = function Profile(resolve) {
-    __webpack_require__.e/* require.ensure */(12).then((function () {
-        resolve(__webpack_require__(304));
+    __webpack_require__.e/* require.ensure */(11).then((function () {
+        resolve(__webpack_require__(293));
     }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var Dashboard = function Dashboard(resolve) {
     __webpack_require__.e/* require.ensure */(2/* duplicate */).then((function () {
-        resolve(__webpack_require__(95));
+        resolve(__webpack_require__(93));
     }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 
@@ -130,7 +130,7 @@ var Dashboard = function Dashboard(resolve) {
 
 /***/ }),
 
-/***/ 408:
+/***/ 402:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

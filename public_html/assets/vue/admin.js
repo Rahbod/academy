@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		16: 0
+/******/ 		17: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -142,7 +142,7 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 99);
+/******/ 	return __webpack_require__(__webpack_require__.s = 102);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -40156,21 +40156,24 @@ if (false) {
 /* 96 */,
 /* 97 */,
 /* 98 */,
-/* 99 */
+/* 99 */,
+/* 100 */,
+/* 101 */,
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(100);
+module.exports = __webpack_require__(103);
 
 
 /***/ }),
-/* 100 */
+/* 103 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vue_app", function() { return vue_app; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__stores_store_js__ = __webpack_require__(73);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__routes_system_management_route__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__routes_admin_route__ = __webpack_require__(104);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_i18next__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__panter_vue_i18next__ = __webpack_require__(92);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__panter_vue_i18next___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__panter_vue_i18next__);
@@ -40179,6 +40182,9 @@ __webpack_require__(28);
 Vue.component('main_component', __webpack_require__(50));
 
 
+__WEBPACK_IMPORTED_MODULE_1__routes_admin_route__["a" /* default */].afterEach(function (to, from) {
+    // App.sidebarMainResize();
+});
 
 
 
@@ -40192,14 +40198,14 @@ var i18n = new __WEBPACK_IMPORTED_MODULE_3__panter_vue_i18next___default.a(__WEB
 
 
 var vue_app = new Vue({
-    router: __WEBPACK_IMPORTED_MODULE_1__routes_system_management_route__["a" /* default */],
+    router: __WEBPACK_IMPORTED_MODULE_1__routes_admin_route__["a" /* default */],
     store: __WEBPACK_IMPORTED_MODULE_0__stores_store_js__["a" /* default */],
     i18n: i18n,
     el: '#app'
 });
 
 /***/ }),
-/* 101 */
+/* 104 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -40208,6 +40214,7 @@ var vue_app = new Vue({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__view_components_RouterViewApp_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__view_components_RouterViewApp_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__view_components_NestedRouterViewApp_vue__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__view_components_NestedRouterViewApp_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__view_components_NestedRouterViewApp_vue__);
+
 
 
 
@@ -40227,8 +40234,13 @@ var FormView = function FormView(resolve) {
     }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var ShowView = function ShowView(resolve) {
-    __webpack_require__.e/* require.ensure */(9).then((function () {
-        resolve(__webpack_require__(97));
+    __webpack_require__.e/* require.ensure */(8).then((function () {
+        resolve(__webpack_require__(94));
+    }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+};
+var ResourceView = function ResourceView(resolve) {
+    __webpack_require__.e/* require.ensure */(4/* duplicate */).then((function () {
+        resolve(__webpack_require__(27));
     }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var SingleView = function SingleView(resolve) {
@@ -40236,9 +40248,19 @@ var SingleView = function SingleView(resolve) {
         resolve(__webpack_require__(26));
     }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
-var ResourceView = function ResourceView(resolve) {
-    __webpack_require__.e/* require.ensure */(4/* duplicate */).then((function () {
-        resolve(__webpack_require__(27));
+var FileManagerView = function FileManagerView(resolve) {
+    __webpack_require__.e/* require.ensure */(6/* duplicate */).then((function () {
+        resolve(__webpack_require__(95));
+    }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+};
+var UpdateSettingFormView = function UpdateSettingFormView(resolve) {
+    __webpack_require__.e/* require.ensure */(5/* duplicate */).then((function () {
+        resolve(__webpack_require__(96));
+    }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+};
+var RoleFormView = function RoleFormView(resolve) {
+    __webpack_require__.e/* require.ensure */(7).then((function () {
+        resolve(__webpack_require__(98));
     }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 
@@ -40248,272 +40270,524 @@ var ResourceView = function ResourceView(resolve) {
         path: '/profile',
         meta: { resource: 'profile', action: 'show' }
     }, {
-        component: __WEBPACK_IMPORTED_MODULE_2__view_components_NestedRouterViewApp_vue___default.a,
-        path: '/resources',
-        meta: { base_resource: 'resources' },
-        children: [{
-            component: __WEBPACK_IMPORTED_MODULE_1__view_components_RouterViewApp_vue___default.a,
-            path: 'sp_namespaces',
-            meta: { resource: 'sp_namespaces' },
-            children: [{
-                component: ListView,
-                path: 'list-view',
-                name: 'sp_namespaces-list-view',
-                meta: { action: 'listView' }
-            }, {
-                component: FormView,
-                path: 'create',
-                name: 'sp_namespaces-create',
-                meta: { action: 'create' }
-            }, {
-                component: FormView,
-                path: ':id/edit',
-                name: 'sp_namespaces-edit',
-                meta: { action: 'edit' }
-            }, {
-                component: ShowView,
-                path: ':id',
-                name: 'sp_namespaces-show'
-            }]
-        }, {
-            component: __WEBPACK_IMPORTED_MODULE_1__view_components_RouterViewApp_vue___default.a,
-            path: 'departments',
-            meta: { resource: 'departments' },
-            children: [{
-                component: ListView,
-                path: 'list-view',
-                name: 'departments-list-view',
-                meta: { action: 'listView' }
-            }, {
-                component: FormView,
-                path: 'create',
-                name: 'departments-create',
-                meta: { action: 'create' }
-            }, {
-                component: FormView,
-                path: ':id/edit',
-                name: 'departments-edit',
-                meta: { action: 'edit' }
-            }, {
-                component: ShowView,
-                path: ':id',
-                name: 'departments-show'
-            }]
-        }, {
-            component: __WEBPACK_IMPORTED_MODULE_1__view_components_RouterViewApp_vue___default.a,
-            path: 'resource_groups',
-            meta: { resource: 'resource_groups' },
-            children: [{
-                component: ListView,
-                path: 'list-view',
-                name: 'resource_groups-list-view',
-                meta: { action: 'listView' }
-            }, {
-                component: FormView,
-                path: 'create',
-                name: 'resource_groups-create',
-                meta: { action: 'create' }
-            }, {
-                component: FormView,
-                path: ':id/edit',
-                name: 'resource_groups-edit',
-                meta: { action: 'edit' }
-            }, {
-                component: ShowView,
-                path: ':id',
-                name: 'resource_groups-show'
-            }]
-        }, {
-            component: __WEBPACK_IMPORTED_MODULE_1__view_components_RouterViewApp_vue___default.a,
-            path: 'resources',
-            meta: { resource: 'resources' },
-            children: [{
-                component: ListView,
-                path: 'list-view',
-                name: 'resources-list-view',
-                meta: { action: 'listView' }
-            }, {
-                component: FormView,
-                path: 'create',
-                name: 'resources-create',
-                meta: { action: 'create' }
-            }, {
-                component: FormView,
-                path: ':id/edit',
-                name: 'resources-edit',
-                meta: { action: 'edit' }
-            }, {
-                component: ShowView,
-                path: ':id',
-                name: 'resources-show'
-            }]
-        }, {
-            component: __WEBPACK_IMPORTED_MODULE_1__view_components_RouterViewApp_vue___default.a,
-            path: 'actions',
-            meta: { resource: 'actions' },
-            children: [{
-                component: ListView,
-                path: 'list-view',
-                name: 'actions-list-view',
-                meta: { action: 'listView' }
-            }, {
-                component: FormView,
-                path: 'create',
-                name: 'actions-create',
-                meta: { action: 'create' }
-            }, {
-                component: FormView,
-                path: ':id/edit',
-                name: 'actions-edit',
-                meta: { action: 'edit' }
-            }, {
-                component: ShowView,
-                path: ':id',
-                name: 'actions-show'
-            }]
-        }]
-    }, {
         component: __WEBPACK_IMPORTED_MODULE_1__view_components_RouterViewApp_vue___default.a,
-        path: '/paths',
-        meta: { resource: 'paths' },
-        name: 'paths',
+        path: '/users',
+        meta: { resource: 'users' },
         children: [{
+            component: ResourceView,
+            path: '/',
+            name: 'users-resource-view'
+        }, {
             component: ListView,
             path: 'list-view',
-            name: 'paths-list-view',
+            name: 'users-list-view',
             meta: { action: 'listView' }
         }, {
             component: FormView,
             path: 'create',
-            name: 'paths-create',
+            name: 'users-create',
             meta: { action: 'create' }
         }, {
             component: FormView,
             path: ':id/edit',
-            name: 'paths-edit',
+            name: 'users-edit',
             meta: { action: 'edit' }
         }, {
             component: ShowView,
             path: ':id',
-            name: 'paths-show'
+            name: 'users-show'
         }]
     }, {
-        component: __WEBPACK_IMPORTED_MODULE_2__view_components_NestedRouterViewApp_vue___default.a,
-        path: '/menus',
-        meta: { base_resource: 'menus' },
+        component: __WEBPACK_IMPORTED_MODULE_1__view_components_RouterViewApp_vue___default.a,
+        path: '/settings',
+        meta: { resource: 'settings' },
         children: [{
             component: ResourceView,
             path: '/',
-            name: 'base_menus-resource-view'
+            name: 'settings-resource-view'
+        }, {
+            component: UpdateSettingFormView,
+            path: 'update_all_settings',
+            name: 'update_all_settings',
+            meta: { action: 'updateAllSettings' }
+        }]
+    }, {
+        component: __WEBPACK_IMPORTED_MODULE_1__view_components_RouterViewApp_vue___default.a,
+        path: '/roles',
+        meta: { resource: 'roles' },
+        children: [{
+            component: ResourceView,
+            path: '/',
+            name: 'roles-resource-view'
+        }, {
+            component: ListView,
+            path: 'list-view',
+            name: 'roles-list-view',
+            meta: { action: 'listView' }
+        }, {
+            component: RoleFormView,
+            path: 'create',
+            name: 'roles-create',
+            meta: { action: 'create' }
+        }, {
+            component: RoleFormView,
+            path: ':id/edit',
+            name: 'roles-edit',
+            meta: { action: 'edit' }
+        }, {
+            component: ShowView,
+            path: ':id',
+            name: 'roles-show'
+        }]
+    }, {
+        component: __WEBPACK_IMPORTED_MODULE_1__view_components_RouterViewApp_vue___default.a,
+        path: '/categories',
+        meta: { resource: 'categories' },
+        children: [{
+            component: ResourceView,
+            path: '/',
+            name: 'categories-resource-view'
+        }, {
+            component: ListView,
+            path: 'list-view',
+            name: 'categories-list-view',
+            meta: { action: 'listView' }
+        }, {
+            component: FormView,
+            path: 'create',
+            name: 'categories-create',
+            meta: { action: 'create' }
+        }, {
+            component: FormView,
+            path: ':id/edit',
+            name: 'categories-edit',
+            meta: { action: 'edit' }
+        }, {
+            component: ShowView,
+            path: ':id',
+            name: 'categories-show'
+        }]
+    }, {
+        component: __WEBPACK_IMPORTED_MODULE_1__view_components_RouterViewApp_vue___default.a,
+        path: '/contents',
+        meta: { resource: 'contents' },
+        children: [{
+            component: ResourceView,
+            path: '/',
+            name: 'contents-resource-view'
+        }, {
+            component: ListView,
+            path: 'list-view',
+            name: 'contents-list-view',
+            meta: { action: 'listView' }
+        }, {
+            component: FormView,
+            path: 'create',
+            name: 'contents-create',
+            meta: { action: 'create' }
+        }, {
+            component: FormView,
+            path: ':id/edit',
+            name: 'contents-edit',
+            meta: { action: 'edit' }
+        }, {
+            component: ShowView,
+            path: ':id',
+            name: 'contents-show',
+            meta: { action: 'show' }
+        }, {
+            component: ListView,
+            path: 'comments/list-view',
+            name: 'contents-comments-list-view',
+            meta: { action: 'listView', resource: 'comments', base_resource: 'contents', use_base_resource: true }
+        }, {
+            component: FormView,
+            path: 'comments/:id/edit',
+            name: 'contents-comments-edit',
+            meta: { action: 'edit', resource: 'comments', base_resource: 'contents', use_base_resource: true }
+        }, {
+            component: ShowView,
+            path: 'comments/:id',
+            name: 'contents-comments-show',
+            meta: { action: 'show', resource: 'comments', base_resource: 'contents', use_base_resource: true }
+        }, {
+            component: FileManagerView,
+            path: 'file_manager/index',
+            name: 'contents-file-manager-show',
+            meta: { action: 'showFileManager' }
+        }, {
+            component: UpdateSettingFormView,
+            path: 'settings/form',
+            name: 'contents-settings-form',
+            meta: { action: 'updateSettings' }
+        }]
+    }, {
+        component: __WEBPACK_IMPORTED_MODULE_1__view_components_RouterViewApp_vue___default.a,
+        path: '/pages',
+        meta: { resource: 'pages' },
+        children: [{
+            component: ResourceView,
+            path: '/',
+            name: 'pages-resource-view'
+        }, {
+            component: ListView,
+            path: 'list-view',
+            name: 'pages-list-view',
+            meta: { action: 'listView' }
+        }, {
+            component: FormView,
+            path: 'create',
+            name: 'pages-create',
+            meta: { action: 'create' }
+        }, {
+            component: FormView,
+            path: ':id/edit',
+            name: 'pages-edit',
+            meta: { action: 'edit' }
+        }, {
+            component: ShowView,
+            path: ':id',
+            name: 'pages-show',
+            meta: { action: 'show' }
+        }, {
+            component: ListView,
+            path: 'comments/list-view',
+            name: 'pages-comments-list-view',
+            meta: { action: 'listView', resource: 'comments', base_resource: 'pages', use_base_resource: true }
+        }, {
+            component: FormView,
+            path: 'comments/:id/edit',
+            name: 'pages-comments-edit',
+            meta: { action: 'edit', resource: 'comments', base_resource: 'pages', use_base_resource: true }
+        }, {
+            component: ShowView,
+            path: 'comments/:id',
+            name: 'pages-comments-show',
+            meta: { action: 'show', resource: 'comments', base_resource: 'pages', use_base_resource: true }
+        }, {
+            component: FileManagerView,
+            path: 'file_manager/index',
+            name: 'pages-file-manager-show',
+            meta: { action: 'showFileManager' }
+        }, {
+            component: UpdateSettingFormView,
+            path: 'settings/form',
+            name: 'pages-settings-form',
+            meta: { action: 'updateSettings' }
+        }]
+    }, {
+        component: __WEBPACK_IMPORTED_MODULE_2__view_components_NestedRouterViewApp_vue___default.a,
+        path: '/courses',
+        meta: { base_resource: 'courses' },
+        children: [{
+            component: ResourceView,
+            path: '/',
+            name: 'base_courses-resource-view'
         }, {
             component: __WEBPACK_IMPORTED_MODULE_1__view_components_RouterViewApp_vue___default.a,
-            path: 'menus',
-            meta: { resource: 'menus' },
+            path: 'class_rooms',
+            meta: { resource: 'class_rooms' },
             children: [{
                 component: ResourceView,
                 path: '/',
-                name: 'menus-resource-view'
+                name: 'class_rooms-resource-view'
             }, {
                 component: ListView,
                 path: 'list-view',
-                name: 'menus-list-view',
+                name: 'class_rooms-list-view',
                 meta: { action: 'listView' }
             }, {
-                component: MenuFormView,
+                component: FormView,
                 path: 'create',
-                name: 'menus-create',
+                name: 'class_rooms-create',
                 meta: { action: 'create' }
             }, {
-                component: MenuFormView,
+                component: FormView,
                 path: ':id/edit',
-                name: 'menus-edit',
+                name: 'class_rooms-edit',
                 meta: { action: 'edit' }
             }, {
                 component: ShowView,
                 path: ':id',
-                name: 'menus-show'
+                name: 'class_rooms-show',
+                meta: { action: 'show' }
+            }, {
+                component: FileManagerView,
+                path: 'file_manager/index',
+                name: 'courses-file-manager-show',
+                meta: { action: 'showFileManager' }
+            }, {
+                component: UpdateSettingFormView,
+                path: 'settings/form',
+                name: 'courses-settings-form',
+                meta: { action: 'updateSettings' }
             }]
         }, {
             component: __WEBPACK_IMPORTED_MODULE_1__view_components_RouterViewApp_vue___default.a,
-            path: 'menu_items',
-            meta: { resource: 'menu_items' },
+            path: 'courses',
+            meta: { resource: 'courses' },
             children: [{
                 component: ResourceView,
                 path: '/',
-                name: 'menu_items-resource-view'
+                name: 'courses-resource-view'
             }, {
                 component: ListView,
                 path: 'list-view',
-                name: 'menu_items-list-view',
+                name: 'courses-list-view',
                 meta: { action: 'listView' }
             }, {
                 component: FormView,
                 path: 'create',
-                name: 'menu_items-create',
+                name: 'courses-create',
                 meta: { action: 'create' }
             }, {
                 component: FormView,
                 path: ':id/edit',
-                name: 'menu_items-edit',
+                name: 'courses-edit',
                 meta: { action: 'edit' }
             }, {
                 component: ShowView,
                 path: ':id',
-                name: 'menu_items-show'
+                name: 'courses-show',
+                meta: { action: 'show' }
+            }, {
+                component: FileManagerView,
+                path: 'file_manager/index',
+                name: 'courses-file-manager-show',
+                meta: { action: 'showFileManager' }
+            }, {
+                component: UpdateSettingFormView,
+                path: 'settings/form',
+                name: 'courses-settings-form',
+                meta: { action: 'updateSettings' }
             }]
         }]
     }, {
         component: __WEBPACK_IMPORTED_MODULE_2__view_components_NestedRouterViewApp_vue___default.a,
-        path: '/settings',
-        meta: { base_resource: 'settings' },
+        path: '/sliders',
+        meta: { base_resource: 'sliders' },
         children: [{
+            component: ResourceView,
+            path: '/',
+            name: 'base_sliders-resource-view'
+        }, {
             component: __WEBPACK_IMPORTED_MODULE_1__view_components_RouterViewApp_vue___default.a,
-            path: 'settings',
-            meta: { resource: 'settings' },
+            path: 'slider_groups',
+            meta: { resource: 'slider_groups' },
             children: [{
+                component: ResourceView,
+                path: '/',
+                name: 'slider_groups-resource-view'
+            }, {
                 component: ListView,
                 path: 'list-view',
-                name: 'settings-list-view',
+                name: 'slider_groups-list-view',
                 meta: { action: 'listView' }
             }, {
                 component: FormView,
                 path: 'create',
-                name: 'settings-create',
+                name: 'slider_groups-create',
                 meta: { action: 'create' }
             }, {
                 component: FormView,
                 path: ':id/edit',
-                name: 'settings-edit',
+                name: 'slider_groups-edit',
                 meta: { action: 'edit' }
             }, {
                 component: ShowView,
                 path: ':id',
-                name: 'settings-show'
+                name: 'slider_groups-show',
+                meta: { action: 'show' }
             }]
         }, {
             component: __WEBPACK_IMPORTED_MODULE_1__view_components_RouterViewApp_vue___default.a,
-            path: 'setting_groups',
-            meta: { resource: 'setting_groups' },
+            path: 'sliders',
+            meta: { resource: 'sliders' },
             children: [{
+                component: ResourceView,
+                path: '/',
+                name: 'sliders-resource-view'
+            }, {
                 component: ListView,
                 path: 'list-view',
-                name: 'setting_groups-list-view',
+                name: 'sliders-list-view',
                 meta: { action: 'listView' }
             }, {
                 component: FormView,
                 path: 'create',
-                name: 'setting_groups-create',
+                name: 'sliders-create',
                 meta: { action: 'create' }
             }, {
                 component: FormView,
                 path: ':id/edit',
-                name: 'setting_groups-edit',
+                name: 'sliders-edit',
                 meta: { action: 'edit' }
             }, {
                 component: ShowView,
                 path: ':id',
-                name: 'setting_groups-show'
+                name: 'sliders-show',
+                meta: { action: 'show' }
+            }, {
+                component: FileManagerView,
+                path: 'file_manager/index',
+                name: 'sliders-file-manager-show',
+                meta: { action: 'showFileManager' }
+            }, {
+                component: UpdateSettingFormView,
+                path: 'settings/form',
+                name: 'sliders-settings-form',
+                meta: { action: 'updateSettings' }
             }]
+        }]
+    }, {
+        component: __WEBPACK_IMPORTED_MODULE_1__view_components_RouterViewApp_vue___default.a,
+        path: '/tags',
+        meta: { resource: 'tags' },
+        children: [{
+            component: ResourceView,
+            path: '/',
+            name: 'tags-resource-view'
+        }, {
+            component: ListView,
+            path: 'list-view',
+            name: 'tags-list-view',
+            meta: { action: 'listView' }
+        }, {
+            component: FormView,
+            path: 'create',
+            name: 'tags-create',
+            meta: { action: 'create' }
+        }, {
+            component: FormView,
+            path: ':id/edit',
+            name: 'tags-edit',
+            meta: { action: 'edit' }
+        }, {
+            component: ShowView,
+            path: ':id',
+            name: 'tags-show'
+        }]
+    }, {
+        component: __WEBPACK_IMPORTED_MODULE_1__view_components_RouterViewApp_vue___default.a,
+        path: '/static_menus',
+        meta: { resource: 'static_menus' },
+        children: [{
+            component: ResourceView,
+            path: '/',
+            name: 'static_menus-resource-view'
+        }, {
+            component: ListView,
+            path: 'list-view',
+            name: 'static_menus-list-view',
+            meta: { action: 'listView' }
+        }, {
+            component: FormView,
+            path: 'create',
+            name: 'static_menus-create',
+            meta: { action: 'create' }
+        }, {
+            component: FormView,
+            path: ':id/edit',
+            name: 'static_menus-edit',
+            meta: { action: 'edit' }
+        }, {
+            component: ShowView,
+            path: ':id',
+            name: 'static_menus-show'
+        }]
+    }, {
+        component: __WEBPACK_IMPORTED_MODULE_1__view_components_RouterViewApp_vue___default.a,
+        path: '/user_classes',
+        meta: { resource: 'user_classes' },
+        children: [{
+            component: ResourceView,
+            path: '/',
+            name: 'user_classes-resource-view'
+        }, {
+            component: ListView,
+            path: 'list-view',
+            name: 'user_classes-list-view',
+            meta: { action: 'listView' }
+        }, {
+            component: FormView,
+            path: 'create',
+            name: 'user_classes-create',
+            meta: { action: 'create' }
+        }, {
+            component: FormView,
+            path: ':id/edit',
+            name: 'user_classes-edit',
+            meta: { action: 'edit' }
+        }, {
+            component: ShowView,
+            path: ':id',
+            name: 'user_classes-show'
+        }]
+    }, {
+        component: __WEBPACK_IMPORTED_MODULE_1__view_components_RouterViewApp_vue___default.a,
+        path: '/translate_requests',
+        meta: { resource: 'translate_requests' },
+        children: [{
+            component: ResourceView,
+            path: '/',
+            name: 'translate_requests-resource-view'
+        }, {
+            component: ListView,
+            path: 'list-view',
+            name: 'translate_requests-list-view',
+            meta: { action: 'listView' }
+        }, {
+            component: FormView,
+            path: 'create',
+            name: 'translate_requests-create',
+            meta: { action: 'create' }
+        }, {
+            component: FormView,
+            path: ':id/edit',
+            name: 'translate_requests-edit',
+            meta: { action: 'edit' }
+        }, {
+            component: ShowView,
+            path: ':id',
+            name: 'translate_requests-show'
+        }]
+    }, {
+        component: __WEBPACK_IMPORTED_MODULE_1__view_components_RouterViewApp_vue___default.a,
+        path: '/attachments',
+        meta: { resource: 'attachments' },
+        children: [{
+            component: ResourceView,
+            path: '/',
+            name: 'attachments-resource-view'
+        }, {
+            component: ListView,
+            path: 'list-view',
+            name: 'attachments-list-view',
+            meta: { action: 'listView' }
+        }, {
+            component: FormView,
+            path: 'create',
+            name: 'attachments-create',
+            meta: { action: 'create' }
+        }, {
+            component: FormView,
+            path: ':id/edit',
+            name: 'attachments-edit',
+            meta: { action: 'edit' }
+        }, {
+            component: ShowView,
+            path: ':id',
+            name: 'attachments-show'
+        }, {
+            component: FileManagerView,
+            path: 'file_manager/index',
+            name: 'attachments-file-manager-show',
+            meta: { action: 'showFileManager' }
+        }, {
+            component: UpdateSettingFormView,
+            path: 'settings/form',
+            name: 'attachments-settings-form',
+            meta: { action: 'updateSettings' }
         }]
     }]
 }));

@@ -24,6 +24,11 @@ const SingleView = resolve => {
         resolve(require('../views/SingleView.vue'))
     })
 };
+const ResourceView = resolve => {
+    require.ensure(['../views/ResourceView.vue'], () => {
+        resolve(require('../views/ResourceView.vue'))
+    })
+};
 
 export default new VueRouter ({
     routes:[
@@ -195,168 +200,6 @@ export default new VueRouter ({
             ]
         },
         {
-            component: NestedRouterViewApp,
-            path: '/templates',
-            meta: { base_resource: 'templates' },
-            children:[
-                {
-                    component: RouterViewApp,
-                    path: 'templates',
-                    meta: { resource: 'templates' },
-                    children:[
-                        {
-                            component: ListView,
-                            path: 'list-view',
-                            name: 'templates-list-view',
-                            meta: { action: 'listView' },
-                        },
-                        {
-                            component: FormView,
-                            path: 'create',
-                            name: 'templates-create',
-                            meta: { action: 'create' },
-                        },
-                        {
-                            component: FormView,
-                            path: ':id/edit',
-                            name: 'templates-edit',
-                            meta: { action: 'edit' },
-                        },
-                        {
-                            component: ShowView,
-                            path: ':id',
-                            name: 'templates-show',
-                        },
-
-                    ]
-                },
-                {
-                    component: RouterViewApp,
-                    path: 'master_pages',
-                    meta: { resource: 'master_pages' },
-                    children:[
-                        {
-                            component: ListView,
-                            path: 'list-view',
-                            name: 'master_pages-list-view',
-                            meta: { action: 'listView' },
-                        },
-                        {
-                            component: FormView,
-                            path: 'create',
-                            name: 'master_pages-create',
-                            meta: { action: 'create' },
-                        },
-                        {
-                            component: FormView,
-                            path: ':id/edit',
-                            name: 'master_pages-edit',
-                            meta: { action: 'edit' },
-                        },
-                        {
-                            component: ShowView,
-                            path: ':id',
-                            name: 'master_pages-show',
-                        },
-
-                    ]
-                },
-                {
-                    component: RouterViewApp,
-                    path: 'sections',
-                    meta: { resource: 'sections' },
-                    children:[
-                        {
-                            component: ListView,
-                            path: 'list-view',
-                            name: 'sections-list-view',
-                            meta: { action: 'listView' },
-                        },
-                        {
-                            component: FormView,
-                            path: 'create',
-                            name: 'sections-create',
-                            meta: { action: 'create' },
-                        },
-                        {
-                            component: FormView,
-                            path: ':id/edit',
-                            name: 'sections-edit',
-                            meta: { action: 'edit' },
-                        },
-                        {
-                            component: ShowView,
-                            path: ':id',
-                            name: 'sections-show',
-                        },
-
-                    ]
-                },
-                {
-                    component: RouterViewApp,
-                    path: 'pages',
-                    meta: { resource: 'pages' },
-                    children:[
-                        {
-                            component: ListView,
-                            path: 'list-view',
-                            name: 'pages-list-view',
-                            meta: { action: 'listView' },
-                        },
-                        {
-                            component: FormView,
-                            path: 'create',
-                            name: 'pages-create',
-                            meta: { action: 'create' },
-                        },
-                        {
-                            component: FormView,
-                            path: ':id/edit',
-                            name: 'pages-edit',
-                            meta: { action: 'edit' },
-                        },
-                        {
-                            component: ShowView,
-                            path: ':id',
-                            name: 'pages-show',
-                        },
-
-                    ]
-                },
-                {
-                    component: RouterViewApp,
-                    path: 'frames',
-                    meta: { resource: 'frames' },
-                    children:[
-                        {
-                            component: ListView,
-                            path: 'list-view',
-                            name: 'frames-list-view',
-                            meta: { action: 'listView' },
-                        },
-                        {
-                            component: FormView,
-                            path: 'create',
-                            name: 'frames-create',
-                            meta: { action: 'create' },
-                        },
-                        {
-                            component: FormView,
-                            path: ':id/edit',
-                            name: 'frames-edit',
-                            meta: { action: 'edit' },
-                        },
-                        {
-                            component: ShowView,
-                            path: ':id',
-                            name: 'frames-show',
-                        },
-
-                    ]
-                },
-            ]
-        },
-        {
             component: RouterViewApp,
             path: '/paths',
             meta: { resource: 'paths' },
@@ -386,6 +229,90 @@ export default new VueRouter ({
                     name: 'paths-show',
                 },
 
+            ]
+        },
+        {
+            component: NestedRouterViewApp,
+            path: '/menus',
+            meta: { base_resource: 'menus' },
+            children:[
+                {
+                    component: ResourceView,
+                    path: '/',
+                    name: 'base_menus-resource-view',
+                },
+                {
+                    component: RouterViewApp,
+                    path: 'menus',
+                    meta: { resource: 'menus' },
+                    children:[
+                        {
+                            component: ResourceView,
+                            path: '/',
+                            name: 'menus-resource-view',
+                        },
+                        {
+                            component: ListView,
+                            path: 'list-view',
+                            name: 'menus-list-view',
+                            meta: { action: 'listView'},
+                        },
+                        {
+                            component: MenuFormView,
+                            path: 'create',
+                            name: 'menus-create',
+                            meta: { action: 'create' },
+                        },
+                        {
+                            component: MenuFormView,
+                            path: ':id/edit',
+                            name: 'menus-edit',
+                            meta: { action: 'edit' },
+                        },
+                        {
+                            component: ShowView,
+                            path: ':id',
+                            name: 'menus-show',
+                        },
+
+                    ]
+                },
+                {
+                    component: RouterViewApp,
+                    path: 'menu_items',
+                    meta: { resource: 'menu_items' },
+                    children:[
+                        {
+                            component: ResourceView,
+                            path: '/',
+                            name: 'menu_items-resource-view',
+                        },
+                        {
+                            component: ListView,
+                            path: 'list-view',
+                            name: 'menu_items-list-view',
+                            meta: { action: 'listView' },
+                        },
+                        {
+                            component: FormView,
+                            path: 'create',
+                            name: 'menu_items-create',
+                            meta: { action: 'create' },
+                        },
+                        {
+                            component: FormView,
+                            path: ':id/edit',
+                            name: 'menu_items-edit',
+                            meta: { action: 'edit' },
+                        },
+                        {
+                            component: ShowView,
+                            path: ':id',
+                            name: 'menu_items-show',
+                        },
+
+                    ]
+                },
             ]
         },
         {
