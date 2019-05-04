@@ -40,6 +40,11 @@ const UpdateSettingFormView = resolve => {
         resolve(require('../views/settings/FormView.vue'))
     })
 };
+const RoleFormView=resolve=>{
+    require.ensure(['../views/roles/FormView.vue'],()=>{
+        resolve(require('../views/roles/FormView.vue'))
+    })
+};
 
 export default new VueRouter({
     routes: [
@@ -48,6 +53,99 @@ export default new VueRouter({
             path: '/profile',
             meta: {resource: 'profile',action: 'show'},
         },
+
+        {
+            component: RouterViewApp,
+            path: '/users',
+            meta: { resource: 'users' },
+            children:[
+                {
+                    component: ResourceView,
+                    path: '/',
+                    name: 'users-resource-view',
+                },
+                {
+                    component: ListView,
+                    path: 'list-view',
+                    name: 'users-list-view',
+                    meta: { action: 'listView' },
+                },
+                {
+                    component: FormView,
+                    path: 'create',
+                    name: 'users-create',
+                    meta: { action: 'create' },
+                },
+                {
+                    component: FormView,
+                    path: ':id/edit',
+                    name: 'users-edit',
+                    meta: { action: 'edit' },
+                },
+                {
+                    component: ShowView,
+                    path: ':id',
+                    name: 'users-show',
+                },
+
+            ]
+        },
+        {
+            component: RouterViewApp,
+            path: '/settings',
+            meta: { resource: 'settings' },
+            children:[
+                {
+                    component: ResourceView,
+                    path: '/',
+                    name: 'settings-resource-view',
+                },
+                {
+                    component: UpdateSettingFormView,
+                    path: 'update_all_settings',
+                    name: 'update_all_settings',
+                    meta: { action: 'updateAllSettings' },
+                },
+
+            ]
+        },
+        {
+            component: RouterViewApp,
+            path: '/roles',
+            meta: { resource: 'roles' },
+            children:[
+                {
+                    component: ResourceView,
+                    path: '/',
+                    name: 'roles-resource-view',
+                },
+                {
+                    component: ListView,
+                    path: 'list-view',
+                    name: 'roles-list-view',
+                    meta: { action: 'listView' },
+                },
+                {
+                    component: RoleFormView,
+                    path: 'create',
+                    name: 'roles-create',
+                    meta: { action: 'create' },
+                },
+                {
+                    component: RoleFormView,
+                    path: ':id/edit',
+                    name: 'roles-edit',
+                    meta: { action: 'edit' },
+                },
+                {
+                    component: ShowView,
+                    path: ':id',
+                    name: 'roles-show',
+                },
+
+            ]
+        },
+
         {
             component: RouterViewApp,
             path: '/categories',
@@ -261,6 +359,19 @@ export default new VueRouter({
                             path: ':id',
                             name: 'class_rooms-show',
                             meta: { action: 'show' },
+                        },
+
+                        {
+                            component: FileManagerView,
+                            path: 'file_manager/index',
+                            name: 'courses-file-manager-show',
+                            meta: {action: 'showFileManager'},
+                        },
+                        {
+                            component: UpdateSettingFormView,
+                            path: 'settings/form',
+                            name: 'courses-settings-form',
+                            meta: {action: 'updateSettings'},
                         },
 
                     ]
@@ -516,6 +627,90 @@ export default new VueRouter({
                     component: ShowView,
                     path: ':id',
                     name: 'user_classes-show',
+                },
+
+            ]
+        },
+        {
+            component: RouterViewApp,
+            path: '/translate_requests',
+            meta: {resource: 'translate_requests'},
+            children: [
+                {
+                    component: ResourceView,
+                    path: '/',
+                    name: 'translate_requests-resource-view',
+                },
+                {
+                    component: ListView,
+                    path: 'list-view',
+                    name: 'translate_requests-list-view',
+                    meta: {action: 'listView'},
+                },
+                {
+                    component: FormView,
+                    path: 'create',
+                    name: 'translate_requests-create',
+                    meta: {action: 'create'},
+                },
+                {
+                    component: FormView,
+                    path: ':id/edit',
+                    name: 'translate_requests-edit',
+                    meta: {action: 'edit'},
+                },
+                {
+                    component: ShowView,
+                    path: ':id',
+                    name: 'translate_requests-show',
+                },
+
+            ]
+        },
+        {
+            component: RouterViewApp,
+            path: '/attachments',
+            meta: {resource: 'attachments'},
+            children: [
+                {
+                    component: ResourceView,
+                    path: '/',
+                    name: 'attachments-resource-view',
+                },
+                {
+                    component: ListView,
+                    path: 'list-view',
+                    name: 'attachments-list-view',
+                    meta: {action: 'listView'},
+                },
+                {
+                    component: FormView,
+                    path: 'create',
+                    name: 'attachments-create',
+                    meta: {action: 'create'},
+                },
+                {
+                    component: FormView,
+                    path: ':id/edit',
+                    name: 'attachments-edit',
+                    meta: {action: 'edit'},
+                },
+                {
+                    component: ShowView,
+                    path: ':id',
+                    name: 'attachments-show',
+                },
+                {
+                    component: FileManagerView,
+                    path: 'file_manager/index',
+                    name: 'attachments-file-manager-show',
+                    meta: {action: 'showFileManager'},
+                },
+                {
+                    component: UpdateSettingFormView,
+                    path: 'settings/form',
+                    name: 'attachments-settings-form',
+                    meta: {action: 'updateSettings'},
                 },
 
             ]

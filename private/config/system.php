@@ -68,6 +68,16 @@ return [
             'image_extension' =>  'jpg, jpeg, png',
             'image_destination' =>  'slider/image/',
         ],
+    'translate_request' => [
+            'translated_file_size' =>  '500',
+            'translated_file_extension' =>  'doc,docx,pdf,zip,rar',
+            'translated_file_destination' =>  'translate_request/',
+        ],
+    'attachment' => [
+            'attachment_size' =>  '2048',
+            'attachment_extension' =>  'doc,docx,pdf,zip,rar,txt',
+            'attachment_destination' =>  'attachment/',
+        ],
 
 'available_langs'=>['fa','en','ar'],
 ];

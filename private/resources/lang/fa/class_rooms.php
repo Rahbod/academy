@@ -5,6 +5,7 @@ return [
     "create_form_title" => "فرم ایجاد کلاس ها",
     "edit_form_title" => "فرم ویرایش کلاس ها",
     "items" => [
+        "id" => "شناسه",
         "author_id" => "نویسنده",
         "teacher_id" => "استاد",
         "course_id" => "دوره",

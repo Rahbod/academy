@@ -47,7 +47,7 @@ class Category extends Model
                 [
                     'name' => 'author_id',
                     'type' => 'numeric',
-                    'input_type' => 'disable',
+                    'input_type' => 'hidden',
                     'orderable' => true,
                     'searchable' => true,
                     'show_in_table' => false,
@@ -66,10 +66,15 @@ class Category extends Model
                     'name' => 'type',
                     'type' => 'select',
                     'input_type' => 'select',
-                    'options' => [['id' => 'article', 'text' => 'article'], ['id' => 'news', 'text' => 'news'], ['id' => 'course', 'text' => 'course']],
+                    'options' => [
+                        ['id' => 'article', 'text' => 'article'],
+                        ['id' => 'news', 'text' => 'news'],
+                        ['id' => 'course', 'text' => 'course'],
+                        ['id' => 'translate', 'text' => 'translate']],
                     'orderable' => true,
                     'searchable' => true,
                     'show_in_table' => true,
+                    'show_in_sub_table' => false,
                     'show_in_form' => true,
                 ],
                 [
@@ -79,7 +84,6 @@ class Category extends Model
                     'orderable' => true,
                     'searchable' => true,
                     'show_in_table' => true,
-                    'show_in_sub_table' => false,
                     'show_in_form' => true
                 ],
                 [
@@ -109,6 +113,7 @@ class Category extends Model
                     'orderable' => true,
                     'searchable' => true,
                     'show_in_table' => true,
+                    'show_in_sub_table' => false,
                     'show_in_form' => true
                 ],
                 [
@@ -118,6 +123,7 @@ class Category extends Model
                     'orderable' => true,
                     'searchable' => true,
                     'show_in_table' => true,
+                    'show_in_sub_table' => false,
                     'show_in_form' => true,
                     'options' => [['id' => 0, 'text' => 'inactive'], ['id' => 1, 'text' => 'active']]
                 ],

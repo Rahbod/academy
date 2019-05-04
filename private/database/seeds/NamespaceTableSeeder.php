@@ -22,7 +22,7 @@ class NamespaceTableSeeder extends Seeder
         ]);
 
         SpNamespace::create([
-            'name' => 'ContentManagement',
+            'name' => 'Admin',
             'display_name' => 'مدیریت محتوا',
         ]);
     }

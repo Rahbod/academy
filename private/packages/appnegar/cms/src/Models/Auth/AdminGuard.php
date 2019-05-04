@@ -7,7 +7,7 @@ use App\User;
 use Appnegar\Cms\Traits\UserTrait;
 
 use Illuminate\Notifications\Notifiable;
-class ContentManagementGuard extends User
+class AdminGuard extends User
 {
     use Notifiable;
     use UserTrait;
@@ -24,7 +24,7 @@ class ContentManagementGuard extends User
 
     }
     public function newQuery() {
-        return parent::newQuery()->where('access_level','>',0)->whereHas('departments', function ($query) {
+        return parent::newQuery()->where('access_level','>',1)->whereHas('departments', function ($query) {
             $query->where('name', session('department'));
         });
     }

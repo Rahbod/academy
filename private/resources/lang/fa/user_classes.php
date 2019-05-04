@@ -6,7 +6,6 @@ return [
     "edit_form_title" => "فرم ویرایش ثبت نام",
     "items" => [
         "id" => "شناسه",
-        'transaction_id' => 'تراکنش',
         'user_id' => 'کاربر',
         'class_room_id' => 'کلاس',
         'status' => 'وضعیت',

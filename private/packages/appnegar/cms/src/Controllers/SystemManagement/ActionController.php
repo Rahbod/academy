@@ -81,7 +81,6 @@ class ActionController extends AdminController
                 'department_id' => Department::orderBy('id')->get(['id', 'display_name  AS text']),
                 'resource_id' => $resources,
             ],
-            'image_path' => [],
         ];
     }
 

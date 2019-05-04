@@ -1,22 +1,23 @@
 <?php
-namespace Appnegar\Cms\Controllers\ContentManagement;
+namespace Appnegar\Cms\Controllers\Admin;
 
+use App\Gallery;
 use App\Tag;
 use Appnegar\Cms\Controllers\AdminController;
 use Appnegar\Cms\Traits\AdminComment;
 use Appnegar\Cms\Traits\AdminFileManager;
 use Appnegar\Cms\Traits\AdminSettingTrait;
 
-class CourseController extends AdminController{
+class PageController extends AdminController{
     use AdminComment;
     use AdminFileManager;
     use AdminSettingTrait;
 
     public function __construct(){
-        $this->resource='Course';
-        $config=config('system.course');
+        $this->resource='Page';
+        $config=config('system.page');
         $this->config=[
-            'course'=>[
+            'page'=>[
                 'image' => [
                     'size' => $config['image_size'],
                     'width' => $config['image_width'],
@@ -48,13 +49,13 @@ class CourseController extends AdminController{
     protected function validationRules($request, $id = null)
     {
         $rules=[
-            'category_id'=>'required|exists:categories,id',
             'tag_id'=>'nullable|array',
             'title'=>'required',
-            'image'=>'nullable|image|max:'.$this->config['course']['image']['size'] . '|mimes:' . trimArrayString($this->config['course']['image']['extension']),
-            'description'=>'required',
-            'duration'=>'required',
+            'summary'=>'nullable',
+            'image'=>'nullable|image|max:'.$this->config['page']['image']['size'] . '|mimes:' . trimArrayString($this->config['page']['image']['extension']),
+            'text'=>'required',
             'order'=>'nullable|numeric|min:1',
+            'show_count'=>'nullable|numeric|min:1',
             'status'=>'nullable|numeric|min:0|max:1'
         ];
         return $rules;
@@ -65,7 +66,6 @@ class CourseController extends AdminController{
         return[
             'model'=>$data,
             'options'=>[
-                'category_id'=>$this->getCategories([],'Category',['course']),
                 'tag_id'=>Tag::select('id','name as text')->get()
             ]
         ];

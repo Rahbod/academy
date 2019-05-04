@@ -101,6 +101,24 @@ class ResourceTableSeeder extends Seeder
             'display_name' => 'مسیر ها'
         ]);
 
+        /***********menu resources************/
+        $resource_group = ResourceGroup::create([
+            'department_id'=>$system_management_department->id,
+            'name' => 'menus',
+            'display_name' => 'منو ها',
+        ]);
+        $menu_resource=Resource::create([
+            'resource_group_id' => $resource_group->id,
+            'name' => 'Menu',
+            'display_name' => 'منو ها'
+        ]);
+        Resource::create([
+            'parent_id' => $menu_resource->id,
+            'resource_group_id' => $resource_group->id,
+            'name' => 'MenuItem',
+            'display_name' => 'آیتم های منو'
+        ]);
+
         /***********setting resources************/
         $resource_group = ResourceGroup::create([
             'department_id'=>$system_management_department->id,
@@ -120,109 +138,13 @@ class ResourceTableSeeder extends Seeder
         ]);
 
 
-        /*************site management***********/
+        /*************admin management***********/
 
-        $site_management_department=Department::where('name','site_management')->first(['id']);
-
-        /***********dashboard resources************/
-        $resource_group = ResourceGroup::create([
-            'department_id'=>$site_management_department->id,
-            'name' => 'dashboard',
-            'display_name' => 'داشبورد مدیریت سیستم',
-        ]);
-        Resource::create([
-            'resource_group_id' => $resource_group->id,
-            'name' => 'Dashboard',
-            'display_name' => 'داشبورد مدیریت سیستم'
-        ]);
-
-        /***********profile resources************/
-        $resource_group = ResourceGroup::create([
-            'department_id'=>$site_management_department->id,
-            'name' => 'profile',
-            'display_name' => 'پروفایل',
-        ]);
-        Resource::create([
-            'resource_group_id' => $resource_group->id,
-            'name' => 'Profile',
-            'display_name' => 'پروفایل'
-        ]);
-
-        /***********user resources************/
-        $resource_group = ResourceGroup::create([
-            'department_id'=>$site_management_department->id,
-            'name' => 'users',
-            'display_name' => 'کاربران',
-        ]);
-        Resource::create([
-            'resource_group_id' => $resource_group->id,
-            'name' => 'User',
-            'display_name' => 'کاربران'
-        ]);
-
-        /***********role resources************/
-        $resource_group = ResourceGroup::create([
-            'department_id'=>$site_management_department->id,
-            'name' => 'roles',
-            'display_name' => 'نقش ها',
-        ]);
-        Resource::create([
-            'resource_group_id' => $resource_group->id,
-            'name' => 'Role',
-            'display_name' => 'نقش ها'
-        ]);
-
-        /***********menu resources************/
-        $resource_group = ResourceGroup::create([
-            'department_id'=>$site_management_department->id,
-            'name' => 'menus',
-            'display_name' => 'منو ها',
-        ]);
-        $menu_resource=Resource::create([
-            'resource_group_id' => $resource_group->id,
-            'name' => 'Menu',
-            'display_name' => 'منو ها'
-        ]);
-        Resource::create([
-            'parent_id' => $menu_resource->id,
-            'resource_group_id' => $resource_group->id,
-            'name' => 'MenuItem',
-            'display_name' => 'آیتم های منو'
-        ]);
-
-        /***********activity log resources************/
-//        $resource_group = ResourceGroup::create([
-//            'department_id'=>$site_management_department->id,
-//            'name' => 'activity_logs',
-//            'display_name' => 'گزارش عملیات کاربری',
-//        ]);
-//        Resource::create([
-//            'resource_group_id' => $resource_group->id,
-//            'name' => 'ActivityLog',
-//            'display_name' => 'گزارش عملیات'
-//        ]);
-
-        /***********setting resources************/
-        $resource_group = ResourceGroup::create([
-            'department_id'=>$site_management_department->id,
-            'name' => 'settings',
-            'display_name' => 'تنظیمات',
-        ]);
-
-        Resource::create([
-            'parent_id' => $setting_group_resource->id,
-            'resource_group_id' => $resource_group->id,
-            'name' => 'Setting',
-            'display_name' => 'تنظیمات'
-        ]);
-
-        /*************content_management management***********/
-
-        $content_management_department=Department::where('name','content_management')->first(['id']);
+        $admin_department=Department::where('name','admin')->first(['id']);
 
         /***********dashboard resources************/
         $resource_group = ResourceGroup::create([
-            'department_id'=>$content_management_department->id,
+            'department_id'=>$admin_department->id,
             'name' => 'dashboard',
             'display_name' => 'داشبورد مدیریت محتوا',
         ]);
@@ -235,7 +157,7 @@ class ResourceTableSeeder extends Seeder
 
         /***********profile resources************/
         $resource_group = ResourceGroup::create([
-            'department_id'=>$content_management_department->id,
+            'department_id'=>$admin_department->id,
             'name' => 'profile',
             'display_name' => 'پروفایل',
         ]);
@@ -245,9 +167,33 @@ class ResourceTableSeeder extends Seeder
             'display_name' => 'پروفایل'
         ]);
 
+        /***********user resources************/
+        $resource_group = ResourceGroup::create([
+            'department_id'=>$admin_department->id,
+            'name' => 'users',
+            'display_name' => 'کاربران',
+        ]);
+        Resource::create([
+            'resource_group_id' => $resource_group->id,
+            'name' => 'User',
+            'display_name' => 'کاربران'
+        ]);
+
+        /***********role resources************/
+        $resource_group = ResourceGroup::create([
+            'department_id'=>$admin_department->id,
+            'name' => 'roles',
+            'display_name' => 'نقش ها',
+        ]);
+        Resource::create([
+            'resource_group_id' => $resource_group->id,
+            'name' => 'Role',
+            'display_name' => 'نقش ها'
+        ]);
+
         /***********Registers resources************/
         $resource_group = ResourceGroup::create([
-            'department_id'=>$content_management_department->id,
+            'department_id'=>$admin_department->id,
             'name' => 'user_class',
             'display_name' => 'لیست ثبت نام ها',
         ]);
@@ -260,7 +206,7 @@ class ResourceTableSeeder extends Seeder
 
         /***********category resources************/
         $resource_group = ResourceGroup::create([
-            'department_id'=>$content_management_department->id,
+            'department_id'=>$admin_department->id,
             'name' => 'categories',
             'display_name' => 'دسته بندی ها',
         ]);
@@ -273,7 +219,7 @@ class ResourceTableSeeder extends Seeder
 
         /***********Course resources************/
         $resource_group = ResourceGroup::create([
-            'department_id'=>$content_management_department->id,
+            'department_id'=>$admin_department->id,
             'name' => 'courses',
             'display_name' => 'دوره ها',
         ]);
@@ -291,7 +237,7 @@ class ResourceTableSeeder extends Seeder
 
         /***********content resources************/
         $resource_group = ResourceGroup::create([
-            'department_id'=>$content_management_department->id,
+            'department_id'=>$admin_department->id,
             'name' => 'contents',
             'display_name' => 'مطالب',
         ]);
@@ -303,7 +249,7 @@ class ResourceTableSeeder extends Seeder
 
         /***********Page resources************/
         $resource_group = ResourceGroup::create([
-            'department_id'=>$content_management_department->id,
+            'department_id'=>$admin_department->id,
             'name' => 'pages',
             'display_name' => 'برگه ها',
         ]);
@@ -315,7 +261,7 @@ class ResourceTableSeeder extends Seeder
 
         /***********Slider resources************/
         $resource_group = ResourceGroup::create([
-            'department_id'=>$content_management_department->id,
+            'department_id'=>$admin_department->id,
             'name' => 'sliders',
             'display_name' => 'اسلایدرها',
         ]);
@@ -333,7 +279,7 @@ class ResourceTableSeeder extends Seeder
 
         /***********Tag resources************/
         $resource_group = ResourceGroup::create([
-            'department_id'=>$content_management_department->id,
+            'department_id'=>$admin_department->id,
             'name' => 'tags',
             'display_name' => 'برچسب ها',
         ]);
@@ -345,7 +291,7 @@ class ResourceTableSeeder extends Seeder
 
         /***********Static Menu resources************/
         $resource_group = ResourceGroup::create([
-            'department_id'=>$content_management_department->id,
+            'department_id'=>$admin_department->id,
             'name' => 'static_menu',
             'display_name' => 'منو های اصلی',
         ]);
@@ -355,6 +301,43 @@ class ResourceTableSeeder extends Seeder
             'display_name' => 'منو های اصلی'
         ]);
 
+        /***********TranslateRequest Menu resources************/
+        $resource_group = ResourceGroup::create([
+            'department_id'=>$admin_department->id,
+            'name' => 'translate_request',
+            'display_name' => 'درخواست ترجمه',
+        ]);
+        Resource::create([
+            'resource_group_id' => $resource_group->id,
+            'name' => 'TranslateRequest',
+            'display_name' => 'درخواست های ترجمه'
+        ]);
+
+        /***********TranslateRequest Menu resources************/
+        $resource_group = ResourceGroup::create([
+            'department_id'=>$admin_department->id,
+            'name' => 'attachment',
+            'display_name' => 'فایل های پیوستی',
+        ]);
+        Resource::create([
+            'resource_group_id' => $resource_group->id,
+            'name' => 'Attachment',
+            'display_name' => 'فایل های پیوستی'
+        ]);
+
+        /***********setting resources************/
+        $resource_group = ResourceGroup::create([
+            'department_id'=>$admin_department->id,
+            'name' => 'settings',
+            'display_name' => 'تنظیمات',
+        ]);
+
+        Resource::create([
+            'parent_id' => $setting_group_resource->id,
+            'resource_group_id' => $resource_group->id,
+            'name' => 'Setting',
+            'display_name' => 'تنظیمات'
+        ]);
 
     }
 }

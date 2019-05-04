@@ -50,7 +50,7 @@ class Role extends Model
                     'searchable' => false,
                     'show_in_table' => false,
                     'show_in_sub_table' => false,
-                    'show_in_form' => false,
+                    'show_in_form' => true,
                     'show_in_sub_form' => false,
                 ],
                 [

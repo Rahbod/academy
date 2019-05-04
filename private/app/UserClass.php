@@ -9,9 +9,7 @@ class UserClass extends Model
 {
     use ModelTrait;
 
-    public $timestamps = false;
-
-    protected $fillable = ['transaction_id','user_id','class_room_id','status'];
+    protected $fillable = ['user_id','class_room_id','status'];
 
     public static function mainFields(){
         return [
@@ -28,25 +26,7 @@ class UserClass extends Model
                     'show_in_form' => true
                 ],
                 [
-                    'name' => 'transaction_id',
-                    'type' => 'select',
-                    'input_type' => 'select',
-                    'orderable' => true,
-                    'searchable' => true,
-                    'show_in_table' => false,
-                    'show_in_form' => true
-                ],
-                [
                     'name' => 'user_id',
-                    'type' => 'select',
-                    'input_type' => 'select',
-                    'orderable' => true,
-                    'searchable' => true,
-                    'show_in_table' => false,
-                    'show_in_form' => true
-                ],
-                [
-                    'name' => 'class_room_id',
                     'type' => 'select',
                     'input_type' => 'select',
                     'orderable' => true,
@@ -100,13 +80,6 @@ class UserClass extends Model
     public static function  relatedFields(){
         return [
             [
-                'name' => 'transaction',
-                'table' => GatewayTransaction::getTableName(),
-                'show_in_form' => false,
-                'show_in_table' => false,
-                'items' => GatewayTransaction::getSubFields()
-            ],
-            [
                 'name' => 'user',
                 'table' => User::getTableName(),
                 'show_in_form' => false,
@@ -119,21 +92,28 @@ class UserClass extends Model
                 'show_in_form' => false,
                 'show_in_table' => true,
                 'items' => ClassRoom::getSubFields()
-            ]
+            ],
+            [
+                'name' => 'transaction',
+                'table' => UserTransaction::getTableName(),
+                'show_in_form' => true,
+                'show_in_table' => false,
+                'items' => UserTransaction::getSubFields()
+            ],
         ];
     }
 
-    protected function transaction()
+    public function transaction()
     {
-        return $this->belongsTo('App\GatewayTransaction','transaction_id');
+        return $this->hasOne('App\UserTransaction','user_class_id','id');
     }
 
-    protected function user()
+    public function user()
     {
         return $this->belongsTo('App\User');
     }
 
-    protected function class_room()
+    public function class_room()
     {
         return $this->belongsTo('App\ClassRoom');
     }

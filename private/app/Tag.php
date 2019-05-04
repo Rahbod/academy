@@ -40,12 +40,12 @@ class Tag extends Model
         ];
     }
 
-    protected function contents()
+    public function contents()
     {
         return $this->morphedByMany('App\Content', 'taggable');
     }
 
-    protected function coutrse()
+    public function course()
     {
         return $this->morphedByMany('App\Course', 'taggable');
     }

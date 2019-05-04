@@ -44,13 +44,9 @@ return [
             'driver' => 'session',
             'provider' => 'system_management',
         ],
-        'content_management' => [
+        'admin' => [
             'driver' => 'session',
-            'provider' => 'content_management',
-        ],
-        'site_management' => [
-            'driver' => 'session',
-            'provider' => 'site_management',
+            'provider' => 'admin',
         ],
 
         'api' => [
@@ -85,13 +81,9 @@ return [
             'driver' => 'eloquent',
             'model' => Appnegar\Cms\Models\Auth\SystemManagementGuard::class,
         ],
-        'content_management' => [
+        'admin' => [
             'driver' => 'eloquent',
-            'model' => Appnegar\Cms\Models\Auth\ContentManagementGuard::class,
-        ],
-        'site_management' => [
-            'driver' => 'eloquent',
-            'model' => Appnegar\Cms\Models\Auth\SiteManagementGuard::class,
+            'model' => Appnegar\Cms\Models\Auth\AdminGuard::class,
         ],
 
         // 'users' => [

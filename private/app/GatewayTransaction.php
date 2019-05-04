@@ -86,7 +86,25 @@ class GatewayTransaction extends Model
                     'searchable' => true,
                     'show_in_table' => false,
                     'show_in_form' => true,
-                    'options' => [['id' => 'SUCCEED', 'text' => 'SUCCEED'],['id' => 'SUCCEED', 'text' => 'SUCCEED'], ['id' => 1, 'text' => 'active']]
+                    'options' => [['id' => 'INIT', 'text' => 'INIT'],['id' => 'SUCCEED', 'text' => 'SUCCEED'], ['id' => 'FAILED', 'text' => 'FAILED']]
+                ],
+                [
+                    'name' => 'ip',
+                    'type' => 'string',
+                    'input_type' => 'hidden',
+                    'orderable' => true,
+                    'searchable' => true,
+                    'show_in_table' => false,
+                    'show_in_form' => true,
+                ],
+                [
+                    'name' => 'payment_date',
+                    'type' => 'date',
+                    'input_type' => 'date',
+                    'orderable' => true,
+                    'searchable' => true,
+                    'show_in_table' => false,
+                    'show_in_form' => true,
                 ],
                 [
                     'name' => 'created_at',
@@ -115,25 +133,11 @@ class GatewayTransaction extends Model
     public static function  relatedFields(){
         return [
             [
-                'name' => 'transaction',
-                'table' => GatewayTransaction::getTableName(),
-                'show_in_form' => false,
-                'show_in_table' => false,
-                'items' => GatewayTransaction::getSubFields()
-            ],
-            [
-                'name' => 'user',
-                'table' => User::getTableName(),
+                'name' => 'transaction_log',
+                'table' => GatewayTransactionsLog::getTableName(),
                 'show_in_form' => false,
                 'show_in_table' => true,
-                'items' => User::getSubFields()
-            ],
-            [
-                'name' => 'class_room',
-                'table' => ClassRoom::getTableName(),
-                'show_in_form' => false,
-                'show_in_table' => true,
-                'items' => ClassRoom::getSubFields()
+                'items' => GatewayTransactionsLog::getSubFields()
             ]
         ];
     }

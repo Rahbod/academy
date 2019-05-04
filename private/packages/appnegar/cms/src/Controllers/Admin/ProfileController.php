@@ -1,6 +1,6 @@
 <?php
 
-namespace Appnegar\Cms\Controllers\ContentManagement;
+namespace Appnegar\Cms\Controllers\Admin;
 
 
 use Appnegar\Cms\Controllers\AdminProfileController;

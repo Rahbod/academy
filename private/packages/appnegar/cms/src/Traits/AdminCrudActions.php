@@ -19,31 +19,36 @@ trait AdminCrudActions
     }
 
 
-    protected function setRequest($request,$model){
-        if (!$request['lang']){
-            $request['lang']=session('lang');
+    protected function setRequest($request, $model)
+    {
+        if (!$request['lang']) {
+            $request['lang'] = session('lang');
         }
-        if($request['id'] == 0){
-            $user = session('user_info_' . session('department'));
-            $request['author_id']=$user['id'];
-        }else{
-            $request['author_id']=$model['author_id'];
-        }
+
         return $request;
     }
-    protected function setModel($model){
-        if(isset($model->author_id)){
-            $model->author_id=$model->author->name;
-        }
+
+    protected function setModel($model)
+    {
+//        if (isset($model->author_id)) {
+//            $model->author_id = $model->author->name;
+//        }
+//        if (isset($model->user_id)) {
+//            $model->user_id = $model->user->name;
+//        }
         return $model;
     }
-    protected function getOrderScopes(){
+
+    protected function getOrderScopes()
+    {
         return null;
     }
 
-    protected function validationRules($request,$id=null){
+    protected function validationRules($request, $id = null)
+    {
         return [];
     }
+
     /**
      * @param array $data
      * @return array
@@ -57,13 +62,14 @@ trait AdminCrudActions
         ];
     }
 
-    protected function getOrderConditions($request){
-        $order_scopes=$this->getOrderScopes();
+    protected function getOrderConditions($request)
+    {
+        $order_scopes = $this->getOrderScopes();
 
-        if(is_array($order_scopes)){
-            $order_conditions=[];
-            foreach ($order_scopes as $order_scope){
-                $order_conditions[$order_scope]=$request[$order_scope];
+        if (is_array($order_scopes)) {
+            $order_conditions = [];
+            foreach ($order_scopes as $order_scope) {
+                $order_conditions[$order_scope] = $request[$order_scope];
             }
             return $order_conditions;
         }
@@ -79,8 +85,8 @@ trait AdminCrudActions
                 ->json($this->getFormData($data));
         } elseif ($request->isMethod('post')) {
             $this->validate($request, $this->validationRules($request));
-            $model=app($this->getModelName());
-            $request=$this->setRequest($request,$model);
+            $model = app($this->getModelName());
+            $request = $this->setRequest($request, $model);
             return $this->transaction($request, $model, 'create');
         }
         return response()->json([
@@ -104,8 +110,8 @@ trait AdminCrudActions
         } elseif ($request->isMethod('put')) {
             $this->validate($request, $this->validationRules($request, $id));
 
-            $model=$this->getModel($id);
-            $request=$this->setRequest($request,$model);
+            $model = $this->getModel($id);
+            $request = $this->setRequest($request, $model);
             return $this->transaction($request, $model, 'edit');
         }
         return response()->json([
@@ -122,21 +128,21 @@ trait AdminCrudActions
     public function destroy($id)
     {
         $ids = explode(',', $id);
-        $related_relations=$this->getRelatedRelations();
-        return $this->deleteModels($this->resource,$related_relations, $ids, true,false,$this->getOrderScopes());
+        $related_relations = $this->getRelatedRelations();
+        return $this->deleteModels($this->resource, $related_relations, $ids, true, false, $this->getOrderScopes());
 
     }
 
-    protected function getRelatedRelations($model=null)
+    protected function getRelatedRelations($model = null)
     {
-        if($model==null){
+        if ($model == null) {
             $model_name = $this->getModelName();
             $model = app($model_name);
         }
         $related_relations = [];
         $relationships = $model->relationships();
         foreach ($relationships as $key => $relationship) {
-            if (in_array($relationship['type'], ['HasOne', 'HasMany'])) {
+            if (in_array($relationship['type'], ['HasOne', 'HasMany','MorphMany'])) {
                 $related_relations[] = $key;
             }
         }
@@ -164,23 +170,30 @@ trait AdminCrudActions
         $fields = $model_name::getFields();
 
         foreach ($fields as $field) {
-            if ( $field['name'] === $model_table || !isset($field['show_in_form'] ) || $field['show_in_form'] != true) {
-                if($field['name'] === $model_table &&  $id == null){
-                    $data=array_merge($data,$this->setDefaulValues($field['items']));
+            if ($field['name'] === $model_table || !isset($field['show_in_form']) || $field['show_in_form'] != true) {
+                if ($field['name'] === $model_table && $id == null) {
+                    $data = array_merge($data, $this->setDefaultValues($field['items']));
                 }
                 continue;
             }
-            $relation_info = app($model_name)->getRelationInfo($field['name']);
-            if ($id != null) {
-                $data->load($relation_info['name']);
-                continue;
+            if($field['show_in_form'] == true){
+
+                $relation_info = app($model_name)->getRelationInfo($field['name']);
+                if ($id != null) {
+                    $data->load($relation_info['name']);
+                    continue;
+                }
+                if ($relation_info['relation_type'] == 'HasMany') {
+                    $data[$relation_info['name']] = [];
+                }
+                if ($relation_info['relation_type'] == 'MorphMany') {
+                    $data[$relation_info['name']] = [];
+                }
+                if ($relation_info['relation_type'] == 'HasOne') {
+                    $data[$relation_info['name']] = $this->setDefaultValues($field['items']);
+                }
             }
-            if ($relation_info['relation_type'] == 'HasMany') {
-                $data[$relation_info['name']] = [];
-            }
-            if ($relation_info['relation_type'] == 'HasOne') {
-                $data[$relation_info['name']] = $this->setDefaulValues($field['items']);
-            }
+
         }
 
         if ($id !== null) {
@@ -191,21 +204,22 @@ trait AdminCrudActions
 
     }
 
-    private function setDefaulValues($items){
-        $data=[];
-        foreach ($items as $item){
-            switch ($item['name']){
+    private function setDefaultValues($items)
+    {
+        $data = [];
+        foreach ($items as $item) {
+            switch ($item['name']) {
                 case 'id':
-                    $data[$item['name']]=0;
+                    $data[$item['name']] = 0;
                     break;
                 case 'order':
-                    $data[$item['name']]=1;
+                    $data[$item['name']] = 1;
                     break;
                 case 'status':
                 case 'is_news':
                 case 'verified':
-                $data[$item['name']]=1;
-                break;
+                    $data[$item['name']] = 1;
+                    break;
 
             }
         }
@@ -224,7 +238,7 @@ trait AdminCrudActions
     {
         try {
             $status = \DB::transaction(function () use ($request, $model, $action) {
-                $order_conditions=$this->getOrderConditions($request);
+                $order_conditions = $this->getOrderConditions($request);
                 return $this->saveModel($model, $request, $action, $order_conditions);
             });
             $message = null;
@@ -251,7 +265,7 @@ trait AdminCrudActions
         $relations = [];
         $related_models = [];
         $message = '';
-        $new_order=null;
+        $new_order = null;
 
         if ($order_conditions !== null) {
             $new_order = $this->updateOrder($model, $request['order'], $order_conditions);
@@ -261,12 +275,12 @@ trait AdminCrudActions
                 unset($value['is_relation']);
                 $relations[$key] = $value;
 
-            } else if ($key !== 'id' && $key !=='password_confirmation') {
-                if (isset($value['is_related_field']) && $value['is_related_field']==true) {
+            } else if ($key !== 'id' && $key !== 'password_confirmation') {
+                if (isset($value['is_related_field']) && $value['is_related_field'] == true) {
                     $model_key = str_plural(str_replace_last('_id', "", $key));
-                    if($model_key === 'tags'){
-                        $tag_ids=[];
-                        if(isset($request[$key])){
+                    if ($model_key === 'tags') {
+                        $tag_ids = [];
+                        if (isset($request[$key])) {
                             foreach ($request[$key] as $tag) {
                                 if (is_numeric($tag)) {
                                     $tag_ids[] = $tag;
@@ -278,16 +292,20 @@ trait AdminCrudActions
                         }
 
                         $related_models[$model_key] = $tag_ids;
-                    }else{
+                    } else {
                         $related_models[$model_key] = $request[$key];
                     }
-                } elseif (in_array($value['type'], ['image'])) {
+                }
+                elseif (in_array($value['type'], ['image', 'file'])) {
+
                     $delete_file_status = ($request[$key . '_src'] == null);
                     $file_name = null;
+
                     if (isset($request[$key])) {
-                        $config_name = $this->getResourceName(class_basename($model),true);
+                        $config_name = $this->getResourceName(class_basename($model), true);
                         if (isset($this->config[$config_name][$key])) {
                             $config = $this->config[$config_name][$key];
+
                             if ($value['type'] == 'image') {
                                 $file_status = $this->saveImage($request[$key], $config);
                             } else {
@@ -308,7 +326,8 @@ trait AdminCrudActions
                         $this->deleteFile($model->$key);
                         $model->$key = $file_name;
                     }
-                } else {
+                }
+                else {
                     switch ($key) {
                         case 'order':
                             if ($order_conditions !== null) {
@@ -320,20 +339,25 @@ trait AdminCrudActions
 
                             break;
                         case 'password':
-                            if (isset($request[$key]) && $request[$key]!== null) {
+                            if (isset($request[$key]) && $request[$key] !== null) {
                                 $model->$key = bcrypt($request[$key]);
                             }
                             break;
-                        case 'lang':
-                                $model->$key = session('lang');
-                                break;
+                        case 'user_id':
+                        case 'author_id':
+                        if ($request['id'] == 0) {
+                            $user = session('user_info_' . session('department'));
+                           $model->$key = $user['id'];
+                            break;
+                        }
+
                         case 'is_admin':
                         case 'access_level':
                         case 'featured':
                         case 'status':
                         case 'view_count':
                         case 'show_count':
-                            if (isset($request[$key]) && $request[$key] != null) {
+                            if (isset($request[$key]) && $request[$key] != null ) {
                                 $model->$key = $request[$key];
                             } else if ($model->$key == null) {
                                 $model->$key = 0;
@@ -342,9 +366,8 @@ trait AdminCrudActions
                         default:
                             if (isset($request[$key])) {
                                 $model->$key = $request[$key];
-                            }
-                            else{
-                                $model->$key=null;
+                            } else {
+                                $model->$key = null;
                             }
 
                             break;
@@ -366,9 +389,10 @@ trait AdminCrudActions
             $relation_info = $model->getRelationInfo($relation_name);
             $sub_class_name = $relation_info['related_model_name'];
 
+            switch ($relation_info['relation_type']) {
+                case 'HasMany':
+                case 'MorphMany': {
 
-            if (in_array($relation_info['relation_type'], ['HasMany', 'HasOne'])) {
-                if ($relation_info['relation_type'] == 'HasMany') {
                     $delete_items = $model->$relation_name()->get()->pluck('id')->toArray();
                     if (isset($request[$relation_name])) {
                         foreach ($request[$relation_name] as $sub_request) {
@@ -376,16 +400,19 @@ trait AdminCrudActions
                         }
                     }
                     if (count($delete_items) > 0) {
-                        $related_relations=$this->getRelatedRelations(app($sub_class_name));
+                        $related_relations = $this->getRelatedRelations(app($sub_class_name));
                         $delete_status = $this->deleteModels(class_basename($sub_class_name), $related_relations, $delete_items, false, true, []);
                         $message .= $delete_status['message'];
                     }
-                } elseif ($relation_info['relation_type'] == 'HasOne') {
+
+                    break;
+                }
+                case 'HasOne': {
                     $sub_request = $request[$relation_name];
                     $this->saveSubModel($model, $sub_request, $relation_name, $fields, $action);
+                    break;
                 }
             }
-
 
         }
 
@@ -415,11 +442,17 @@ trait AdminCrudActions
         } else {
             return;
         }
-        $sub_request[$foreign_key] = $model->$local_key;
-        $fields[$foreign_key]=[
-            "is_related_field" => false,
-            'type'=>'hidden'
-        ];
+//        $sub_request[$foreign_key] = $model->$local_key;
+//        $fields[$foreign_key] = [
+//            "is_related_field" => false,
+//            'type' => 'hidden'
+//        ];
+
+        $sub_model->$foreign_key=$model->$local_key;
+        if ($relation_info['relation_type'] == 'MorphMany') {
+            list($table,$morph_type)=explode('.',$relation_info['morph_type']);
+            $sub_model->$morph_type=get_class($model);
+        }
 
         $this->saveModel($sub_model, $sub_request, $action, $order_conditions, $fields);
 
@@ -429,21 +462,21 @@ trait AdminCrudActions
     {
         try {
             $message = "";
-            \DB::transaction(function () use ($resource, $relations, $ids, $json_response, $delete_available, $order_scopes,&$message) {
+            \DB::transaction(function () use ($resource, $relations, $ids, $json_response, $delete_available, $order_scopes, &$message) {
                 $ids = (array)$ids;
                 $model_name = '\App\\' . $resource;
 
-                $files=[];
-                $main_fields=$model_name::mainFields();
-                foreach ($main_fields['items'] as $item){
-                    if($item['input_type'] == 'image'){
-                        $files[]=$item['name'];
+                $files = [];
+                $main_fields = $model_name::mainFields();
+                foreach ($main_fields['items'] as $item) {
+                    if (in_array($item['input_type'], ['image', 'file'])) {
+                        $files[] = $item['name'];
                     }
                 }
 
 
                 $status = true;
-                if (count($relations) > 0 || $order_scopes !== null || count($files)>0) {
+                if (count($relations) > 0 || $order_scopes !== null || count($files) > 0) {
                     foreach ($ids as $id) {
                         $query = $model_name::query();
                         foreach ($relations as $relation) {
@@ -476,8 +509,8 @@ trait AdminCrudActions
                         if ($order_scopes !== null && $model->order !== null) {
                             $this->decrementOrder($model, $order_scopes);
                         }
-                        if(count($files)>0){
-                            foreach ($files as $file){
+                        if (count($files) > 0) {
+                            foreach ($files as $file) {
                                 $this->deleteFile($model->$file);
                             }
                         }

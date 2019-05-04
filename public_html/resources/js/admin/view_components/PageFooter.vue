@@ -9,7 +9,7 @@
 
         <div class="navbar-collapse collapse" id="navbar-footer">
 					<span class="navbar-text">
-						<a href="http://appnegar.net">AppNegar CMS</a> by <a href="http://appnegar.net" target="_blank">Hayatollah Rahimi</a>
+						<a href="http://appnegar.net">CMS</a>
 					</span>
 
             <!--<ul class="navbar-nav ml-lg-auto">-->

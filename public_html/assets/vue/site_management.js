@@ -36355,15 +36355,7 @@ var staticRenderFns = [
         },
         [
           _c("span", { staticClass: "navbar-text" }, [
-            _c("a", { attrs: { href: "http://appnegar.net" } }, [
-              _vm._v("AppNegar CMS")
-            ]),
-            _vm._v(" by "),
-            _c(
-              "a",
-              { attrs: { href: "http://appnegar.net", target: "_blank" } },
-              [_vm._v("Hayatollah Rahimi")]
-            )
+            _c("a", { attrs: { href: "http://appnegar.net" } }, [_vm._v("CMS")])
           ])
         ]
       )
@@ -37277,6 +37269,11 @@ var form = {
                         context.dispatch('changeStaticMenuType', payload);
                         break;
                 }
+                switch (key_name) {
+                    case 'attachments-attachmentable_type':
+                        context.dispatch('changeAttachmentableType', payload);
+                        break;
+                }
             }
             // console.log(key_name);
         },
@@ -37392,6 +37389,16 @@ var form = {
                 context.commit('setInfoValue', { index: page_id_index, key: 'type', value: 'hidden' });
                 context.commit('setInfoValue', { index: link_index, key: 'type', value: 'text' });
             }
+        },
+        changeAttachmentableType: function changeAttachmentableType(context, payload) {
+            var url = context.rootGetters.main_url + '/' + context.rootGetters.resource + '/change_attachmentable_type';
+            var data = {};
+            data[payload.key] = payload.value;
+            context.dispatch('sendRequest', { url: url, data: data }, { root: true }).then(function (response) {
+                context.commit('updateOptions', { key: 'attachmentable_id', value: response.data });
+            }).catch(function (error) {
+                // console.log(error);
+            });
         }
     }
 };

@@ -36355,15 +36355,7 @@ var staticRenderFns = [
         },
         [
           _c("span", { staticClass: "navbar-text" }, [
-            _c("a", { attrs: { href: "http://appnegar.net" } }, [
-              _vm._v("AppNegar CMS")
-            ]),
-            _vm._v(" by "),
-            _c(
-              "a",
-              { attrs: { href: "http://appnegar.net", target: "_blank" } },
-              [_vm._v("Hayatollah Rahimi")]
-            )
+            _c("a", { attrs: { href: "http://appnegar.net" } }, [_vm._v("CMS")])
           ])
         ]
       )
@@ -37277,6 +37269,11 @@ var form = {
                         context.dispatch('changeStaticMenuType', payload);
                         break;
                 }
+                switch (key_name) {
+                    case 'attachments-attachmentable_type':
+                        context.dispatch('changeAttachmentableType', payload);
+                        break;
+                }
             }
             // console.log(key_name);
         },
@@ -37392,6 +37389,16 @@ var form = {
                 context.commit('setInfoValue', { index: page_id_index, key: 'type', value: 'hidden' });
                 context.commit('setInfoValue', { index: link_index, key: 'type', value: 'text' });
             }
+        },
+        changeAttachmentableType: function changeAttachmentableType(context, payload) {
+            var url = context.rootGetters.main_url + '/' + context.rootGetters.resource + '/change_attachmentable_type';
+            var data = {};
+            data[payload.key] = payload.value;
+            context.dispatch('sendRequest', { url: url, data: data }, { root: true }).then(function (response) {
+                context.commit('updateOptions', { key: 'attachmentable_id', value: response.data });
+            }).catch(function (error) {
+                // console.log(error);
+            });
         }
     }
 };
@@ -40433,6 +40440,16 @@ var UpdateSettingFormView = function UpdateSettingFormView(resolve) {
                 path: ':id',
                 name: 'class_rooms-show',
                 meta: { action: 'show' }
+            }, {
+                component: FileManagerView,
+                path: 'file_manager/index',
+                name: 'courses-file-manager-show',
+                meta: { action: 'showFileManager' }
+            }, {
+                component: UpdateSettingFormView,
+                path: 'settings/form',
+                name: 'courses-settings-form',
+                meta: { action: 'updateSettings' }
             }]
         }, {
             component: __WEBPACK_IMPORTED_MODULE_1__view_components_RouterViewApp_vue___default.a,
@@ -40634,6 +40651,72 @@ var UpdateSettingFormView = function UpdateSettingFormView(resolve) {
             component: ShowView,
             path: ':id',
             name: 'user_classes-show'
+        }]
+    }, {
+        component: __WEBPACK_IMPORTED_MODULE_1__view_components_RouterViewApp_vue___default.a,
+        path: '/translate_requests',
+        meta: { resource: 'translate_requests' },
+        children: [{
+            component: ResourceView,
+            path: '/',
+            name: 'translate_requests-resource-view'
+        }, {
+            component: ListView,
+            path: 'list-view',
+            name: 'translate_requests-list-view',
+            meta: { action: 'listView' }
+        }, {
+            component: FormView,
+            path: 'create',
+            name: 'translate_requests-create',
+            meta: { action: 'create' }
+        }, {
+            component: FormView,
+            path: ':id/edit',
+            name: 'translate_requests-edit',
+            meta: { action: 'edit' }
+        }, {
+            component: ShowView,
+            path: ':id',
+            name: 'translate_requests-show'
+        }]
+    }, {
+        component: __WEBPACK_IMPORTED_MODULE_1__view_components_RouterViewApp_vue___default.a,
+        path: '/attachments',
+        meta: { resource: 'attachments' },
+        children: [{
+            component: ResourceView,
+            path: '/',
+            name: 'attachments-resource-view'
+        }, {
+            component: ListView,
+            path: 'list-view',
+            name: 'attachments-list-view',
+            meta: { action: 'listView' }
+        }, {
+            component: FormView,
+            path: 'create',
+            name: 'attachments-create',
+            meta: { action: 'create' }
+        }, {
+            component: FormView,
+            path: ':id/edit',
+            name: 'attachments-edit',
+            meta: { action: 'edit' }
+        }, {
+            component: ShowView,
+            path: ':id',
+            name: 'attachments-show'
+        }, {
+            component: FileManagerView,
+            path: 'file_manager/index',
+            name: 'attachments-file-manager-show',
+            meta: { action: 'showFileManager' }
+        }, {
+            component: UpdateSettingFormView,
+            path: 'settings/form',
+            name: 'attachments-settings-form',
+            meta: { action: 'updateSettings' }
         }]
     }]
 }));

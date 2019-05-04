@@ -1,5 +1,5 @@
 <?php
-namespace Appnegar\Cms\Controllers\ContentManagement;
+namespace Appnegar\Cms\Controllers\Admin;
 
 use App\Gallery;
 use App\Tag;
@@ -8,16 +8,23 @@ use Appnegar\Cms\Traits\AdminComment;
 use Appnegar\Cms\Traits\AdminFileManager;
 use Appnegar\Cms\Traits\AdminSettingTrait;
 
-class PageController extends AdminController{
+class ContentController extends AdminController{
     use AdminComment;
     use AdminFileManager;
     use AdminSettingTrait;
 
     public function __construct(){
-        $this->resource='Page';
-        $config=config('system.page');
+        $this->resource='Content';
+        $config=config('system.content');
         $this->config=[
-            'page'=>[
+            'content'=>[
+                'logo' => [
+                    'size' => $config['logo_size'],
+                    'width' => $config['logo_width'],
+                    'height' => $config['logo_height'],
+                    'extension' => $config['logo_extension'],
+                    'destination' => $config['logo_destination'],
+                ],
                 'image' => [
                     'size' => $config['image_size'],
                     'width' => $config['image_width'],
@@ -49,12 +56,17 @@ class PageController extends AdminController{
     protected function validationRules($request, $id = null)
     {
         $rules=[
+            'category_id'=>'required|exists:categories,id',
+            'type'=>'required|in:article,news',
             'tag_id'=>'nullable|array',
             'title'=>'required',
             'summary'=>'nullable',
-            'image'=>'nullable|image|max:'.$this->config['page']['image']['size'] . '|mimes:' . trimArrayString($this->config['page']['image']['extension']),
+            'logo'=>'nullable|image|max:'.$this->config['content']['logo']['size'] . '|mimes:' . trimArrayString($this->config['content']['logo']['extension']),
+            'image'=>'nullable|image|max:'.$this->config['content']['image']['size'] . '|mimes:' . trimArrayString($this->config['content']['image']['extension']),
             'text'=>'required',
+            'source'=>'nullable',
             'order'=>'nullable|numeric|min:1',
+            'source_link'=>'nullable',
             'show_count'=>'nullable|numeric|min:1',
             'status'=>'nullable|numeric|min:0|max:1'
         ];
@@ -66,6 +78,7 @@ class PageController extends AdminController{
         return[
             'model'=>$data,
             'options'=>[
+                'category_id'=>$this->getCategories([],'Category',['news','article']),
                 'tag_id'=>Tag::select('id','name as text')->get()
             ]
         ];

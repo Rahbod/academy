@@ -75,7 +75,7 @@ class MenuItemsTableSeeder extends Seeder
                         foreach ($action = $resource->actions as $action) {
                             if (count($action->paths) >= 1) {
                                 $path = $action->paths[0];
-                                if ($action->name == 'updateAllSettings' and $department->name == 'site_management') {
+                                if ($action->name == 'updateAllSettings' and $department->name == 'admin') {
                                     MenuItem::create([
                                         'menu_id' => $menu->id,
                                         'parent_id' => $menu_item->id,
@@ -231,6 +231,15 @@ class MenuItemsTableSeeder extends Seeder
                     break;
                 case 'feedbacks';
                     $menu_item->icon = 'icon-envelop5';
+                    break;
+                case 'user_class';
+                    $menu_item->icon = 'icon-profile';
+                    break;
+                case 'attachment';
+                    $menu_item->icon = 'icon-attachment';
+                    break;
+                case 'translate_request';
+                    $menu_item->icon = 'icon-clipboard3';
                     break;
                 default:
                     $this->setMenuIcon($menu_item);

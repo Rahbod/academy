@@ -1,5 +1,5 @@
 <?php
-namespace Appnegar\Cms\Controllers\SystemManagement;
+namespace Appnegar\Cms\Controllers\Admin;
 
 use App\Department;
 use App\Role;

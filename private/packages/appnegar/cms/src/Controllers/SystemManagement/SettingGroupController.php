@@ -69,8 +69,6 @@ class SettingGroupController extends AdminController
     {
         return [
             'model' => $data,
-            'options' => [],
-            'image_path' => [],
             'name' => 'setting_group',
         ];
     }
