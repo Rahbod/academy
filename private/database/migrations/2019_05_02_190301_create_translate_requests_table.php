@@ -18,6 +18,7 @@ class CreateTranslateRequestsTable extends Migration
             $table->integer('category_id')->unsigned()->index()->nullable();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');
             $table->string('title');
+            $table->string('source_language');
             $table->string('translation_language');
             $table->string('translated_file')->nullable();
             $table->string('description')->nullable();
