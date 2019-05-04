@@ -11,6 +11,7 @@ return [
         'title' => 'عنوان',
         'translation_language' => 'زبان ترجمه',
         'description' => 'توضیحات',
+        'translated_file' => 'فایل ترجمه',
         'status' => 'وضعیت',
         'updated_at' => 'تاریخ بروزرسانی',
         'created_at' => 'تاریخ ایجاد',

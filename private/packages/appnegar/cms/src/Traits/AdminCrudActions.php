@@ -30,12 +30,12 @@ trait AdminCrudActions
 
     protected function setModel($model)
     {
-        if (isset($model->author_id)) {
-            $model->author_id = $model->author->name;
-        }
-        if (isset($model->user_id)) {
-            $model->user_id = $model->user->name;
-        }
+//        if (isset($model->author_id)) {
+//            $model->author_id = $model->author->name;
+//        }
+//        if (isset($model->user_id)) {
+//            $model->user_id = $model->user->name;
+//        }
         return $model;
     }
 

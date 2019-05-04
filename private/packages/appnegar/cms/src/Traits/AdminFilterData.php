@@ -39,14 +39,20 @@ trait AdminFilterData
                         if ($model->{$key} === 'FAILED') {
                             $model->{$key} = "<span class='badge badge-danger'>" . __('main.values.FAILED') . "</span>";
                         }
-                        if ($model->{$key} === 'translate') {
-                            $model->{$key} = "<span class='badge badge-info'>" . __('main.values.translate') . "</span>";
+                        if ($model->{$key} === 'PENDING') {
+                            $model->{$key} = "<span class='badge badge-info'>" . __('main.values.PENDING') . "</span>";
+                        }
+                        if ($model->{$key} === 'AWAITING_PAYMENT') {
+                            $model->{$key} = "<span class='badge badge-warning'>" . __('main.values.AWAITING_PAYMENT') . "</span>";
+                        }
+                        if ($model->{$key} === 'PAID') {
+                            $model->{$key} = "<span class='badge badge-primary'>" . __('main.values.PAID') . "</span>";
                         }
                         if ($model->{$key} === 'REJECTED') {
                             $model->{$key} = "<span class='badge badge-danger'>" . __('main.values.REJECTED') . "</span>";
                         }
                         if ($model->{$key} === 'TRANSLATED') {
-                            $model->{$key} = "<span class='badge badge-info'>" . __('main.values.TRANSLATED') . "</span>";
+                            $model->{$key} = "<span class='badge badge-success'>" . __('main.values.TRANSLATED') . "</span>";
                         }
                         if ($model->{$key} === 'CRASH') {
                             $model->{$key} = "<span class='badge badge-info'>" . __('main.values.CRASH') . "</span>";

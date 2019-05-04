@@ -19,18 +19,6 @@ trait AdminSettingTrait
             foreach ($setting_groups as $index=>$model_group) {
                 foreach ($model_group['settings'] as $inner_index=>$model) {
                     if ($model['details']) {
-                        if (!strpos($model['details'], ':')) {
-                            $object = app($model['details']);
-                            $models = $object::get(['id', 'display_name']);
-                            $details = [];
-                            foreach ($models as $model) {
-                                $details[] = ['text' => $model->display_name, 'id' => $model->id];
-                            }
-
-                            $setting_groups[$index]['settings'][$inner_index]['details']=$details;
-
-                        }
-                        else {
                             $array = explode(',', $model['details']);
                             $details = [];
                             foreach ($array as $detail) {
@@ -38,9 +26,11 @@ trait AdminSettingTrait
                                     list($name, $value) = explode(':', $detail);
                                     $details[] = ['text' => trim($name), 'id' => trim($value)];
                                 }
+                                else{
+                                    $details[] = ['text' => trim($detail), 'id' => trim($detail)];
+                                }
                             }
                             $setting_groups[$index]['settings'][$inner_index]['details']=$details;
-                        }
                     }
 
                 }

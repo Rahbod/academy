@@ -1,6 +1,6 @@
 <?php
 
-namespace Appnegar\Cms\Controllers\SystemManagement;
+namespace Appnegar\Cms\Controllers\Admin;
 
 use Appnegar\Cms\Controllers\AdminSettingController;
 

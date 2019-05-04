@@ -47,7 +47,7 @@ class Category extends Model
                 [
                     'name' => 'author_id',
                     'type' => 'numeric',
-                    'input_type' => 'disable',
+                    'input_type' => 'hidden',
                     'orderable' => true,
                     'searchable' => true,
                     'show_in_table' => false,

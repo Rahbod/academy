@@ -28,7 +28,7 @@ class TranslateRequest extends Model
                 [
                     'name' => 'author_id',
                     'type' => 'numeric',
-                    'input_type' => 'disable',
+                    'input_type' => 'hidden',
                     'orderable' => true,
                     'searchable' => true,
                     'show_in_table' => false,
@@ -64,9 +64,18 @@ class TranslateRequest extends Model
                 [
                     'name' => 'description',
                     'type' => 'string',
-                    'input_type' => 'text',
+                    'input_type' => 'textarea',
                     'orderable' => true,
                     'searchable' => true,
+                    'show_in_table' => false,
+                    'show_in_form' => true
+                ],
+                [
+                    'name' => 'translated_file',
+                    'type' => 'string',
+                    'input_type' => 'file',
+                    'orderable' => false,
+                    'searchable' => false,
                     'show_in_table' => false,
                     'show_in_form' => true
                 ],
@@ -79,8 +88,10 @@ class TranslateRequest extends Model
                     'show_in_table' => true,
                     'show_in_form' => true,
                     'options'=>[
-                        ['id'=>'INIT','text'=>'INIT'],
+                        ['id'=>'PENDING','text'=>'PENDING'],
                         ['id'=>'REJECTED','text'=>'REJECTED'],
+                        ['id'=>'AWAITING_PAYMENT','text'=>'AWAITING_PAYMENT'],
+                        ['id'=>'PAID','text'=>'PAID'],
                         ['id'=>'TRANSLATED','text'=>'TRANSLATED'],
                     ]
                 ],
@@ -128,5 +139,17 @@ class TranslateRequest extends Model
     public function attachments()
     {
         return $this->morphMany('App\Attachment', 'attachmentable');
+    }
+
+
+    public function getTranslatedFileAttribute($photo)
+    {
+        $resource_name = str_singular($this->getTable());
+//        dd('system.' . $resource_name . '.translated_file');
+        if ($photo) {
+            $path = '/storage/' . config('system.' . $resource_name . '.translated_file_destination') . $photo;
+            return $path;
+        }
+
     }
 }

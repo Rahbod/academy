@@ -1,5 +1,5 @@
 <?php
-namespace Appnegar\Cms\Controllers\ContentManagement;
+namespace Appnegar\Cms\Controllers\Admin;
 
 use App\Gallery;
 use App\Tag;

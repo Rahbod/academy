@@ -29,21 +29,10 @@ class DepartmentTableSeeder extends Seeder
 
 
         $department=Department::create([
-            'name' => 'site_management',
-            'display_name' => 'مدیریت سایت',
-            'namespace_id'=>1,
-            'prefix' => 'site_management',
-            'middleware' => null
-        ]);
-
-        $department->users()->attach([1,2]);
-
-
-        $department=Department::create([
-            'name' => 'content_management',
+            'name' => 'admin',
             'display_name' => 'مدیریت محتوا',
             'namespace_id'=>2,
-            'prefix'=>'content_management',
+            'prefix'=>'admin',
             'middleware' => null
         ]);
         $department->users()->attach([1,2]);

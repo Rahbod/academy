@@ -1,9 +1,7 @@
 <?php
-
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
 class CreateTranslateRequestsTable extends Migration
 {
     /**
@@ -21,12 +19,12 @@ class CreateTranslateRequestsTable extends Migration
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');
             $table->string('title');
             $table->string('translation_language');
-            $table->string('description');
-            $table->enum('status', ['INIT', 'REJECTED', 'TRANSLATED',])->default('INIT');
+            $table->string('translated_file')->nullable();
+            $table->string('description')->nullable();
+            $table->enum('status', ['PENDING','REJECTED','AWAITING_PAYMENT','PAID','TRANSLATED'])->default('PENDING');
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *

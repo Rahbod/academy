@@ -75,7 +75,7 @@ class MenuItemsTableSeeder extends Seeder
                         foreach ($action = $resource->actions as $action) {
                             if (count($action->paths) >= 1) {
                                 $path = $action->paths[0];
-                                if ($action->name == 'updateAllSettings' and $department->name == 'site_management') {
+                                if ($action->name == 'updateAllSettings' and $department->name == 'admin') {
                                     MenuItem::create([
                                         'menu_id' => $menu->id,
                                         'parent_id' => $menu_item->id,

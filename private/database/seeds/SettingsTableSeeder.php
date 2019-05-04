@@ -567,14 +567,14 @@ class SettingsTableSeeder extends Seeder
         ]);
 
         $setting_group = SettingGroup::create([
-            'name' => 'attachment',
-            'display_name' => 'تنظیمات فایل های ضمیمه',
+            'name' => 'translate_request',
+            'display_name' => 'تنظیمات درخواست های ترجمه',
         ]);
         $order = 1;
         Setting::create([
             'setting_group_id' => $setting_group->id,
-            'name' => 'attachment_size',
-            'display_name' => 'حجم فایل',
+            'name' => 'translated_file_size',
+            'display_name' => ' حجم فایل ترجمه',
             'value' => '500',
             'details' => '',
             'type' => 'text',
@@ -583,8 +583,44 @@ class SettingsTableSeeder extends Seeder
         ]);
         Setting::create([
             'setting_group_id' => $setting_group->id,
+            'name' => 'translated_file_extension',
+            'display_name' => 'پسوند های مجاز فایل ترجمه ',
+            'value' => "doc,docx,pdf,zip,rar",
+            'details' => '',
+            'type' => 'text',
+            'direction' => 'inherit',
+            'order' => $order++
+        ]);
+        Setting::create([
+            'setting_group_id' => $setting_group->id,
+            'name' => 'translated_file_destination',
+            'display_name' => 'مسیر ذخیره فایل ترجمه',
+            'value' => "translate_request/",
+            'details' => '',
+            'type' => 'text',
+            'direction' => 'ltr',
+            'order' => $order++
+        ]);
+
+        $setting_group = SettingGroup::create([
+            'name' => 'attachment',
+            'display_name' => 'تنظیمات فایل های ضمیمه',
+        ]);
+        $order = 1;
+        Setting::create([
+            'setting_group_id' => $setting_group->id,
+            'name' => 'attachment_size',
+            'display_name' => 'حجم فایل ضمیمه',
+            'value' => '2048',
+            'details' => '',
+            'type' => 'text',
+            'direction' => 'inherit',
+            'order' => $order++
+        ]);
+        Setting::create([
+            'setting_group_id' => $setting_group->id,
             'name' => 'attachment_extension',
-            'display_name' => 'پسوند های مجاز فایل',
+            'display_name' => 'پسوند های مجاز فایل ضمیمه',
             'value' => "doc,docx,pdf,zip,rar,txt",
             'details' => '',
             'type' => 'text',

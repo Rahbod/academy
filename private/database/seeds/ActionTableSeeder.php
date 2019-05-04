@@ -232,33 +232,6 @@ class ActionTableSeeder extends Seeder
                         ]
                     ]
                 ],
-                'NewsLetter' => [
-                    [
-                        'name' => 'SendEmail',
-                        'display_name' => 'فرم ارسال ایمیل',
-                        'need_allow' => 1,
-                        'status' => 1,
-                        'paths' => [
-                            [
-                                'name' => 'NewsLetter.SendEmailForm',
-                                'display_name' => 'فرم ارسال ایمیل',
-                                'slug' => 'actions/send_email_form',
-                                'method' => 'get',
-                            ],
-                            [
-                                'name' => 'NewsLetter.SendEmail',
-                                'display_name' => 'ارسال ایمیل',
-                                'slug' => 'actions/send_email_form',
-                                'method' => 'post',
-                            ]
-                        ]
-                    ]
-                ]
-
-            ],
-            'site_management' => [
-                'Dashboard' => $dashboard_actions,
-                'Profile' => $profile_actions,
                 'MenuItem' => [
                     [
                         'name' => 'changeMenu',
@@ -270,6 +243,27 @@ class ActionTableSeeder extends Seeder
                                 'name' => 'MenuItem.changeMenu',
                                 'display_name' => 'تغییر منو',
                                 'slug' => 'menu_items/change_menu',
+                                'method' => 'post',
+                            ]
+                        ]
+                    ],
+                ],
+
+            ],
+            'admin' => [
+                'Dashboard' => $dashboard_actions,
+                'Profile' => $profile_actions,
+                'Attachment' => [
+                    [
+                        'name' => 'changeAttachmentableType',
+                        'display_name' => 'تغییر نوع فایل پیوست',
+                        'need_allow' => 0,
+                        'status' => 1,
+                        'paths' => [
+                            [
+                                'name' => 'Attachment.changeAttachmentableType',
+                                'display_name' => 'تغییر نوع فایل پیوست',
+                                'slug' => 'attachments/change_attachmentable_type',
                                 'method' => 'post',
                             ]
                         ]
@@ -310,99 +304,6 @@ class ActionTableSeeder extends Seeder
                             ]
                         ]
                     ]
-                ],
-//                'ActivityLog' => [
-//                    [
-//                        'name' => 'getActions',
-//                        'display_name' => 'دریافت دسترسی ها به ' . 'گزارش عملیات',
-//                        'need_allow' => 0,
-//                        'status' => 1,
-//                        'paths' => [
-//                            [
-//                                'name' => 'ActivityLog' . '.get_actions',
-//                                'display_name' => 'عملیات مجاز برای ' . 'گزارش عملیات',
-//                                'slug' => 'activity_logs' . '/get_actions',
-//                                'method' => 'get',
-//                            ]
-//                        ],
-//                    ],
-//                    [
-//                        'name' => 'index',
-//                        'display_name' => 'مدیریت ' . 'گزارش عملیات',
-//                        'need_allow' => 1,
-//                        'status' => 1,
-//                        'paths' => [
-//                            [
-//                                'name' => 'ActivityLog' . '.index',
-//                                'display_name' => 'مدیریت ' . 'گزارش عملیات',
-//                                'slug' => 'activity_logs',
-//                                'method' => 'get',
-//                            ]
-//                        ]
-//                    ],
-//                    [
-//                        'name' => 'list',
-//                        'display_name' => 'لیست تمام ' . 'گزارش عملیات',
-//                        'need_allow' => 1,
-//                        'status' => 1,
-//                        'paths' => [
-//                            [
-//                                'name' => 'ActivityLog' . '.list_view',
-//                                'display_name' => 'لیست تمام ' . 'گزارش عملیات',
-//                                'slug' => 'activity_logs' . '/list-view',
-//                                'method' => 'get',
-//                            ]
-//                        ]
-//                    ],
-//                    [
-//                        'name' => 'show',
-//                        'display_name' => 'مشاهده ' . 'گزارش عملیات',
-//                        'need_allow' => 1,
-//                        'status' => 1,
-//                        'paths' => [
-//                            [
-//                                'name' => 'ActivityLog' . '.show',
-//                                'display_name' => 'مشاهده ' . 'گزارش عملیات',
-//                                'slug' => 'activity_logs' . '/{id}',
-//                                'method' => 'get',
-//                            ]
-//                        ]
-//                    ],
-//                    [
-//                        'name' => 'destroy',
-//                        'display_name' => 'حذف ' . 'گزارش عملیات',
-//                        'need_allow' => 1,
-//                        'status' => 1,
-//                        'paths' => [
-//                            [
-//                                'name' => 'ActivityLog' . '.destroy',
-//                                'display_name' => 'حذف ' . 'گزارش عملیات',
-//                                'slug' => 'activity_logs' . '/{id}',
-//                                'method' => 'delete',
-//                            ]
-//                        ]
-//                    ]
-//                ],
-
-            ],
-            'content_management' => [
-                'Dashboard' => $dashboard_actions,
-                'Profile' => $profile_actions,
-                'Attachment' => [
-                    [
-                        'name' => 'changeAttachmentableType',
-                        'display_name' => 'تغییر نوع فایل پیوست',
-                        'need_allow' => 0,
-                        'status' => 1,
-                        'paths' => [
-                            [
-                                'name' => 'Attachment.changeAttachmentableType',
-                                'display_name' => 'تغییر نوع فایل پیوست',
-                                'slug' => 'attachments/change_attachmentable_type',
-                                'method' => 'post',
-                            ]
-                        ]
-                    ],
                 ],
             ],
 
