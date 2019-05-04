@@ -21,11 +21,11 @@ Route::get('/clear', function () {
 });
 include('test_routes.php');
 
-Auth::routes();
 
 Route::get('/generate_files', function () {
     makeRouteFile();
     makeSettingFile();
 });
+Auth::routes();
 
 
