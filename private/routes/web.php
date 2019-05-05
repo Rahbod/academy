@@ -11,19 +11,21 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 
 Route::get('/clear', function () {
     Cache::flush();
 });
+include('test_routes.php');
 
-Auth::routes();
 
 Route::get('/generate_files', function () {
     makeRouteFile();
     makeSettingFile();
 });
+Auth::routes();
+
 
