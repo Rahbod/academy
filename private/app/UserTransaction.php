@@ -42,13 +42,29 @@ class UserTransaction extends Model
                     'show_in_form' => true
                 ],
                 [
-                    'name' => 'user_class_id',
-                    'type' => 'numeric',
-                    'input_type' => 'hidden',
+                    'name' => 'paymentable_type',
+                    'type' => 'select',
+                    'input_type' => 'select',
                     'orderable' => true,
                     'searchable' => true,
                     'show_in_table' => true,
-                    'show_in_form' => false
+                    'show_in_form' => false,
+                    'show_in_sub_form' => false,
+                    'options'=>[
+                        [ 'id'=>'App\\TranslateRequest', 'text'=>'TranslateRequest'],
+                        [ 'id'=>'App\\UserClass', 'text'=>'UserClass'],
+
+                    ]
+                ],
+                [
+                    'name' => 'paymentable_id',
+                    'type' => 'select',
+                    'input_type' => 'select',
+                    'orderable' => true,
+                    'searchable' => true,
+                    'show_in_table' => true,
+                    'show_in_form' => true,
+                    'show_in_sub_form' => false,
                 ],
                 [
                     'name' => 'type',
@@ -139,5 +155,13 @@ class UserTransaction extends Model
     public function transaction()
     {
         return $this->belongsTo('App\GatewayTransaction');
+    }
+
+    /**
+     * Get all of the owning commentable models.
+     */
+    public function paymentable()
+    {
+        return $this->morphTo();
     }
 }

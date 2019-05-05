@@ -105,8 +105,15 @@ trait ModelTrait
                 $info['foreign_key'] = $relation->getQualifiedForeignKeyName();
                 $info['local_key'] = $this->getTable().'.'.$this->getKeyName();
                 break;
+            case 'MorphOne':
+                $info['table'] = $related_model->getTable();
+                $info['morph_type'] = $relation->getQualifiedMorphType();
+                $info['foreign_key'] = $relation->getQualifiedForeignKeyName();
+                $info['local_key'] = $this->getTable().'.'.$this->getKeyName();
+//                dd($info);
+                break;
             default:
-                dd('relation is not valid');
+                throw new \Exception($relation_type.' relation is not valid');
                 break;
         }
         return $info;

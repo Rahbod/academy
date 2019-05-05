@@ -107,7 +107,7 @@ class User extends Authenticatable
                     'searchable' => true,
                     'show_in_table' => false,
                     'show_in_form' => true,
-                    'options' => [['id' => 'admin', 'text' => 'admin'], ['id' => 'operator', 'text' => 'operator'], ['id' => 'teacher', 'text' => 'teacher']]
+                    'options' => [['id' => 'admin', 'text' => 'admin'], ['id' => 'operator', 'text' => 'operator'], ['id' => 'teacher', 'text' => 'teacher'], ['id' => 'user', 'text' => 'user']]
                 ],
                 [
                     'name' => 'is_admin',
@@ -149,7 +149,7 @@ class User extends Authenticatable
                     'show_in_table' => true,
                     'show_in_sub_table' => false,
                     'show_in_form' => true,
-                    'options' => [['id' => 0, 'text' => 'not_access'], ['id' => 0, 'text' => 'limited_access'], ['id' => 1, 'text' => 'normal_access'], ['id' => 2, 'text' => 'full_access']]
+                    'options' => [['id' => 0, 'text' => 'not_access'], ['id' => 1, 'text' => 'limited_access'], ['id' => 2, 'text' => 'normal_access'], ['id' => 3, 'text' => 'full_access']]
                 ],
                 [
                     'name' => 'created_at',

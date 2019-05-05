@@ -1062,8 +1062,8 @@ var render = function() {
           _c("picture-input", {
             ref: "pictureInput",
             attrs: {
-              width: "600",
-              height: "600",
+              width: "400",
+              height: "400",
               margin: "16",
               accept: "image/jpeg,image/png",
               size: "10",

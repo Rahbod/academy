@@ -5,8 +5,8 @@
         <div :class="[index == null?'col-sm-12':'']">
             <picture-input
                     ref="pictureInput"
-                    width="600"
-                    height="600"
+                    width="400"
+                    height="400"
                     margin="16"
                     accept="image/jpeg,image/png"
                     size="10"

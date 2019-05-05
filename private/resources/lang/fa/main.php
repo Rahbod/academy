@@ -66,9 +66,6 @@ return [
         'full_access' => 'دسترسی کامل',
         'all'=>'تمام',
         'any'=>'یکی از',
-        'general'=>'عمومی',
-        'page_loader'=>'لود کننده صفحه',
-        'frame_loader'=>'لود کننده فریم',
         'default'=>'پیش فرض',
         'left_to_right'=>'چپ به راست',
         'right_to_left'=>'راست به چپ',
@@ -107,9 +104,11 @@ return [
         'admin'=>'مدیر',
         'operator'=>'کارمند',
         'teacher'=>'استاد',
+        'user'=>'کاربر عادی',
 
 
         'TranslateRequest'=>'درخواست ترجمه',
+        'UserClass'=>'ثبت نام کلاس',
 
     ],
     'messages' => [

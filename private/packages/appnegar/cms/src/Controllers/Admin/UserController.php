@@ -30,6 +30,21 @@ class UserController extends AdminController{
         ];
     }
 
+    public function show($id)
+    {
+        $model_name = "App\\" . $this->resource;
+        $model = $model_name::with('profile')->findOrFail($id)->toArray();
+
+        $model = json_encode($model);
+        $model = json_decode($model);
+        $avatar=url($model->avatar);
+        $model->avatar="<img src='$avatar'/>";
+        $model=$this->filterModel($model);
+//        dd(get_class($model));
+
+        return response()->json(['model' => $model]);
+    }
+
     protected function setModel($model)
     {
         $model['role_id']= $model->roles()->pluck('id')->toArray();

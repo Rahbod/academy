@@ -8,142 +8,164 @@ trait AdminFilterData
     {
         foreach ($models as $model) {
 
-            foreach ($model as $key => $value) {
-                switch ($key) {
-                    case 'confirmed':
-                    case 'archive':
-                    case 'is_admin':
-                    case 'is_global':
-                    case 'is_news': {
-                        if ($model->{$key} === 1) {
-                            $model->{$key} = "<span class='badge badge-primary'>" . __('main.values.active') . "</span>";
-                        }
-                        if ($model->{$key} === 0) {
-                            $model->{$key} = "<span class='badge badge-danger'>" . __('main.values.inactive') . "</span>";
-                        }
-                        break;
-                    }
-                    case 'status':{
-                        if ($model->{$key} === 1) {
-                            $model->{$key} = "<span class='badge badge-primary'>" . __('main.values.active') . "</span>";
-                        }
-                        if ($model->{$key} === 0) {
-                            $model->{$key} = "<span class='badge badge-danger'>" . __('main.values.inactive') . "</span>";
-                        }
-                        if ($model->{$key} === 'INIT') {
-                            $model->{$key} = "<span class='badge badge-primary'>" . __('main.values.INIT') . "</span>";
-                        }
-                        if ($model->{$key} === 'SUCCEED') {
-                            $model->{$key} = "<span class='badge badge-success'>" . __('main.values.SUCCEED') . "</span>";
-                        }
-                        if ($model->{$key} === 'FAILED') {
-                            $model->{$key} = "<span class='badge badge-danger'>" . __('main.values.FAILED') . "</span>";
-                        }
-                        if ($model->{$key} === 'PENDING') {
-                            $model->{$key} = "<span class='badge badge-info'>" . __('main.values.PENDING') . "</span>";
-                        }
-                        if ($model->{$key} === 'AWAITING_PAYMENT') {
-                            $model->{$key} = "<span class='badge badge-warning'>" . __('main.values.AWAITING_PAYMENT') . "</span>";
-                        }
-                        if ($model->{$key} === 'PAID') {
-                            $model->{$key} = "<span class='badge badge-primary'>" . __('main.values.PAID') . "</span>";
-                        }
-                        if ($model->{$key} === 'REJECTED') {
-                            $model->{$key} = "<span class='badge badge-danger'>" . __('main.values.REJECTED') . "</span>";
-                        }
-                        if ($model->{$key} === 'TRANSLATED') {
-                            $model->{$key} = "<span class='badge badge-success'>" . __('main.values.TRANSLATED') . "</span>";
-                        }
-                        if ($model->{$key} === 'CRASH') {
-                            $model->{$key} = "<span class='badge badge-info'>" . __('main.values.CRASH') . "</span>";
-                        }
+           $model=$this->filterModel($model);
+        }
+        return $models;
+    }
 
-                        if ($model->{$key} === 'GATEWAY') {
-                            $model->{$key} = "<span class='badge badge-success'>" . __('main.values.GATEWAY') . "</span>";
-                        }
-                        break;
+    protected function filterModel(&$model){
+        foreach ($model as $key => $value) {
+//            var_dump($key,$value);
+            switch ($key) {
+                case 'confirmed':
+                case 'archive':
+                case 'is_admin':
+                case 'is_global':
+                case 'is_news': {
+                    if ($model->{$key} === 1) {
+                        $model->{$key} = "<span class='badge badge-primary'>" . __('main.values.active') . "</span>";
                     }
-                    case 'profile.gender': {
-                        if ($model->{$key} === 1) {
-                            $model->{$key} = __('main.values.female');
-                        }
-                        if ($model->{$key} === 0) {
-                            $model->{$key} = __('main.values.male');
-                        }
-                        break;
+                    if ($model->{$key} === 0) {
+                        $model->{$key} = "<span class='badge badge-danger'>" . __('main.values.inactive') . "</span>";
                     }
-                    case 'type': {
-                        if ($model->{$key} === 'article') {
-                            $model->{$key} = "<span class='badge badge-primary'>" . __('main.values.article') . "</span>";
-                        }
-                        if ($model->{$key} === 'news') {
-                            $model->{$key} = "<span class='badge badge-success'>" . __('main.values.news') . "</span>";
-                        }
-                        if ($model->{$key} === 'course') {
-                            $model->{$key} = "<span class='badge badge-danger'>" . __('main.values.course') . "</span>";
-                        }
-                        if ($model->{$key} === 'translate') {
-                            $model->{$key} = "<span class='badge badge-info'>" . __('main.values.translate') . "</span>";
-                        }
-                        if ($model->{$key} === 'action') {
-                            $model->{$key} = "<span class='badge badge-primary'>" . __('main.values.action') . "</span>";
-                        }
-                        if ($model->{$key} === 'page') {
-                            $model->{$key} = "<span class='badge badge-success'>" . __('main.values.page') . "</span>";
-                        }
-                        if ($model->{$key} === 'link') {
-                            $model->{$key} = "<span class='badge badge-danger'>" . __('main.values.link') . "</span>";
-                        }
-                        break;
+                    break;
+                }
+                case 'status':{
+                    if ($model->{$key} === 1) {
+                        $model->{$key} = "<span class='badge badge-primary'>" . __('main.values.active') . "</span>";
                     }
-                    case 'lang': {
-                        if ($model->{$key} === 'fa') {
-                            $model->{$key} = "<span class='badge badge-primary'>" . __('main.values.fa') . "</span>";
-                        }
-                        if ($model->{$key} === 'en') {
-                            $model->{$key} = "<span class='badge badge-success'>" . __('main.values.en') . "</span>";
-                        }
-                        if ($model->{$key} === 'ar') {
-                            $model->{$key} = "<span class='badge badge-success'>" . __('main.values.ar') . "</span>";
-                        }
+                    if ($model->{$key} === 0) {
+                        $model->{$key} = "<span class='badge badge-danger'>" . __('main.values.inactive') . "</span>";
                     }
-                    case 'access_level': {
-                        switch ($model->{$key}) {
-                            case 0:
-                                $model->{$key} = "<span class='badge badge-danger'>" . __('main.values.not_access') . "</span>";
-                                break;
-                            case 1:
-                                $model->{$key} = "<span class='badge badge-warning'>" . __('main.values.limited_access') . "</span>";
-                                break;
-                            case 2:
-                                $model->{$key} = "<span class='badge badge-primary'>" . __('main.values.normal_access') . "</span>";
-                                break;
-                            case 3:
-                                $model->{$key} = "<span class='badge badge-success'>" . __('main.values.full_access') . "</span>";
-                                break;
+                    if ($model->{$key} === 'INIT') {
+                        $model->{$key} = "<span class='badge badge-primary'>" . __('main.values.INIT') . "</span>";
+                    }
+                    if ($model->{$key} === 'SUCCEED') {
+                        $model->{$key} = "<span class='badge badge-success'>" . __('main.values.SUCCEED') . "</span>";
+                    }
+                    if ($model->{$key} === 'FAILED') {
+                        $model->{$key} = "<span class='badge badge-danger'>" . __('main.values.FAILED') . "</span>";
+                    }
+                    if ($model->{$key} === 'PENDING') {
+                        $model->{$key} = "<span class='badge badge-info'>" . __('main.values.PENDING') . "</span>";
+                    }
+                    if ($model->{$key} === 'AWAITING_PAYMENT') {
+                        $model->{$key} = "<span class='badge badge-warning'>" . __('main.values.AWAITING_PAYMENT') . "</span>";
+                    }
+                    if ($model->{$key} === 'PAID') {
+                        $model->{$key} = "<span class='badge badge-primary'>" . __('main.values.PAID') . "</span>";
+                    }
+                    if ($model->{$key} === 'REJECTED') {
+                        $model->{$key} = "<span class='badge badge-danger'>" . __('main.values.REJECTED') . "</span>";
+                    }
+                    if ($model->{$key} === 'TRANSLATED') {
+                        $model->{$key} = "<span class='badge badge-success'>" . __('main.values.TRANSLATED') . "</span>";
+                    }
+                    if ($model->{$key} === 'CRASH') {
+                        $model->{$key} = "<span class='badge badge-info'>" . __('main.values.CRASH') . "</span>";
+                    }
+
+                    if ($model->{$key} === 'GATEWAY') {
+                        $model->{$key} = "<span class='badge badge-success'>" . __('main.values.GATEWAY') . "</span>";
+                    }
+                    break;
+                }
+                case 'profile.gender':
+                case 'gender': {
+                    if ($model->{$key} === 1) {
+                        $model->{$key} = __('main.values.female');
+                    }
+                    if ($model->{$key} === 0) {
+                        $model->{$key} = __('main.values.male');
+                    }
+
+                    break;
+                }
+                case 'type': {
+                    if ($model->{$key} === 'article') {
+                        $model->{$key} = "<span class='badge badge-primary'>" . __('main.values.article') . "</span>";
+                    }
+                    if ($model->{$key} === 'news') {
+                        $model->{$key} = "<span class='badge badge-success'>" . __('main.values.news') . "</span>";
+                    }
+                    if ($model->{$key} === 'course') {
+                        $model->{$key} = "<span class='badge badge-danger'>" . __('main.values.course') . "</span>";
+                    }
+                    if ($model->{$key} === 'translate') {
+                        $model->{$key} = "<span class='badge badge-info'>" . __('main.values.translate') . "</span>";
+                    }
+                    if ($model->{$key} === 'action') {
+                        $model->{$key} = "<span class='badge badge-primary'>" . __('main.values.action') . "</span>";
+                    }
+                    if ($model->{$key} === 'page') {
+                        $model->{$key} = "<span class='badge badge-success'>" . __('main.values.page') . "</span>";
+                    }
+                    if ($model->{$key} === 'link') {
+                        $model->{$key} = "<span class='badge badge-info'>" . __('main.values.link') . "</span>";
+                    }
+                    if ($model->{$key} === 'admin') {
+                        $model->{$key} = "<span class='badge badge-primary'>" . __('main.values.admin') . "</span>";
+                    }
+                    if ($model->{$key} === 'operator') {
+                        $model->{$key} = "<span class='badge badge-success'>" . __('main.values.operator') . "</span>";
+                    }
+                    if ($model->{$key} === 'teacher') {
+                        $model->{$key} = "<span class='badge badge-info'>" . __('main.values.teacher') . "</span>";
+                    }
+                    if ($model->{$key} === 'user') {
+                        $model->{$key} = "<span class='badge badge-pill'>" . __('main.values.user') . "</span>";
+                    }
+                    break;
+                }
+                case 'lang': {
+                    if ($model->{$key} === 'fa') {
+                        $model->{$key} = "<span class='badge badge-primary'>" . __('main.values.fa') . "</span>";
+                    }
+                    if ($model->{$key} === 'en') {
+                        $model->{$key} = "<span class='badge badge-success'>" . __('main.values.en') . "</span>";
+                    }
+                    if ($model->{$key} === 'ar') {
+                        $model->{$key} = "<span class='badge badge-success'>" . __('main.values.ar') . "</span>";
+                    }
+                    break;
+                }
+                case 'access_level': {
+                    switch ($model->{$key}) {
+                        case 0:
+                            $model->{$key} = "<span class='badge badge-danger'>" . __('main.values.not_access') . "</span>";
+                            break;
+                        case 1:
+                            $model->{$key} = "<span class='badge badge-warning'>" . __('main.values.limited_access') . "</span>";
+                            break;
+                        case 2:
+                            $model->{$key} = "<span class='badge badge-primary'>" . __('main.values.normal_access') . "</span>";
+                            break;
+                        case 3:
+                            $model->{$key} = "<span class='badge badge-success'>" . __('main.values.full_access') . "</span>";
+                            break;
+                    }
+                    break;
+                }
+                case 'created_at':
+                case 'updated_at':
+                case 'profile.birthday': {
+                    $model->{$key} = $this->filterDate($model->{$key});
+                    break;
+                }
+                case 'direction': {
+                    if (isset($model->value) and $model->value !== 'default') {
+                        $direction = 'ltr';
+                        if ($model->direction == 'right_to_left') {
+                            $direction = 'rtl';
                         }
-                        break;
+                        $model->value = "<div style='direction:{$direction}'>$model->value</div>";
                     }
-                    case 'created_at':
-                    case 'updated_at':
-                    case 'profile.birthday': {
-                        $model->{$key} = $this->filterDate($model->{$key});
-                        break;
-                    }
-                    case 'direction': {
-                        if (isset($model->value) and $model->value !== 'default') {
-                            $direction = 'ltr';
-                            if ($model->direction == 'right_to_left') {
-                                $direction = 'rtl';
-                            }
-                            $model->value = "<div style='direction:{$direction}'>$model->value</div>";
-                        }
-                        break;
-                    }
+                    break;
                 }
             }
         }
-        return $models;
+
+        return $model;
     }
 
     /**
@@ -153,11 +175,16 @@ trait AdminFilterData
     protected function filterDate($date)
     {
         if ($date) {
-            $date = new \Verta($date);
-            $dateTime = $date->format('Y/m/d');
-            return $dateTime;
+            try{
+                $date = new \Verta($date);
+                $dateTime = $date->format('Y/m/d');
+                return $dateTime;
+            }catch (\Exception $exception){
+                return $date;
+            }
+
         }
-        return null;
+        return $date;
     }
 
     /**

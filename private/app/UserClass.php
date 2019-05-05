@@ -105,7 +105,7 @@ class UserClass extends Model
 
     public function transaction()
     {
-        return $this->hasOne('App\UserTransaction','user_class_id','id');
+        return $this->morphOne('App\UserTransaction','paymentable');
     }
 
     public function user()

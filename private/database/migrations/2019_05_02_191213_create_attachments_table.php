@@ -33,7 +33,7 @@ class CreateAttachmentsTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table){
-            $table->dropForeign(['author_id']);
+            $table->dropForeign(['user_id']);
         });
         Schema::dropIfExists('attachments');
     }

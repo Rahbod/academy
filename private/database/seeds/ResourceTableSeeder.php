@@ -328,6 +328,20 @@ class ResourceTableSeeder extends Seeder
         /***********setting resources************/
         $resource_group = ResourceGroup::create([
             'department_id'=>$admin_department->id,
+            'name' => 'user_transaction',
+            'display_name' => 'عملیات مالی',
+        ]);
+
+        Resource::create([
+            'parent_id' => $setting_group_resource->id,
+            'resource_group_id' => $resource_group->id,
+            'name' => 'UserTransaction',
+            'display_name' => 'عملیات مالی'
+        ]);
+
+        /***********setting resources************/
+        $resource_group = ResourceGroup::create([
+            'department_id'=>$admin_department->id,
             'name' => 'settings',
             'display_name' => 'تنظیمات',
         ]);

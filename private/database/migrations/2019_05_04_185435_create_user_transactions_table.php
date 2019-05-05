@@ -20,10 +20,8 @@ class CreateUserTransactionsTable extends Migration
 
             $table->unsignedBigInteger('transaction_id')->index()->nullable();
             $table->foreign('transaction_id')->references('id')->on('gateway_transactions')->onDelete('set null');
-            $table->integer('user_class_id')->unsigned()->index()->nullable();
-            $table->foreign('user_class_id')->references('id')->on('user_classes')->onDelete('set null');
-            $table->integer('translate_request_id')->unsigned()->index()->nullable();
-            $table->foreign('translate_request_id')->references('id')->on('translate_requests')->onDelete('set null');
+            $table->integer('paymentable_id')->unsigned();
+            $table->string('paymentable_type');
             $table->string('description')->nullable();
             $table->enum('type', ['CRASH', 'GATEWAY'])->default('CRASH');
             $table->enum('status', ['INIT', 'SUCCEED', 'FAILED',])->default('INIT');
@@ -40,9 +38,9 @@ class CreateUserTransactionsTable extends Migration
      */
     public function down()
     {
-        Schema::table('user_transactions', function (Blueprint $table){
-            $table->dropForeign(['user_class_id']);
-            $table->dropForeign(['translate_request_id']);
+        Schema::table('user_transactions', function (Blueprint $table) {
+            $table->dropForeign(['transaction_id']);
+            $table->dropForeign(['user_id']);
         });
         Schema::dropIfExists('user_transactions');
     }

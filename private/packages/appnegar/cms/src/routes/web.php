@@ -343,9 +343,15 @@
                                                                                 Route::post('/attachments/change_attachmentable_type', ['uses' =>'AttachmentController@changeAttachmentableType','as' =>'admin.Attachment.changeAttachmentableType']);
                                                                                 
                         
-                                                            Route::get('/settings', ['uses' =>'SettingController@index','as' =>'admin.site_management.Setting.index'])->middleware('acl:219');
-                                                                                Route::get('/settings/update_all_settings', ['uses' =>'SettingController@updateAllSettings','as' =>'admin.Setting.updateAllSettings'])->middleware('acl:220');
-                                                                                Route::put('/settings/update_all_settings', ['uses' =>'SettingController@updateAllSettings','as' =>'admin.Setting.updateAllSettings'])->middleware('acl:220');
+                                                            Route::get('/user_transactions', ['uses' =>'UserTransactionController@index','as' =>'admin.UserTransaction.index'])->middleware('acl:219');
+                                                                                Route::get('/user_transactions/list-view', ['uses' =>'UserTransactionController@listView','as' =>'admin.UserTransaction.list_view'])->middleware('acl:220');
+                                                                                Route::get('/user_transactions/{id}', ['uses' =>'UserTransactionController@show','as' =>'admin.UserTransaction.show'])->middleware('acl:221');
+                                                                                Route::delete('/user_transactions/{id}', ['uses' =>'UserTransactionController@destroy','as' =>'admin.UserTransaction.destroy'])->middleware('acl:222');
+                                                                                
+                        
+                                                            Route::get('/settings', ['uses' =>'SettingController@index','as' =>'admin.site_management.Setting.index'])->middleware('acl:223');
+                                                                                Route::get('/settings/update_all_settings', ['uses' =>'SettingController@updateAllSettings','as' =>'admin.Setting.updateAllSettings'])->middleware('acl:224');
+                                                                                Route::put('/settings/update_all_settings', ['uses' =>'SettingController@updateAllSettings','as' =>'admin.Setting.updateAllSettings'])->middleware('acl:224');
                                                                             });
 
     

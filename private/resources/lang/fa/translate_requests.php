@@ -10,6 +10,7 @@ return [
         'category_id' => 'دسته بندی',
         'title' => 'عنوان',
         'translation_language' => 'زبان ترجمه',
+        'source_language' => 'زبان مبدا',
         'description' => 'توضیحات',
         'translated_file' => 'فایل ترجمه',
         'status' => 'وضعیت',
@@ -20,6 +21,7 @@ return [
         'author' => 'کاربر',
         'category' => 'دسته بندی',
         'attachments' => 'فایل های ضمیمه',
+        'transaction' => 'تراکنش',
     ],
     "values" => [
         "create_new_record" => " درخواست ترجمه جدید"

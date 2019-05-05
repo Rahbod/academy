@@ -89,6 +89,22 @@ class AdminController extends Controller
         $model_name = "App\\" . $this->resource;
         $model = $model_name::findOrFail($id);
 
+        $model = json_encode($model);
+        $model = json_decode($model);
+        if(isset($model->avatar)){
+            $avatar=url($model->avatar);
+            $model->avatar="<img src='$avatar'/>";
+        }
+        if(isset($model->image)){
+            $image=url($model->image);
+            $model->image="<img src='$image'/>";
+        }
+        if(isset($model->logo)){
+            $logo=url($model->logo);
+            $model->logo="<img src='$logo'/>";
+        }
+        $model=$this->filterModel($model);
+
         return response()->json(['model' => $model]);
     }
 

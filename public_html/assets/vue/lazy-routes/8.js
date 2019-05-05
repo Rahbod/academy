@@ -112,6 +112,48 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -127,30 +169,89 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("table", { staticClass: "table table-bordered" }, [
-    _c(
-      "tbody",
-      _vm._l(_vm.info, function(model_info) {
-        return _vm.model[model_info.name] !== undefined &&
-          !Array.isArray(_vm.model[model_info.name])
-          ? _c("tr", [
-              _c("th", { staticStyle: { "text-align": "center" } }, [
-                _c("b", {
-                  domProps: {
-                    textContent: _vm._s(
-                      _vm.$t(_vm.resource + ":items." + model_info.name)
-                    )
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("td", {
-                domProps: { innerHTML: _vm._s(_vm.model[model_info.name]) }
+  return _c("div", [
+    _c("table", { staticClass: "table table-bordered table-hover" }, [
+      _c("thead", { staticClass: "thead-dark" }, [
+        _c("tr", [
+          _c(
+            "th",
+            {
+              staticStyle: { "text-align": "center" },
+              attrs: { colspan: "2" }
+            },
+            [
+              _c("b", {
+                domProps: {
+                  textContent: _vm._s(_vm.$t(_vm.resource + ":title"))
+                }
               })
-            ])
-          : _vm._e()
-      })
-    )
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "tbody",
+        [
+          _vm._l(_vm.info, function(model_info, key) {
+            return key !== "items" && _vm.model[model_info.name] !== undefined
+              ? _c("tr", [
+                  _c("th", { staticStyle: { "text-align": "center" } }, [
+                    _c("b", {
+                      domProps: {
+                        textContent: _vm._s(
+                          _vm.$t(_vm.resource + ":items." + model_info.name)
+                        )
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("td", {
+                    domProps: { innerHTML: _vm._s(_vm.model[model_info.name]) }
+                  })
+                ])
+              : _vm._e()
+          }),
+          _vm._v(" "),
+          _vm._l(_vm.info.items, function(relation) {
+            return _vm.info.items !== undefined &&
+              _vm.model[relation.name] !== undefined &&
+              !Array.isArray(_vm.model[relation.name])
+              ? _vm._l(relation.info, function(model_info, key) {
+                  return _vm.model[relation.name][model_info.name] !== undefined
+                    ? _c("tr", [
+                        _c("th", { staticStyle: { "text-align": "center" } }, [
+                          _c("b", {
+                            domProps: {
+                              textContent: _vm._s(
+                                _vm.$t(
+                                  _vm.resource +
+                                    ":items." +
+                                    relation.name +
+                                    "." +
+                                    model_info.name
+                                )
+                              )
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("td", {
+                          domProps: {
+                            innerHTML: _vm._s(
+                              _vm.model[relation.name][model_info.name]
+                            )
+                          }
+                        })
+                      ])
+                    : _vm._e()
+                })
+              : _vm._e()
+          })
+        ],
+        2
+      )
+    ])
   ])
 }
 var staticRenderFns = []

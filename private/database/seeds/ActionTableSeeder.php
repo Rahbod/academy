@@ -305,6 +305,64 @@ class ActionTableSeeder extends Seeder
                         ]
                     ]
                 ],
+                'UserTransaction'=>[
+                    [
+                        'name' => 'index',
+                        'display_name' => 'مدیریت عملیات مالی',
+                        'need_allow' => 1,
+                        'status' => 1,
+                        'paths' => [
+                            [
+                                'name' => 'UserTransaction.index',
+                                'display_name' => 'مدیریت عملیات مالی' ,
+                                'slug' => 'user_transactions',
+                                'method' => 'get',
+                            ]
+                        ]
+                    ],
+                    [
+                        'name' => 'listView',
+                        'display_name' => 'لیست عملیات مالی',
+                        'need_allow' => 1,
+                        'status' => 1,
+                        'paths' => [
+                            [
+                                'name' =>'UserTransaction.list_view',
+                                'display_name' => 'لیست عملیات مالی',
+                                'slug' => 'user_transactions/list-view',
+                                'method' => 'get',
+                            ]
+                        ]
+                    ],
+                    [
+                        'name' => 'show',
+                        'display_name' => 'مشاهده عملیات مالی',
+                        'need_allow' => 1,
+                        'status' => 1,
+                        'paths' => [
+                            [
+                                'name' => 'UserTransaction.show',
+                                'display_name' => 'مشاهده عملیات مالی' ,
+                                'slug' => 'user_transactions/{id}',
+                                'method' => 'get',
+                            ]
+                        ]
+                    ],
+                    [
+                        'name' => 'destroy',
+                        'display_name' => 'حذف عملیات مالی',
+                        'need_allow' => 1,
+                        'status' => 1,
+                        'paths' => [
+                            [
+                                'name' =>'UserTransaction.destroy',
+                                'display_name' => 'حذف عملیات مالی' ,
+                                'slug' => 'user_transactions/{id}',
+                                'method' => 'delete',
+                            ]
+                        ]
+                    ]
+                ]
             ],
 
         ];

@@ -142,7 +142,7 @@ trait AdminCrudActions
         $related_relations = [];
         $relationships = $model->relationships();
         foreach ($relationships as $key => $relationship) {
-            if (in_array($relationship['type'], ['HasOne', 'HasMany','MorphMany'])) {
+            if (in_array($relationship['type'], ['HasOne', 'HasMany','MorphMany','MorphOne'])) {
                 $related_relations[] = $key;
             }
         }
@@ -190,6 +190,9 @@ trait AdminCrudActions
                     $data[$relation_info['name']] = [];
                 }
                 if ($relation_info['relation_type'] == 'HasOne') {
+                    $data[$relation_info['name']] = $this->setDefaultValues($field['items']);
+                }
+                if ($relation_info['relation_type'] == 'MorphOne') {
                     $data[$relation_info['name']] = $this->setDefaultValues($field['items']);
                 }
             }
@@ -407,7 +410,9 @@ trait AdminCrudActions
 
                     break;
                 }
-                case 'HasOne': {
+                case 'HasOne':
+                case 'MorphOne':
+                    {
                     $sub_request = $request[$relation_name];
                     $this->saveSubModel($model, $sub_request, $relation_name, $fields, $action);
                     break;
@@ -449,7 +454,7 @@ trait AdminCrudActions
 //        ];
 
         $sub_model->$foreign_key=$model->$local_key;
-        if ($relation_info['relation_type'] == 'MorphMany') {
+        if (in_array($relation_info['relation_type'],['MorphMany','MorphOne'])) {
             list($table,$morph_type)=explode('.',$relation_info['morph_type']);
             $sub_model->$morph_type=get_class($model);
         }

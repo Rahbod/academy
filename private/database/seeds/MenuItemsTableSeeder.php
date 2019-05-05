@@ -241,6 +241,9 @@ class MenuItemsTableSeeder extends Seeder
                 case 'translate_request';
                     $menu_item->icon = 'icon-clipboard3';
                     break;
+                case 'user_transaction';
+                    $menu_item->icon = 'icon-coins';
+                    break;
                 default:
                     $this->setMenuIcon($menu_item);
                     break;

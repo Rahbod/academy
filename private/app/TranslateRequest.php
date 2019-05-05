@@ -132,6 +132,13 @@ class TranslateRequest extends Model
                 'show_in_form' => true,
                 'show_in_table' => false,
                 'items' => Attachment::getSubFields()
+            ],
+            [
+                'name' => 'transaction',
+                'table' => UserTransaction::getTableName(),
+                'show_in_form' => false,
+                'show_in_table' => false,
+                'items' => UserTransaction::getSubFields()
             ]
         ];
     }
@@ -148,6 +155,11 @@ class TranslateRequest extends Model
     public function attachments()
     {
         return $this->morphMany('App\Attachment', 'attachmentable');
+    }
+
+    public function transaction()
+    {
+        return $this->morphOne('App\UserTransaction','paymentable');
     }
 
 

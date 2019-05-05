@@ -63,6 +63,7 @@ trait Dataviewer
                         $this->query_builder->leftJoin($relation_info['table'], $relation_info['pivot_foreign_key'], '=', $relation_info['foreign_key']);
                         break;
                     case 'MorphMany';
+                    case 'MorphOne';
                         $this->query_builder->leftJoin($relation_info['table'], function($q) use ($relation_info){
                             $q->on( $relation_info['local_key'], '=', $relation_info['foreign_key']);
                             $q->where($relation_info['morph_type'], '=', get_class($this->model));
@@ -327,6 +328,7 @@ trait Dataviewer
                 $query->whereRaw("{$relation_info['local_key']} = {$relation_info['pivot_local_key']} and {$relation_info['foreign_key']} = {$relation_info['pivot_foreign_key']}");
                 break;
             case 'MorphMany':
+            case 'MorphOne':
                 $query->whereRaw("{$relation_info['local_key']} = {$relation_info['foreign_key']}");
                 break;
         }

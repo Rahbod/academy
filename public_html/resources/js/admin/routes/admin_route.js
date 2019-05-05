@@ -715,5 +715,41 @@ export default new VueRouter({
 
             ]
         },
+        {
+            component: RouterViewApp,
+            path: '/user_transactions',
+            meta: {resource: 'user_transactions'},
+            children: [
+                {
+                    component: ResourceView,
+                    path: '/',
+                    name: 'user_transactions-resource-view',
+                },
+                {
+                    component: ListView,
+                    path: 'list-view',
+                    name: 'user_transactions-list-view',
+                    meta: {action: 'listView'},
+                },
+                // {
+                //     component: FormView,
+                //     path: 'create',
+                //     name: 'user_transactions-create',
+                //     meta: {action: 'create'},
+                // },
+                // {
+                //     component: FormView,
+                //     path: ':id/edit',
+                //     name: 'user_transactions-edit',
+                //     meta: {action: 'edit'},
+                // },
+                {
+                    component: ShowView,
+                    path: ':id',
+                    name: 'user_transactions-show',
+                },
+
+            ]
+        },
     ]
 });

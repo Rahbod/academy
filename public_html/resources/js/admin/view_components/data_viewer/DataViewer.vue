@@ -124,10 +124,16 @@
                                 class="icon-search4"></i> {{$t('actions.advance_search')}}
                         </button>
                     </label>
-                    <label class="action-button">
+                    <label class="action-button" v-if="hasAction('destroy')">
                         <button type="button" class="btn btn-outline bg-danger-400 text-danger-400 border-danger-400"
                                 @click.prevent="deleteTableRecords(selectIDs)">
                             <i class="icon-trash"></i> {{$t('actions.delete_selected_items')}}
+                        </button>
+                    </label>
+                    <label class="action-button" v-if="hasAction('create')">
+                        <button type="button" class="btn btn-outline bg-success-400 text-success-400 border-success-400"
+                                @click.prevent="$router.push({ name: resource+'-create' })">
+                            <i class="icon-file-plus"></i> {{$t('actions.create_new_record')}}
                         </button>
                     </label>
                 </div>
