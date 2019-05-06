@@ -25,7 +25,7 @@ trait ModelTrait
             if ($method->class != get_class($model) ||
                 !empty($method->getParameters()) ||
                 $method->getName() == __FUNCTION__ ||
-                in_array($method->getName(),['nextNodes','nextSiblings','prevNodes','prevSiblings','saveAsRoot']) ) {
+                in_array($method->getName(),['nextNodes','nextSiblings','prevNodes','prevSiblings','saveAsRoot','activities','profile']) ) {
                 continue;
             }
 
