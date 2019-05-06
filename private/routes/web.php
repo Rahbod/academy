@@ -19,13 +19,17 @@
 Route::get('/clear', function () {
     Cache::flush();
 });
-include('test_routes.php');
 
+Route::group(['middleware'=>['lang','remove_additional_params'],'prefix'=>"{lang}",],function () {
+    Auth::routes();
+//    Auth::routes(['register' => false,'reset' => false,'verify' => true]);
+
+    include ('test_routes.php');
+});
 
 Route::get('/generate_files', function () {
     makeRouteFile();
     makeSettingFile();
 });
-Auth::routes();
 
 
