@@ -18,9 +18,8 @@ class CreateProfilesTable extends Migration
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('mobile_number')->nullable();
-            $table->string('phone_number')->nullable();
-            $table->string('melli_code');
-            $table->string('grade');
+            $table->string('melli_code')->nullable();
+            $table->string('grade')->nullable();
             $table->string('city')->nullable();
             $table->smallInteger('gender')->nullable()->default(0);
             $table->string('birthday')->nullable();

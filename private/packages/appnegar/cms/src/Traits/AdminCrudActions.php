@@ -351,9 +351,8 @@ trait AdminCrudActions
                         if ($request['id'] == 0) {
                             $user = session('user_info_' . session('department'));
                            $model->$key = $user['id'];
-                            break;
                         }
-
+                        break;
                         case 'is_admin':
                         case 'access_level':
                         case 'featured':

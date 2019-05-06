@@ -162,6 +162,11 @@ trait AdminFilterData
                     }
                     break;
                 }
+
+                case 'profile': {
+                    $model->{$key} = $this->filterModel($model->{$key});
+                    break;
+                }
             }
         }
 

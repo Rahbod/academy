@@ -21,7 +21,7 @@ class Profile extends Model
 
 
     protected $fillable = [
-        'user_id', 'mobile_number', 'gender', 'birthday', 'address', 'postal_code', 'description'
+        'user_id', 'mobile_number','melli_code', 'gender','grade', 'birthday', 'city','address', 'postal_code', 'description'
     ];
 
     public static function mainFields(){
@@ -50,6 +50,16 @@ class Profile extends Model
                     'show_in_form' => true
                 ],
                 [
+                    'name' => 'melli_code',
+                    'type' => 'string',
+                    'input_type' => 'text',
+                    'orderable' => true,
+                    'searchable' => true,
+                    'show_in_table' => true,
+                    'show_in_sub_table' => true,
+                    'show_in_form' => true
+                ],
+                [
                     'name' => 'gender',
                     'type' => 'select',
                     'input_type' => 'radio',
@@ -61,13 +71,23 @@ class Profile extends Model
                     'options' => [['id' => 0, 'text' => 'male'], ['id' => 1, 'text' => 'female']]
                 ],
                 [
+                    'name' => 'grade',
+                    'type' => 'string',
+                    'input_type' => 'text',
+                    'orderable' => true,
+                    'searchable' => true,
+                    'show_in_table' => false,
+                    'show_in_sub_table' => false,
+                    'show_in_form' => true,
+                ],
+                [
                     'name' => 'birthday',
                     'type' => 'date',
                     'input_type' => 'date',
                     'orderable' => true,
                     'searchable' => true,
-                    'show_in_table' => true,
-                    'show_in_sub_table' => true,
+                    'show_in_table' => false,
+                    'show_in_sub_table' => false,
                     'show_in_form' => true
                 ],
                 [
@@ -79,6 +99,16 @@ class Profile extends Model
                     'show_in_table' => false,
                     'show_in_sub_table' => false,
                     'show_in_form' => true
+                ],
+                [
+                    'name' => 'city',
+                    'type' => 'string',
+                    'input_type' => 'text',
+                    'orderable' => true,
+                    'searchable' => true,
+                    'show_in_table' => false,
+                    'show_in_sub_table' => false,
+                    'show_in_form' => true,
                 ],
                 [
                     'name' => 'postal_code',

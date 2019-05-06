@@ -17,9 +17,9 @@ class AdminCategoryController extends AdminController{
 
     protected function setModel($model)
     {
-        if($model->author_id !== null){
-            $model->author_id=$model->author->name;
-        }
+//        if($model->author_id !== null){
+//            $model->author_id=$model->author->name;
+//        }
         return $model;
     }
 

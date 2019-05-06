@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique()->nullable();
             $table->string('password');
             $table->string('avatar')->nullable();
-            $table->enum('type',['admin','operator','teacher']);
+            $table->enum('type',['admin','operator','teacher','user'])->default('user');
             $table->tinyInteger('is_admin')->default(0);
             $table->boolean('status')->defaule(0);
             $table->boolean('verified')->defaule(0);

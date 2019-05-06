@@ -15,6 +15,10 @@
 //    return view('welcome');
 //});
 
+Route::get('/generate_files', function () {
+    makeRouteFile();
+    makeSettingFile();
+});
 
 Route::get('/clear', function () {
     Cache::flush();
@@ -22,10 +26,7 @@ Route::get('/clear', function () {
 include('test_routes.php');
 
 
-Route::get('/generate_files', function () {
-    makeRouteFile();
-    makeSettingFile();
-});
+
 Auth::routes();
 
 
