@@ -18,6 +18,7 @@ $factory->define(App\Profile::class, function (Faker\Generator $faker) {
         },
         'gender' => $gender,
         'mobile_number' => $fake->phoneNumber,
+        'melli_code' => $fake->randomNumber(),
         'birthday' => mt_rand(1340, 1380) . '/' . mt_rand(1, 12) . '/' . mt_rand(01, 29),
     ];
 });

@@ -9,7 +9,7 @@ class TranslateRequest extends Model
 {
     use ModelTrait;
 
-    protected $fillable = ['author_id','category_id','title','translation_language','description','status'];
+    protected $fillable = ['author_id','category_id','title','source_language','translation_language','price','description','translated_file','status'];
 
     public static function mainFields(){
         return [
@@ -68,6 +68,15 @@ class TranslateRequest extends Model
                     'orderable' => true,
                     'searchable' => true,
                     'show_in_table' => true,
+                    'show_in_form' => true
+                ],
+                [
+                    'name' => 'price',
+                    'type' => 'numeric',
+                    'input_type' => 'number',
+                    'orderable' => true,
+                    'searchable' => true,
+                    'show_in_table' => false,
                     'show_in_form' => true
                 ],
                 [
