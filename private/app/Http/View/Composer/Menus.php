@@ -20,23 +20,22 @@ class Menus
 
     public function __construct()
     {
-//        Cache::flush();
-//        $this->main_menus = Cache::remember('main_menus', 5000, function () {
-//            $static_menu = StaticMenu::with(['page' => function ($q) {
-//                $q->where('status', 1)->where('lang', session('lang'))->orderBy('order')->select('id', 'title');
-//            }])->where('status', 1)
-//                ->where('lang', session('lang'))->orderBy('order')
-//                ->get()->toTree();
-//            return $static_menu;
-//        });
+        Cache::flush();
+        $this->main_menus = Cache::remember('main_menus', 5000, function () {
+            $static_menu = StaticMenu::with(['page' => function ($q) {
+                $q->where('status', 1)->where('lang', session('lang'))->orderBy('order')->select('id', 'title');
+            }])->where('status', 1)->where('lang', session('lang'))->orderBy('order')
+                ->get()->toTree();
 
-//        $value = Cache::get('main_menus');
-//        dd($this->main_menus);
+//            dd($static_menu);
+
+            return $static_menu;
+        });
 
     }
 
     public function compose(View $view)
     {
-//        $view->with('main_menus', $this->main_menus);
+        $view->with('main_menus', $this->main_menus);
     }
 }
