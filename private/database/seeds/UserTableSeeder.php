@@ -34,7 +34,6 @@ class UserTableSeeder extends Seeder
         Profile::create([
             'user_id' => $user->id,
             'mobile_number' => '00000',
-            'phone_number' => '00000',
             'melli_code' => '00000',
             'gender' => 0,
             'grade' => 'متوسطه',
@@ -56,13 +55,12 @@ class UserTableSeeder extends Seeder
         Profile::create([
             'user_id' => $user->id,
             'mobile_number' => '09355055487',
-            'phone_number' => '09355055487',
             'melli_code' => '0000000',
             'gender' => 0,
             'grade' => 'متوسطه',
             'birthday' => '1989/01/01'
         ]);
 
-//        factory('App\Profile', 400)->create();
+        factory('App\Profile', 400)->create();
     }
 }

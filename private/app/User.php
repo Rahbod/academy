@@ -17,7 +17,7 @@ class User extends Authenticatable
     use LogsActivity;
     use GetImageAttributesTrait;
 
-    public $timestamps = false;
+//    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.

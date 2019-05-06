@@ -89,23 +89,32 @@ class AdminController extends Controller
         $model_name = "App\\" . $this->resource;
         $model = $model_name::findOrFail($id);
 
-        $model = json_encode($model);
-        $model = json_decode($model);
-        if(isset($model->avatar)){
-            $avatar=url($model->avatar);
-            $model->avatar="<img src='$avatar'/>";
+        $data = json_encode($model);
+        $data = json_decode($data);
+        if(isset($data->avatar)){
+            $avatar=url($data->avatar);
+            $data->avatar="<img src='$avatar'/>";
         }
         if(isset($model->image)){
-            $image=url($model->image);
+            $image=url($data->image);
             $model->image="<img src='$image'/>";
         }
-        if(isset($model->logo)){
-            $logo=url($model->logo);
-            $model->logo="<img src='$logo'/>";
+        if(isset($data->logo)){
+            $logo=url($data->logo);
+            $data->logo="<img src='$logo'/>";
         }
-        $model=$this->filterModel($model);
+        if(isset($data->user_id)){
+            $data->user_id=$model->user->username;
+        }
+        if(isset($data->author_id)){
+            $data->author_id=$model->author->username;
+        }
+        if(isset($data->category_id)){
+            $data->category_id=$model->category->name;
+        }
+        $data=$this->filterModel($data);
 
-        return response()->json(['model' => $model]);
+        return response()->json(['model' => $data]);
     }
 
     public function getActions()

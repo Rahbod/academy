@@ -20,6 +20,7 @@ class CreateTranslateRequestsTable extends Migration
             $table->string('title');
             $table->string('source_language');
             $table->string('translation_language');
+            $table->integer('price')->nullable();
             $table->string('translated_file')->nullable();
             $table->string('description')->nullable();
             $table->enum('status', ['PENDING','REJECTED','AWAITING_PAYMENT','PAID','TRANSLATED'])->default('PENDING');

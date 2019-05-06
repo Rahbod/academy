@@ -12,6 +12,7 @@ return [
         'translation_language' => 'زبان ترجمه',
         'source_language' => 'زبان مبدا',
         'description' => 'توضیحات',
+        'price' => 'هزینه ترجمه',
         'translated_file' => 'فایل ترجمه',
         'status' => 'وضعیت',
         'updated_at' => 'تاریخ بروزرسانی',
