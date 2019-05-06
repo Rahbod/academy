@@ -132,7 +132,7 @@
                     </label>
                     <label class="action-button" v-if="hasAction('create')">
                         <button type="button" class="btn btn-outline bg-success-400 text-success-400 border-success-400"
-                                @click.prevent="$router.push({ name: resource+'-create' })">
+                                @click.prevent="$router.push({ name: route_name+'-create' })">
                             <i class="icon-file-plus"></i> {{$t('actions.create_new_record')}}
                         </button>
                     </label>

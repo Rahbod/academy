@@ -12,7 +12,7 @@
                     </div>
 
                     <div class="modal-body px-5" style="min-height: 500px" id="modal_view_body">
-                        <modal_content v-if="!loading"></modal_content>
+                        <modal_content v-if="!loading" @closeModal="closeModal"></modal_content>
                     </div>
 
                 </div>
@@ -25,11 +25,17 @@
 
 <script>
     import modal_content from '../view_components/ShowContent.vue';
-    import {mapGetters,mapActions} from 'vuex'
+    import {mapGetters, mapActions} from 'vuex'
+
     export default {
-        components:{modal_content},
+        components: {modal_content},
         computed: {
-            ...mapGetters('show',['model','info','loading'])
+            ...mapGetters('show', ['model', 'info', 'loading'])
         },
+        methods:{
+            closeModal(){
+                $('#close-modal').trigger('click');
+            }
+        }
     }
 </script>

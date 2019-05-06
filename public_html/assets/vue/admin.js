@@ -40514,12 +40514,12 @@ var RoleFormView = function RoleFormView(resolve) {
             }, {
                 component: FileManagerView,
                 path: 'file_manager/index',
-                name: 'courses-file-manager-show',
+                name: 'class_rooms-file-manager-show',
                 meta: { action: 'showFileManager' }
             }, {
                 component: UpdateSettingFormView,
                 path: 'settings/form',
-                name: 'courses-settings-form',
+                name: 'class_rooms-settings-form',
                 meta: { action: 'updateSettings' }
             }]
         }, {
