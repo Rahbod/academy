@@ -22,7 +22,6 @@
 
     {{--<link rel="icon" type="image/png" sizes="300x300" href="{{asset('')}}">--}}
     <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/bootstrap.min.css')}}">
-    {{--<link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/global.css')}}">--}}
     <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/js/vendors/toastr/toastr.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/fonts/fontawesome-5-pro/css/all.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/global.css')}}">
@@ -30,7 +29,10 @@
     <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/responsive.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/js/vendors/slick/slick.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/js/vendors/slick/slick-theme.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/iran-sans.css')}}">
+{{--    <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/iran-sans.css')}}">--}}
+    <link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
     {{--<link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/iran-sans-fa-num.css')}}">--}}
 
     @stack('styles')

@@ -20,9 +20,10 @@ class Course extends Model
         return ['lang'];
     }
 
-    public static function mainFields(){
+    public static function mainFields()
+    {
         return [
-            'name' => static ::getTableName(),
+            'name' => static::getTableName(),
             'items' => [
                 [
                     'name' => 'lang',
@@ -66,7 +67,7 @@ class Course extends Model
                     'name' => 'tag_id',
                     'type' => 'select',
                     'input_type' => 'tags',
-                    'is_related_field'=>true,
+                    'is_related_field' => true,
                     'orderable' => true,
                     'searchable' => true,
                     'show_in_table' => false,
@@ -158,7 +159,8 @@ class Course extends Model
         ];
     }
 
-    public static function  relatedFields(){
+    public static function relatedFields()
+    {
         return [
             [
                 'name' => 'category',
@@ -181,6 +183,7 @@ class Course extends Model
     {
         return $this->belongsTo('App\User', 'author_id', 'id');
     }
+
     public function category()
     {
         return $this->belongsTo('App\Category', 'category_id');
@@ -194,5 +197,10 @@ class Course extends Model
     public function tags()
     {
         return $this->morphToMany('App\Tag', 'taggable');
+    }
+
+    public function class_rooms()
+    {
+        return $this->hasMany('\App\ClassRoom');
     }
 }

@@ -4,29 +4,29 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-5 footer-col-4">
                     <div class="widget widget_getintuch">
-                        <h6 class="m-b15 h6 text-uppercase">TRAVEL</h6>
+                        <h6 class="m-b15 h6 text-uppercase">Address</h6>
                         <div class="dlab-separator bg-white"></div>
                         <ul class="info-contact">
                             <li>
 									<span>
-										<i class="fa fa-map-marker	"></i> Brodway Road 234, New York
+										<i class="fa fa-map-marker	"></i> Tehran Saadat Abad, Road 57 , Academy Center
 									</span>
                             </li>
 
                             <li>
 									<span>
-										<i class="fa fa-phone"></i> Mobile: +00 1234 456789 <br>+10 1234 456789
+										<i class="fa fa-phone"></i> Mobile: +98 1234 456789 <br>+98 1234 456789
 									</span>
                             </li>
 
                             <li>
 									<span>
-										<i class="fa fa-envelope"></i> Mail: info@travel.com
+										<i class="fa fa-envelope"></i> Mail: info@academy.com
 									</span>
                             </li>
                             <li>
 									<span>
-										<i class="fa fa-fax"></i> Fax: 000 123 2294 089
+										<i class="fa fa-fax"></i> Fax: 0098 123 2294 089
 									</span>
                             </li>
                         </ul>
@@ -92,11 +92,11 @@
                                 <a class="mfp-link html5lightbox" data-group="mygroup"
                                    href="{{asset('/assets/site/media/images/promotion/img3.jpg')}}"
                                    title="Title Come Here"><img
-                                            src="{{asset('/assets/site/media/images/promotion/img6.jpg')}}" alt=""></a></li>
+                                            src="{{asset('/assets/site/media/images/promotion/img3.jpg')}}" alt=""></a></li>
 
                             <li class="img-effect2">
                                 <a class="mfp-link html5lightbox" data-group="mygroup"
-                                   href="{{asset('/assets/site/media/images/promotion/img6.jpg')}}"
+                                   href="{{asset('/assets/site/media/images/promotion/img3.jpg')}}"
                                    title="Title Come Here"><img
                                             src="{{asset('/assets/site/media/images/promotion/img3.jpg')}}" alt=""></a></li>
 
@@ -118,9 +118,9 @@
                                             src="{{asset('/assets/site/media/images/promotion/img5.jpg')}}" alt=""></a></li>
                             <li class="img-effect2">
                                 <a class="mfp-link html5lightbox" data-group="mygroup"
-                                   href="{{asset('/assets/site/media/images/promotion/img6.jpg')}}"
+                                   href="{{asset('/assets/site/media/images/promotion/img3.jpg')}}"
                                    title="Title Come Here"><img
-                                            src="{{asset('/assets/site/media/images/promotion/img6.jpg')}}" alt=""></a></li>
+                                            src="{{asset('/assets/site/media/images/promotion/img3.jpg')}}" alt=""></a></li>
                             <li class="img-effect2">
                                 <a class="mfp-link html5lightbox" data-group="mygroup"
                                    href="{{asset('/assets/site/media/images/promotion/img3.jpg')}}"

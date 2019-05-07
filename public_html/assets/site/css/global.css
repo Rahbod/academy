@@ -457,7 +457,7 @@ a, .text-primary, .primary li:before, .breadcrumb-row ul li a, .header-nav .nav 
 
 .mainSlider--title p, .mainSlider--title h3 {
     color: #fff;
-    width: 50%;
+    /*width: 50%;*/
 }
 
 .mainSlider__site-button, .mainSlider__site-button-secondry {
@@ -645,7 +645,7 @@ button:after {
 }
 
 .sectionHeader p {
-    font-size: 18px;
+    font-size: 22px;
     color: #939aa4;
     padding-top: 10px;
 }
@@ -828,6 +828,22 @@ img {
     padding: 80px 0;
     position: relative;
     background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.translation::after {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    content: '';
+    display: block;
+    clear: both;
+    z-index: -1;
 }
 
 .add-area {
@@ -893,6 +909,10 @@ h2 {
 .dlab-media {
     overflow: hidden;
     position: relative;
+}
+
+.top-courses .dlab-media {
+    overflow: visible;
 }
 
 .dlab-img-overlay1:before, .dlab-img-overlay1:after, .dlab-img-overlay2:before, .dlab-img-overlay2:after, .dlab-img-overlay3:before, .dlab-img-overlay3:after, .dlab-img-overlay4:before, .dlab-img-overlay4:after, .dlab-img-overlay5:before, .dlab-img-overlay5:after, .dlab-img-overlay6:before, .dlab-img-overlay6:after, .dlab-img-overlay7:before, .dlab-img-overlay7:after, .dlab-img-overlay8:before, .dlab-img-overlay8:after, .dlab-img-overlay9:before, .dlab-img-overlay9:after, .dlab-img-overlay11:before, .dlab-img-overlay11:after, .dlab-img-overlay12:before, .dlab-img-overlay12:after {

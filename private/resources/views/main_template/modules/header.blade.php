@@ -8,7 +8,7 @@
                     <li><a title="articles" class="topbar__buttonLink"
                            href="{{route('articles',['lang'=>session('lang')])}}">articles</a></li>
                     <li><a title="translation" class="topbar__buttonLink"
-                           href="{{route('translation',['lang'=>session('lang')])}}">translation</a></li>
+                           href="{{route('translations',['lang'=>session('lang')])}}">translation</a></li>
                 </ul>
                 <ul class="leftMenu">
                     <li><a title="login" href="{{route('login',['lang'=>session('lang')])}}" class="topbar__buttonLink">login</a>
@@ -23,7 +23,7 @@
         <div class="main-bar clearfix onepage">
             <div class="container">
                 <nav class="header-nav navbar p-0">
-                    <a class="navbar-brand" href="void:;">
+                    <a class="navbar-brand" href="{{route('home',['lang'=>session('lang')])}}">
                         <!--<img src="./assets/media/images/public/site_logo.png"-->
                         <!--class="siteLogo__image img-fluid" alt="آکادمی زبان ">-->
                         <span class=""
@@ -32,7 +32,7 @@
                     <div>
                         <div class="extra-nav d-lg-none">
                             <div class="extra-cell">
-                                <button onclick="$('#showSearchForm').show();" type="button"
+                                <button onclick="$('#showSearchForm').show().find('input').focus();" type="button"
                                         class="site-button-link"><i
                                             class="fa fa-search"></i></button>
                             </div>
@@ -90,7 +90,8 @@
                             <li class="d-none d-lg-block">
                                 <div class="extra-nav">
                                     <div class="extra-cell">
-                                        <button onclick="$('#showSearchForm').show();" id="" type="button"
+                                        <button onclick="$('#showSearchForm').show().find('input').focus();" id=""
+                                                type="button"
                                                 class="site-button-link"><i
                                                     class="fa fa-search"></i></button>
                                     </div>
