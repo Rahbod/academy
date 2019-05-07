@@ -88,8 +88,8 @@ class AdminController extends Controller
     {
         $model_name = "App\\" . $this->resource;
         $model = $model_name::findOrFail($id);
-
-        $data = json_encode($model);
+//dd($model);
+        $data = json_encode($model->toArray());
         $data = json_decode($data);
         if(isset($data->avatar)){
             $avatar=url($data->avatar);
@@ -103,10 +103,10 @@ class AdminController extends Controller
             $logo=url($data->logo);
             $data->logo="<img src='$logo'/>";
         }
-        if(isset($data->user_id)){
+        if(isset($data->user_id) && $model->user){
             $data->user_id=$model->user->username;
         }
-        if(isset($data->author_id)){
+        if(isset($data->author_id) && $model->author){
             $data->author_id=$model->author->username;
         }
         if(isset($data->category_id)){
