@@ -2,8 +2,8 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('news', 'ContentController@index')->name('news');
-Route::get('articles', 'ContentController@index')->name('articles');
+Route::resource('news', 'ContentController');
+Route::resource('articles', 'ContentController');
 
 Route::get('translations', 'TranslationController@index')->name('translations');
 Route::resource('courses', 'CourseController');

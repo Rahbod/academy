@@ -3,12 +3,15 @@
         <div class="container">
             <div class="row d-flex justify-content-between">
                 <ul class="rightMenu">
-                    <li><a title="news" class="topbar__buttonLink" href="{{route('news',['lang'=>session('lang')])}}">news</a>
+                    <li>
+                        <a title="contact us" class="topbar__buttonLink" href="{{route('contact-us',['lang'=>session('lang')])}}">contact-us</a>
                     </li>
-                    <li><a title="articles" class="topbar__buttonLink"
-                           href="{{route('articles',['lang'=>session('lang')])}}">articles</a></li>
-                    <li><a title="translation" class="topbar__buttonLink"
-                           href="{{route('translations',['lang'=>session('lang')])}}">translation</a></li>
+                    <li>
+                        <a title="about us" class="topbar__buttonLink" href="{{route('about-us',['lang'=>session('lang')])}}">about us</a>
+                    </li>
+                    {{--<li>--}}
+                        {{--<a title="translation" class="topbar__buttonLink" href="{{route('translations',['lang'=>session('lang')])}}">translation</a>--}}
+                    {{--</li>--}}
                 </ul>
                 <ul class="leftMenu">
                     <li><a title="login" href="{{route('login',['lang'=>session('lang')])}}" class="topbar__buttonLink">login</a>

@@ -6,16 +6,7 @@
 
 @section('content')
     <section class="courseIndex">
-        <div class="dlab-bnr-inr overlay-black-middle">
-            <div class="container">
-                <div class="dlab-bnr-inr-entry">
-                    <h1 class="text-white">Our Courses</h1>
-                    <!-- Breadcrumb row -->
-                @include('main_template.modules.breadcrumb')
-                <!-- Breadcrumb row END -->
-                </div>
-            </div>
-        </div>
+        @include('main_template.modules.inner_pages_header')
 
         <div class="section-full bg-white content-inner dlab-about-1">
             <div class="container">
@@ -51,6 +42,9 @@
                                     <h2 class="m-t10 m-b20">3 month</h2>
                                     <a href="hotel-booking.html" class="site-button outline outline-2 radius-xl">
                                         register
+                                    </a>
+                                    <a href="hotel-booking.html" class="site-button outline outline-2 radius-xl ml-3">
+                                        details
                                     </a>
                                 </div>
                             </div>

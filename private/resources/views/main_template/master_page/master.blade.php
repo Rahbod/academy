@@ -22,14 +22,17 @@
 
     {{--<link rel="icon" type="image/png" sizes="300x300" href="{{asset('')}}">--}}
     <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/bootstrap.min.css')}}">
+{{--    <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/plugins.css')}}">--}}
+{{--    <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/style.css')}}">--}}
+{{--    <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/templete.css')}}">--}}
     <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/js/vendors/toastr/toastr.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/fonts/fontawesome-5-pro/css/all.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/global.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/global.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/sidebar.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/responsive.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/js/vendors/slick/slick.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/js/vendors/slick/slick-theme.css')}}">
-{{--    <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/iran-sans.css')}}">--}}
+    {{--    <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/iran-sans.css')}}">--}}
     <link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
@@ -66,6 +69,7 @@
 <script type="text/javascript" src="{{asset('./assets/site/js/vendors/html5lightbox/html5lightbox.js')}}"></script>
 <script type="text/javascript" src="{{asset('./assets/site/js/vendors/slick/slick.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('./assets/site/js/global.js')}}"></script>
+{{--<script type="text/javascript" src="{{asset('./assets/site/js/custom.js')}}"></script>--}}
 
 @stack('scripts')
 

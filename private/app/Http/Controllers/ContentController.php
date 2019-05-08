@@ -13,12 +13,12 @@ class ContentController extends Controller
      */
     public function index()
     {
-        return view('main_template.pages.news');
+        return view('main_template.pages.news.index');
     }
 
     public function articles()
     {
-        return view('main_template.pages.news');
+        return view('main_template.pages.news.index');
     }
 
     /**
@@ -48,9 +48,9 @@ class ContentController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id = null)
     {
-        //
+        return view('main_template.pages.news.show');
     }
 
     /**

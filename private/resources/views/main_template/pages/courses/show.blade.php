@@ -58,12 +58,12 @@
                                 </p>
                             </div>
                             <div class="tour-price ml-auto">
-                                <span>cost of the course</span>
+                                <span>fee of the course</span>
                                 <h2 class="price">1,000,000 T</h2>
                                 <del class="actual-price">1,200,000 T</del>
                             </div>
                         </div>
-                        <div class="product-gallery">
+                        <div class="product-gallery m-b30">
                             <img src="{{asset('assets/site/media/images/top_courses/pic4.jpg')}}" class="img-fluid"
                                  alt="">
                         </div>
@@ -125,19 +125,74 @@
                         <div class="sticky-top">
                             <form class="hotel-booking">
                                 <div class="row">
-                                    <div class="col-md-6 col-lg-6 col-xl-6 col-sm-6 col-6">
+                                    <div class="col-12 border-bottom mb-3">
                                         <div class="form-group">
-                                            03/02/1398
+                                            <label for="classes">choose your class</label>
+                                            <select class="form-control" name="classes" id="classes">
+                                                <option value="">class #1</option>
+                                                <option value="">class #2</option>
+                                            </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-lg-6 col-xl-6 col-sm-6 col-6">
+                                    <div class="col-12 border-bottom mb-3">
                                         <div class="form-group">
-                                            09/05/1398
+                                            <div class="d-sm-flex justify-content-between">
+                                                <label>master :</label>
+                                                <span>mr.rezae</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-12">
                                         <div class="form-group">
-                                            remaining capacity : 5 person
+                                            <div class="d-sm-flex justify-content-between">
+                                                <label>start day :</label>
+                                                <span>06/02/98</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="d-sm-flex justify-content-between">
+                                                <label>end day :</label>
+                                                <span>06/06/98</span>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <div class="d-sm-flex justify-content-between">
+                                                <label>fee :</label>
+                                                <span>500,000 T</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="d-sm-flex justify-content-between">
+                                                <label>remaining capacity :</label>
+                                                <span>5</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">week days :</label>
+                                            <ul>
+                                                <li>
+                                                    <div class="d-sm-flex justify-content-between">
+                                                        <label for="">saturday :</label>
+                                                        <span>08:00 - 10:00</span>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="d-sm-flex justify-content-between">
+
+                                                        <label for="">monday :</label>
+                                                        <span>11:00 - 12:00</span>
+                                                    </div>
+
+                                                </li>
+                                                <li>
+                                                    <div class="d-sm-flex justify-content-between">
+
+                                                        <label for="">wednesday :</label>
+                                                        <span>16:00 - 18:00</span>
+                                                    </div>
+
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
 
