@@ -1,7 +1,19 @@
 @extends('main_template.master_page.master')
 
 @push('styles')
+    <style>.mapouter {
+            position: relative;
+            text-align: right;
+            height: auto;
+            width: 100%;
+        }
 
+        .gmap_canvas {
+            overflow: hidden;
+            background: none !important;
+            height: auto;
+            width: 100%;
+        }</style>
 @endpush
 
 @section('content')
@@ -129,9 +141,16 @@
                     </div>
                     <!-- Left part END -->
                     <div class="col-lg-4 col-md-12 d-lg-flex m-b30">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d227748.3825624477!2d75.65046970649679!3d26.88544791796718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396c4adf4c57e281%3A0xce1c63a0cf22e09!2sJaipur%2C+Rajasthan!5e0!3m2!1sen!2sin!4v1500819483219"
-                                class="align-self-stretch " style="border:0; width:100%; min-height:350px;"
-                                allowfullscreen=""></iframe>
+                        <div class="mapouter">
+                            <div class="gmap_canvas">
+                                <iframe width="400" height="500" id="gmap_canvas"
+                                        src="https://maps.google.com/maps?q=tehran&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                                        frameborder="0" scrolling="no" marginheight="0"
+                                        marginwidth="0"></iframe>
+                                <a href="https://www.emojilib.com">emojilib.com</a></div>
+
+                        </div>
+
                     </div>
                 </div>
             </div>
