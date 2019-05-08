@@ -28,6 +28,44 @@ class TranslateRequestController extends AdminController{
         ];
     }
 
+
+
+    public function show($id)
+    {
+        $model_name = "App\\" . $this->resource;
+        $model = $model_name::with('transaction')->with(['attachments'=>function ($query){
+            $query->select(['id','attachmentable_id','attachmentable_type','source','title']);
+        }])->findOrFail($id);
+//        dd($model->toArray());
+
+        $data = json_encode($model->toArray());
+        $data = json_decode($data);
+        if(isset($data->avatar)){
+            $avatar=url($data->avatar);
+            $data->avatar="<img src='$avatar'/>";
+        }
+        if(isset($model->image)){
+            $image=url($data->image);
+            $model->image="<img src='$image'/>";
+        }
+        if(isset($data->logo)){
+            $logo=url($data->logo);
+            $data->logo="<img src='$logo'/>";
+        }
+        if(isset($data->user_id)){
+            $data->user_id=$model->user->username;
+        }
+        if(isset($data->author_id)){
+            $data->author_id=$model->author->username;
+        }
+        if(isset($data->category_id)){
+            $data->category_id=$model->category->name;
+        }
+        $data=$this->filterModel($data);
+
+        return response()->json(['model' => $data]);
+    }
+
     protected function validationRules($request, $id = null)
     {
         return[

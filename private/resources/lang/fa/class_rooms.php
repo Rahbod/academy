@@ -30,6 +30,7 @@ return [
         'course'=>'دوره',
         'comments'=>'نظرات',
         'tags'=>'برچسب ها',
+        'class_room_times'=>'ساعات برگزاری کلاس',
     ],
     "values" => [
         "select_items" => "گزینه ها ی مورد نظر خود را انتخاب کنید",

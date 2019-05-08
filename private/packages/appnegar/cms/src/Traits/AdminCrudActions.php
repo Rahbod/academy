@@ -223,6 +223,9 @@ trait AdminCrudActions
                 case 'verified':
                     $data[$item['name']] = 1;
                     break;
+                case 'lang':
+                    $data[$item['name']] = session('lang');
+                    break;
 
             }
         }

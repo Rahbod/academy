@@ -353,5 +353,80 @@ class ResourceTableSeeder extends Seeder
             'display_name' => 'تنظیمات'
         ]);
 
+        /*************user panel***********/
+
+        $admin_department=Department::where('name','profile')->first(['id']);
+
+        /***********dashboard resources************/
+        $resource_group = ResourceGroup::create([
+            'department_id'=>$admin_department->id,
+            'name' => 'dashboard',
+            'display_name' => 'داشبورد مدیریت محتوا',
+        ]);
+        Resource::create([
+            'resource_group_id' => $resource_group->id,
+            'name' => 'Dashboard',
+            'display_name' => 'داشبورد مدیریت محتوا'
+        ]);
+
+
+        /***********profile resources************/
+        $resource_group = ResourceGroup::create([
+            'department_id'=>$admin_department->id,
+            'name' => 'profile',
+            'display_name' => 'پروفایل',
+        ]);
+        Resource::create([
+            'resource_group_id' => $resource_group->id,
+            'name' => 'Profile',
+            'display_name' => 'پروفایل'
+        ]);
+
+
+        /***********Course resources************/
+        $resource_group = ResourceGroup::create([
+            'department_id'=>$admin_department->id,
+            'name' => 'courses',
+            'display_name' => 'دوره ها',
+        ]);
+        $slider_category_Resource=Resource::create([
+            'resource_group_id' => $resource_group->id,
+            'name' => 'Course',
+            'display_name' => 'دوره ها'
+        ]);
+        Resource::create([
+            'resource_group_id' => $resource_group->id,
+            'parent_id'=>$slider_category_Resource->id,
+            'name' => 'ClassRoom',
+            'display_name' => 'کلاس ها'
+        ]);
+
+
+        /***********TranslateRequest Menu resources************/
+        $resource_group = ResourceGroup::create([
+            'department_id'=>$admin_department->id,
+            'name' => 'translate_request',
+            'display_name' => 'درخواست ترجمه',
+        ]);
+        Resource::create([
+            'resource_group_id' => $resource_group->id,
+            'name' => 'TranslateRequest',
+            'display_name' => 'درخواست های ترجمه'
+        ]);
+
+        /***********setting resources************/
+        $resource_group = ResourceGroup::create([
+            'department_id'=>$admin_department->id,
+            'name' => 'user_transaction',
+            'display_name' => 'عملیات مالی',
+        ]);
+
+        Resource::create([
+            'parent_id' => $setting_group_resource->id,
+            'resource_group_id' => $resource_group->id,
+            'name' => 'UserTransaction',
+            'display_name' => 'عملیات مالی'
+        ]);
+
     }
 }

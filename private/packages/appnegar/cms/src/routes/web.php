@@ -354,6 +354,22 @@
                                                                                 Route::put('/settings/update_all_settings', ['uses' =>'SettingController@updateAllSettings','as' =>'admin.Setting.updateAllSettings'])->middleware('acl:224');
                                                                             });
 
+            
+        Route::group(['prefix'=>'profile','middleware'=>['auth:web','set_department:profile' ,'user_info','lang','remove_additional_params']],function(){
+
+                    
+                        
+                                                            
+                        
+                                                            
+                        
+                            
+                                                            
+                        
+                                                            
+                        
+                                                        });
+
     
     });
 
