@@ -175,7 +175,6 @@ class TranslateRequest extends Model
     public function getTranslatedFileAttribute($photo)
     {
         $resource_name = str_singular($this->getTable());
-//        dd('system.' . $resource_name . '.translated_file');
         if ($photo) {
             $path = '/storage/' . config('system.' . $resource_name . '.translated_file_destination') . $photo;
             return $path;

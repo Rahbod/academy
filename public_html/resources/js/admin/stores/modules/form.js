@@ -212,11 +212,20 @@ export const form = {
                                     if (item.options !== undefined && Array.isArray(item.options)) {
                                         let options = [];
                                         item.options.forEach(option => {
-                                            let temp_option = {id: option.id, text: option.id};
-                                            if (option.text !== undefined) {
-                                                temp_option['text'] = i18next.t('values.' + option.text);
+                                            if(option.id !== undefined){
+                                                let temp_option = {id: option.id, text: option.id};
+                                                if (option.text !== undefined) {
+                                                    temp_option['text'] = i18next.t('values.' + option.text);
+                                                }
+                                                options.push(temp_option)
+                                            }else {
+                                                if(typeof option === 'string' || option instanceof String){
+                                                    option=i18next.t('values.' + option);
+                                                }
+                                                options.push(option)
                                             }
-                                            options.push(temp_option)
+
+
                                         });
                                         temp_item.options = options;
                                     }
@@ -258,11 +267,19 @@ export const form = {
                                     if (item.options !== undefined && Array.isArray(item.options)) {
                                         let options = [];
                                         item.options.forEach(option => {
-                                            let temp_option = {id: option.id, text: option.id};
-                                            if (option.text !== undefined) {
-                                                temp_option['text'] = i18next.t('values.' + option.text);
+                                            if(option.id !== undefined){
+                                                let temp_option = {id: option.id, text: option.id};
+                                                if (option.text !== undefined) {
+                                                    temp_option['text'] = i18next.t('values.' + option.text);
+                                                }
+                                                options.push(temp_option)
+                                            }else {
+                                                if(typeof option === 'string' || option instanceof String){
+                                                    let temp_option = {id: option, text: i18next.t('values.' + option)};
+                                                    options.push(temp_option)
+                                                }
+
                                             }
-                                            options.push(temp_option)
                                         });
                                         temp_item.options = options;
                                     }

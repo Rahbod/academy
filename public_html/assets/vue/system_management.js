@@ -36984,11 +36984,18 @@ var form = {
                                     if (item.options !== undefined && Array.isArray(item.options)) {
                                         var options = [];
                                         item.options.forEach(function (option) {
-                                            var temp_option = { id: option.id, text: option.id };
-                                            if (option.text !== undefined) {
-                                                temp_option['text'] = __WEBPACK_IMPORTED_MODULE_0_i18next__["a" /* default */].t('values.' + option.text);
+                                            if (option.id !== undefined) {
+                                                var temp_option = { id: option.id, text: option.id };
+                                                if (option.text !== undefined) {
+                                                    temp_option['text'] = __WEBPACK_IMPORTED_MODULE_0_i18next__["a" /* default */].t('values.' + option.text);
+                                                }
+                                                options.push(temp_option);
+                                            } else {
+                                                if (typeof option === 'string' || option instanceof String) {
+                                                    option = __WEBPACK_IMPORTED_MODULE_0_i18next__["a" /* default */].t('values.' + option);
+                                                }
+                                                options.push(option);
                                             }
-                                            options.push(temp_option);
                                         });
                                         temp_item.options = options;
                                     }
@@ -37029,11 +37036,18 @@ var form = {
                                     if (item.options !== undefined && Array.isArray(item.options)) {
                                         var options = [];
                                         item.options.forEach(function (option) {
-                                            var temp_option = { id: option.id, text: option.id };
-                                            if (option.text !== undefined) {
-                                                temp_option['text'] = __WEBPACK_IMPORTED_MODULE_0_i18next__["a" /* default */].t('values.' + option.text);
+                                            if (option.id !== undefined) {
+                                                var temp_option = { id: option.id, text: option.id };
+                                                if (option.text !== undefined) {
+                                                    temp_option['text'] = __WEBPACK_IMPORTED_MODULE_0_i18next__["a" /* default */].t('values.' + option.text);
+                                                }
+                                                options.push(temp_option);
+                                            } else {
+                                                if (typeof option === 'string' || option instanceof String) {
+                                                    var _temp_option = { id: option, text: __WEBPACK_IMPORTED_MODULE_0_i18next__["a" /* default */].t('values.' + option) };
+                                                    options.push(_temp_option);
+                                                }
                                             }
-                                            options.push(temp_option);
                                         });
                                         temp_item.options = options;
                                     }

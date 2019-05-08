@@ -36,6 +36,14 @@ class DepartmentTableSeeder extends Seeder
             'middleware' => null
         ]);
         $department->users()->attach([1,2]);
+
+        $department=Department::create([
+            'name' => 'profile',
+            'display_name' => 'پنل کاربری',
+            'namespace_id'=>2,
+            'prefix'=>'profile',
+            'middleware' => null
+        ]);
         $department->users()->attach([1,2]);
     }
 }

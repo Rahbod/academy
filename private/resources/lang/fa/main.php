@@ -105,6 +105,13 @@ return [
         'operator'=>'کارمند',
         'teacher'=>'استاد',
         'user'=>'کاربر عادی',
+        'saturday'=>'شنبه',
+        'sunday'=>'یکشنبه',
+        'monday'=>'دوشنبه',
+        'tuesday'=>'سه شنبه',
+        'wednesday'=>'چهارشنبه',
+        'thursday'=>'پنج شنبه',
+        'friday'=>'جمعه',
 
 
         'TranslateRequest'=>'درخواست ترجمه',

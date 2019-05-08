@@ -370,7 +370,7 @@ class ActionTableSeeder extends Seeder
 
         foreach ($departments as $department) {
             $order = 1;
-            if ($department->name !== 'main') {
+            if ($department->name !== 'profile') {
                 foreach ($department->resources as $resource) {
 
                     if ($resource->name == 'Setting' and $department->name == 'system_management') {
@@ -393,6 +393,24 @@ class ActionTableSeeder extends Seeder
                         $actions = $this->getSettingActions($resource);
                         $this->createActions($actions, $order, $department);
                     }
+                    if (isset($special_resource[$department->name])) {
+                        foreach ($special_resource[$department->name] as $key => $resource_acions) {
+                            if ($resource->name == $key) {
+                                $array_actions = [];
+                                foreach ($resource_acions as $action) {
+                                    $array_action = array_merge($action, ['resource_name' => $resource->name, 'resource_id' => $resource->id]);
+                                    $array_actions[] = $array_action;
+                                }
+                                $this->createActions($array_actions, $order, $department);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            else{
+                foreach ($department->resources as $resource) {
+
                     if (isset($special_resource[$department->name])) {
                         foreach ($special_resource[$department->name] as $key => $resource_acions) {
                             if ($resource->name == $key) {

@@ -17,12 +17,9 @@ $namespaces = SpNamespace::with(['departments.resource_groups.resources.paths' =
         <?php
         $options = [];
         $options_string = "";
+        $guard = ($department->name === 'profile')?'web':$department->name;
         if ($department->prefix) $options['prefix'] = "'".$department->prefix."'";
-        $basic_middleware="auth:".$department->name."','set_department:".$department->name."' ,'user_info','lang','remove_additional_params";
-        if($department->name == 'main'){
-            $basic_middleware="set_department:".$department->name."','remove_additional_params";
-        }
-
+        $basic_middleware="auth:".$guard."','set_department:".$department->name."' ,'user_info','lang','remove_additional_params";
         if ($department->middleware) {
             $department_middleware=str_replace(",", "','", $department->middleware);
             $options['middleware'] = "['" . $department_middleware. "' ,'".$basic_middleware."']";

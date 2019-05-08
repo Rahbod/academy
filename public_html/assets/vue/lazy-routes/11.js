@@ -477,6 +477,7 @@ var image_input = function image_input(resolve) {
                 case 'email':
                 case 'password':
                 case 'number':
+                case 'time':
                     component_name = 'basic_input';
                     break;
                 case 'select':

@@ -42,7 +42,7 @@ class ClassRoom extends Model
                 [
                     'name' => 'author_id',
                     'type' => 'numeric',
-                    'input_type' => 'disable',
+                    'input_type' => 'hidden',
                     'orderable' => true,
                     'searchable' => true,
                     'show_in_table' => false,
@@ -219,6 +219,13 @@ class ClassRoom extends Model
                 'show_in_form' => false,
                 'show_in_table' => false,
                 'items' => Course::getSubFields()
+            ],
+            [
+                'name' => 'class_room_times',
+                'table' => ClassRoomTime::getTableName(),
+                'show_in_form' => true,
+                'show_in_table' => false,
+                'items' => ClassRoomTime::getSubFields()
             ]
         ];
     }
@@ -234,6 +241,10 @@ class ClassRoom extends Model
     public function course()
     {
         return $this->belongsTo('App\Course', 'category_id');
+    }
+    public function class_room_times()
+    {
+        return $this->hasMany('App\ClassRoomTime', 'class_room_id');
     }
 
     public function comments()

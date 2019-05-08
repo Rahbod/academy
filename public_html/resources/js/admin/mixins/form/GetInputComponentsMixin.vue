@@ -59,6 +59,7 @@
                     case 'email':
                     case 'password':
                     case 'number':
+                    case 'time':
                         component_name = 'basic_input';
                         break;
                     case 'select':
