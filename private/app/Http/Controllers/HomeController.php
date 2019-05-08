@@ -19,16 +19,17 @@ class HomeController extends Controller
 
     public function index()
     {
-        $sliders = SliderGroup::with('sliders')->where('special_name', 'main_slider')->limit(5)->get();
+        $main_sliders = SliderGroup::with('sliders')->where('special_name', 'main_slider')->limit(5)->first();
 
         $courses = Course::with('tags')->whereStatus(1)->whereLang($this->lang)->where(function ($q) {
             $q->where('published_at', null)->orWhere('published_at', '<=', Carbon::now());
         })->orderBy('order')->limit(9)->get();
 
-        $news = Category::whereHas('contents', function ($q) {
+        $news_category = Category::whereHas('contents', function ($q) {
             $q->where('type', 'news')->whereStatus(1)->whereLang($this->lang);
-        })->with('contents')->where('type', 'news')->whereStatus(1)->whereLang($this->lang)->get();
+        })->with('contents')->where('type', 'news')->whereStatus(1)->whereLang($this->lang)->first();
 
-        return view('main_template.pages.home');
+//        dd($news);
+        return view('main_template.pages.home')->with('main_sliders', $main_sliders)->with('courses', $courses)->with('news', $news_category['contents']);
     }
 }

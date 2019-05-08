@@ -21,13 +21,14 @@ class Menus
     public function __construct()
     {
         Cache::flush();
-        $this->main_menus = Cache::remember('main_menus', 5000, function () {
-            $static_menu = StaticMenu::with(['page' => function ($q) {
-                $q->where('status', 1)->where('lang', session('lang'))->orderBy('order')->select('id', 'title');
-            }])->where('status', 1)->where('lang', session('lang'))->orderBy('order')
-                ->get()->toTree();
 
-//            dd($static_menu);
+        $this->main_menus = Cache::remember('main_menus', 5000, function () {
+            $lang = 'fa';
+
+            $static_menu = StaticMenu::with(['page' => function ($q) use ($lang) {
+                $q->where('status', 1)->where('lang', $lang)->orderBy('order')->select('id', 'title');
+            }])->where('status', 1)->where('lang', $lang)->orderBy('order')
+                ->get()->toTree();
 
             return $static_menu;
         });

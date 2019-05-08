@@ -13,7 +13,9 @@ class Content extends Model
     use GetImageAttributesTrait;
     use SetAndGetDateAttributesTrait;
 
-    protected $fillable = ['author_id', 'category_id','type', 'title', 'summary', 'logo', 'image', 'lang', 'text', 'source','order','source_link', 'show_count', 'status', 'published_at'];
+    protected $fillable = ['author_id', 'category_id','type', 'title',
+        'summary', 'logo', 'image', 'lang', 'text', 'source','order',
+        'source_link', 'show_count', 'status', 'published_at'];
 
     protected function getScopeAttributes()
     {

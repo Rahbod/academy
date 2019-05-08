@@ -1,71 +1,70 @@
-@extends('main_template.master_pages.master')
-
-@section('header')
-    @include('main_template.modules.small_header')
-@endsection
+@extends('main_template.master_page.master')
 
 @section('content')
-    <div class="col-md-8 mx-auto">
-        <div class="card mt-4">
-            <div class="card-header">{{ __('auth.login') }}</div>
 
-            <div class="card-body">
-                <form method="POST" action="{{ route('login',['lang'=>session('lang')]) }}">
-                    @csrf
-
-                    <div class="form-group row">
-                        <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('users.items.email') }}</label>
-
-                        <div class="col-md-6">
-                            <input dir="ltr" id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
-
-                            @if ($errors->has('email'))
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                            @endif
-                        </div>
+    <section class="registerPage">
+        <div class="dlab-bnr-inr overlay-black-middle">
+            <div class="container">
+                <div class="dlab-bnr-inr-entry">
+                    <h1 class="text-white">Login</h1>
+                    <!-- Breadcrumb row -->
+                    @include('main_template.modules.breadcrumb')
+                    <!-- Breadcrumb row END -->
+                </div>
+            </div>
+        </div>
+        <div class="section-full content-inner shop-account">
+            <!-- Product -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="font-weight-700 m-t0 m-b20">Login Your Account</h3>
                     </div>
-
-                    <div class="form-group row">
-                        <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('users.items.password') }}</label>
-
-                        <div class="col-md-6">
-                            <input dir="ltr" id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                            @if ($errors->has('password'))
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                            @endif
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <div class="col-md-6 offset-md-4">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                <label class="form-check-label mr-4" for="remember">
-                                    {{ __('auth.items.remember_me') }}
-                                </label>
+                </div>
+                <div>
+                    <div class="max-w500 m-auto m-b30">
+                        <div class="p-a30 border-1 seth">
+                            <div class="tab-content nav">
+                                <form id="login" class="tab-pane col-12 p-a0 active">
+                                    <h4 class="font-weight-700">LOGIN</h4>
+                                    <p class="font-weight-600">If you have an account with us, please log in.</p>
+                                    <div class="form-group">
+                                        <label class="font-weight-700">E-MAIL *</label>
+                                        <input name="email" required="" class="form-control"
+                                               placeholder="Your Email Id" type="email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="font-weight-700">PASSWORD *</label>
+                                        <input name="password" required="" class="form-control "
+                                               placeholder="Type Password" type="password">
+                                    </div>
+                                    <div class="text-left">
+                                        <button class="site-button m-r5 button-lg radius-no">login</button>
+                                        <a data-toggle="tab" href="#forgot-password" class="m-l5"><i
+                                                    class="fa fa-unlock-alt"></i> Forgot Password</a>
+                                    </div>
+                                </form>
+                                <form id="forgot-password" class="tab-pane fade col-12 p-a0">
+                                    <h4 class="font-weight-700">FORGET PASSWORD ?</h4>
+                                    <p class="font-weight-600">We will send you an email to reset your password. </p>
+                                    <div class="form-group">
+                                        <label class="font-weight-700">E-MAIL *</label>
+                                        <input name="email" required="" class="form-control"
+                                               placeholder="Your Email Id" type="email">
+                                    </div>
+                                    <div class="text-left">
+                                        <a class="site-button outline gray button-lg radius-no"
+                                           data-toggle="tab" href="#login">Back</a>
+                                        <button class="site-button pull-right button-lg radius-no">Submit</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
-
-                    <div class="form-group row mb-0">
-                        <div class="col-md-8 offset-md-4">
-                            <button type="submit" class="btn btn-primary">
-                                {{ __('auth.login') }}
-                            </button>
-
-                            {{--<a class="btn btn-link" href="{{ route('password.request',['lang'=>session('lang')]) }}">--}}
-                            {{--{{ __('auth.Forgot Your Password') }}--}}
-                            {{--</a>--}}
-                        </div>
-                    </div>
-                </form>
+                </div>
             </div>
+            <!-- Product END -->
         </div>
-    </div>
+    </section>
+
 @endsection

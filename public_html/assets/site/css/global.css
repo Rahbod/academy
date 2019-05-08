@@ -1,4 +1,9 @@
 /*#region public*/
+::selection {
+    background: #3396d1;
+    color: #fff;
+}
+
 .site-button, .site-button-secondry {
     color: #fff;
     padding: 10px 20px;
@@ -27,6 +32,11 @@
 
 .font-18 {
     font-size: 18px;
+}
+
+.button-sm {
+    padding: 5px 10px;
+    font-size: 12px;
 }
 
 p {
@@ -457,7 +467,7 @@ a, .text-primary, .primary li:before, .breadcrumb-row ul li a, .header-nav .nav 
 
 .mainSlider--title p, .mainSlider--title h3 {
     color: #fff;
-    width: 50%;
+    /*width: 50%;*/
 }
 
 .mainSlider__site-button, .mainSlider__site-button-secondry {
@@ -645,7 +655,7 @@ button:after {
 }
 
 .sectionHeader p {
-    font-size: 18px;
+    font-size: 22px;
     color: #939aa4;
     padding-top: 10px;
 }
@@ -828,6 +838,22 @@ img {
     padding: 80px 0;
     position: relative;
     background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.translation::after {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    content: '';
+    display: block;
+    clear: both;
+    z-index: -1;
 }
 
 .add-area {
@@ -893,6 +919,10 @@ h2 {
 .dlab-media {
     overflow: hidden;
     position: relative;
+}
+
+.top-courses .dlab-media {
+    overflow: visible;
 }
 
 .dlab-img-overlay1:before, .dlab-img-overlay1:after, .dlab-img-overlay2:before, .dlab-img-overlay2:after, .dlab-img-overlay3:before, .dlab-img-overlay3:after, .dlab-img-overlay4:before, .dlab-img-overlay4:after, .dlab-img-overlay5:before, .dlab-img-overlay5:after, .dlab-img-overlay6:before, .dlab-img-overlay6:after, .dlab-img-overlay7:before, .dlab-img-overlay7:after, .dlab-img-overlay8:before, .dlab-img-overlay8:after, .dlab-img-overlay9:before, .dlab-img-overlay9:after, .dlab-img-overlay11:before, .dlab-img-overlay11:after, .dlab-img-overlay12:before, .dlab-img-overlay12:after {
@@ -1567,6 +1597,33 @@ footer .widget ul {
 
 /*#endregion*/
 
+/*#region aboutUs*/
+.counter-style-1 i {
+    font-size: 45px;
+    margin-right: 10px;
+    color: #21ab64 !important;
+}
+
+.counter-style-1 .counter, .counter-style-2 .counter, .counter-style-3 .counter {
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.counter {
+    position: relative;
+}
+
+.counter-style-1 .counter-text, .counter-style-2 .counter-text {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.aboutUs .translation {
+    padding: 0;
+}
+
+/*#endregion*/
+
 /*#region register page*/
 .registerPage {
     padding-bottom: 70px;
@@ -1597,6 +1654,22 @@ label {
     border-color: #dfdfdf;
 }
 
+.site-button.outline {
+    color: #888;
+    background: none;
+    border-width: 1px;
+    border-style: solid;
+    border-color: inherit;
+}
+
+.site-button.outline-2 {
+    border-width: 2px;
+}
+
+.hotal-box .site-button {
+    color: #fff;
+}
+
 .site-button.outline:hover {
     border-color: rgba(0, 0, 0, 0);
     color: #fff;
@@ -1607,6 +1680,75 @@ label {
     font-weight: 700;
     padding: 14px 30px;
     text-transform: uppercase;
+}
+
+/*#endregion*/
+
+/*#region courses*/
+.hotal-box .dlab-media {
+    transition: all 0.5s;
+}
+
+.hotal-box.dlab-box .dlab-info-has.no-hover {
+    padding-bottom: 30px;
+}
+
+.dlab-box .dlab-info-has.no-hover {
+    padding-bottom: 0;
+}
+
+.site-button.outline.radius-xl, .site-button.outline-2.radius-xl {
+    border-radius: 100px;
+}
+
+.text-white .site-button.outline {
+    color: #fff;
+}
+
+.hotal-box .dlab-info-has {
+    background: rgb(45, 31, 31);
+    background: -moz-linear-gradient(top, rgba(40, 42, 60, 0) 0%, rgba(40, 42, 60, 0.9) 100%);
+    background: -webkit-linear-gradient(top, rgba(40, 42, 60, 0) 0%, rgba(40, 42, 60, 0.9) 100%);
+    background: linear-gradient(to bottom, rgba(40, 42, 60, 0) 0%, rgba(40, 42, 60, 0.9) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2d1f1f', endColorstr='#5e4141', GradientType=0);
+}
+
+.hotal-box:hover .dlab-media {
+    border-radius: 8px;
+    box-shadow: 0px 10px 30px 0 rgba(0, 0, 0, 0.7);
+    transition: all 0.5s;
+}
+
+/*course show*/
+.tour-title h2 {
+    margin-bottom: 5px;
+    line-height: 32px;
+}
+
+.tour-title p {
+    margin-bottom: 5px;
+}
+
+.tour-price .price {
+    margin-bottom: 0;
+}
+
+.tour-price .actual-price {
+    font-size: 20px;
+    color: #909090;
+    text-decoration: line-through;
+    margin-bottom: 0;
+}
+
+.hotel-booking {
+    padding: 30px;
+    border: 1px solid #e1eeee;
+    border-radius: 4px;
+    background: #fdfdfd;
+}
+
+.m-t30 {
+    margin-top: 30px;
 }
 
 /*#endregion*/
