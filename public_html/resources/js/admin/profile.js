@@ -2,7 +2,7 @@ require('./app');
 
 Vue.component('main_component', require('./view_components/MainComponetnt.vue'));
 import store from './stores/store.js'
-import router from './routes/site_management_route';
+import router from './routes/profile_route';
 router.afterEach((to, from) => {
     // App.sidebarMainResize();
 });

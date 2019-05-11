@@ -53,7 +53,7 @@
         data() {
             return {
                 input_keys: [
-                    'email', 'profile.mobile_number', 'profile.address', 'profile.postal_code',
+                    'email',  'profile.melli_code','profile.mobile_number','profile.grade', 'profile.city','profile.address', 'profile.postal_code',
                 ],
                 component_name: 'personal_info',
                 edit_status: false

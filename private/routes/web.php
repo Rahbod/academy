@@ -19,6 +19,10 @@
 Route::get('/clear', function () {
     Cache::flush();
 });
+Route::get('/generate_files', function () {
+    makeRouteFile();
+    makeSettingFile();
+});
 
 Route::group(['middleware'=>['lang','remove_additional_params'],'prefix'=>"{lang}",],function () {
     Auth::routes();
@@ -27,9 +31,6 @@ Route::group(['middleware'=>['lang','remove_additional_params'],'prefix'=>"{lang
     include ('test_routes.php');
 });
 
-Route::get('/generate_files', function () {
-    makeRouteFile();
-    makeSettingFile();
-});
+
 
 

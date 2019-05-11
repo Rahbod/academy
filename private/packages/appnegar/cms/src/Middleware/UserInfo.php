@@ -18,13 +18,12 @@ class UserInfo
      */
     public function handle($request, Closure $next)
     {
-        if(session('department')!=='main'){
+        if(session('department')!=='profile'){
             $user=\Auth::guard(session('department'))->user();
         }
         else{
             $user=\Auth::user();
         }
-
         if($user){
             setUserSession();
         }
@@ -36,7 +35,7 @@ class UserInfo
             {
                 return redirect(route('admin.login',['department'=>session('department')]));
             }
-            return redirect()->guest(route('login'));
+            return redirect()->guest(route(session('lang').'/login'));
         }
 
         return $next($request);

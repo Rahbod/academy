@@ -1,11 +1,10 @@
-webpackJsonp([2],{
+webpackJsonp([21],{
 
-/***/ 296:
+/***/ 367:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
 //
 //
 //
@@ -14,7 +13,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 297:
+/***/ 368:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -29,21 +28,21 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-2991c845", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-24aeed7a", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ 93:
+/***/ 97:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(296)
+var __vue_script__ = __webpack_require__(367)
 /* template */
-var __vue_template__ = __webpack_require__(297)
+var __vue_template__ = __webpack_require__(368)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -60,7 +59,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/js/admin/views/Dashboard.vue"
+Component.options.__file = "resources/js/admin/views/users/Show.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -69,9 +68,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2991c845", Component.options)
+    hotAPI.createRecord("data-v-24aeed7a", Component.options)
   } else {
-    hotAPI.reload("data-v-2991c845", Component.options)
+    hotAPI.reload("data-v-24aeed7a", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true

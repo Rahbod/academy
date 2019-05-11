@@ -25,5 +25,10 @@ class NamespaceTableSeeder extends Seeder
             'name' => 'Admin',
             'display_name' => 'مدیریت محتوا',
         ]);
+
+        SpNamespace::create([
+            'name' => 'Profile',
+            'display_name' => 'پنل کاربری',
+        ]);
     }
 }

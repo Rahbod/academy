@@ -40,7 +40,7 @@ class DepartmentTableSeeder extends Seeder
         $department=Department::create([
             'name' => 'profile',
             'display_name' => 'پنل کاربری',
-            'namespace_id'=>2,
+            'namespace_id'=>3,
             'prefix'=>'profile',
             'middleware' => null
         ]);
