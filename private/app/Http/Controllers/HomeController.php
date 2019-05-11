@@ -26,10 +26,17 @@ class HomeController extends Controller
         })->orderBy('order')->limit(9)->get();
 
         $news_category = Category::whereHas('contents', function ($q) {
-            $q->where('type', 'news')->whereStatus(1)->whereLang($this->lang);
+            $q->where('type', 'news')->whereStatus(1)->whereLang($this->lang)->take(8);
         })->with('contents')->where('type', 'news')->whereStatus(1)->whereLang($this->lang)->first();
 
-//        dd($news);
-        return view('main_template.pages.home')->with('main_sliders', $main_sliders)->with('courses', $courses)->with('news', $news_category['contents']);
+        $article_category = Category::whereHas('contents', function ($q) {
+            $q->where('type', 'article')->whereStatus(1)->whereLang($this->lang)->take(8);
+        })->with('contents')->where('type', 'article')->whereStatus(1)->whereLang($this->lang)->take(5)->first();
+
+        return view('main_template.pages.home')
+            ->with('main_sliders', $main_sliders)
+            ->with('courses', $courses)
+            ->with('news', $news_category['contents'])
+            ->with('articles', $article_category['contents']);
     }
 }

@@ -148,98 +148,47 @@
             </div>
         </section>
     @endif
-    @if(isset($last_section))
+    @if(isset($articles))
         <div class="section-full bg-white content-inner dlab-about-1 promotions">
             <div class="container">
                 <div class="section-head text-black text-center">
-                    <h2 class="text-uppercase m-b0">PACKAGES</h2>
-                    <p class="font-18">BEST TRAVEL PACKAGES </p>
+                    <h2 class="text-uppercase m-b0">articles</h2>
+                    <p class="font-18">BEST ARTICLES</p>
                 </div>
                 <div class="row packages">
-                    <div class="col-lg-6 col-xl-3 col-sm-6 col-md-6 m-b30">
-                        <div class="dlab-box">
-                            <div class="dlab-media">
-                                <a href="#"><img src="{{asset('assets/site/media/images/promotion/img3.jpg')}}" alt=""></a>
-                            </div>
-                            <div class="dlab-info p-a15 border-1">
-                                <h4 class="dlab-title m-t0"><a href="packages.html">title 1</a></h4>
-                                <span class="location">tag 1 ,tag 2 ,tag 3</span>
-                                <div class="package-content">
-                                    <ul class="package-meta">
-                                        <li><span class="fa fa-calendar"></span> No of Days: 2</li>
-                                        <li><span class="fa fa-user"></span> Remain: 1</li>
-                                    </ul>
-                                    <div class="clearfix">
-                                        <span class="package-price pull-left text-primary">900,00 T</span>
-                                        <a href="void:;" class="site-button float-right">View details</a>
+                    @foreach($articles as $article)
+                        <div class="col-lg-6 col-xl-3 col-sm-6 col-md-6 m-b30">
+                            <div class="dlab-box">
+                                <div class="dlab-media">
+                                    <a title="{{$article['title']}}"
+                                       href="{{url(session('lang').'/articles/show/'.$article['id'].'/'.str_replace(' ','-',$article['title']))}}">
+                                        <img src="{{$article['logo']}}" alt="{{$article['title']}}">
+                                    </a>
+                                </div>
+                                <div class="dlab-info p-a15 border-1">
+                                    <h4 class="dlab-title m-t0">
+                                        <a {{$article['title']}} href="{{url(session('lang').'/articles/show/'.$article['id'].'/'.str_replace(' ','-',$article['title']))}}">
+                                            {{$article['title']}}
+                                        </a>
+                                    </h4>
+                                    <span class="location">tag 1 ,tag 2 ,tag 3</span>
+                                    <div class="package-content">
+                                        <ul class="package-meta">
+                                            <li><span class="fa fa-calendar">
+                                                </span> date of published : {{$article['created_at']}}</li>
+                                            <li><span class="fa fa-user"></span> views : 30</li>
+                                        </ul>
+                                        <div class="clearfix">
+                                            {{--<span class="package-price pull-left text-primary">900,00 T</span>--}}
+                                            <a title="{{$article['title']}}"
+                                               href="{{url(session('lang').'/articles/show/'.$article['id'].'/'.str_replace(' ','-',$article['title']))}}"
+                                               class="site-button float-right">View details</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6 col-xl-3 col-sm-6 col-md-6 m-b30">
-                        <div class="dlab-box">
-                            <div class="dlab-media">
-                                <a href="#"><img src="{{asset('assets/site/media/images/promotion/img4.jpg')}}" alt=""></a>
-                            </div>
-                            <div class="dlab-info p-a15 border-1">
-                                <h4 class="dlab-title m-t0"><a href="packages.html">title 1</a></h4>
-                                <span class="location">tag 1 ,tag 2 ,tag 3</span>
-                                <div class="package-content">
-                                    <ul class="package-meta">
-                                        <li><span class="fa fa-calendar"></span> No of Days: 2</li>
-                                        <li><span class="fa fa-user"></span> Remain: 1</li>
-                                    </ul>
-                                    <div class="clearfix">
-                                        <span class="package-price pull-left text-primary">900,00 T</span>
-                                        <a href="void:;" class="site-button float-right">View details</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-xl-3 col-sm-6 col-md-6 m-b30">
-                        <div class="dlab-box">
-                            <div class="dlab-media">
-                                <a href="#"><img src="{{asset('assets/site/media/images/promotion/img3.jpg')}}" alt=""></a>
-                            </div>
-                            <div class="dlab-info p-a15 border-1">
-                                <h4 class="dlab-title m-t0"><a href="packages.html">title 1</a></h4>
-                                <span class="location">tag 1 ,tag 2 ,tag 3</span>
-                                <div class="package-content">
-                                    <ul class="package-meta">
-                                        <li><span class="fa fa-calendar"></span> No of Days: 2</li>
-                                        <li><span class="fa fa-user"></span> Remain: 1</li>
-                                    </ul>
-                                    <div class="clearfix">
-                                        <span class="package-price pull-left text-primary">900,00 T</span>
-                                        <a href="void:;" class="site-button float-right">View details</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-xl-3 col-sm-6 col-md-6 m-b30">
-                        <div class="dlab-box">
-                            <div class="dlab-media">
-                                <a href="#"><img src="{{asset('assets/site/media/images/promotion/img5.jpg')}}" alt=""></a>
-                            </div>
-                            <div class="dlab-info p-a15 border-1">
-                                <h4 class="dlab-title m-t0"><a href="packages.html">title 1</a></h4>
-                                <span class="location">tag 1 ,tag 2 ,tag 3</span>
-                                <div class="package-content">
-                                    <ul class="package-meta">
-                                        <li><span class="fa fa-calendar"></span> No of Days: 2</li>
-                                        <li><span class="fa fa-user"></span> Remain: 1</li>
-                                    </ul>
-                                    <div class="clearfix">
-                                        <span class="package-price pull-left text-primary">900,00 T</span>
-                                        <a href="void:;" class="site-button float-right">View details</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
