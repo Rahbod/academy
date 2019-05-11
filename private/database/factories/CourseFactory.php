@@ -9,6 +9,6 @@ $factory->define(App\Course::class, function (Faker\Generator $faker) {
         'order' => '1',
         'status' => '1',
         'published_at' => $faker->dateTime(),
-        'image' => '/assets/site/media/images/top_courses/france.jpg'
+        'image' => 'france.jpg'
     ];
 });
