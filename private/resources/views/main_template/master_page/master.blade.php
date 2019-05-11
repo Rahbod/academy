@@ -62,8 +62,8 @@
 @include('main_template.modules.footer')
 <div class="overlay"></div>
 
-<script type="text/javascript" src="{{asset('assets/site/js/jquery.min.js')}}"></script>
-{{--<script type="text/javascript" src="{{asset('assets/site/js/vendors/popper/popper.min.js')}}"></script>--}}
+<script type="text/javascript" src="{{asset('/assets/site/js/jquery.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('/assets/site/js/vendors/popper/popper.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('./assets/site/js/bootstrap.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('./assets/site/js/vendors/toastr/toastr.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('./assets/site/js/vendors/html5lightbox/html5lightbox.js')}}"></script>

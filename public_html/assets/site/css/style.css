@@ -2349,7 +2349,7 @@ dl dd {
     -webkit-filter: grayscale(1);
     -moz-filter: grayscale(1);
     -o-filter: grayscale(1);
-    -ms-filter: grayscale(1);
+    /*-ms-filter: grayscale(1);*/
 }
 
 /* >image on color */
@@ -2894,7 +2894,7 @@ input[type=radio]:checked + label:before {
 .loading-pic {
     width: 70px;
     height: 70px;
-    background: url(inc/images/loading.GIF) center no-repeat;
+    /*background: url(inc/images/loading.GIF) center no-repeat;*/
     position: fixed;
     left: 50%;
     top: 50%;
@@ -9179,11 +9179,10 @@ a,
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
-    background-image: url(../images/line1.png);
+    /*background-image: url(../images/line1.png);*/
     background-size: auto 100%;
     background-repeat: no-repeat;
     background-position: center;
-
 }
 
 .dlab-separator[class*="style-"]:before {
@@ -11092,7 +11091,7 @@ ul[class*="list-"] {
 .testimonial-10 .testimonial-position {
     text-transform: uppercase;
     font-family: "Montserrat", sans-serif;
-    color: #888q;
+    color: #888;
     font-size: 12px;
     font-style: inherit;
 }
@@ -12906,7 +12905,7 @@ footer .widget_services ul li {
     background-size: cover;
     background-position: center;
     padding: 80px 0 20px;
-    background-image: url(../images/banner/bnr1.jpg);
+    /*background-image: url(../images/banner/bnr1.jpg);*/
     background-position: center center;
     background-attachment: fixed;
     background-size: cover;
@@ -14078,7 +14077,7 @@ ol.commentlist li .star-rating {
     top: 0;
     opacity: 1;
     z-index: 999999999;
-    background-image: url(../images/loading.svg);
+    /*background-image: url(../images/loading.svg);*/
     background-repeat: no-repeat;
     background-size: 50px;
     background-position: center;
@@ -15202,7 +15201,7 @@ ol.commentlist li .star-rating {
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1ebbf0+8,39dfaa+100 */
     background: #1ebbf0; /* Old browsers */
     background: -moz-linear-gradient(45deg, #1ebbf0 8%, #39dfaa 100%); /* FF3.6-15 */
-    background: -Winkit-linear-gradient(45deg, #1ebbf0 8%, #39dfaa 100%); /* Chrome10-25,Safari5.1-6 */
+    /*background: -Winkit-linear-gradient(45deg, #1ebbf0 8%, #39dfaa 100%); !* Chrome10-25,Safari5.1-6 *!*/
     background: linear-gradient(45deg, #1ebbf0 8%, #39dfaa 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1ebbf0', endColorstr='#39dfaa', GradientType=1); /* IE6-9 fallback on horizontal gradient */
     opacity: 1;

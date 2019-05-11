@@ -1,4 +1,32 @@
 /*#region public*/
+.dropdown-item {
+    color: #505050!important;
+    display: block;
+    font-size: 14px;
+    padding: 8px 20px;
+    text-transform: capitalize;
+    transition: all 0.15s linear;
+    -webkit-transition: all 0.15s linear;
+    -moz-transition: all 0.15s linear;
+    -o-transition: all 0.15s linear;
+    font-weight: 500;
+    font-family: "Montserrat", sans-serif;
+
+    /*color: #21ab64!important;*/
+}
+
+.header .dropdown-item:hover {
+    background-color: #F2F2F2;
+    color: #21ab64!important;;
+    text-decoration: none;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    color: #21ab64;
+    text-decoration: none;
+    background-color: #fff;
+}
+
 ::selection {
     background: #3396d1;
     color: #fff;
@@ -2388,7 +2416,7 @@ ol.comment-list li.comment .comment-respond .comment-form p {
     border: 1px solid #e1e6eb;
     text-align: center;
     border-radius: 4px 0 0 4px;
-    -webkit- border-radius: 4px 0 0 4px;
+    -webkit-border-radius: 4px 0 0 4px;
 }
 
 .comments-area p.comment-form-author:before {
@@ -2411,7 +2439,7 @@ ol.comment-list li.comment .comment-respond .comment-form p {
 .comments-area .comment-form p textarea {
     width: 100%;
     height: 40px;
-    line-height: 6px 12px;
+    line-height: 10px;
     padding: 10px 10px 10px 50px;
     border: 1px solid #e1e6eb;
     border-radius: 4px;

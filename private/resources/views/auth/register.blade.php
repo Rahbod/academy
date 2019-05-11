@@ -24,7 +24,9 @@
                     <div class="col-md-12 m-b30">
                         <div class="p-a30 border-1  max-w500 m-auto">
                             <div class="tab-content">
-                                <form id="register" class="tab-pane active">
+                                <form enctype="multipart/form-data" id="register"
+                                      action="{{ route('login',['lang'=>session('lang')]) }}"
+                                      class="tab-pane active">
                                     <h4 class="font-weight-700">PERSONAL INFORMATION</h4>
                                     <p class="font-weight-600">If you have an account with us, please log in.</p>
                                     <div class="form-group">
@@ -61,3 +63,38 @@
         </div>
     </section>
 @endsection
+@push('scripts')
+    <script>
+        $('form').on('submit', (e) => {
+            e.preventDefault(); // avoid to execute the actual submit of the form.
+
+            var form = $(e.target);
+            var url = form.attr('action');
+            var type = form.attr('method');
+            console.log(form);
+            var formData = new FormData(form[0]);
+
+            $.ajax({
+                type: type,
+                url: url,
+                processData: false,
+                contentType: false,
+                data: formData, // serializes the form's elements.
+                success: function (response) {
+                    console.log(response);
+                    toaster('success', response.title, response.message);
+                    window.location.href = '/';
+                },
+                error: function (data) {
+                    $.each(data.responseJSON.errors, function (key, value) {
+                        $('#' + key).parents('.form-group').find('.invalid-feedback span').show().html(value[0]);
+                        toaster('error', key, value);
+                    });
+                },
+                fail: function (data) {
+                    toaster('error', data.title, data.message);
+                }
+            });
+        });
+    </script>
+@endpush

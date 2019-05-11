@@ -4,20 +4,59 @@
             <div class="row d-flex justify-content-between">
                 <ul class="rightMenu">
                     <li>
-                        <a title="contact us" class="topbar__buttonLink" href="{{route('contact-us',['lang'=>session('lang')])}}">contact-us</a>
+                        <a title="contact us" class="topbar__buttonLink"
+                           href="{{route('contact-us',['lang'=>session('lang')])}}">contact-us</a>
                     </li>
                     <li>
-                        <a title="about us" class="topbar__buttonLink" href="{{route('about-us',['lang'=>session('lang')])}}">about us</a>
+                        <a title="about us" class="topbar__buttonLink"
+                           href="{{route('about-us',['lang'=>session('lang')])}}">about us</a>
                     </li>
                     {{--<li>--}}
-                        {{--<a title="translation" class="topbar__buttonLink" href="{{route('translations',['lang'=>session('lang')])}}">translation</a>--}}
+                    {{--<a title="translation" class="topbar__buttonLink" href="{{route('translations',['lang'=>session('lang')])}}">translation</a>--}}
                     {{--</li>--}}
                 </ul>
                 <ul class="leftMenu">
-                    <li><a title="login" href="{{route('login',['lang'=>session('lang')])}}" class="topbar__buttonLink">login</a>
-                    </li>
-                    <li><a title="regiser" href="{{route('register',['lang'=>session('lang')])}}"
-                           class="topbar__buttonLink">register</a></li>
+                    @guest
+                        <li><a title="login" href="{{route('login',['lang'=>session('lang')])}}"
+                               class="topbar__buttonLink">login</a>
+                        </li>
+                        <li><a title="regiser" href="{{route('register',['lang'=>session('lang')])}}"
+                               class="topbar__buttonLink">register</a></li>
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    @if ((Auth::user()->profile) && Auth::user()->avatar)
+                                        <img src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }}"
+                                             class="user-avatar-nav">
+                                    @else
+                                        <div class="user-avatar-nav"></div>
+                                    @endif
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    {{--<a class="dropdown-item {{ Request::is('profile/'.Auth::user()->name, 'profile/'.Auth::user()->name . '/edit') ? 'active' : null }}"--}}
+                                    {{--href="{{ url('/profile/'.Auth::user()->name) }}">--}}
+                                    {{--{!! trans('titles.profile') !!}--}}
+                                    {{--</a>--}}
+                                    <a class="dropdown-item active" href="void:;" title="profile">profile</a>
+                                    <a class="dropdown-item" href="void:;" title="My Articles">My Articles</a>
+                                    <a class="dropdown-item" href="void:;" title="My Requests">My
+                                        Translations</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{{ route('logout',['lang'=>session('lang')]) }}"
+                                       onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout',['lang'=>session('lang')]) }}"
+                                          method="POST"
+                                          style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                            @endguest
                 </ul>
             </div>
         </div>
