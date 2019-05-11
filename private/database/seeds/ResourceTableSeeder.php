@@ -361,12 +361,12 @@ class ResourceTableSeeder extends Seeder
         $resource_group = ResourceGroup::create([
             'department_id'=>$admin_department->id,
             'name' => 'dashboard',
-            'display_name' => 'داشبورد مدیریت محتوا',
+            'display_name' => 'داشبورد پنل کاربری',
         ]);
         Resource::create([
             'resource_group_id' => $resource_group->id,
             'name' => 'Dashboard',
-            'display_name' => 'داشبورد مدیریت محتوا'
+            'display_name' => 'داشبورد پنل کاربری'
         ]);
 
 

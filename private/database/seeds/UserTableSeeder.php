@@ -61,6 +61,6 @@ class UserTableSeeder extends Seeder
             'birthday' => '1989/01/01'
         ]);
 
-        factory('App\Profile', 400)->create();
+        factory('App\Profile', 10)->create();
     }
 }

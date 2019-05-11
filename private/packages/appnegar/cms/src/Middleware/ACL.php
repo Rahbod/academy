@@ -20,7 +20,13 @@ class Acl
     public function handle($request, Closure $next,$action_id)
     {
                 if (session('department')) {
-                    $user = session('user_info_' . session('department'));
+                    $department=session('department');
+                    if($department === 'profile'){
+                        $key='user_info';
+                    }else{
+                        $key='user_info_' . session('department');
+                    }
+                    $user = session($key);
                     if ($user) {
                         if ($user->canDo($action_id)) {
                             return $next($request);
@@ -33,7 +39,7 @@ class Acl
                         return $next($request);
                     } else {
                         //redirect to your login page
-                        return redirect('/login');
+                        return redirect(session('lang').'/login');
                     }
                 } else {
                     $message = 'دپارتمان مشخص نشده است';

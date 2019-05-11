@@ -364,6 +364,210 @@ class ActionTableSeeder extends Seeder
                     ]
                 ]
             ],
+            'profile'=>[
+                'Dashboard' => $dashboard_actions,
+                'Profile' => $profile_actions,
+                'Course'=>[
+                    [
+                        'name' => 'index',
+                        'display_name' => 'دوره ها',
+                        'need_allow' => 1,
+                        'status' => 1,
+                        'paths' => [
+                            [
+                                'name' => 'Course.index',
+                                'display_name' => 'دوره ها' ,
+                                'slug' => 'courses',
+                                'method' => 'get',
+                            ]
+                        ]
+                    ],
+                    [
+                        'name' => 'register',
+                        'display_name' => 'ثبت نام در دوره',
+                        'need_allow' => 1,
+                        'status' => 1,
+                        'paths' => [
+                            [
+                                'name' => 'Course.register',
+                                'display_name' => ' ثبت نام در دوره جدید' ,
+                                'slug' => 'courses/register',
+                                'method' => 'get',
+                            ],
+                            [
+                                'name' => 'Course.register',
+                                'display_name' => 'ذخیره ثبت نام در دوره' ,
+                                'slug' => 'courses/register',
+                                'method' => 'post',
+                            ]
+                        ]
+                    ],
+                    [
+                        'name' => 'classrooms',
+                        'display_name' => 'کلاس ها من',
+                        'need_allow' => 0,
+                        'status' => 1,
+                        'paths' => [
+                            [
+                                'name' => 'Course.classrooms',
+                                'display_name' => 'کلاس های من' ,
+                                'slug' => 'courses/classrooms',
+                                'method' => 'get',
+                            ]
+                        ]
+                    ],
+                    [
+                        'name' => 'showClassroom',
+                        'display_name' => 'مشاهده کلاس',
+                        'need_allow' => 1,
+                        'status' => 1,
+                        'paths' => [
+                            [
+                                'name' => 'Course.showClassrooms',
+                                'display_name' => 'مشاهده کلاس' ,
+                                'slug' => 'courses/classrooms/{id}',
+                                'method' => 'get',
+                            ]
+                        ]
+                    ],
+                ],
+                'TranslateRequest'=>[
+                    [
+                        'name' => 'index',
+                        'display_name' => 'درخواست ها ترجمه',
+                        'need_allow' => 0,
+                        'status' => 1,
+                        'paths' => [
+                            [
+                                'name' => 'TranslateRequest.index',
+                                'display_name' => ' درخواست های ترجمه' ,
+                                'slug' => 'translate_requests',
+                                'method' => 'get',
+                            ]
+                        ]
+                    ],
+                    [
+                        'name' => 'register',
+                        'display_name' => 'ثبت درخواست جدید',
+                        'need_allow' => 0,
+                        'status' => 1,
+                        'paths' => [
+                            [
+                                'name' => 'TranslateRequest.register',
+                                'display_name' => ' ثبت درخواست جدید' ,
+                                'slug' => 'courses/register',
+                                'method' => 'get',
+                            ],
+                            [
+                                'name' => 'TranslateRequest.register',
+                                'display_name' => 'ذخیره درخواست ترجمه' ,
+                                'slug' => 'translate_requests/register',
+                                'method' => 'post',
+                            ]
+                        ]
+                    ],
+                    [
+                        'name' => 'unverifiedRequests',
+                        'display_name' => 'درخواست های بررسی نشده',
+                        'need_allow' => 0,
+                        'status' => 1,
+                        'paths' => [
+                            [
+                                'name' => 'TranslateRequest.unverifiedRequests',
+                                'display_name' => 'درخواست های بررسی نشده' ,
+                                'slug' => 'translate_requests/unverified_requests',
+                                'method' => 'get',
+                            ],
+                        ]
+                    ],
+                    [
+                        'name' => 'awaitingPaymentRequests',
+                        'display_name' => 'درخواست های در انتظار پرداخت',
+                        'need_allow' => 0,
+                        'status' => 1,
+                        'paths' => [
+                            [
+                                'name' => 'TranslateRequest.awaitingPaymentRequests',
+                                'display_name' => 'درخواست های در انتظار پرداخت' ,
+                                'slug' => 'translate_requests/awaiting_payment_requests',
+                                'method' => 'get',
+                            ],
+                        ]
+                    ],
+                    [
+                        'name' => 'paymentRequests',
+                        'display_name' => 'پرداخت مبلغ ترجمه',
+                        'need_allow' => 0,
+                        'status' => 1,
+                        'paths' => [
+                            [
+                                'name' => 'TranslateRequest.paymentRequests',
+                                'display_name' => 'پرداخت' ,
+                                'slug' => 'translate_requests/payment_requests/{id}',
+                                'method' => 'get',
+                            ],
+                        ]
+                    ],
+                    [
+                        'name' => 'paidRequests',
+                        'display_name' => 'درخواست های پرداخت شده',
+                        'need_allow' => 0,
+                        'status' => 1,
+                        'paths' => [
+                            [
+                                'name' => 'TranslateRequest.paidRequests',
+                                'display_name' => 'درخواست های پرداخت شده' ,
+                                'slug' => 'translate_requests/paid_requests',
+                                'method' => 'get',
+                            ],
+                        ]
+                    ],
+                ],
+                'UserTransaction'=>[
+                    [
+                        'name' => 'index',
+                        'display_name' => 'عملیات مالی',
+                        'need_allow' => 1,
+                        'status' => 1,
+                        'paths' => [
+                            [
+                                'name' => 'UserTransaction.index',
+                                'display_name' => ' عملیات مالی' ,
+                                'slug' => 'user_transactions',
+                                'method' => 'get',
+                            ]
+                        ]
+                    ],
+                    [
+                        'name' => 'listView',
+                        'display_name' => 'لیست عملیات مالی',
+                        'need_allow' => 1,
+                        'status' => 1,
+                        'paths' => [
+                            [
+                                'name' =>'UserTransaction.list_view',
+                                'display_name' => 'لیست عملیات مالی',
+                                'slug' => 'user_transactions/list-view',
+                                'method' => 'get',
+                            ]
+                        ]
+                    ],
+                    [
+                        'name' => 'show',
+                        'display_name' => 'مشاهده عملیات مالی',
+                        'need_allow' => 1,
+                        'status' => 1,
+                        'paths' => [
+                            [
+                                'name' => 'UserTransaction.show',
+                                'display_name' => 'مشاهده عملیات مالی' ,
+                                'slug' => 'user_transactions/{id}',
+                                'method' => 'get',
+                            ]
+                        ]
+                    ],
+                ]
+            ]
 
         ];
         $departments = \App\Department::with('resources')->get();

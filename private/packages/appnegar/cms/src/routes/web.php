@@ -354,21 +354,47 @@
                                                                                 Route::put('/settings/update_all_settings', ['uses' =>'SettingController@updateAllSettings','as' =>'admin.Setting.updateAllSettings'])->middleware('acl:224');
                                                                             });
 
+    
+    });
+    Route::group(['namespace'=>'Controllers\Profile','prefix'=>'{lang}'],function(){
             
         Route::group(['prefix'=>'profile','middleware'=>['auth:web','set_department:profile' ,'user_info','lang','remove_additional_params']],function(){
 
                     
                         
+                                                            Route::get('/', ['uses' =>'DashboardController@index','as' =>'profile.Dashboard.index'])->middleware('acl:225');
+                                                                                
+                        
+                                                            Route::get('/profile/get_actions', ['uses' =>'ProfileController@getActions','as' =>'profile.Profile.get_actions']);
+                                                                                Route::get('/profile', ['uses' =>'ProfileController@index','as' =>'profile.Profile.index']);
+                                                                                Route::post('/profile/get_form_info', ['uses' =>'ProfileController@getFormInfo','as' =>'profile.Profile.getFormInfo']);
+                                                                                Route::put('/profile/update_basic_info', ['uses' =>'ProfileController@updateBasicInfo','as' =>'profile.Profile.updateBasicInfo']);
+                                                                                Route::put('/profile/update_about_user', ['uses' =>'ProfileController@updateAboutUser','as' =>'profile.Profile.updateAboutUser']);
+                                                                                Route::put('/profile/update_personal_info', ['uses' =>'ProfileController@updatePersonalInfo','as' =>'profile.Profile.updatePersonalInfo']);
+                                                                                Route::put('/profile/update_password', ['uses' =>'ProfileController@updatePassword','as' =>'profile.Profile.updatePassword']);
+                                                                                
+                        
+                                                            Route::get('/courses', ['uses' =>'CourseController@index','as' =>'profile.Course.index'])->middleware('acl:233');
+                                                                                Route::get('/courses/register', ['uses' =>'CourseController@register','as' =>'profile.Course.register'])->middleware('acl:234');
+                                                                                Route::post('/courses/register', ['uses' =>'CourseController@register','as' =>'profile.Course.register'])->middleware('acl:234');
+                                                                                Route::get('/courses/classrooms', ['uses' =>'CourseController@classrooms','as' =>'profile.Course.classrooms']);
+                                                                                Route::get('/courses/classrooms/{id}', ['uses' =>'CourseController@showClassroom','as' =>'profile.Course.showClassrooms'])->middleware('acl:236');
+                                                
                                                             
                         
-                                                            
+                                                            Route::get('/translate_requests', ['uses' =>'TranslateRequestController@index','as' =>'profile.TranslateRequest.index']);
+                                                                                Route::get('/courses/register', ['uses' =>'TranslateRequestController@register','as' =>'profile.TranslateRequest.register']);
+                                                                                Route::post('/translate_requests/register', ['uses' =>'TranslateRequestController@register','as' =>'profile.TranslateRequest.register']);
+                                                                                Route::get('/translate_requests/unverified_requests', ['uses' =>'TranslateRequestController@unverifiedRequests','as' =>'profile.TranslateRequest.unverifiedRequests']);
+                                                                                Route::get('/translate_requests/awaiting_payment_requests', ['uses' =>'TranslateRequestController@awaitingPaymentRequests','as' =>'profile.TranslateRequest.awaitingPaymentRequests']);
+                                                                                Route::get('/translate_requests/payment_requests/{id}', ['uses' =>'TranslateRequestController@paymentRequests','as' =>'profile.TranslateRequest.paymentRequests']);
+                                                                                Route::get('/translate_requests/paid_requests', ['uses' =>'TranslateRequestController@paidRequests','as' =>'profile.TranslateRequest.paidRequests']);
+                                                                                
                         
-                            
-                                                            
-                        
-                                                            
-                        
-                                                        });
+                                                            Route::get('/user_transactions', ['uses' =>'UserTransactionController@index','as' =>'profile.UserTransaction.index'])->middleware('acl:243');
+                                                                                Route::get('/user_transactions/list-view', ['uses' =>'UserTransactionController@listView','as' =>'profile.UserTransaction.list_view'])->middleware('acl:244');
+                                                                                Route::get('/user_transactions/{id}', ['uses' =>'UserTransactionController@show','as' =>'profile.UserTransaction.show'])->middleware('acl:245');
+                                                                            });
 
     
     });

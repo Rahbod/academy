@@ -1,59 +1,11 @@
 webpackJsonp([3],{
 
-/***/ 26:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(367)
-/* template */
-var __vue_template__ = __webpack_require__(402)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/js/admin/views/SingleView.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7067412c", Component.options)
-  } else {
-    hotAPI.reload("data-v-7067412c", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 367:
+/***/ 369:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_RouterViewMixin_vue__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_RouterViewMixin_vue__ = __webpack_require__(83);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_RouterViewMixin_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mixins_RouterViewMixin_vue__);
 //
 //
@@ -62,12 +14,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 var ListView = function ListView(resolve) {
     __webpack_require__.e/* require.ensure */(0/* duplicate */).then((function () {
-        resolve(__webpack_require__(21));
+        resolve(__webpack_require__(81));
     }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var FormView = function FormView(resolve) {
     __webpack_require__.e/* require.ensure */(1/* duplicate */).then((function () {
-        resolve(__webpack_require__(22));
+        resolve(__webpack_require__(82));
     }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var FileManagerView = function FileManagerView(resolve) {
@@ -82,7 +34,7 @@ var UpdateSettingFormView = function UpdateSettingFormView(resolve) {
 };
 var Profile = function Profile(resolve) {
     __webpack_require__.e/* require.ensure */(11).then((function () {
-        resolve(__webpack_require__(293));
+        resolve(__webpack_require__(295));
     }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var Dashboard = function Dashboard(resolve) {
@@ -130,7 +82,7 @@ var Dashboard = function Dashboard(resolve) {
 
 /***/ }),
 
-/***/ 402:
+/***/ 404:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -150,6 +102,54 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-7067412c", module.exports)
   }
 }
+
+/***/ }),
+
+/***/ 84:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(369)
+/* template */
+var __vue_template__ = __webpack_require__(404)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/admin/views/SingleView.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7067412c", Component.options)
+  } else {
+    hotAPI.reload("data-v-7067412c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
 
 /***/ })
 

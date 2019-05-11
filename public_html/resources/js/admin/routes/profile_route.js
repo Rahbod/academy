@@ -30,11 +30,6 @@ const SingleView = resolve => {
     })
 };
 
-const MenuFormView=resolve=>{
-    require.ensure(['../views/menus/FormView.vue'],()=>{
-        resolve(require('../views/menus/FormView.vue'))
-    })
-};
 
 export default new VueRouter ({
     routes:[

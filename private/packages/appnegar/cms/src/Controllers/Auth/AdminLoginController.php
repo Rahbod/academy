@@ -52,6 +52,7 @@ class AdminLoginController extends Controller
         if ($this->attemptLogin($request)) {
             $this->setLoginActivity();
             $this->setRedirectTo();
+//            dd($this->setRedirectTo(),$this->guard());
             return $this->sendLoginResponse($request);
         }
 
@@ -100,13 +101,13 @@ class AdminLoginController extends Controller
     {
         $params=request()->route()->parameters();
 
-        if(isset($params['department']) and $params['department'] !== 'main')
+        if(isset($params['department']) and $params['department'] !== 'profile')
         {
             $this->redirectTo=session('lang').'/'.$params['department'].'/';
         }
         else
         {
-            $this->redirectTo=session('lang').'/';
+            $this->redirectTo=session('lang').'/profile';
         }
         return $this->redirectTo;
     }
@@ -128,7 +129,11 @@ class AdminLoginController extends Controller
      */
     protected function guard()
     {
-        return \Auth::guard(session('department'));
+        $department=session('department');
+        if($department !== 'profile'){
+            return \Auth::guard(session('department'));
+        }
+       return \Auth::guard();
     }
 
     protected function setLoginActivity(){

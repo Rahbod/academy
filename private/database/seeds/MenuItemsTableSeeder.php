@@ -20,13 +20,39 @@ class MenuItemsTableSeeder extends Seeder
 
         $menus = Menu::all();
 
+        $available_routs=[
+            'listView',
+            'create',
+            'updateAllSettings',
+            'updateSettings',
+            'CommentsListView',
+            'showFileManager',
+            'reports',
+            'register',
+            'classrooms',
+            'unverifiedRequests',
+            'awaitingPaymentRequests',
+            'paidRequests',
+        ];
+
         foreach ($menus as $menu) {
-            $department = Department::where('name', $menu->name)->with(['resource_groups' => function ($query) {
-                $query->with(['resources' => function ($query) {
-                    $query->with(['actions' => function ($query) {
-                        $query->where('name', 'listView')->orWhere('name', 'create')->orWhere('name', 'updateAllSettings')->orWhere('name', 'updateSettings')->orWhere('name', 'CommentsListView')->orWhere('name', 'showFileManager')->orWhere('name', 'reports')->with(['paths' => function ($query2) {
+            $department = Department::where('name', $menu->name)->with(['resource_groups' => function ($query)use($available_routs) {
+                $query->with(['resources' => function ($query)use($available_routs) {
+                    $query->with(['actions' => function ($query)use($available_routs) {
+                        foreach ($available_routs as $index=>$rout){
+                            if($index === 0){
+                                $query->where('name',$rout);
+                            }
+                            else{
+                                $query->orWhere('name',$rout);
+                            }
+                        }
+                        $query->with(['paths' => function ($query2) {
                             $query2->where('method', 'get');
                         }])->orderBy('id');
+//                        $query->where('name', 'listView')->orWhere('name', 'create')->orWhere('name', 'updateAllSettings')->orWhere('name', 'updateSettings')->orWhere('name', 'CommentsListView')->orWhere('name', 'showFileManager')->orWhere('name', 'reports')->with(['paths' => function ($query2) {
+//                            $query2->where('method', 'get');
+//                        }])->orderBy('id');
 
                     }])->orderBy('id');
                 }]);
@@ -58,6 +84,7 @@ class MenuItemsTableSeeder extends Seeder
                             $resource_name = str_plural($resource_name);
                         }
                         $prefix = $resourceGroup->name;
+                        if (count($resource->actions)>=1 || $resource_name == 'profile')
                         $menu_item = MenuItem::create([
                             'menu_id' => $menu->id,
                             'parent_id' => $menu_item->id,
@@ -67,6 +94,7 @@ class MenuItemsTableSeeder extends Seeder
                             'target' => '_blank',
                             'url' => $prefix . '/' . $resource_name
                         ]);
+
                         $prefix .= '/';
                     }
 
@@ -92,13 +120,8 @@ class MenuItemsTableSeeder extends Seeder
                                         $slug = str_replace('{view}/{input_id?}', 'index', $path->slug);
                                     }
 
-                                    switch ($action->name) {
-                                        case 'listView':
-                                        case 'CommentsListView':
-                                        case 'create':
-                                        case 'showFileManager':
-                                        case 'updateSettings': {
-                                            MenuItem::create([
+                                    if(in_array($action->name,$available_routs)){
+                                        MenuItem::create([
                                                 'menu_id' => $menu->id,
                                                 'parent_id' => $menu_item->id,
                                                 'name' => $path->name,
@@ -108,10 +131,28 @@ class MenuItemsTableSeeder extends Seeder
                                                 'path_id' => $path->id,
                                                 'url' => $prefix . $slug
                                             ]);
-                                            break;
-                                        }
-
                                     }
+
+//                                    switch ($action->name) {
+//                                        case 'listView':
+//                                        case 'CommentsListView':
+//                                        case 'create':
+//                                        case 'showFileManager':
+//                                        case 'updateSettings': {
+//                                            MenuItem::create([
+//                                                'menu_id' => $menu->id,
+//                                                'parent_id' => $menu_item->id,
+//                                                'name' => $path->name,
+//                                                'display_name' => $path->display_name,
+//                                                'order' => $order3++,
+//                                                'target' => '_blank',
+//                                                'path_id' => $path->id,
+//                                                'url' => $prefix . $slug
+//                                            ]);
+//                                            break;
+//                                        }
+//
+//                                    }
                                 }
 
                             }

@@ -157,7 +157,7 @@ function setDepartment($request, $department = null)
         if ($request->route('department')) {
             $department = $request->route('department');
         } else {
-            $department = 'main';
+            $department = 'profile';
 
             $department_names = getDepartment_names();
             $array = explode('/', $request->route()->uri);
@@ -168,6 +168,7 @@ function setDepartment($request, $department = null)
 
         }
     }
+//    dd('setDepartment');
     session(['department' => $department]);
 }
 
@@ -188,9 +189,9 @@ function setUserSession($over_write = false)
     if (session('department') !== null) {
         $session_key = 'user_info_' . session('department');
     }
-
+//dd(session($session_key) );
     if (session($session_key) == null || $over_write == true) {
-        if (session('department') and session('department') !== 'main') {
+        if (session('department') and session('department') !== 'profile') {
             $user = \Auth::guard(session('department'))->user();
             if ($user) {
                 $user->load('profile');
@@ -198,6 +199,7 @@ function setUserSession($over_write = false)
                 session([$session_key => $array_user]);
             }
         } else {
+//            dd('profile');
             setBasicUserSession(true);
         }
 
@@ -216,16 +218,19 @@ function setBasicUserSession($over_write = false)
 
         if ($user) {
             $user->load('profile');
-            $array_user = $user->toArray();
-            session([$session_key => $array_user]);
+//            $array_user = $user->toArray();
+            session([$session_key => $user]);
         }
-
     }
 }
 
 function getAdminMenu($name)
 {
-    $user = session('user_info_' . session('department'));
+    $session_key = 'user_info';
+    if (session('department') !== null && session('department') !== 'profile') {
+        $session_key = 'user_info_' . session('department');
+    }
+    $user = session($session_key);
     if ($user) {
         $cacheKey = 'user_admin_menu_' . session('department') . '_' . $user['id'];
         return Cache::remember($cacheKey, Config::get('cache.ttl'), function () use ($user, $name) {

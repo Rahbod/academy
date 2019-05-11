@@ -50,6 +50,9 @@ class AdminProfileController extends AdminController
             'profile.mobile_number' => 'nullable',
             'profile.address' => 'nullable',
             'profile.postal_code' => 'nullable',
+            'profile.melli_code' => 'nullable',
+            'profile.grade' => 'nullable',
+            'profile.city' => 'nullable',
         ]);
 
         return $this->updateModel($request_data);
@@ -187,10 +190,9 @@ protected function updateProfile($request)
     return $status;
 }
 
-protected
-function getUser()
+protected function getUser()
 {
-    if (session('department') and session('department') !== 'main') {
+    if (session('department') and session('department') !== 'profile') {
         $user = \Auth::guard(session('department'))->user();
     } else {
         $user = \Auth::user();
@@ -199,11 +201,10 @@ function getUser()
     return $user;
 }
 
-protected
-function getUserSession()
+protected function getUserSession()
 {
     $session_key = 'user_info';
-    if (session('department') !== null and session('department') !== 'main') {
+    if (session('department') !== null and session('department') !== 'profile') {
         $session_key = 'user_info_' . session('department');
     }
     return session($session_key);
