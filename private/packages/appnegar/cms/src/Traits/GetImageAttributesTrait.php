@@ -31,9 +31,9 @@ trait GetImageAttributesTrait
         $resource_name = str_singular($this->getTable());
         if ($photo) {
             if(strpos($photo,'http') === false){
-//                $path = '/storage/' . config('system.' . $resource_name . '.image_destination') . $photo;
-//                return $path;
-                return $photo;
+                $path = '/storage/' . config('system.' . $resource_name . '.image_destination') . $photo;
+                return $path;
+//                return $photo;
             }
             else {
                 return $photo;

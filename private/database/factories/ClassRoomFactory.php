@@ -21,7 +21,7 @@ $factory->define(App\ClassRoom::class, function (Faker\Generator $faker) {
             'registration_end_date' => $faker->dateTimeThisYear(),
             'course_start_date' => $faker->dateTimeThisYear(),
             'course_end_date' => $faker->dateTimeThisYear(),
-            'image' => '/assets/site/media/images/top_courses/japan.jpg'
+            'image' => 'japan.jpg'
         ];
 
 
