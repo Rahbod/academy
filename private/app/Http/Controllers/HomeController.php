@@ -25,13 +25,14 @@ class HomeController extends Controller
             $q->where('published_at', null)->orWhere('published_at', '<=', Carbon::now());
         })->orderBy('order')->limit(9)->get();
 
-        $news_category = Category::whereHas('contents', function ($q) {
-            $q->where('type', 'news')->whereStatus(1)->whereLang($this->lang)->take(8);
-        })->with('contents')->where('type', 'news')->whereStatus(1)->whereLang($this->lang)->first();
+        $news_category = Category::with(['contents' => function ($q) {
+            $q->where('type', 'news')->whereStatus(1)->whereLang($this->lang)->with('tags')->take(10);
+        }])->where('type', 'news')->whereStatus(1)->whereLang($this->lang)->first();
 
-        $article_category = Category::whereHas('contents', function ($q) {
-            $q->where('type', 'article')->whereStatus(1)->whereLang($this->lang)->take(8);
-        })->with('contents')->where('type', 'article')->whereStatus(1)->whereLang($this->lang)->take(5)->first();
+        $article_category = Category::with(['contents' => function ($q) {
+            $q->where('type', 'article')->whereStatus(1)->whereLang($this->lang)->with('tags')->take(4);
+        }])->where('type', 'article')->whereStatus(1)->whereLang($this->lang)->first();
+//        dd($article_category);
 
         return view('main_template.pages.home')
             ->with('main_sliders', $main_sliders)

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Appnegar\Cms\Traits\GetImageAttributesTrait;
 use Appnegar\Cms\Traits\ModelTrait;
 use Appnegar\Cms\Traits\SetAndGetDateAttributesTrait;
 use Illuminate\Database\Eloquent\Model;
@@ -9,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 class Slider extends Model
 {
     use ModelTrait;
+    use GetImageAttributesTrait;
     use SetAndGetDateAttributesTrait;
 
     protected $fillable = ['author_id', 'group_id', 'title', 'text', 'lang', 'link', 'image', 'order', 'status'];

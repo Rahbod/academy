@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Course;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -43,10 +44,13 @@ class CourseController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id = null)
+    public function show($id)
     {
-        return view('main_template.pages.courses.show');
-
+        $course = Course::with('tags')->with(['class_rooms' => function ($q) {
+            $q->with('class_room_times')->with('teacher');
+        }])->findOrFail($id);
+//        dd($course);
+        return view('main_template.pages.courses.show')->with('course', $course);
     }
 
     /**
