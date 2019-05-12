@@ -23,6 +23,15 @@ Route::get('/generate_files', function () {
     makeRouteFile();
     makeSettingFile();
 });
+Route::get('/artisan-call', function () {
+
+//    Artisan::call('migrate:fresh');
+    Artisan::call('db:seed');
+
+    makeRouteFile();
+    makeSettingFile();
+
+});
 
 Route::group(['middleware'=>['lang','remove_additional_params'],'prefix'=>"{lang}",],function () {
     Auth::routes();

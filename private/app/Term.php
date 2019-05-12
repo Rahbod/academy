@@ -2,25 +2,16 @@
 
 namespace App;
 
-use Appnegar\Cms\Traits\GetImageAttributesTrait;
 use Appnegar\Cms\Traits\ModelTrait;
 use Appnegar\Cms\Traits\SetAndGetDateAttributesTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class Content extends Model
+class Term extends Model
 {
     use ModelTrait;
-    use GetImageAttributesTrait;
     use SetAndGetDateAttributesTrait;
 
-    protected $fillable = ['author_id', 'category_id','type', 'title',
-        'summary', 'logo', 'image', 'lang', 'text', 'source','order',
-        'source_link', 'show_count', 'status', 'published_at'];
-
-    protected function getScopeAttributes()
-    {
-        return ['lang'];
-    }
+    protected $fillable = ['author_id', 'course_id', 'title_fa','title_en', 'description_fa', 'description_en', 'status'];
 
     public static function mainFields(){
         return [
@@ -49,14 +40,14 @@ class Content extends Model
                 [
                     'name' => 'author_id',
                     'type' => 'numeric',
-                    'input_type' => 'disable',
+                    'input_type' => 'hidden',
                     'orderable' => true,
                     'searchable' => true,
                     'show_in_table' => false,
                     'show_in_form' => true,
                 ],
                 [
-                    'name' => 'category_id',
+                    'name' => 'course_id',
                     'type' => 'select',
                     'input_type' => 'select',
                     'orderable' => true,
@@ -65,63 +56,25 @@ class Content extends Model
                     'show_in_form' => true,
                 ],
                 [
-                    'name' => 'type',
-                    'type' => 'select',
-                    'input_type' => 'select',
-                    'options' => [['id' => 'article', 'text' => 'article'], ['id' => 'news', 'text' => 'news']],
-                    'orderable' => true,
-                    'searchable' => true,
-                    'show_in_table' => true,
-                    'show_in_form' => true,
-                ],
-                [
-                    'name' => 'tag_id',
-                    'type' => 'select',
-                    'input_type' => 'tags',
-                    'is_related_field'=>true,
-                    'orderable' => true,
-                    'searchable' => true,
-                    'show_in_table' => false,
-                    'show_in_form' => true,
-                ],
-                [
-                    'name' => 'title',
+                    'name' => 'title_fa',
                     'type' => 'string',
                     'input_type' => 'text',
                     'orderable' => true,
                     'searchable' => true,
                     'show_in_table' => true,
-                    'show_in_form' => true
+                    'show_in_form' => true,
                 ],
                 [
-                    'name' => 'summary',
+                    'name' => 'title_en',
                     'type' => 'string',
-                    'input_type' => 'textarea',
+                    'input_type' => 'text',
                     'orderable' => true,
                     'searchable' => true,
-                    'show_in_table' => false,
-                    'show_in_form' => true
+                    'show_in_table' => true,
+                    'show_in_form' => true,
                 ],
                 [
-                    'name' => 'logo',
-                    'type' => 'string',
-                    'input_type' => 'image',
-                    'orderable' => false,
-                    'searchable' => false,
-                    'show_in_table' => false,
-                    'show_in_form' => true
-                ],
-                [
-                    'name' => 'image',
-                    'type' => 'string',
-                    'input_type' => 'image',
-                    'orderable' => false,
-                    'searchable' => false,
-                    'show_in_table' => false,
-                    'show_in_form' => true
-                ],
-                [
-                    'name' => 'text',
+                    'name' => 'description_fa',
                     'type' => 'string',
                     'input_type' => 'editor',
                     'orderable' => true,
@@ -130,30 +83,12 @@ class Content extends Model
                     'show_in_form' => true
                 ],
                 [
-                    'name' => 'source',
+                    'name' => 'description_en',
                     'type' => 'string',
-                    'input_type' => 'text',
+                    'input_type' => 'editor',
                     'orderable' => true,
                     'searchable' => true,
                     'show_in_table' => false,
-                    'show_in_form' => true
-                ],
-                [
-                    'name' => 'source_link',
-                    'type' => 'string',
-                    'input_type' => 'text',
-                    'orderable' => true,
-                    'searchable' => true,
-                    'show_in_table' => false,
-                    'show_in_form' => true
-                ],
-                [
-                    'name' => 'show_count',
-                    'type' => 'numeric',
-                    'input_type' => 'number',
-                    'orderable' => true,
-                    'searchable' => true,
-                    'show_in_table' => true,
                     'show_in_form' => true
                 ],
                 [
@@ -174,15 +109,6 @@ class Content extends Model
                     'show_in_table' => false,
                     'show_in_form' => true,
                     'options' => [['id' => 0, 'text' => 'inactive'], ['id' => 1, 'text' => 'active']]
-                ],
-                [
-                    'name' => 'published_at',
-                    'type' => 'date',
-                    'input_type' => 'date',
-                    'orderable' => true,
-                    'searchable' => true,
-                    'show_in_table' => false,
-                    'show_in_form' => true,
                 ],
                 [
                     'name' => 'created_at',
@@ -209,13 +135,6 @@ class Content extends Model
     public static function  relatedFields(){
         return [
             [
-                'name' => 'category',
-                'table' => Category::getTableName(),
-                'show_in_form' => false,
-                'show_in_table' => false,
-                'items' => Category::getSubFields()
-            ],
-            [
                 'name' => 'author',
                 'table' => User::getTableName(),
                 'show_in_form' => false,
@@ -223,11 +142,18 @@ class Content extends Model
                 'items' => User::getSubFields()
             ],
             [
-                'name' => 'attachments',
-                'table' => Attachment::getTableName(),
-                'show_in_form' => true,
+                'name' => 'course',
+                'table' => Course::getTableName(),
+                'show_in_form' => false,
                 'show_in_table' => false,
-                'items' => Attachment::getSubFields()
+                'items' => Course::getSubFields()
+            ],
+            [
+                'name' => 'class_rooms',
+                'table' => ClassRoom::getTableName(),
+                'show_in_form' => false,
+                'show_in_table' => false,
+                'items' => ClassRoom::getSubFields()
             ],
         ];
     }
@@ -236,20 +162,18 @@ class Content extends Model
     {
         return $this->belongsTo('App\User', 'author_id', 'id');
     }
-    public function category()
+    public function course()
     {
-        return $this->belongsTo('App\Category', 'category_id');
+        return $this->belongsTo('App\Course', 'course_id');
     }
 
+    public function class_rooms()
+    {
+        return $this->hasMany('App\ClassRoom');
+    }
     public function comments()
     {
         return $this->morphMany('App\Comment', 'commentable');
-    }
-
-
-    public function attachments()
-    {
-        return $this->morphMany('App\Attachment', 'attachmentable');
     }
 
     public function tags()

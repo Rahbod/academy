@@ -6,6 +6,7 @@ use Appnegar\Cms\Traits\GetImageAttributesTrait;
 use Appnegar\Cms\Traits\ModelTrait;
 use Appnegar\Cms\Traits\SetAndGetDateAttributesTrait;
 use Illuminate\Database\Eloquent\Model;
+use PayPal\Api\Template;
 
 class Course extends Model
 {
@@ -13,7 +14,7 @@ class Course extends Model
     use GetImageAttributesTrait;
     use SetAndGetDateAttributesTrait;
 
-    protected $fillable = ['author_id', 'category_id', 'title', 'image', 'lang', 'description', 'order', 'status', 'published_at'];
+    protected $fillable = ['author_id', 'category_id', 'title_fa','title_en', 'image', 'lang', 'description_fa','description_en', 'order', 'status', 'published_at'];
 
     protected function getScopeAttributes()
     {
@@ -74,7 +75,16 @@ class Course extends Model
                     'show_in_form' => true,
                 ],
                 [
-                    'name' => 'title',
+                    'name' => 'title_fa',
+                    'type' => 'string',
+                    'input_type' => 'text',
+                    'orderable' => true,
+                    'searchable' => true,
+                    'show_in_table' => true,
+                    'show_in_form' => true
+                ],
+                [
+                    'name' => 'title_en',
                     'type' => 'string',
                     'input_type' => 'text',
                     'orderable' => true,
@@ -92,7 +102,16 @@ class Course extends Model
                     'show_in_form' => true
                 ],
                 [
-                    'name' => 'description',
+                    'name' => 'description_fa',
+                    'type' => 'string',
+                    'input_type' => 'editor',
+                    'orderable' => true,
+                    'searchable' => true,
+                    'show_in_table' => false,
+                    'show_in_form' => true
+                ],
+                [
+                    'name' => 'description_en',
                     'type' => 'string',
                     'input_type' => 'editor',
                     'orderable' => true,
@@ -175,6 +194,13 @@ class Course extends Model
                 'show_in_form' => false,
                 'show_in_table' => false,
                 'items' => User::getSubFields()
+            ],
+            [
+                'name' => 'terms',
+                'table' => Term::getTableName(),
+                'show_in_form' => false,
+                'show_in_table' => false,
+                'items' => Term::getSubFields()
             ]
         ];
     }
@@ -199,8 +225,8 @@ class Course extends Model
         return $this->morphToMany('App\Tag', 'taggable');
     }
 
-    public function class_rooms()
+    public function terms()
     {
-        return $this->hasMany('\App\ClassRoom');
+        return $this->hasMany('\App\Term');
     }
 }

@@ -110,7 +110,7 @@ class StaticMenuController extends AdminController{
             'options'=>[
                 'parent_id' => StaticMenu::whereNotIn('id',$not_in_ids)->select(['id','name As text'])->get(),
                 'page_id' => Page::select(['id','title As text'])->get(),
-                'link'=>[['id'=>'/contact-us','text'=>'تماس با ما']]
+                'link'=>\Config::get('actions')
             ]
         ];
 

@@ -83,19 +83,23 @@ class MenuItemsTableSeeder extends Seeder
                         if ($resource_name !== 'profile' and $resource_name !== 'dashboard') {
                             $resource_name = str_plural($resource_name);
                         }
-                        $prefix = $resourceGroup->name;
-                        if (count($resource->actions)>=1 || $resource_name == 'profile')
-                        $menu_item = MenuItem::create([
-                            'menu_id' => $menu->id,
-                            'parent_id' => $menu_item->id,
-                            'name' => $resource_name,
-                            'display_name' => 'مدیریت ' . $resource->display_name,
-                            'order' => $order2++,
-                            'target' => '_blank',
-                            'url' => $prefix . '/' . $resource_name
-                        ]);
 
-                        $prefix .= '/';
+
+                        if (count($resource->actions)>=1 && $department->name !== 'profile'){
+                            $prefix = $resourceGroup->name;
+                            $menu_item = MenuItem::create([
+                                'menu_id' => $menu->id,
+                                'parent_id' => $menu_item->id,
+                                'name' => $resource_name,
+                                'display_name' => 'مدیریت ' . $resource->display_name,
+                                'order' => $order2++,
+                                'target' => '_blank',
+                                'url' => $prefix . '/' . $resource_name
+                            ]);
+                            $prefix .= '/';
+                        }
+
+
                     }
 
                     $order3 = 1;

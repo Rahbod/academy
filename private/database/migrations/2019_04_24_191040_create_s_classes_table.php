@@ -19,21 +19,22 @@ class CreateSClassesTable extends Migration
             $table->foreign('author_id')->references('id')->on('users')->onDelete('set null');
             $table->integer('teacher_id')->unsigned()->index()->nullable();
             $table->foreign('teacher_id')->references('id')->on('users')->onDelete('set null');
-            $table->integer('course_id')->unsigned()->index()->nullable();
-            $table->foreign('course_id')->references('id')->on('courses')->onDelete('set null');
+            $table->integer('term_id')->unsigned()->index();
             $table->string('lang');
             $table->string('title_fa');
             $table->string('title_en');
-            $table->text('description_fa');
-            $table->text('description_en');
+            $table->text('description_fa')->nullable();
+            $table->text('description_en')->nullable();
             $table->string('image');
+            $table->smallInteger('capacity')->nullable();
+            $table->string('price');
+            $table->integer('order');
+            $table->tinyInteger('status');
             $table->timestamp('registration_start_date')->nullable();
             $table->timestamp('registration_end_date')->nullable();
             $table->timestamp('course_start_date')->nullable();
             $table->timestamp('course_end_date')->nullable();
-            $table->smallInteger('capacity')->nullable();
-            $table->string('price');
-            $table->tinyInteger('status');
+
             $table->timestamps();
         });
     }
@@ -48,7 +49,6 @@ class CreateSClassesTable extends Migration
         Schema::table('class_rooms', function (Blueprint $table){
             $table->dropForeign(['teacher_id']);
             $table->dropForeign(['author_id']);
-            $table->dropForeign(['course_id']);
         });
         Schema::dropIfExists('class_rooms');
     }

@@ -30,6 +30,7 @@ return [
         'category'=>'دسته بندی',
         'comments'=>'نظرات',
         'tags'=>'برچسب ها',
+        'attachments' => 'فایل های ضمیمه',
     ],
     "values" => [
         "select_items" => "گزینه ها ی مورد نظر خود را انتخاب کنید",

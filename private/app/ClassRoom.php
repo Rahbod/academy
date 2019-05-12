@@ -13,7 +13,7 @@ class ClassRoom extends Model
     use SetAndGetDateAttributesTrait;
     use GetImageAttributesTrait;
 
-    protected $fillable = ['author_id', 'teacher_id','course_id', 'title_fa','title_en', 'description_fa', 'description_en','image', 'capacity', 'price', 'registration_start_date', 'registration_end_date','course_start_date','course_end_date', 'status'];
+    protected $fillable = ['author_id', 'teacher_id','term_id', 'title_fa','title_en', 'description_fa', 'description_en','image', 'capacity', 'price', 'registration_start_date', 'registration_end_date','course_start_date','course_end_date', 'status'];
 
     public static function mainFields(){
         return [
@@ -58,7 +58,7 @@ class ClassRoom extends Model
                     'show_in_form' => true,
                 ],
                 [
-                    'name' => 'course_id',
+                    'name' => 'term_id',
                     'type' => 'select',
                     'input_type' => 'select',
                     'orderable' => true,
@@ -128,6 +128,15 @@ class ClassRoom extends Model
                     'searchable' => true,
                     'show_in_table' => true,
                     'show_in_form' => true,
+                ],
+                [
+                    'name' => 'order',
+                    'type' => 'numeric',
+                    'input_type' => 'number',
+                    'orderable' => true,
+                    'searchable' => true,
+                    'show_in_table' => true,
+                    'show_in_form' => true
                 ],
                 [
                     'name' => 'status',
@@ -214,11 +223,11 @@ class ClassRoom extends Model
                 'items' => User::getSubFields()
             ],
             [
-                'name' => 'course',
-                'table' => Course::getTableName(),
+                'name' => 'term',
+                'table' => Term::getTableName(),
                 'show_in_form' => false,
                 'show_in_table' => false,
-                'items' => Course::getSubFields()
+                'items' => Term::getSubFields()
             ],
             [
                 'name' => 'class_room_times',
@@ -238,9 +247,9 @@ class ClassRoom extends Model
     {
         return $this->belongsTo('App\User', 'teacher_id', 'id');
     }
-    public function course()
+    public function term()
     {
-        return $this->belongsTo('App\Course', 'category_id');
+        return $this->belongsTo('App\Term', 'term_id');
     }
     public function class_room_times()
     {

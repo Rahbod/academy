@@ -88,16 +88,15 @@ class AdminController extends Controller
     {
         $model_name = "App\\" . $this->resource;
         $model = $model_name::findOrFail($id);
-//dd($model);
         $data = json_encode($model->toArray());
         $data = json_decode($data);
         if(isset($data->avatar)){
             $avatar=url($data->avatar);
             $data->avatar="<img src='$avatar'/>";
         }
-        if(isset($model->image)){
+        if(isset($data->image)){
             $image=url($data->image);
-            $model->image="<img src='$image'/>";
+            $data->image="<img src='$image'/>";
         }
         if(isset($data->logo)){
             $logo=url($data->logo);
@@ -189,8 +188,11 @@ class AdminController extends Controller
         }
         $model_name = "App\\" . $resource;
 
-        $query = $model_name::whereNotIn('id', $not_in_ids)->where('lang', session('lang'));
+        $query = $model_name::whereNotIn('id', $not_in_ids);
         if ($types !== null) {
+            if($types[0] !== 'Course'){
+                $query->where('lang', session('lang')) ;
+            }
             $query->where(function ($query) use ($types) {
                 foreach ($types as $index => $type) {
                     if ($index == 0) {

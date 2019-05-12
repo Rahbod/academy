@@ -3,6 +3,7 @@ namespace Appnegar\Cms\Controllers\Admin;
 
 use App\Course;
 use App\Tag;
+use App\Term;
 use App\User;
 use Appnegar\Cms\Controllers\AdminController;
 use Appnegar\Cms\Traits\AdminComment;
@@ -31,7 +32,7 @@ class ClassRoomController extends AdminController{
     }
 
     protected function getTableConditions(){
-        return ['lang'=>session('lang')];
+//        return ['lang'=>session('lang')];
     }
 
     protected function setModel($model)
@@ -43,11 +44,16 @@ class ClassRoomController extends AdminController{
         return $model;
     }
 
+    protected function getOrderScopes()
+    {
+        return ['term_id'];
+    }
+
     protected function validationRules($request, $id = null)
     {
         $rules=[
             'teacher_id'=>'required|exists:users,id',
-            'course_id'=>'required|exists:courses,id',
+            'term_id'=>'required|exists:terms,id',
             'title_fa'=>'required',
            'image'=>'nullable|image|max:'.$this->config['class_room']['image']['size'] . '|mimes:' . trimArrayString($this->config['class_room']['image']['extension']),
             'capacity'=>'nullable|numeric|min:1',
@@ -67,7 +73,7 @@ class ClassRoomController extends AdminController{
         return[
             'model'=>$data,
             'options'=>[
-                'course_id'=>Course::where('lang',session('lang'))->select('id','title AS text')->get(),
+                'term_id'=>Term::select('id','title_fa AS text')->get(),
                 'teacher_id'=>User::where('type','teacher')->select('id','name AS text')->get(),
                 'tag_id'=>Tag::select('id','name as text')->get()
             ]

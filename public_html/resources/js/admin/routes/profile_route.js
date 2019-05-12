@@ -30,6 +30,12 @@ const SingleView = resolve => {
     })
 };
 
+const RegisterCourse = resolve => {
+    require.ensure(['../views/courses/Register.vue'], () => {
+        resolve(require('../views/courses/Register.vue'))
+    })
+};
+
 
 export default new VueRouter ({
     routes:[
@@ -37,6 +43,26 @@ export default new VueRouter ({
             component: SingleView,
             path: '/profile',
             meta: {resource: 'profile',action: 'show'},
+        },
+
+        {
+            component: RouterViewApp,
+            path: '/courses',
+            meta: { resource: 'courses' },
+            children:[
+                {
+                    component: ResourceView,
+                    path: '/',
+                    name: 'courses-resource-view',
+                },
+                {
+                    component: RegisterCourse,
+                    path: 'register',
+                    name: 'courses-register',
+                    meta: { action: 'register' },
+                },
+
+            ]
         },
 
 
