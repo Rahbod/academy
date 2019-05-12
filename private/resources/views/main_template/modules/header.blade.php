@@ -86,17 +86,27 @@
                         </button>
                     </div>
                     <div id="showSearchForm" class="dlab-quik-search bg-primary search-style-1 On">
-                        <form action="#">
-                            <input autofocus name="search" value="" type="text" class="form-control"
-                                   placeholder="Type to search">
-                            <span onclick="$('#showSearchForm').hide();" id="quik-search-remove"><i
-                                        class="fa fa-times"></i></span>
+                        <form action="{{url(session('lang').'/search' )}}" enctype="multipart/form-data" method="post">
+                            <div class="input-group">
+                                <input autofocus type="text" class="form-control" placeholder="search ..."
+                                       name="search_query"
+                                       aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <button class="site-button-link mr-3" type="submit"><i class="fa fa-search"></i>
+                                    </button>
+                                    <button onclick="$('#showSearchForm').hide();" id="quik-search-remove"
+                                            class="site-button-link" type="button">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </form>
                     </div>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="active">
-                                <a title="home" href="{{route('home',['lang'=>session('lang')])}}">Home</a></li>
+                                <a title="home" href="{{route('home',['lang'=>session('lang')])}}">Home</a>
+                            </li>
                             @foreach($main_menus as $item)
                                 @if(isset($item['children']) && count($item['children']) >0)
                                     <li class="">
@@ -106,7 +116,7 @@
                                             @foreach($item['children'] as $child)
                                                 <li>
                                                     @if($child['type'] === 'action' || $child['type'] === 'link')
-                                                        <a href="{{$child['link']}}" title="{{$child['name']}}"
+                                                        <a href="{{url($child['link'])}}" title="{{$child['name']}}"
                                                            class="dez-page">{{$child['name']}}</a>
                                                     @else
                                                         <a href="{{url(session('lang') .'/pages/show/'.$child['id'].'/'.str_replace(' ','-',$child['name']) )}}"
@@ -129,7 +139,7 @@
                                     </li>
                                 @endif
                             @endforeach
-                            <li class="d-none d-lg-block">
+                            <li class="d-none d-lg-block ml-3">
                                 <div class="extra-nav">
                                     <div class="extra-cell">
                                         <button onclick="$('#showSearchForm').show().find('input').focus();" id=""

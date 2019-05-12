@@ -10,13 +10,11 @@
             <div class="mainSlider">
                 @foreach($main_sliders['sliders'] as $slider)
                     <div class="mainSlider--item position-relative">
-                        <img class=""
-                             src="{{asset('/assets/site/media/images/main_slider/p1.jpg')}}"
-                             alt="{{$slider['title']}}"/>
+                        <img class="" src="{{$slider['image']}}" alt="{{$slider['title']}}"/>
 
                         <div class="mainSlider--title">
-                            <h3>{{$slider['title']}}</h3>
-                            <p>{!! $slider['text'] !!}</p>
+                            <h3 class="-show2Lines">{{$slider['title']}}</h3>
+                            <p class="-show2Lines">{!! $slider['text'] !!}</p>
 
                             <a href="{{$slider['link']}}" title="{{ $slider['title'] }}"
                                class="mainSlider__site-button button-md">details</a>
@@ -62,13 +60,13 @@
                                     </div>
                                 </div>
                                 <div class="dlab-info p-a20 border-1 text-center">
-                                    <h4 class="dlab-title m-t0">
+                                    <h4 class="dlab-title m-t0 -show2Lines">
                                         <a title="{{$course['title']}}"
                                            href="{{session('lang').'/courses/'. $course['id'] .'/'.str_replace(' ','-',$course['title']) }}">
                                             {{$course['title']}}
                                         </a>
                                     </h4>
-                                    <p>
+                                    <p class="-show2Lines">
                                         {!! $course['description'] !!}
                                     </p>
 
@@ -102,7 +100,7 @@
                         <p>If you’re looking for a truly precise translator with cool history,here you will see what
                             you are searching for
                         </p>
-                        <a href="{{url(session('lang').'/translation')}}" class="site-button white">See more details</a>
+                        <a href="{{url(session('lang').'/translations')}}" class="site-button white">See more details</a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6"></div>
@@ -119,7 +117,8 @@
                         <p class="m-b0">lately news from our site</p>
                     </div>
                     <div class="align-self-center">
-                        <a href="void:;" class="site-button button-md float-right m-t5">View All</a>
+                        <a title="view all" href="{{url(session('lang').'/news' )}}"
+                           class="site-button button-md float-right m-t5">View All</a>
                     </div>
                 </div>
             </div>
@@ -132,8 +131,8 @@
                                 {{--<img src="{{$item['image']}}" alt="">--}}
                                 <div class="dlab-info-has p-a20 no-hover ">
                                     <div class="dlab-info-has-text">
-                                        <h3 class="text-white">{{$item['title']}}<span
-                                                    class="text-white float-right">{{$item['summary']}}</span>
+                                        <h3 class="text-white -show2Lines">{{$item['title']}}
+                                            {{--<span class="text-white float-right">{{$item['summary']}}</span>--}}
                                         </h3>
                                         <a title="{{$item['title']}}"
                                            href="{{url(session('lang').'/news/'.$item['id'].'/'.str_replace(' ','-',$item['title']))}}"
@@ -166,8 +165,9 @@
                                     </a>
                                 </div>
                                 <div class="dlab-info p-a15 border-1">
-                                    <h4 class="dlab-title m-t0">
-                                        <a {{$article['title']}} href="{{url(session('lang').'/articles/show/'.$article['id'].'/'.str_replace(' ','-',$article['title']))}}">
+                                    <h4 class="dlab-title m-t0 -show1Lines">
+                                        <a class=""
+                                           {{$article['title']}} href="{{url(session('lang').'/articles/show/'.$article['id'].'/'.str_replace(' ','-',$article['title']))}}">
                                             {{$article['title']}}
                                         </a>
                                     </h4>

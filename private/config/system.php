@@ -4,20 +4,26 @@ return [
     'main' => [
             'title' =>  'موسسه زبان',
             'status' =>  '1',
-            'meta_keywords' =>  'زبان، اموزش، زبان انگلیسی',
+            'meta_keywords_fa' =>  'زبان، اموزش، زبان انگلیسی',
+            'footer_tags' =>  [
+                'language','Training Academy','Frencais','Persian','English','Italiano'
+            ],
             'meta_description' =>  'موسسه اموزش زبان',
+            'developer_name' =>  'Rahbod',
         ],
     'about_us' => [
             'introduction' =>  'این متن ازمایشی است',
             'email' =>  'info@zaban.com',
+
             'telegram' =>  'https://telegram.me/test.org',
             'instagram' =>  'https://www.instagram.com/test.org',
             'facebook' =>  'https://www.facebook.com/test.org',
             'google_plus' =>  'https://plus.google.com/+test.org',
             'twitter' =>  'https://twitter.com/test.org',
+
             'phone' =>  '0098253700000',
             'fax' =>  '009823000000',
-            'address' =>  '  ایران ـ قم ـ ...',
+            'address' =>  'Iran - Qom - ...',
             'longitude' =>  '000',
             'latitude' =>  '000',
         ],

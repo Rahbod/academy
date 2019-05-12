@@ -32,7 +32,6 @@ $('.form-control').on('focus', function (ev) {
     This.parents('.form-group').find('.invalid-tooltip').hide();
 });
 
-
 $(".scrollDown").on('click', function () {
     var header_height = $('.header').height();
     $('html, body').animate({
@@ -105,6 +104,89 @@ $('#sidebarCollapse').on('click', function () {
     $('a[aria-expanded=true]').attr('aria-expanded', 'false');
 });
 
+
+// });
+
+$('form').on('submit', function (e) {
+    e.preventDefault();
+    let form = $(e.target);
+    let formMethod = $(e.target).attr('method');
+    let url = form.attr('action');
+    let formData = new FormData(this);
+
+    console.log(form);
+    console.log(formMethod);
+    console.log(url);
+    console.log(formData);
+
+    $.ajax({
+        url: url,
+        method: formMethod,
+        processData: false,
+        contentType: false,
+        data: formData,
+        success: function (success) {
+            console.log(success);
+            toaster('success', success.title, success.message);
+        },
+        error: function (error) {
+            console.log(error);
+            $.each(error.responseJSON.errors, function (key, value) {
+                // $('#' + key).parents('.form-group').find('.invalid-tooltip').show().html(value[0]);
+                toaster('error', key, value);
+            });
+        },
+        fail: function (fail) {
+            console.log(fail);
+            toaster('error', 'error', 'error');
+        }
+
+    })
+
+});
+
+jQuery.fn.extend({
+    successToast: function (title, message) {
+        toastr['success'](message, title);
+        // return this;
+        return $(this[0])
+    },
+    errorToast: function (title, message) {
+        toastr['error'](message, title);
+        return this;
+    },
+    warningToast: function (title, message) {
+        toastr['warning'](message, title);
+        return this;
+    }
+});
+
+// jQuery.fn.extend({
+//     sendRequest: function (url, formData) {
+//
+//         console.log(this);
+//         // let url = new FormData(data);
+//         // let formData = new FormData(data);
+//
+//         this.ajax({
+//             url: url,
+//             processData: false,
+//             contentType: false,
+//             data: formData,
+//             success: function (success) {
+//                 console.log(success);
+//             },
+//             error: function (error) {
+//                 console.log(error);
+//
+//             },
+//             fail: function (fail) {
+//                 console.log(fail);
+//
+//             }
+//
+//         })
+//     },
 // });
 
 function toaster(type, title, message) {
