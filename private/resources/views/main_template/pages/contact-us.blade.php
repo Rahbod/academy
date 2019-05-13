@@ -92,6 +92,8 @@
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <select class="form-control" name="relevant_section" id="">
+                                                @if(isset(config('system.main.')))
+                                                @foreach()
                                                 <option value=""></option>
                                             </select>
                                         </div>
