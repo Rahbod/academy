@@ -328,6 +328,91 @@ export default new VueRouter({
                 },
                 {
                     component: RouterViewApp,
+                    path: 'courses',
+                    meta: { resource: 'courses' },
+                    children:[
+                        {
+                            component: ResourceView,
+                            path: '/',
+                            name: 'courses-resource-view',
+                        },
+                        {
+                            component: ListView,
+                            path: 'list-view',
+                            name: 'courses-list-view',
+                            meta: { action: 'listView' },
+                        },
+                        {
+                            component: FormView,
+                            path: 'create',
+                            name: 'courses-create',
+                            meta: { action: 'create' },
+                        },
+                        {
+                            component: FormView,
+                            path: ':id/edit',
+                            name: 'courses-edit',
+                            meta: { action: 'edit' },
+                        },
+                        {
+                            component: ShowView,
+                            path: ':id',
+                            name: 'courses-show',
+                            meta: { action: 'show' },
+                        },
+                        {
+                            component: FileManagerView,
+                            path: 'file_manager/index',
+                            name: 'courses-file-manager-show',
+                            meta: {action: 'showFileManager'},
+                        },
+                        {
+                            component: UpdateSettingFormView,
+                            path: 'settings/form',
+                            name: 'courses-settings-form',
+                            meta: {action: 'updateSettings'},
+                        },
+                    ]
+                },
+                {
+                    component: RouterViewApp,
+                    path: 'terms',
+                    meta: { resource: 'terms' },
+                    children:[
+                        {
+                            component: ResourceView,
+                            path: '/',
+                            name: 'terms-resource-view',
+                        },
+                        {
+                            component: ListView,
+                            path: 'list-view',
+                            name: 'terms-list-view',
+                            meta: { action: 'listView'},
+                        },
+                        {
+                            component: FormView,
+                            path: 'create',
+                            name: 'terms-create',
+                            meta: { action: 'create' },
+                        },
+                        {
+                            component: FormView,
+                            path: ':id/edit',
+                            name: 'terms-edit',
+                            meta: { action: 'edit' },
+                        },
+                        {
+                            component: ShowView,
+                            path: ':id',
+                            name: 'terms-show',
+                            meta: { action: 'show' },
+                        },
+
+                    ]
+                },
+                {
+                    component: RouterViewApp,
                     path: 'class_rooms',
                     meta: { resource: 'class_rooms' },
                     children:[
@@ -374,54 +459,6 @@ export default new VueRouter({
                             meta: {action: 'updateSettings'},
                         },
 
-                    ]
-                },
-                {
-                    component: RouterViewApp,
-                    path: 'courses',
-                    meta: { resource: 'courses' },
-                    children:[
-                        {
-                            component: ResourceView,
-                            path: '/',
-                            name: 'courses-resource-view',
-                        },
-                        {
-                            component: ListView,
-                            path: 'list-view',
-                            name: 'courses-list-view',
-                            meta: { action: 'listView' },
-                        },
-                        {
-                            component: FormView,
-                            path: 'create',
-                            name: 'courses-create',
-                            meta: { action: 'create' },
-                        },
-                        {
-                            component: FormView,
-                            path: ':id/edit',
-                            name: 'courses-edit',
-                            meta: { action: 'edit' },
-                        },
-                        {
-                            component: ShowView,
-                            path: ':id',
-                            name: 'courses-show',
-                            meta: { action: 'show' },
-                        },
-                        {
-                            component: FileManagerView,
-                            path: 'file_manager/index',
-                            name: 'courses-file-manager-show',
-                            meta: {action: 'showFileManager'},
-                        },
-                        {
-                            component: UpdateSettingFormView,
-                            path: 'settings/form',
-                            name: 'courses-settings-form',
-                            meta: {action: 'updateSettings'},
-                        },
                     ]
                 },
             ]

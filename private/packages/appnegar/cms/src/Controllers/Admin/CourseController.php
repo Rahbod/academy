@@ -27,14 +27,14 @@ class CourseController extends AdminController{
             ]
         ];
     }
-
-    protected function getTableConditions(){
-        return ['lang'=>session('lang')];
-    }
-    protected function getOrderScopes()
-    {
-        return ['lang'];
-    }
+//
+//    protected function getTableConditions(){
+//        return ['lang'=>session('lang')];
+//    }
+//    protected function getOrderScopes()
+//    {
+//        return ['lang'];
+//    }
 
     protected function setModel($model)
     {
@@ -50,9 +50,11 @@ class CourseController extends AdminController{
         $rules=[
             'category_id'=>'required|exists:categories,id',
             'tag_id'=>'nullable|array',
-            'title'=>'required',
+            'title_fa'=>'required',
+            'title_en'=>'required',
             'image'=>'nullable|image|max:'.$this->config['course']['image']['size'] . '|mimes:' . trimArrayString($this->config['course']['image']['extension']),
-            'description'=>'required',
+            'description_fa'=>'nullable',
+            'description_en'=>'nullable',
             'duration'=>'required',
             'order'=>'nullable|numeric|min:1',
             'status'=>'nullable|numeric|min:0|max:1'

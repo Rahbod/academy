@@ -61,7 +61,7 @@ return [
             'image_destination' =>  'course/image/',
         ],
     'class_room' => [
-            'image_size' =>  '500',
+            'image_size' =>  '1024',
             'image_width' =>  '700',
             'image_height' =>  '450',
             'image_extension' =>  'jpg, jpeg, png',

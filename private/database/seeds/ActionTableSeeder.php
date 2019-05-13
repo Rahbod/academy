@@ -33,6 +33,7 @@ class ActionTableSeeder extends Seeder
             'SettingGroup',
 
             'Course',
+            'Term',
             'ClassRoom',
             'Category',
             'Content',
@@ -371,7 +372,7 @@ class ActionTableSeeder extends Seeder
                     [
                         'name' => 'index',
                         'display_name' => 'دوره ها',
-                        'need_allow' => 1,
+                        'need_allow' => 0,
                         'status' => 1,
                         'paths' => [
                             [
@@ -385,7 +386,7 @@ class ActionTableSeeder extends Seeder
                     [
                         'name' => 'register',
                         'display_name' => 'ثبت نام در دوره',
-                        'need_allow' => 1,
+                        'need_allow' => 0,
                         'status' => 1,
                         'paths' => [
                             [
@@ -419,7 +420,7 @@ class ActionTableSeeder extends Seeder
                     [
                         'name' => 'showClassroom',
                         'display_name' => 'مشاهده کلاس',
-                        'need_allow' => 1,
+                        'need_allow' => 0,
                         'status' => 1,
                         'paths' => [
                             [
@@ -455,7 +456,7 @@ class ActionTableSeeder extends Seeder
                             [
                                 'name' => 'TranslateRequest.register',
                                 'display_name' => ' ثبت درخواست جدید' ,
-                                'slug' => 'courses/register',
+                                'slug' => 'translate_requests/register',
                                 'method' => 'get',
                             ],
                             [
@@ -527,7 +528,7 @@ class ActionTableSeeder extends Seeder
                     [
                         'name' => 'index',
                         'display_name' => 'عملیات مالی',
-                        'need_allow' => 1,
+                        'need_allow' => 0,
                         'status' => 1,
                         'paths' => [
                             [
@@ -541,7 +542,7 @@ class ActionTableSeeder extends Seeder
                     [
                         'name' => 'listView',
                         'display_name' => 'لیست عملیات مالی',
-                        'need_allow' => 1,
+                        'need_allow' => 0,
                         'status' => 1,
                         'paths' => [
                             [
@@ -555,7 +556,7 @@ class ActionTableSeeder extends Seeder
                     [
                         'name' => 'show',
                         'display_name' => 'مشاهده عملیات مالی',
-                        'need_allow' => 1,
+                        'need_allow' => 0,
                         'status' => 1,
                         'paths' => [
                             [

@@ -1,14 +1,14 @@
-webpackJsonp([15],{
+webpackJsonp([16],{
 
-/***/ 121:
+/***/ 120:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(356)
+var __vue_script__ = __webpack_require__(354)
 /* template */
-var __vue_template__ = __webpack_require__(357)
+var __vue_template__ = __webpack_require__(355)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/js/admin/view_components/forms/basic_form/inputs/SimpleEditorInput.vue"
+Component.options.__file = "resources/js/admin/view_components/forms/basic_form/inputs/EditorInput.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-77b81bdc", Component.options)
+    hotAPI.createRecord("data-v-5dc71538", Component.options)
   } else {
-    hotAPI.reload("data-v-77b81bdc", Component.options)
+    hotAPI.reload("data-v-5dc71538", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -26632,7 +26632,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 356:
+/***/ 354:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -26664,6 +26664,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         setTimeout(function () {
             tinyMCE.baseURL = vm.$store.getters.base_url + "/assets/tinymce";
             __WEBPACK_IMPORTED_MODULE_2_tinymce___default.a.init({
+                file_browser_callback: elFinderBrowser,
                 selector: '#' + vm.getId(vm.info.name),
                 directionality: vm.$store.getters.direction,
                 language: 'fa_IR',
@@ -26671,10 +26672,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 relative_urls: false,
                 remove_script_host: true,
                 mobile: { theme: 'mobile' },
-                plugins: ['advlist autolink lists hr',
-                //                        ' visualblocks visualchars code fullscreen',
-                ' nonbreaking  directionality', ' textcolor colorpicker'],
-                toolbar1: 'undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | forecolor backcolor fontsizeselect',
+                plugins: ['advlist autolink lists link image charmap print preview hr anchor pagebreak', 'searchreplace wordcount visualblocks visualchars code fullscreen', 'insertdatetime media nonbreaking save table contextmenu directionality', 'emoticons template paste textcolor colorpicker textpattern imagetools codesample toc help'],
+                toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+                toolbar2: 'print preview media | forecolor backcolor emoticons | codesample help',
+                image_advtab: true,
+                templates: [{ title: 'Test template 1', content: 'Test 1' }, { title: 'Test template 2', content: 'Test 2' }],
                 content_css: ['//fonts.googleapis.com/css?family=Lato:300,300i,400,400i', '//www.tinymce.com/css/codepen.min.css'],
                 setup: function setup(editor) {
                     editor.on('change', function () {
@@ -26683,6 +26685,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     });
                 }
             });
+
+            function elFinderBrowser(field_name, url, type, win) {
+                __WEBPACK_IMPORTED_MODULE_2_tinymce___default.a.activeEditor.windowManager.open({
+                    file: vm.main_url + "/" + vm.resource + "/file_manager/tinymce4", // use an absolute path!
+                    title: 'elFinder 2.0',
+                    width: 900,
+                    height: 450,
+                    resizable: 'yes'
+                }, {
+                    setUrl: function setUrl(url) {
+                        win.document.getElementById(field_name).value = url;
+                    }
+                });
+                return false;
+            }
         }, 10);
     },
 
@@ -26693,7 +26710,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 357:
+/***/ 355:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -26767,7 +26784,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-77b81bdc", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-5dc71538", module.exports)
   }
 }
 

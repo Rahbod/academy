@@ -223,14 +223,21 @@ class ResourceTableSeeder extends Seeder
             'name' => 'courses',
             'display_name' => 'دوره ها',
         ]);
-        $slider_category_Resource=Resource::create([
+        $course_Resource=Resource::create([
             'resource_group_id' => $resource_group->id,
             'name' => 'Course',
             'display_name' => 'دوره ها'
         ]);
+        $term_resource=Resource::create([
+            'resource_group_id' => $resource_group->id,
+            'parent_id'=>$course_Resource->id,
+            'name' => 'Term',
+            'display_name' => 'ترم ها'
+        ]);
+
         Resource::create([
             'resource_group_id' => $resource_group->id,
-            'parent_id'=>$slider_category_Resource->id,
+            'parent_id'=>$term_resource->id,
             'name' => 'ClassRoom',
             'display_name' => 'کلاس ها'
         ]);
