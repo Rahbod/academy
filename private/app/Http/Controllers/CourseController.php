@@ -2,86 +2,74 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Course;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public $lang;
+    protected $query;
+
+    public function __construct()
     {
-        return view('main_template.pages.courses.index');
+//        $this->lang = session('lang');
+        $this->lang = 'en';
+        $this->setQuery();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function setQuery()
+    {
+        $this->query = Course::query();
+        $this->query->where('status', 1)->where('lang', $this->lang)
+            ->where(function ($q2) {
+                $q2->where('published_at', null)->orWhere('published_at', '<=', Carbon::now());
+            });
+    }
+
+    public function index()
+    {
+        return view('main_template.pages.courses.index')->with('courses', $this->query->paginate(9));
+    }
+
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        $course = Course::with('tags')->with(['class_rooms' => function ($q) {
-            $q->with('class_room_times')->with('teacher');
-        }])->findOrFail($id);
+//        $course = Course::with('tags')->with(['class_rooms' => function ($q) {
+//            $q->with('class_room_times')->with('teacher');
+//        }])->findOrFail($id);
+
+        $course = Course::with(['tags', 'category'])->with('comments')->findOrFail($id);
+
 //        dd($course);
+        $related_courses = Category::where('lang', $this->lang)->where(function ($q2) {
+            $q2->where('published_at', null)->orWhere('published_at', '<=', Carbon::now());
+        })->with('courses')->where('id', $course->category->id)->take(3)->get();
+
+        dd($related_courses);
         return view('main_template.pages.courses.show')->with('course', $course);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //

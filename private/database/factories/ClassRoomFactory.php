@@ -2,12 +2,13 @@
 $factory->define(App\ClassRoom::class, function (Faker\Generator $faker) {
 
     $fake = Faker\Factory::create('fa_IR');
+    $order = 1;
 
     return
 
         [
-            'course_id' => function () {
-                return factory(App\Course::class)->make()->id;
+            'term_id' => function () {
+                return factory(App\Term::class)->create()->id;
             },
             'title_fa' => $fake->text(50),
             'title_en' => $faker->text(50),
@@ -16,12 +17,13 @@ $factory->define(App\ClassRoom::class, function (Faker\Generator $faker) {
             'description_en' => $faker->text(100),
             'capacity' => $faker->numberBetween(20, 40),
             'price' => $faker->numberBetween(400000, 1000000),
-            'status' => '1',
-            'registration_start_date' => $faker->dateTimeThisYear(),
-            'registration_end_date' => $faker->dateTimeThisYear(),
-            'course_start_date' => $faker->dateTimeThisYear(),
-            'course_end_date' => $faker->dateTimeThisYear(),
-            'image' => 'japan.jpg'
+            'status' => random_int(0, 1),
+            'registration_start_date' => \Carbon\Carbon::now(),
+            'registration_end_date' => \Carbon\Carbon::now()->addMonth(1),
+            'course_start_date' => \Carbon\Carbon::now()->addMonth(2),
+            'course_end_date' => \Carbon\Carbon::now()->addMonth(6),
+            'image' => 'japan.jpg',
+            'order' => $order++
         ];
 
 

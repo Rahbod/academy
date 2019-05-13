@@ -79,7 +79,6 @@ class ContentController extends Controller
             return view('main_template.pages.search')
                 ->with('news', $this->getNews($search_for))
                 ->with('courses', $this->getCourses($search_for))
-                ->with('translations', $this->getTranslations($search_for))
                 ->with('articles', $this->getArticles($search_for))
                 ->with('search_for', $search_for);
         }
@@ -87,7 +86,6 @@ class ContentController extends Controller
         return view('main_template.pages.search')
             ->with('news', null)
             ->with('courses', null)
-            ->with('translations', null)
             ->with('articles', null)
             ->with('search_for', $search_for);
     }
@@ -126,17 +124,5 @@ class ContentController extends Controller
             ->orderBy('created_at', 'desc')->take(12)->get();
 
         return $courses;
-    }
-
-    public function getTranslations($search_for)
-    {
-        $translations = TranslateRequest::where('lang', $this->lang)
-            ->where('status', 1)
-            ->where('price', '!=', null)
-            ->where('title', 'like', '%' . $search_for . '%')
-            ->orWhere('description', 'like', '%' . $search_for . '%')
-            ->orderBy('created_at', 'desc')->take(12)->get();
-
-        return $translations;
     }
 }

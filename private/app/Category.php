@@ -13,16 +13,17 @@ class Category extends Model
     use ModelTrait;
     use SetAndGetDateAttributesTrait;
 
-    protected $fillable=['author_id','parent_id','name','special_name','lang','description','order','status','_lft','_rgt','published_at'];
+    protected $fillable = ['author_id', 'parent_id', 'name', 'special_name', 'lang', 'description', 'order', 'status', '_lft', '_rgt', 'published_at'];
 
     protected function getScopeAttributes()
     {
         return ['lang'];
     }
 
-    public static function mainFields(){
+    public static function mainFields()
+    {
         return [
-            'name' => static ::getTableName(),
+            'name' => static::getTableName(),
             'items' => [
                 [
                     'name' => 'lang',
@@ -158,8 +159,9 @@ class Category extends Model
         ];
     }
 
-    public static function  relatedFields(){
-        return  [
+    public static function relatedFields()
+    {
+        return [
             [
                 'name' => 'author',
                 'table' => User::getTableName(),
@@ -185,6 +187,11 @@ class Category extends Model
     public function contents()
     {
         return $this->hasMany('App\Content');
+    }
+
+    public function courses()
+    {
+        return $this->hasMany('App\Course');
     }
 
 }

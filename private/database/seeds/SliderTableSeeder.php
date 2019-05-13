@@ -32,7 +32,7 @@ class SliderTableSeeder extends Seeder
             'lang' => 'en',
             'text' => 'slider text place here',
             'link' => 'www.test.test',
-            'image' => public_path('/assets/site/media/images/main_slider/p1.jpg'),
+            'image' => 'p1.jpg',
             'status' => 1,
             'order' => 1,
         ]);
@@ -42,7 +42,7 @@ class SliderTableSeeder extends Seeder
             'lang' => 'en',
             'text' => 'slider text place here',
             'link' => 'www.test2.test',
-            'image' => public_path('/assets/site/media/images/main_slider/p2.jpg'),
+            'image' => 'p2.jpg',
             'status' => 1,
             'order' => 1,
         ]);

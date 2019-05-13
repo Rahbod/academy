@@ -54,7 +54,7 @@
                         <h6 class="m-b15 h6 text-uppercase">Tag</h6>
                         <div class="dlab-separator bg-white"></div>
                         <div class="tagcloud">
-                            @foreach(config('system.main.footer_tags') as $footer_tag)
+                            @foreach(explode(',',config('system.main.footer_tags')) as $footer_tag)
                                 <a title="{{$footer_tag}}"
                                    href="{{url(session('lang').'/tags/show/'.$footer_tag)}}">{{$footer_tag}}</a>
                             @endforeach

@@ -14,6 +14,6 @@ class ClassRoomTableSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS = 0'); // disable foreign key constraints
 
 //        factory('App\ClassRoom', 40)->create();
-        factory('App\ClassRoomTime', 80)->create();
+        factory('App\ClassRoomTime', 40)->create();
     }
 }

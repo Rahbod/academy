@@ -5,18 +5,24 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('news', 'ContentController@index');
 Route::get('news/{id}/{slug?}', 'ContentController@show');
 
+
 Route::get('article', 'ContentController@index');
 Route::get('article/{id}/{slug?}', 'ContentController@show');
 
+
 Route::get('translations', 'TranslationController@index')->name('translations');
 
+
 Route::get('courses', 'CourseController@index');
+Route::get('courses/register/{id}', 'CourseController@register');
 Route::get('courses/{id}/{slug?}', 'CourseController@show');
 
 
 Route::get('contact-us', 'ContactUsController@index')->name('contact-us');
 Route::post('contact-us', 'ContactUsController@store');
 Route::post('newsletter', 'ContactUsController@newsletter');
+
+
 Route::get('search', 'contentController@search');
 Route::post('search', 'contentController@search');
 

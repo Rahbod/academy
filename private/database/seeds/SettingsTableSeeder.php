@@ -62,6 +62,24 @@ class SettingsTableSeeder extends Seeder
             'direction' => 'inherit',
             'order' => $order++
         ]);
+        Setting::create([
+            'setting_group_id' => $setting_group->id,
+            'name' => 'footer_tags',
+            'display_name' => 'تگ های فوتر',
+            'value' => 'language,english,francais,persian',
+            'type' => 'textarea',
+            'direction' => 'inherit',
+            'order' => $order++
+        ]);
+        Setting::create([
+            'setting_group_id' => $setting_group->id,
+            'name' => 'developer_name',
+            'display_name' => 'Rahbod',
+            'value' => 'Rahbod',
+            'type' => 'textarea',
+            'direction' => 'inherit',
+            'order' => $order++
+        ]);
 
         $setting_group = SettingGroup::create([
             'name' => 'about_us',
