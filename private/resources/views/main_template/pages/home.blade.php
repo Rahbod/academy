@@ -100,7 +100,8 @@
                         <p>If you’re looking for a truly precise translator with cool history,here you will see what
                             you are searching for
                         </p>
-                        <a href="{{url(session('lang').'/translations')}}" class="site-button white">See more details</a>
+                        <a href="{{url(session('lang').'/translations')}}" class="site-button white">See more
+                            details</a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6"></div>
@@ -160,14 +161,14 @@
                             <div class="dlab-box">
                                 <div class="dlab-media">
                                     <a title="{{$article['title']}}"
-                                       href="{{url(session('lang').'/articles/show/'.$article['id'].'/'.str_replace(' ','-',$article['title']))}}">
+                                       href="{{url(session('lang').'/article/show/'.$article['id'].'/'.str_replace(' ','-',$article['title']))}}">
                                         <img src="{{$article['logo']}}" alt="{{$article['title']}}">
                                     </a>
                                 </div>
                                 <div class="dlab-info p-a15 border-1">
                                     <h4 class="dlab-title m-t0 -show1Lines">
                                         <a class=""
-                                           {{$article['title']}} href="{{url(session('lang').'/articles/show/'.$article['id'].'/'.str_replace(' ','-',$article['title']))}}">
+                                           {{$article['title']}} href="{{url(session('lang').'/article/show/'.$article['id'].'/'.str_replace(' ','-',$article['title']))}}">
                                             {{$article['title']}}
                                         </a>
                                     </h4>
@@ -181,7 +182,7 @@
                                         <div class="clearfix">
                                             {{--<span class="package-price pull-left text-primary">900,00 T</span>--}}
                                             <a title="{{$article['title']}}"
-                                               href="{{url(session('lang').'/articles/show/'.$article['id'].'/'.str_replace(' ','-',$article['title']))}}"
+                                               href="{{url(session('lang').'/article/show/'.$article['id'].'/'.str_replace(' ','-',$article['title']))}}"
                                                class="site-button float-right">View details</a>
                                         </div>
                                     </div>

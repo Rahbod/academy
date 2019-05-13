@@ -17,6 +17,8 @@ Route::get('courses/{id}/{slug?}', 'CourseController@show');
 Route::get('contact-us', 'ContactUsController@index')->name('contact-us');
 Route::post('contact-us', 'ContactUsController@store');
 Route::post('newsletter', 'ContactUsController@newsletter');
+Route::get('search', 'contentController@search');
+Route::post('search', 'contentController@search');
 
 Route::view('about-us', 'main_template.pages.about-us')->name('about-us');
 Route::view('404', 'errors.404');
