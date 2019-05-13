@@ -7,6 +7,7 @@ return [
             'meta_keywords' =>  'زبان، اموزش، زبان انگلیسی',
             'meta_description' =>  'موسسه اموزش زبان',
             'footer_tags' =>  'language,english,francais,persian',
+            'developer_name' =>  'Rahbod',
         ],
     'about_us' => [
             'introduction' =>  'این متن ازمایشی است',

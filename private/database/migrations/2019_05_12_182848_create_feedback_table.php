@@ -18,7 +18,8 @@ class CreateFeedbackTable extends Migration
             $table->string('relevant_section');
             $table->string('name');
             $table->string('email');
-            $table->string('content');
+            $table->text('content');
+            $table->tinyInteger('archive')->defaule(1);
             $table->timestamps();
         });
     }

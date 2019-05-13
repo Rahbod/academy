@@ -46,6 +46,7 @@ class ActionTableSeeder extends Seeder
             'UserClass',
             'TranslateRequest',
             'Attachment',
+            'Feedback',
         ];
 
         $commentable_resources = ['Content', 'Page'];

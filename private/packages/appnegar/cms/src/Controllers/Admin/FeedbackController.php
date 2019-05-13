@@ -9,12 +9,21 @@ class FeedbackController extends AdminController{
     public function __construct(){
         $this->resource='Feedback';
     }
-//
-//    protected function validationRules($request, $id = null)
-//    {
-//        return[
-//            'name'=>'required',
-//        ];
-//    }
+
+
+    protected function getTableConditions(){
+        return ['archive'=>0];
+    }
+
+    protected function validationRules($request, $id = null)
+    {
+        return[
+            'relevant_section'=>'required',
+            'name'=>'required',
+            'email'=>'required|email',
+            'content'=>'required',
+            'archive'=>'required',
+        ];
+    }
 
 }

@@ -40868,6 +40868,34 @@ var RoleFormView = function RoleFormView(resolve) {
             path: ':id',
             name: 'user_transactions-show'
         }]
+    }, {
+        component: __WEBPACK_IMPORTED_MODULE_1__view_components_RouterViewApp_vue___default.a,
+        path: '/feedback',
+        meta: { resource: 'feedback' },
+        children: [{
+            component: ResourceView,
+            path: '/',
+            name: 'feedback-resource-view'
+        }, {
+            component: ListView,
+            path: 'list-view',
+            name: 'feedback-list-view',
+            meta: { action: 'listView' }
+        }, {
+            component: FormView,
+            path: 'create',
+            name: 'feedback-create',
+            meta: { action: 'create' }
+        }, {
+            component: FormView,
+            path: ':id/edit',
+            name: 'feedback-edit',
+            meta: { action: 'edit' }
+        }, {
+            component: ShowView,
+            path: ':id',
+            name: 'feedback-show'
+        }]
     }]
 }));
 

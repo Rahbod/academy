@@ -788,5 +788,41 @@ export default new VueRouter({
 
             ]
         },
+        {
+            component: RouterViewApp,
+            path: '/feedback',
+            meta: {resource: 'feedback'},
+            children: [
+                {
+                    component: ResourceView,
+                    path: '/',
+                    name: 'feedback-resource-view',
+                },
+                {
+                    component: ListView,
+                    path: 'list-view',
+                    name: 'feedback-list-view',
+                    meta: {action: 'listView'},
+                },
+                {
+                    component: FormView,
+                    path: 'create',
+                    name: 'feedback-create',
+                    meta: {action: 'create'},
+                },
+                {
+                    component: FormView,
+                    path: ':id/edit',
+                    name: 'feedback-edit',
+                    meta: {action: 'edit'},
+                },
+                {
+                    component: ShowView,
+                    path: ':id',
+                    name: 'feedback-show',
+                },
+
+            ]
+        },
     ]
 });
