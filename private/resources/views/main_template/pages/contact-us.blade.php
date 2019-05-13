@@ -91,6 +91,13 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
+                                            <select class="form-control" name="relevant_section" id="">
+                                                <option value=""></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
                                             <div class="input-group">
                                                 <input name="name" type="text" required="" class="form-control"
                                                        placeholder="Your Name">
