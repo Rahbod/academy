@@ -34,7 +34,7 @@ class TranslationController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->all();
+        dd($request);
     }
 
     /**

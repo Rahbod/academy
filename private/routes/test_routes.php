@@ -11,7 +11,7 @@ Route::get('article/{id}/{slug?}', 'ContentController@show');
 
 
 Route::get('translations', 'TranslationController@index')->name('translations');
-Route::post('translations', 'TranslationController@store');
+Route::post('translations/create', 'TranslationController@store');
 
 
 Route::get('courses', 'CourseController@index');

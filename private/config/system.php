@@ -3,6 +3,7 @@ return [
 
     'main' => [
             'title' =>  'موسسه زبان',
+            'related_sections' =>  'courses,translations,other',
             'status' =>  '1',
             'meta_keywords' =>  'زبان، اموزش، زبان انگلیسی',
             'meta_description' =>  'موسسه اموزش زبان',
