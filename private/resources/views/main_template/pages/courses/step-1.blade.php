@@ -1,4 +1,16 @@
 <div class="p-a30 border-1 m-auto">
+    <h1 class="text-center mb-4 border-bottom p-3">
+        Course Information
+    </h1>
+    <div class="d-flex justify-content-between mb-4">
+        <img style="height: 300px!important;" src="{{$course['image']}}" alt="{{$course['image']}}">
+        <div class="ml-3">
+            <h4 class="m-t0 m-b10">{{$course['title_'.session('lang')]}}</h4>
+            <p class="m-t0 m-b10">{{$course['description_'.session('lang')]}}</p>
+            <h2 class="m-t10 m-b20">{{$course['duration']}} month</h2>
+        </div>
+    </div>
+
     <table class="table table-hover">
         <thead class="thead-light">
         <tr>
@@ -8,7 +20,8 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($terms as $key => $term)
+
+        @foreach($course['terms'] as $key => $term)
             <tr>
                 <td colspan="1">
                     <div class="form-check">

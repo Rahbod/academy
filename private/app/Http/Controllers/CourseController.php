@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Category;
-use App\ClassRoom;
 use App\Course;
 use App\Term;
 use Carbon\Carbon;
@@ -38,15 +37,13 @@ class CourseController extends Controller
     public function termShow($id)
     {
         $course = $this->query->with('terms')->where('id', $id)->first();
-//        dd($course);
-        return view('main_template.pages.courses.course-registration')->with('terms', $course['terms']);
+        return view('main_template.pages.courses.course-registration')->with('course', $course);
     }
 
     public function classShow($id)
     {
-        $term =  Term::with('class_rooms.teacher')->findOrFail($id);
+        $term = Term::with('class_rooms.teacher')->findOrFail($id);
         $class_view = view('main_template.pages.courses.step-2')->with('class_rooms', $term->class_rooms);
-//        dd($class_view);
         return $class_view;
     }
 
