@@ -61,7 +61,8 @@
                     <div class="col-md-10 mx-auto m-b30">
                         <div class="p-a30 border-1 m-auto">
                             <div class="">
-                                <form action="{{url(session('lang').'/translations')}}" method="post" enctype="multipart/form-data"
+                                <form action="{{url(session('lang').'/translations')}}" method="post"
+                                      enctype="multipart/form-data"
                                       id="translationForm" class="">
                                     <h4 class="font-weight-700">Request Form</h4>
                                     <p class="font-weight-600">please fill the blanks carefully</p>
@@ -134,28 +135,59 @@
             autoProcessQueue: false,
             autoDiscover: false,
             uploadMultiple: true,
-            parallelUploads: 5,
+            parallelUploads: 1,
             maxFiles: 5,
-            maxFilesize: 1,
-            acceptedFiles: 'image/*',
+            maxFilesize: 10,
+            acceptedFiles: 'image/jpeg,image/png,application/pdf,application/docs',
             addRemoveLinks: true,
             init: function () {
-                dzClosure = this; // Makes sure that 'this' is understood inside the functions below.
+                var myDropzone = this;
 
-                // for Dropzone to process the queue (instead of default form behavior):
-                document.getElementById("submitBtn").addEventListener("click", function (e) {
-                    // Make sure that the form isn't actually being sent.
+                $("#translationForm").on("submit", function (e) {
+                    console.log("the button is clicked");
                     e.preventDefault();
                     e.stopPropagation();
-                    dzClosure.processQueue();
+
+                    var form = $(e.target);
+                    console.log(form);
+                    var url = form.attr('action');
+                    var formData = new FormData(form);
+                    console.log(formData);
+
+                    $.ajax({
+                        url: url,
+                        data: 'hi',
+                        processData: false,
+                        contentType: false,
+                        type: 'post',
+                        async: false,
+
+                        success: function (response) {
+                            console.log(response);
+                        },
+                        error: function (error) {
+                            console.log(error);
+                        }
+                    })
                 });
 
-                //send all the form data along with the files:
-                this.on("sendingmultiple", function (data, xhr, formData) {
-                    console.log(formData);
-//                formData.append("firstname", jQuery("#firstname").val());
-//                formData.append("lastname", jQuery("#lastname").val());
+                this.on("sendingmultiple", function () {
+                    console.log("sending multiple");
                 });
+                this.on("successmultiple", function (files, response) {
+                    console.log("success multiple");
+                });
+                this.on("errormultiple", function (files, response) {
+                    console.log("error multiple");
+                });
+
+//                if (this.dropzone.getQueuedFiles().length === 0) {
+//                    var blob = new Blob();
+//                    blob.upload = { 'chunked': this.dropzone.defaultOptions.chunking };
+//                    this.dropzone.uploadFile(blob);
+//                } else {
+//                    this.dropzone.processQueue();
+//                }
             }
         };
 

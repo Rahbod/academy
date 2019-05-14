@@ -38,7 +38,8 @@
                             <p>If you have any questions simply use the following contact details.</p>
                             <ul class="no-margin">
                                 <li class="icon-bx-wraper left m-b30">
-                                    <div class="icon-bx-xs border-1"><a href="#" class="icon-cell"><i class="fas fa-map-marker-alt"></i>
+                                    <div class="icon-bx-xs border-1"><a href="#" class="icon-cell"><i
+                                                    class="fas fa-map-marker-alt"></i>
                                         </a></div>
                                     <div class="icon-content">
                                         <h6 class="text-uppercase m-tb0 dlab-tilte">Address:</h6>
@@ -46,14 +47,16 @@
                                     </div>
                                 </li>
                                 <li class="icon-bx-wraper left  m-b30">
-                                    <div class="icon-bx-xs border-1"><a href="#" class="icon-cell"><i class="far fa-envelope"></i></a></div>
+                                    <div class="icon-bx-xs border-1"><a href="#" class="icon-cell"><i
+                                                    class="far fa-envelope"></i></a></div>
                                     <div class="icon-content">
                                         <h6 class="text-uppercase m-tb0 dlab-tilte">Email:</h6>
                                         <p>{{config('system.about_us.email')}}</p>
                                     </div>
                                 </li>
                                 <li class="icon-bx-wraper left">
-                                    <div class="icon-bx-xs border-1"><a href="#" class="icon-cell"><i class="fas fa-phone-office"></i></a></div>
+                                    <div class="icon-bx-xs border-1"><a href="#" class="icon-cell"><i
+                                                    class="fas fa-phone-office"></i></a></div>
                                     <div class="icon-content">
                                         <h6 class="text-uppercase m-tb0 dlab-tilte">PHONE</h6>
                                         <p>{{config('system.about_us.phone')}}</p>
@@ -69,7 +72,8 @@
                                            class="site-button google-plus sharp"><i
                                                     class="fab fa-google-plus-g"></i></a></li>
                                     <li><a title="telegram account" href="{{config('system.about_us.telegram')}}"
-                                           class="site-button telegram sharp"><i class="fab fa-telegram-plane"></i></a></li>
+                                           class="site-button telegram sharp"><i class="fab fa-telegram-plane"></i></a>
+                                    </li>
                                     <li><a title="twitter account" href="{{config('system.about_us.twitter')}}"
                                            class="site-button twitter sharp"><i
                                                     class="fab fa-twitter"></i></a></li>
@@ -92,9 +96,11 @@
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <select class="form-control" name="relevant_section" id="">
-                                                @if(isset(config('system.main.')))
-                                                @foreach()
-                                                <option value=""></option>
+                                                @if(isset(config('system.main.related_sections')))
+                                                    @foreach(explode(',',config('system.main.related_sections')) as $value)
+                                                        <option value="{{$value}}">{{$value}}</option>
+                                                    @endforeach
+                                                @endif
                                             </select>
                                         </div>
                                     </div>

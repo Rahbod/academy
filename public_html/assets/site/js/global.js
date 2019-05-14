@@ -107,7 +107,7 @@ $('#sidebarCollapse').on('click', function () {
 
 // });
 
-$('form').on('submit', function (e) {
+$('form.contact-us').on('submit', function (e) {
     e.preventDefault();
     let form = $(e.target);
     let formMethod = $(e.target).attr('method');
