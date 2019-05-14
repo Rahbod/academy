@@ -4,7 +4,6 @@
     <link type="text/css" rel="stylesheet" href="{{asset('/assets/site/js/vendors/dropzone/basic.css')}}">
     <link type="text/css" rel="stylesheet" href="{{asset('/assets/site/js/vendors/dropzone/dropzone.css')}}">
 
-
     <style>
         .dropzone {
             border: 2px dashed #999999;
@@ -311,7 +310,6 @@
 @endsection
 
 @push('scripts')
-
     <script type="text/javascript" src="{{asset('assets/site/js/vendors/dropzone/dropzone.js')}}"></script>
 
     <script>

@@ -11,10 +11,12 @@ Route::get('article/{id}/{slug?}', 'ContentController@show');
 
 
 Route::get('translations', 'TranslationController@index')->name('translations');
+Route::post('translations', 'TranslationController@store');
 
 
 Route::get('courses', 'CourseController@index');
-Route::get('courses/register/{id}', 'CourseController@register');
+Route::get('courses/register/{id}', 'CourseController@termShow');
+Route::get('show_classes/{id}', 'CourseController@classShow');
 Route::get('courses/{id}/{slug?}', 'CourseController@show');
 
 
