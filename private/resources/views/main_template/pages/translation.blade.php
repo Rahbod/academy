@@ -61,7 +61,7 @@
                     <div class="col-md-10 mx-auto m-b30">
                         <div class="p-a30 border-1 m-auto">
                             <div class="">
-                                <form action="/file-upload" method="post" enctype="multipart/form-data"
+                                <form action="{{url(session('lang').'/translations')}}" method="post" enctype="multipart/form-data"
                                       id="translationForm" class="">
                                     <h4 class="font-weight-700">Request Form</h4>
                                     <p class="font-weight-600">please fill the blanks carefully</p>

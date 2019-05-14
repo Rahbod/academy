@@ -35,6 +35,18 @@ class SettingsTableSeeder extends Seeder
         ]);
         Setting::create([
             'setting_group_id' => $setting_group->id,
+            'name' => 'related_sections',
+            'display_name' => 'بخش های مربوطه',
+            'value' => 'courses,translations,other',
+            'details' => '',
+            'type' => 'text',
+            'direction' => 'inherit',
+            'order' => $order++
+        ]);
+
+
+        Setting::create([
+            'setting_group_id' => $setting_group->id,
             'name' => 'status',
             'display_name' => 'وضعیت سایت',
             'value' => '1',

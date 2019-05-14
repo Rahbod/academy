@@ -54,10 +54,16 @@ class CourseController extends Controller
 //        dd($course);
         $related_courses = Category::where('lang', $this->lang)->where(function ($q2) {
             $q2->where('published_at', null)->orWhere('published_at', '<=', Carbon::now());
-        })->with('courses')->where('id', $course->category->id)->take(3)->get();
+        })->with(['courses' => function ($c) {
+            $c->where('lang', $this->lang)->where(function ($q2) {
+                $q2->where('published_at', null)->orWhere('published_at', '<=', Carbon::now());
+            })->take(4);
+        }])->where('id', $course->category->id)->first();
 
-        dd($related_courses);
-        return view('main_template.pages.courses.show')->with('course', $course);
+//        dd($related_courses->courses);
+        return view('main_template.pages.courses.show')
+            ->with('course', $course)
+            ->with('related_courses', $related_courses['courses']);
     }
 
     public function edit($id)
