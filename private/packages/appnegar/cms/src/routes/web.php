@@ -362,6 +362,17 @@
                                                             Route::get('/settings', ['uses' =>'SettingController@index','as' =>'admin.site_management.Setting.index'])->middleware('acl:230');
                                                                                 Route::get('/settings/update_all_settings', ['uses' =>'SettingController@updateAllSettings','as' =>'admin.Setting.updateAllSettings'])->middleware('acl:231');
                                                                                 Route::put('/settings/update_all_settings', ['uses' =>'SettingController@updateAllSettings','as' =>'admin.Setting.updateAllSettings'])->middleware('acl:231');
+                                                                                
+                        
+                                                            Route::get('/feedback/get_actions', ['uses' =>'FeedbackController@getActions','as' =>'admin.Feedback.get_actions']);
+                                                                                Route::get('/feedback', ['uses' =>'FeedbackController@index','as' =>'admin.Feedback.index'])->middleware('acl:233');
+                                                                                Route::get('/feedback/list-view', ['uses' =>'FeedbackController@listView','as' =>'admin.Feedback.list_view'])->middleware('acl:234');
+                                                                                Route::get('/feedback/create', ['uses' =>'FeedbackController@create','as' =>'admin.Feedback.create'])->middleware('acl:235');
+                                                                                Route::post('/feedback', ['uses' =>'FeedbackController@create','as' =>'admin.Feedback.store'])->middleware('acl:235');
+                                                                                Route::get('/feedback/{id}', ['uses' =>'FeedbackController@show','as' =>'admin.Feedback.show'])->middleware('acl:236');
+                                                                                Route::get('/feedback/{id}/edit', ['uses' =>'FeedbackController@edit','as' =>'admin.Feedback.edit'])->middleware('acl:237');
+                                                                                Route::put('/feedback/{id}', ['uses' =>'FeedbackController@edit','as' =>'admin.Feedback.update'])->middleware('acl:237');
+                                                                                Route::delete('/feedback/{id}', ['uses' =>'FeedbackController@destroy','as' =>'admin.Feedback.destroy'])->middleware('acl:238');
                                                                             });
 
     
@@ -372,7 +383,7 @@
 
                     
                         
-                                                            Route::get('/', ['uses' =>'DashboardController@index','as' =>'profile.Dashboard.index'])->middleware('acl:232');
+                                                            Route::get('/', ['uses' =>'DashboardController@index','as' =>'profile.Dashboard.index'])->middleware('acl:239');
                                                                                 
                         
                                                             Route::get('/profile/get_actions', ['uses' =>'ProfileController@getActions','as' =>'profile.Profile.get_actions']);

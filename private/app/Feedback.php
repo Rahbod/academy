@@ -24,7 +24,6 @@ class Feedback extends Model
                     'orderable' => true,
                     'searchable' => true,
                     'show_in_table' => true,
-                    'show_in_sub_table' => false,
                     'show_in_form' => true
                 ],
                 [
@@ -60,20 +59,21 @@ class Feedback extends Model
                     'input_type' => 'textarea',
                     'orderable' => true,
                     'searchable' => true,
-                    'show_in_table' => true,
+                    'show_in_table' => false,
                     'show_in_form' => true
+                ],
+
+                [
+                    'name' => 'archive',
+                    'type' => 'select',
+                    'input_type' => 'radio',
+                    'orderable' => true,
+                    'searchable' => true,
+                    'show_in_table' => true,
+                    'show_in_form' => true,
+                    'options' => [['id' => 0, 'text' => 'inactive'], ['id' => 1, 'text' => 'active']]
                 ],
             ]
         ];
-    }
-
-    public function contents()
-    {
-        return $this->morphedByMany('App\Content', 'taggable');
-    }
-
-    public function course()
-    {
-        return $this->morphedByMany('App\Course', 'taggable');
     }
 }

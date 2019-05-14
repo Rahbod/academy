@@ -16,7 +16,7 @@ class TermController extends AdminController{
     }
 
     protected function getTableConditions(){
-        return ['lang'=>session('lang')];
+//        return ['lang'=>session('lang')];
     }
 
     protected function getOrderScopes()

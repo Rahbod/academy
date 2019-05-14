@@ -6,8 +6,13 @@ return [
     "edit_form_title" => "فرم ویرایش بازخورد",
     "items" => [
         "id" => "شناسه",
+        'relevant_section' => 'بخش مربوطه',
         'name' => 'نام',
         'email' => 'ایمیل',
+        'content' => 'محتوا',
+        'archive' => 'وضعیت بایگانی',
+        'updated_at' => 'تاریخ بروزرسانی',
+        'created_at' => 'تاریخ ایجاد',
     ],
     "values" => [
         "create_new_record" => "ایجاد بازخورد جدید"

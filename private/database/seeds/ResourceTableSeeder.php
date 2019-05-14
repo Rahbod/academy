@@ -360,13 +360,27 @@ class ResourceTableSeeder extends Seeder
             'display_name' => 'تنظیمات'
         ]);
 
+        /***********setting resources************/
+        $resource_group = ResourceGroup::create([
+            'department_id'=>$admin_department->id,
+            'name' => 'feedback',
+            'display_name' => 'بازخورد',
+        ]);
+
+        Resource::create([
+            'parent_id' => $setting_group_resource->id,
+            'resource_group_id' => $resource_group->id,
+            'name' => 'Feedback',
+            'display_name' => 'بازخورد'
+        ]);
+
         /*************user panel***********/
 
-        $admin_department=Department::where('name','profile')->first(['id']);
+        $profile_department=Department::where('name','profile')->first(['id']);
 
         /***********dashboard resources************/
         $resource_group = ResourceGroup::create([
-            'department_id'=>$admin_department->id,
+            'department_id'=>$profile_department->id,
             'name' => 'dashboard',
             'display_name' => 'داشبورد پنل کاربری',
         ]);
@@ -379,7 +393,7 @@ class ResourceTableSeeder extends Seeder
 
         /***********profile resources************/
         $resource_group = ResourceGroup::create([
-            'department_id'=>$admin_department->id,
+            'department_id'=>$profile_department->id,
             'name' => 'profile',
             'display_name' => 'پروفایل',
         ]);
@@ -392,7 +406,7 @@ class ResourceTableSeeder extends Seeder
 
         /***********Course resources************/
         $resource_group = ResourceGroup::create([
-            'department_id'=>$admin_department->id,
+            'department_id'=>$profile_department->id,
             'name' => 'courses',
             'display_name' => 'دوره ها',
         ]);
@@ -411,7 +425,7 @@ class ResourceTableSeeder extends Seeder
 
         /***********TranslateRequest Menu resources************/
         $resource_group = ResourceGroup::create([
-            'department_id'=>$admin_department->id,
+            'department_id'=>$profile_department->id,
             'name' => 'translate_request',
             'display_name' => 'درخواست ترجمه',
         ]);
@@ -423,7 +437,7 @@ class ResourceTableSeeder extends Seeder
 
         /***********setting resources************/
         $resource_group = ResourceGroup::create([
-            'department_id'=>$admin_department->id,
+            'department_id'=>$profile_department->id,
             'name' => 'user_transaction',
             'display_name' => 'عملیات مالی',
         ]);

@@ -274,9 +274,6 @@ class MenuItemsTableSeeder extends Seeder
                 case 'tags';
                     $menu_item->icon = 'icon-price-tags';
                     break;
-                case 'feedbacks';
-                    $menu_item->icon = 'icon-envelop5';
-                    break;
                 case 'user_class';
                     $menu_item->icon = 'icon-profile';
                     break;
@@ -291,6 +288,10 @@ class MenuItemsTableSeeder extends Seeder
                     break;
                 default:
                     $this->setMenuIcon($menu_item);
+                    break;
+
+                case 'feedback';
+                    $menu_item->icon = 'icon-feed';
                     break;
             }
 
