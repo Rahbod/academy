@@ -31,5 +31,5 @@
     <a class="site-button mr-2" title="back to courses"
        href="{{url(session('lang').'/courses')}}">back to courses</a>
 
-    <button value="step2" class="site-button ml-2">Next</button>
+    <button data-lang="{{session('lang')}}" value="step2" class="site-button ml-2">Next</button>
 </div>

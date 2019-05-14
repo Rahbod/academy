@@ -43,6 +43,7 @@ class CourseController extends Controller
 
     public function classShow($id)
     {
+        return $id;
         $classes = ClassRoom::with('teacher')->findOrFail($id);
         $class_view = view('main_template.pages.courses.step-2')->with('classes', $classes);
 //        dd($course);
