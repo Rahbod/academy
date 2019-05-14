@@ -10,8 +10,8 @@ Route::get('article', 'ContentController@index');
 Route::get('article/{id}/{slug?}', 'ContentController@show');
 
 
-Route::get('translations', 'TranslationController@index')->name('translations');
-Route::post('translations/create', 'TranslationController@store');
+Route::get('translation-requests/create', 'TranslateRequestController@index')->name('translations');
+Route::post('translation-requests/', 'TranslateRequestController@store');
 
 
 Route::get('show_classes/{id}', 'CourseController@classShow');

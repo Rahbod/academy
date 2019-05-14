@@ -131,13 +131,12 @@
     <script>
 //        let myDropzone=$("#my-dropzone").dropzone();
         Dropzone.options.myDropzone = {
-            url: "{{url(session('lang').'/translations')}}",
+            url: "{{url(session('lang').'/translation-requests')}}",
             autoProcessQueue: false,
             uploadMultiple: true,
             parallelUploads: 100,
             maxFiles: 100,
             acceptedFiles: "image/*",
-            name:'translated_file',
 
             init: function () {
 
@@ -177,6 +176,7 @@
                     formData.append("source_language", $("#source_language").val());
                     formData.append("translation_language", $("#translation_language").val());
                     formData.append("description", $("#description").val());
+                    formData.append("_token", '{{csrf_token()}}');
                 });
             }
         };
