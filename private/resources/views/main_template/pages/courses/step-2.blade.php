@@ -2,9 +2,9 @@
     <table class="table table-hover">
         <thead class="thead-light">
         <tr>
-            <th scope="col" colspan="1">choose</th>
-            <th scope="col" colspan="4">name</th>
-            <th scope="col" colspan="7">descriptions</th>
+            <th scope="col" colspan="1">#</th>
+            <th scope="col" colspan="3">class image</th>
+            <th scope="col" colspan="8">class descriptions</th>
         </tr>
         </thead>
         <tbody>
@@ -17,9 +17,11 @@
                                value="{{$class_room['id']}}" {{$loop->first ? 'checked' : ''}}>
                     </div>
                 </td>
-                <td colspan="4"><img class="img-fluid" src="{{$class_room['image']}}"
-                                     alt="{{$class_room['title_'.session('lang')]}}"></td>
-                <td colspan="7">
+                <td colspan="3">
+                    <img class="img-fluid" src="{{$class_room['image']}}"
+                                     alt="{{$class_room['title_'.session('lang')]}}">
+                </td>
+                <td colspan="8">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">Title : {{$class_room['title_'.session('lang')]}}</li>
                         <li class="list-group-item">Capacity : {{$class_room['capacity']}}</li>

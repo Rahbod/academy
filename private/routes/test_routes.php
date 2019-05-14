@@ -14,7 +14,7 @@ Route::get('translations', 'TranslationController@index')->name('translations');
 Route::post('translations', 'TranslationController@store');
 
 
-Route::post('show_classes/{id}', 'CourseController@classShow');
+Route::get('show_classes/{id}', 'CourseController@classShow');
 Route::get('courses', 'CourseController@index');
 Route::get('courses/register/{id}', 'CourseController@termShow');
 Route::get('courses/{id}/{slug?}', 'CourseController@show');
