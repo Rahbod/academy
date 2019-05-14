@@ -49,7 +49,7 @@
 @push('scripts')
     <script>
         $(document).ready(function () {
-            const step=$();
+            const steps = $('#steps');
             $('button').on('click', function () {
                 let This = $(this);
                 let step = This.val();
@@ -57,20 +57,16 @@
 
                 let radioValue = $("input[type='radio']:checked").val();
 
-                let formData = new FormData();
-                formData.append('step', step);
-                formData.append('id', radioValue);
+//                let formData = new FormData();
+//                formData.append('step', step);
+//                formData.append('id', radioValue);
 
                 $.ajax({
                     url: '/' + lang + '/show_classes/' + radioValue,
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    type: 'post',
-                    async: false,
-
+                    type: 'get',
                     success: function (response) {
                         console.log(response);
+                        steps.html(response);
                     },
                     error: function (error) {
                         console.log(error);

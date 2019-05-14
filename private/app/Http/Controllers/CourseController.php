@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\ClassRoom;
 use App\Course;
+use App\Term;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -43,10 +44,9 @@ class CourseController extends Controller
 
     public function classShow($id)
     {
-        return $id;
-        $classes = ClassRoom::with('teacher')->findOrFail($id);
-        $class_view = view('main_template.pages.courses.step-2')->with('classes', $classes);
-//        dd($course);
+        $term =  Term::with('class_rooms.teacher')->findOrFail($id);
+        $class_view = view('main_template.pages.courses.step-2')->with('class_rooms', $term->class_rooms);
+//        dd($class_view);
         return $class_view;
     }
 
