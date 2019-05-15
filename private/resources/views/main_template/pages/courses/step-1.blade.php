@@ -1,6 +1,6 @@
-<div class="p-a30 border-1 m-auto">
+<div class="step1">
     <h1 class="text-center mb-4 border-bottom p-3">
-        Course Information
+        Selected Course
     </h1>
     <div class="d-flex justify-content-between mb-4">
         <img style="height: 300px!important;" src="{{$course['image']}}" alt="{{$course['image']}}">
@@ -10,7 +10,12 @@
             <h2 class="m-t10 m-b20">{{$course['duration']}} month</h2>
         </div>
     </div>
+</div>
 
+<div class="step2">
+    <h3 class="text-center mb-4 border-bottom p-3">
+        Select Term
+    </h3>
     <table class="table table-hover">
         <thead class="thead-light">
         <tr>
@@ -39,10 +44,4 @@
         @endforeach
         </tbody>
     </table>
-</div>
-<div class="d-flex justify-content-center mt-3">
-    <a class="site-button mr-2" title="back to courses"
-       href="{{url(session('lang').'/courses')}}">back to courses</a>
-
-    <button data-lang="{{session('lang')}}" value="step2" class="site-button ml-2">Next</button>
 </div>

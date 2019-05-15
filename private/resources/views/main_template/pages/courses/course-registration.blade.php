@@ -7,7 +7,7 @@
 @endpush
 
 @section('content')
-    <section class="translationPage">
+    <section class="courseRegisterPage">
         <div class="dlab-bnr-inr overlay-black-middle">
             <div class="container">
                 <div class="dlab-bnr-inr-entry">
@@ -33,12 +33,25 @@
                         <p>please select your term from the list</p>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-md-10 mx-auto m-b30">
                         {{-- steps --}}
-                        <div id="steps">
-                            @include('main_template.pages.courses.step-1')
+                        <div class="p-a30 border-1 m-auto">
+                            <div id="steps">
+                                @include('main_template.pages.courses.step-1')
+                            </div>
+                            <div class="d-flex justify-content-center mt-3">
+                                <a class="site-button mr-2" title="back to courses"
+                                   href="{{url(session('lang').'/courses')}}">back to courses</a>
+
+                                <button id="nextStep" data-counter="2"
+                                        data-lang="{{session('lang')}}"
+                                        class="site-button ml-2">Next
+                                </button>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -48,32 +61,35 @@
 
 @push('scripts')
     <script>
-        $(document).ready(function () {
-            const steps = $('#steps');
-            $('button').on('click', function () {
-                let This = $(this);
-                let step = This.val();
-                let lang = This.data('lang');
+        $('.courseRegisterPage').on('click', '#nextStep', function () {
+            let steps = $('#steps');
+            let This = $(this);
+            let counter = This.attr('data-counter');
 
+            if (parseInt(counter) <= 3) {
+                counter = parseInt(counter);
+                let step_x = 'step' + counter;
+                let lang = This.data('lang');
                 let radioValue = $("input[type='radio']:checked").val();
 
-//                let formData = new FormData();
-//                formData.append('step', step);
-//                formData.append('id', radioValue);
-
                 $.ajax({
-                    url: '/' + lang + '/show_classes/' + radioValue,
+                    url: '/' + lang + '/courses/register/' + step_x + '/' + radioValue,
                     type: 'get',
                     success: function (response) {
-                        console.log(response);
+                        counter = counter + 1;
+                        This.attr('data-counter', counter);
                         steps.html(response);
                     },
                     error: function (error) {
-                        console.log(error);
+                        counter = counter - 1;
+                        This.attr('data-counter', counter);
                     }
                 })
-
-            })
-        });
+            }
+            else {
+                counter = 3;
+                This.attr('data-counter', counter);
+            }
+        })
     </script>
 @endpush
