@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Feedback;
 use Illuminate\Http\Request;
 
 class ContactUsController extends Controller
@@ -15,7 +16,22 @@ class ContactUsController extends Controller
     {
         //sent info to management
 
-        return response()->json(['title'=>'success','message'=>'information stored successfully']);
+        $this->validate($request,[
+            'relevant_section'=>'required',
+            'name'=>'required',
+            'email'=>'required|email',
+            'content'=>'required',
+        ]);
+
+        $feedback=new Feedback();
+        $feedback->relevant_section=$request->relevant_section;
+        $feedback->name=$request->name;
+        $feedback->email=$request->email;
+        $feedback->content=$request->input('content');
+        $feedback->archive=0;
+        $status=$feedback->save();
+
+        return response()->json(['message'=>'information stored successfully'],200);
     }
     public function storeNewsLetter(Request $request)
     {
