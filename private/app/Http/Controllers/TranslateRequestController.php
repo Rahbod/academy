@@ -2,11 +2,38 @@
 
 namespace App\Http\Controllers;
 
+use App\Attachment;
 use App\TranslateRequest;
 use Illuminate\Http\Request;
+use Appnegar\Cms\Traits\AdminFileEditor;
 
 class TranslateRequestController extends Controller
 {
+    use AdminFileEditor;
+    protected $config;
+    protected $resource;
+
+    public function __construct(){
+        $this->resource='TranslateRequest';
+        $attachment_config=config('system.attachment');
+        $translate_config=config('system.translate_request');
+        $this->config=[
+            'attachment'=>[
+                'source' => [
+                    'size' => $attachment_config['attachment_size'],
+                    'extension' => $attachment_config['attachment_extension'],
+                    'destination' => $attachment_config['attachment_destination'],
+                ],
+            ],
+            'translate_request'=>[
+                'translated_file' => [
+                    'size' => $translate_config['translated_file_size'],
+                    'extension' => $translate_config['translated_file_extension'],
+                    'destination' => $translate_config['translated_file_destination'],
+                ],
+            ]
+        ];
+    }
     /**
      * Display a listing of the resource.
      *
@@ -54,18 +81,30 @@ class TranslateRequestController extends Controller
             $model->source_language=$request->source_language;
             $model->translation_language=$request->translation_language;
             $model->status='PENDING';
-            $model->save();
+            $status=$model->save();
 
             if ($request->hasFile('file')) {
                 $files=$request->file('file');
                 foreach ($files as $file){
-//                    store attachment model
+                    $result=$this->saveFile($file,$this->config['attachment'],'attachment');
+                    if($result['status']){
+                        $attachment=new Attachment();
+                        $attachment->user_id=$user->id;
+                        $attachment->title=$result['data'];
+                        $attachment->source=$result['data'];
+                        $attachment->attachmentable_type='App\\'.$this->resource;
+                        $attachment->attachmentable_id=$model->id;
+                        $attachment->save();
+
+                    }
                 }
             }
+
+           return $this->getResponseMessage($status,$this->resource,'create');
         }
 
-
-        dd($request->all());
+        return response()->json(['message'=>'unauthenticated!'],401);
+//        dd($request->all());
     }
 
     /**
@@ -111,5 +150,37 @@ class TranslateRequestController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    protected function getResponseMessage($status, $resource, $action, $message = null, $json_response = true)
+    {
+        $default_massage = $this->getMessage($status, $resource, $action);
+        if ($message !== null) {
+            $message = "<p>" . $default_massage . "</p>" . $message;
+        } else {
+            $message = $default_massage;
+        }
+        $status_code = $status ? 200 : 442;
+        if ($json_response) {
+            return response()->json([
+                'message' => $message
+            ], $status_code);
+        }
+
+        return ['message' => $message, 'status' => $status];
+    }
+
+    protected function getMessage($status, $resource, $action)
+    {
+        $resource_name = $this->getResourceName($resource);
+        $resource = __($resource_name . '.title');
+        $action = __('main.actions.' . strtolower($action));
+        if ($status) {
+            $message = __('main.messages.action_success', ['resource' => $resource, 'action' => $action]);
+
+        } else {
+            $message = __('main.messages.action_error', ['resource' => $resource, 'action' => $action]);
+        }
+        return $message;
     }
 }
