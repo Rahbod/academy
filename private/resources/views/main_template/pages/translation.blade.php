@@ -68,6 +68,16 @@
                                     <p class="font-weight-600">please fill the blanks carefully</p>
                                     <div class="form-row">
                                         <div class="form-group col-md-12">
+                                            <label class="font-weight-700" for="category_id">Category *</label>
+                                            <select name="category_id" id="category_id" class="form-control">
+                                                @foreach($categories as $category)
+                                                    <option value="{{$category->id}}" >{{$category->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
                                             <label class="font-weight-700">Title *</label>
                                             <input name="title" id="title" required="" class="form-control" placeholder="Title"
                                                    type="text">
@@ -158,7 +168,7 @@
                     removeButton.addEventListener("click", function (e) {
                         // Make sure the button click doesn't submit the form:
                         e.preventDefault();
-//                        e.stopPropagation();
+                        e.stopPropagation();
 
                         // Remove the file preview.
                         wrapperThis.removeFile(file);

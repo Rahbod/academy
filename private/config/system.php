@@ -78,7 +78,7 @@ return [
         ],
     'attachment' => [
             'attachment_size' =>  '2048',
-            'attachment_extension' =>  'doc,docx,pdf,zip,rar,txt',
+            'attachment_extension' =>  'doc,docx,pdf,zip,rar,txt,jpg, jpeg, png',
             'attachment_destination' =>  'attachment/',
         ],
 

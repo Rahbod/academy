@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Attachment;
+use App\Category;
 use App\TranslateRequest;
 use Illuminate\Http\Request;
 use Appnegar\Cms\Traits\AdminFileEditor;
@@ -41,7 +42,9 @@ class TranslateRequestController extends Controller
      */
     public function index()
     {
-        return view('main_template.pages.translation');
+        $categories=Category::where('lang',session('lang'))->where('type','translate')->get();
+//        dd($categories);
+        return view('main_template.pages.translation')->with('categories',$categories);
     }
 
     /**
@@ -68,7 +71,7 @@ class TranslateRequestController extends Controller
             'source_language'=>'required',
             'translation_language'=>'required',
             'description'=>'nullable',
-            'files'=>'required'
+            'file.*'=>'required|file|max:'.$this->config['attachment']['source']['size'] . '|mimes:' . trimArrayString($this->config['attachment']['source']['extension']),
         ]);
 
         if(\Auth::check()){
@@ -85,8 +88,9 @@ class TranslateRequestController extends Controller
 
             if ($request->hasFile('file')) {
                 $files=$request->file('file');
+//dd($files);
                 foreach ($files as $file){
-                    $result=$this->saveFile($file,$this->config['attachment'],'attachment');
+                    $result=$this->saveFile($file,$this->config['attachment']['source'],'attachment');
                     if($result['status']){
                         $attachment=new Attachment();
                         $attachment->user_id=$user->id;
@@ -96,8 +100,12 @@ class TranslateRequestController extends Controller
                         $attachment->attachmentable_id=$model->id;
                         $attachment->save();
 
+                    }else{
+                        dd($result);
                     }
                 }
+            }else{
+                dd($request->all());
             }
 
            return $this->getResponseMessage($status,$this->resource,'create');
@@ -182,5 +190,14 @@ class TranslateRequestController extends Controller
             $message = __('main.messages.action_error', ['resource' => $resource, 'action' => $action]);
         }
         return $message;
+    }
+
+    protected function getResourceName($resource, $singular = false)
+    {
+        $resource_name = ltrim(strtolower(preg_replace('/[A-Z]([A-Z](?![a-z]))*/', '_$0', $resource)), '_');
+        if ($singular == false) {
+            $resource_name = str_plural($resource_name);
+        }
+        return $resource_name;
     }
 }
