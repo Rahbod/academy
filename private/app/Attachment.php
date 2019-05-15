@@ -66,7 +66,8 @@ class Attachment extends Model
                     'show_in_form' => true,
                     'show_in_sub_form' => false,
                     'options'=>[
-                        [ 'id'=>'App\\TranslateRequest', 'text'=>'TranslateRequest',]
+                        [ 'id'=>'App\\TranslateRequest', 'text'=>'TranslateRequest',],
+                        [ 'id'=>'App\\Content', 'text'=>'Content',]
 
                     ]
                 ],

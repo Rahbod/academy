@@ -158,7 +158,7 @@
                     removeButton.addEventListener("click", function (e) {
                         // Make sure the button click doesn't submit the form:
                         e.preventDefault();
-                        e.stopPropagation();
+//                        e.stopPropagation();
 
                         // Remove the file preview.
                         wrapperThis.removeFile(file);
