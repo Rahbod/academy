@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-10 mx-auto m-b30">
+                    <div class="col-md-11 mx-auto m-b30">
                         {{-- steps --}}
                         <div class="p-a30 border-1 m-auto">
                             <div id="steps">
@@ -51,7 +51,6 @@
                                 </button>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

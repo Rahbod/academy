@@ -26,22 +26,31 @@
         </thead>
         <tbody>
 
-        @foreach($course['terms'] as $key => $term)
-            <tr>
-                <td colspan="1">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="term"
-                               id=""
-                               value="{{$term['id']}}" {{$loop->first ? 'checked' : ''}}>
-                        {{--<label class="form-check-label" for="term_{{$key}}">--}}
-                        {{--Default radio--}}
-                        {{--</label>--}}
-                    </div>
-                </td>
-                <td colspan="4">{{$term['title_'.session('lang')]}}</td>
-                <td colspan="7">{{$term['description_'.session('lang')]}}</td>
-            </tr>
-        @endforeach
+        @if(isset($course['terms']))
+            @foreach($course['terms'] as $key => $term)
+                <tr>
+                    <td colspan="1">
+                        <div class="form-check">
+                            <input class="form-check-input " type="radio" name="term"
+                                   {{isset($term['class_rooms_count']) > 0 ? '' : 'disabled'}}
+                                   id=""
+                                   value="{{$term['id']}}" {{$loop->first ? 'checked' : ''}}>
+
+                        </div>
+                    </td>
+                    <td colspan="4">
+                        <label class="form-check-label" for="term_{{$key}}">
+                            {{$term['title_'.session('lang')]}}
+                        </label>
+                    </td>
+                    <td colspan="7">
+                        <label class="form-check-label" for="term_{{$key}}">
+                            {{$term['description_'.session('lang')]}}
+                        </label>
+                    </td>
+                </tr>
+            @endforeach
+        @endif
         </tbody>
     </table>
 </div>

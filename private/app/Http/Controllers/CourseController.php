@@ -37,8 +37,13 @@ class CourseController extends Controller
 
     public function termShow($course_id)
     {
-//        dd($course_id);
-        $course = $this->query->with('terms')->where('id', $course_id)->first();
+        $course = $this->query
+            ->with(['terms.class_rooms' => function ($q) {
+            $q->where('registration_start_date', '<=', Carbon::now())->where('registration_end_date', '>=', Carbon::now());}])
+            ->with(['terms' => function ($q) {$q->withCount('class_rooms');}])->findOrFail($course_id);
+
+//        dd($course);
+
         return view('main_template.pages.courses.course-registration')->with('course', $course);
     }
 
