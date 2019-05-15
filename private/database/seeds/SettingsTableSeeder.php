@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Seeder;
-use App\SettingGroup;
 use App\Setting;
+use App\SettingGroup;
+use Illuminate\Database\Seeder;
 
 class SettingsTableSeeder extends Seeder
 {
@@ -183,7 +183,7 @@ class SettingsTableSeeder extends Seeder
             'setting_group_id' => $setting_group->id,
             'name' => 'address',
             'display_name' => 'آدرس',
-            'value' => '  ایران ـ قم ـ ...',
+            'value' => 'Iran - Tehran',
             'type' => 'textarea',
             'direction' => 'inherit',
             'order' => $order++

@@ -96,11 +96,11 @@
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <select class="form-control" name="relevant_section" id="">
-                                                @if(isset(config('system.main.related_sections')))
+                                                {{--@if(isset(config('system.main.related_sections')))--}}
                                                     @foreach(explode(',',config('system.main.related_sections')) as $value)
                                                         <option value="{{$value}}">{{$value}}</option>
                                                     @endforeach
-                                                @endif
+                                                {{--@endif--}}
                                             </select>
                                         </div>
                                     </div>
