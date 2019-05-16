@@ -20,7 +20,7 @@ class Menus
 
     public function __construct()
     {
-//        Cache::flush();
+        Cache::flush();
 
         $lang=$this->getLang();
 
