@@ -35851,6 +35851,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -35975,12 +35976,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "navbar-brand" }, [
       _c("a", { staticClass: "d-inline-block", attrs: { href: "./" } }, [
-        _c("img", {
-          attrs: {
-            src: "/assets/admin/global_assets/images/logo_light.png",
-            alt: ""
-          }
-        })
+        _vm._v("\n            ProfsAdvice\n            ")
       ])
     ])
   },
@@ -36356,7 +36352,7 @@ var staticRenderFns = [
         },
         [
           _c("span", { staticClass: "navbar-text" }, [
-            _c("a", { attrs: { href: "http://appnegar.net" } }, [_vm._v("CMS")])
+            _c("a", { attrs: { href: "#" } }, [_vm._v("CMS")])
           ])
         ]
       )

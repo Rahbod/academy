@@ -9,7 +9,7 @@
 
         <div class="navbar-collapse collapse" id="navbar-footer">
 					<span class="navbar-text">
-						<a href="http://appnegar.net">CMS</a>
+						<a href="#">CMS</a>
 					</span>
 
             <!--<ul class="navbar-nav ml-lg-auto">-->
