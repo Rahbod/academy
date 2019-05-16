@@ -92,6 +92,7 @@
                             <div class="dzFormMsg"></div>
                             <form enctype="multipart/form-data" method="post" class="contactUsForm"
                                   action="{{url(session('lang').'/contact-us')}}">
+                                {{csrf_field()}}
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
@@ -123,7 +124,7 @@
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <div class="input-group">
-                                                <textarea name="description" rows="4" class="form-control" required=""
+                                                <textarea name="content" rows="4" class="form-control" required=""
                                                           placeholder="Your Message..."></textarea>
                                             </div>
                                         </div>
