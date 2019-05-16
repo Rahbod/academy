@@ -27,7 +27,6 @@ class ComposerServiceProvider extends ServiceProvider
             'main_template.pages.comment.comment_list',
 
         ];
-
         View::composer('*','App\Http\View\Composer\Menus');
 
     }
@@ -36,4 +35,5 @@ class ComposerServiceProvider extends ServiceProvider
     {
         //
     }
+
 }

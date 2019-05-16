@@ -9,5 +9,4 @@ use Appnegar\Cms\Controllers\AdminProfileController;
 class ProfileController extends AdminProfileController
 {
 
-
 }

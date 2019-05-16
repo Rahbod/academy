@@ -103,7 +103,7 @@ trait AuthenticatesUsers
     protected function credentials(Request $request)
     {
         $credentials = $request->only($this->username(), 'password');
-        return array_merge($credentials, ['status' => 1]);
+        return array_merge($credentials, ['status' => 1,'verified'=>1]);
 //        return $request->only($this->username(), 'password');
     }
 

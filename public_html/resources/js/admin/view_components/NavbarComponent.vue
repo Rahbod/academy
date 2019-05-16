@@ -1,7 +1,7 @@
 <template>
     <div class="navbar navbar-expand-md navbar-dark">
         <div class="navbar-brand">
-            <a href="./" class="d-inline-block">
+            <a href="./" class="d-inline-block" style="font-size: 1rem;color: #fff;">
                 ProfsAdvice
                 <!--<img src="/assets/admin/global_assets/images/logo_light.png" alt="">-->
             </a>
