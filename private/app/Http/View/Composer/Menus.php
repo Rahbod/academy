@@ -71,7 +71,7 @@ class Menus
                 $menu_item['children'][]=$this->setMenu($child);
             }
         }
-        if(url(request()->path() === $menu_item['link'])){
+        if(url(request()->path() )=== $menu_item['link']){
             $menu_item['active']=true;
         }
 
