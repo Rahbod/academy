@@ -100,7 +100,7 @@
                         <p>If you’re looking for a truly precise translator with cool history,here you will see what
                             you are searching for
                         </p>
-                        <a href="{{url(session('lang').'/translations')}}" class="site-button white">See more
+                        <a href="{{route('translations',['lang'=>session('lang')])}}" class="site-button white">See more
                             details</a>
                     </div>
                 </div>

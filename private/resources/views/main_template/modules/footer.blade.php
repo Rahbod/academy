@@ -2,7 +2,7 @@
     <div class="footer-top overlay-black-dark">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-5 footer-col-4">
+                <div class="col-lg-4 col-md-4 col-sm-12 footer-col-4">
                     <div class="widget widget_getintuch">
                         <h6 class="m-b15 h6 text-uppercase">Address</h6>
                         <div class="dlab-separator bg-white"></div>
@@ -49,7 +49,7 @@
                                         class="fab fa-instagram"></i></a></li>
                     </ul>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-7 footer-col-4">
+                <div class="col-lg-4 col-md-4 col-sm-12 footer-col-4">
                     <div class="widget  widget_tag_cloud">
                         <h6 class="m-b15 h6 text-uppercase">Tag</h6>
                         <div class="dlab-separator bg-white"></div>
@@ -61,7 +61,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 footer-col-4">
+                <div class="col-lg-4 col-md-6 col-sm-6 footer-col-4 d-none">
                     <div class="widget widget_getintuch">
                         <h6 class="m-b15 h6 text-uppercase">Contact us</h6>
                         <div class="dlab-separator bg-white"></div>
@@ -88,7 +88,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 footer-col-4">
+                <div class="col-lg-4 col-md-4 col-sm-12 footer-col-4">
                     <div class="widget widget_gallery">
                         <h6 class="m-b15 h6 text-uppercase">GALLERY</h6>
                         <div class="dlab-separator bg-white"></div>

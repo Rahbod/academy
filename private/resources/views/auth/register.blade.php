@@ -7,7 +7,7 @@
                 <div class="dlab-bnr-inr-entry">
                     <h1 class="text-white">Register</h1>
                     <!-- Breadcrumb row -->
-                    @include('main_template.modules.breadcrumb')
+                @include('main_template.modules.breadcrumb')
                 <!-- Breadcrumb row END -->
                 </div>
             </div>
@@ -24,9 +24,10 @@
                     <div class="col-md-12 m-b30">
                         <div class="p-a30 border-1  max-w500 m-auto">
                             <div class="tab-content">
-                                <form enctype="multipart/form-data" id="register"
-                                      action="{{ route('login',['lang'=>session('lang')]) }}"
+                                <form enctype="multipart/form-data" id="register" method="post"
+                                      action="{{ route('register',['lang'=>session('lang')]) }}"
                                       class="tab-pane active">
+                                    @csrf
                                     <h4 class="font-weight-700">PERSONAL INFORMATION</h4>
                                     <p class="font-weight-600">If you have an account with us, please log in.</p>
                                     <div class="form-group">
@@ -45,12 +46,38 @@
                                                type="email">
                                     </div>
                                     <div class="form-group">
+                                        <label class="font-weight-700">Mobile Number *</label>
+                                        <input name="mobile_number" required="" class="form-control"
+                                               placeholder="Mobile Number" type="text">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="font-weight-700">Melli Code</label>
+                                        <input name="melli_code" class="form-control" placeholder="Melli Code"
+                                               type="text">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="font-weight-700">Gender *</label>
+                                        <select class="form-control" name="gender" id="gender">
+                                            <option value="0">male</option>
+                                            <option value="1">female</option>
+                                        </select>
+                                    </div>
+
+
+                                    <div class="form-group">
                                         <label class="font-weight-700">PASSWORD *</label>
                                         <input name="password" required="" class="form-control"
                                                placeholder="Type Password" type="password">
                                     </div>
+                                    <div class="form-group">
+                                        <label class="font-weight-700">PASSWORD CONFIRMATION *</label>
+                                        <input name="confirm_password" required="" class="form-control"
+                                               placeholder="Type Your Password Again" type="password">
+                                    </div>
                                     <div class="text-left">
-                                        <button class="site-button button-lg radius-no outline outline-2">CREATE
+                                        <button type="submit" class="site-button button-lg radius-no outline outline-2">Register
                                         </button>
                                     </div>
                                 </form>

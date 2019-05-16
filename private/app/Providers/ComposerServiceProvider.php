@@ -14,6 +14,7 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+//        dd('hi');
         // Using class based composers...
         $global_views = [
             'errors.404',

@@ -25,9 +25,9 @@
             <div class="container">
                 <div class="section-head text-black text-center m-b20">
                     <h2 class="m-b10">Search</h2>
-                    <p>
+                    <h5>
                         you searched for : <span class="text-danger"><b>{{$search_for}}</b></span>
-                    </p>
+                    </h5>
                 </div>
 
                 <ul class="nav nav-pills mb-5 justify-content-center" id="pills-tab" role="tablist">
@@ -60,7 +60,7 @@
                                             <div class="blog-post blog-grid blog-style-1">
                                                 <div class="dlab-post-media dlab-img-effect radius-sm">
                                                     <a title="{{$news_item['title']}}"
-                                                       href="{{url(session('lang').'/'.$news_item['type'].'/'.$news_item['id'].'/'.str_replace(' ','-',$news_item['title']))}}">
+                                                       href="{{url(session('lang').'/news/'.$news_item['id'].'/'.str_replace(' ','-',$news_item['title']))}}">
                                                         <img src="{{$news_item['logo']}}" alt="{{$news_item['title']}}">
                                                     </a>
                                                 </div>
@@ -74,7 +74,7 @@
                                                     <div class="dlab-post-title ">
                                                         <h5 class="post-title font-20">
                                                             <a title="{{$news_item['title']}}"
-                                                               href="{{url(session('lang').'/'.$news_item['type'].'/'.$news_item['id'].'/'.str_replace(' ','-',$news_item['title']))}}">
+                                                               href="{{url(session('lang').'/news/'.$news_item['id'].'/'.str_replace(' ','-',$news_item['title']))}}">
                                                                 {{$news_item['title']}}
                                                             </a>
                                                         </h5>
@@ -82,7 +82,7 @@
                                                     <div class="dlab-post-readmore blog-share">
                                                         <a title="{{$news_item['title']}}"
                                                            class="site-button-link border-link black"
-                                                           href="{{url(session('lang').'/'.$news_item['type'].'/'.$news_item['id'].'/'.str_replace(' ','-',$news_item['title']))}}">
+                                                           href="{{url(session('lang').'/news/'.$news_item['id'].'/'.str_replace(' ','-',$news_item['title']))}}">
                                                             READ MORE
                                                         </a>
                                                     </div>
@@ -109,7 +109,7 @@
                                             <div class="blog-post blog-grid blog-style-1">
                                                 <div class="dlab-post-media dlab-img-effect radius-sm">
                                                     <a title="{{$article['title']}}"
-                                                       href="{{url(session('lang').'/'.$article['type'].'/'.$article['id'].'/'.str_replace(' ','-',$article['title']))}}">
+                                                       href="{{url(session('lang').'/article/'.$article['id'].'/'.str_replace(' ','-',$article['title']))}}">
                                                         <img src="{{$article['logo']}}" alt="{{$article['title']}}">
                                                     </a>
                                                 </div>
@@ -123,7 +123,7 @@
                                                     <div class="dlab-post-title ">
                                                         <h5 class="post-title font-20">
                                                             <a title="{{$article['title']}}"
-                                                               href="{{url(session('lang').'/'.$article['type'].'/'.$article['id'].'/'.str_replace(' ','-',$article['title']))}}">
+                                                               href="{{url(session('lang').'/article/'.$article['id'].'/'.str_replace(' ','-',$article['title']))}}">
                                                                 {{$article['title']}}
                                                             </a>
                                                         </h5>
@@ -131,7 +131,7 @@
                                                     <div class="dlab-post-readmore blog-share">
                                                         <a title="{{$article['title']}}"
                                                            class="site-button-link border-link black"
-                                                           href="{{url(session('lang').'/'.$article['type'].'/'.$article['id'].'/'.str_replace(' ','-',$article['title']))}}">
+                                                           href="{{url(session('lang').'/article/'.$article['id'].'/'.str_replace(' ','-',$article['title']))}}">
                                                             READ MORE
                                                         </a>
                                                     </div>
@@ -158,9 +158,10 @@
                                         <div class="post card-container col-lg-4 col-md-6 col-sm-6">
                                             <div class="blog-post blog-grid blog-style-1">
                                                 <div class="dlab-post-media dlab-img-effect radius-sm">
-                                                    <a title="{{$course['title']}}"
-                                                       href="{{url(session('lang').'/courses/'.$course['id'].'/'.str_replace(' ','-',$course['title']))}}">
-                                                        <img src="{{$course['image']}}" alt="{{$course['title']}}">
+                                                    <a title="{{$course['title_'.session('lang')]}}"
+                                                       href="{{url(session('lang').'/courses/'.$course['id'].'/'.str_replace(' ','-',$course['title_'.session('lang')]))}}">
+                                                        <img src="{{$course['image']}}"
+                                                             alt="{{$course['title_'.session('lang')]}}">
                                                     </a>
                                                 </div>
                                                 <div class="dlab-info">
@@ -172,16 +173,16 @@
                                                     </div>
                                                     <div class="dlab-post-title ">
                                                         <h5 class="post-title font-20">
-                                                            <a title="{{$course['title']}}"
-                                                               href="{{url(session('lang').'/courses/'.$course['id'].'/'.str_replace(' ','-',$course['title']))}}">
-                                                                {{$course['title']}}
+                                                            <a title="{{$course['title_'.session('lang')]}}"
+                                                               href="{{url(session('lang').'/courses/'.$course['id'].'/'.str_replace(' ','-',$course['title_'.session('lang')]))}}">
+                                                                {{$course['title_'.session('lang')]}}
                                                             </a>
                                                         </h5>
                                                     </div>
                                                     <div class="dlab-post-readmore blog-share">
                                                         <a title="{{$course['title']}}"
                                                            class="site-button-link border-link black"
-                                                           href="{{url(session('lang').'/courses/'.$course['id'].'/'.str_replace(' ','-',$course['title']))}}">
+                                                           href="{{url(session('lang').'/courses/'.$course['id'].'/'.str_replace(' ','-',$course['title_'.session('lang')]))}}">
                                                             READ MORE
                                                         </a>
                                                     </div>
