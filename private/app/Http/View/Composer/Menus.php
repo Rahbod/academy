@@ -35,7 +35,7 @@ class Menus
             foreach ($static_menu as $menu){
                 $array_menu[]=$this->setMenu($menu);
             }
-            dd($array_menu);
+//            dd($array_menu);
             return $array_menu;
         });
 
