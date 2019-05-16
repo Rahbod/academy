@@ -258,12 +258,12 @@ class ResourceTableSeeder extends Seeder
         $resource_group = ResourceGroup::create([
             'department_id'=>$admin_department->id,
             'name' => 'pages',
-            'display_name' => 'برگه ها',
+            'display_name' => 'صفحه ها',
         ]);
         Resource::create([
             'resource_group_id' => $resource_group->id,
             'name' => 'Page',
-            'display_name' => 'برگه ها'
+            'display_name' => 'صفحه ها'
         ]);
 
         /***********Slider resources************/
