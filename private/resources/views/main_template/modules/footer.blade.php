@@ -1,4 +1,4 @@
-<footer class="site-footer" style="height: 526.656px;">
+<footer class="site-footer" style="height: 501.656px;">
     <div class="footer-top overlay-black-dark">
         <div class="container">
             <div class="row">
@@ -131,24 +131,6 @@
                                    href="{{asset('/assets/site/media/images/promotion/img3.jpg')}}"
                                    title="Title Come Here"><img
                                             src="{{asset('/assets/site/media/images/promotion/img3.jpg')}}" alt=""></a>
-                            </li>
-                            <li class="img-effect2">
-                                <a class="mfp-link html5lightbox" data-group="mygroup"
-                                   href="{{asset('/assets/site/media/images/promotion/img3.jpg')}}"
-                                   title="Title Come Here"><img
-                                            src="{{asset('/assets/site/media/images/promotion/img3.jpg')}}" alt=""></a>
-                            </li>
-                            <li class="img-effect2">
-                                <a class="mfp-link html5lightbox" data-group="mygroup"
-                                   href="{{asset('/assets/site/media/images/promotion/img4.jpg')}}"
-                                   title="Title Come Here"><img
-                                            src="{{asset('/assets/site/media/images/promotion/img4.jpg')}}" alt=""></a>
-                            </li>
-                            <li class="img-effect2">
-                                <a class="mfp-link html5lightbox" data-group="mygroup"
-                                   href="{{asset('/assets/site/media/images/promotion/img5.jpg')}}"
-                                   title="Title Come Here"><img
-                                            src="{{asset('/assets/site/media/images/promotion/img5.jpg')}}" alt=""></a>
                             </li>
                         </ul>
                     </div>
