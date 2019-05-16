@@ -14,7 +14,7 @@ Route::get('translation-requests/create', 'TranslateRequestController@index')->n
 Route::post('translation-requests/', 'TranslateRequestController@store');
 
 
-Route::get('courses/register/{course_id}', 'CourseController@termShow');
+Route::get('courses/register/{course_id}/{slug?}', 'CourseController@termShow');
 Route::get('courses/register/step2/{term_id}', 'CourseController@classShow');
 Route::get('courses/register/step3/{class_id}', 'CourseController@verify');
 
