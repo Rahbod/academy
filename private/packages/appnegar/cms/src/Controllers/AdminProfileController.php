@@ -114,20 +114,18 @@ class AdminProfileController extends AdminController
 
                 if ($status) {
                     $user = $this->getUserSession();
-//                    return response()->json([
-//                        'message' => __('main.messages.action_success', ['resource' => $resource, 'action' => $action]),
-//                        'model' => $user
-//                    ]);
-                    return $this->getResponseMessage($status, 'Profile', 'edit');
+                    return response()->json([
+                        'message' => __('main.messages.action_success', ['resource' => $resource, 'action' => $action]),
+                        'model' => $user
+                    ]);
                 }
             } else {
-//                dd($status);
-                return $this->getResponseMessage($status, 'Profile', 'edit');
+                return $this->getResponseMessage($status, $this->resource, 'edit');
             }
 
         } catch (\Exception $e) {
-//            return response(['errors' => $e->getMessage(), 'message' => 'error!'], 500);
-            throw $e;
+            return response(['errors' => $e->getMessage(), 'message' => 'error!'], 500);
+//            throw $e;
         }
     }
 

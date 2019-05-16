@@ -63,7 +63,7 @@ class Handler extends ExceptionHandler
             return redirect(route('admin.login',['lang'=>session('lang'),'department'=>session('department')]));
         }
 
-        return redirect()->guest(route('login'),['lang'=>session('lang','fa')]);
+        return redirect()->guest(route('login',['lang'=>session('lang','fa')]));
     }
 
     protected function invalidJson($request, ValidationException $exception)
