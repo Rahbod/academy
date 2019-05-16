@@ -120,6 +120,7 @@ class StaticMenuController extends AdminController{
             if($type_index){
                 $info[$type_index]['type']='select';
             }
+//            dd($data);
             if($data['type'] === 'page'){
                 $page_id_index=$this->getSubFormIndex($info , 'page_id');
                 if($page_id_index){
