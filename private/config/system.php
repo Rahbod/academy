@@ -20,7 +20,7 @@ return [
             'twitter' =>  'https://twitter.com/test.org',
             'phone' =>  '0098253700000',
             'fax' =>  '009823000000',
-            'address' =>  '  ایران ـ قم ـ ...',
+            'address' =>  'Iran - Tehran',
             'longitude' =>  '000',
             'latitude' =>  '000',
         ],

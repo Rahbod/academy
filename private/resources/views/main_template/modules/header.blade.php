@@ -87,6 +87,7 @@
                     </div>
                     <div id="showSearchForm" class="dlab-quik-search bg-primary search-style-1 On">
                         <form action="{{url(session('lang').'/search' )}}" enctype="multipart/form-data" method="post">
+                            @csrf
                             <div class="input-group">
                                 <input autofocus type="text" class="form-control" placeholder="search ..."
                                        name="search_query"

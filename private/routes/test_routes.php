@@ -27,8 +27,8 @@ Route::post('contact-us', 'ContactUsController@store');
 Route::post('newsletter', 'ContactUsController@newsletter');
 
 
-Route::get('search', 'contentController@search');
-Route::post('search', 'contentController@search');
+Route::get('search', 'ContentController@search');
+Route::post('search', 'ContentController@search');
 
 Route::view('about-us', 'main_template.pages.about-us')->name('about-us');
 Route::view('404', 'errors.404');

@@ -99,7 +99,7 @@
                                     what
                                     you are searching for
                                 </p>
-                                <a href="{{url(session('lang').'/translation')}}" class="site-button white">See more
+                                <a href="{{route('translations',['lang'=>session('lang')])}}" class="site-button white">See more
                                     details</a>
                             </div>
                         </div>
