@@ -21,7 +21,6 @@ class CourseController extends Controller
 
     public function setQuery()
     {
-
         $this->query = Course::query();
         $this->query->where('status', 1)
             ->where(function ($q2) {
