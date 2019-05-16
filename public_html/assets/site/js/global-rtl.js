@@ -7,7 +7,7 @@ $.ajaxSetup({
 
 toastr.options = {
     "closeButton": false,
-    "rtl": false,
+    "rtl": true,
     "debug": false,
     "newestOnTop": true,
     "progressBar": true,
@@ -40,6 +40,7 @@ $(".scrollDown").on('click', function () {
 });
 
 $('.mainSlider').slick({
+    rtl:true,
     slidesToScroll: 1,
     autoplay: false,
     autoplaySpeed: 9000,
@@ -47,6 +48,7 @@ $('.mainSlider').slick({
 });
 
 $('.newsSlider--container').slick({
+    rtl:true,
     slidesToScroll: 1,
     autoplay: false,
     autoplaySpeed: 9000,

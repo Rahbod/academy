@@ -22,13 +22,18 @@
 
     {{--<link rel="icon" type="image/png" sizes="300x300" href="{{asset('')}}">--}}
     <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/bootstrap.min.css')}}">
-{{--    <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/plugins.css')}}">--}}
-{{--    <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/style.css')}}">--}}
-{{--    <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/templete.css')}}">--}}
+    {{--    <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/plugins.css')}}">--}}
+    {{--    <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/style.css')}}">--}}
+    {{--    <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/templete.css')}}">--}}
     <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/js/vendors/toastr/toastr.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/fonts/fontawesome-5-pro/css/all.min.css')}}">
-        <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/global.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/global.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/sidebar.css')}}">
+
+    {{--rtl styles : start--}}
+    {{--<link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/rtl-styles.css')}}">--}}
+    {{--rtl styles : end--}}
+
     <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/responsive.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/js/vendors/slick/slick.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/js/vendors/slick/slick-theme.css')}}">

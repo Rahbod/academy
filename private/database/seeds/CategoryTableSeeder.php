@@ -12,6 +12,8 @@ class CategoryTableSeeder extends Seeder
      */
     public function run()
     {
+        Category::truncate();
+
         $counter = 1;
         Category::create([
             'name' => 'news',

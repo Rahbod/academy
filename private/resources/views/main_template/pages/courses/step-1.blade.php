@@ -28,11 +28,34 @@
 
         @if(isset($course['terms']))
             @foreach($course['terms'] as $key => $term)
+                @if($term['class_rooms_count'] <=0)
+                    <tr>
+                        <td colspan="1">
+                            <div class="form-check">
+                                <input class="form-check-input " type="radio" name="term"
+                                       {{$term['class_rooms_count'] > 0 ? '' : 'disabled'}}
+                                       id=""
+                                       value="{{$term['id']}}" {{$loop->first ? 'checked' : ''}}>
+
+                            </div>
+                        </td>
+                        <td colspan="4">
+                            <label class="form-check-label" for="term_{{$key}}">
+                                {{$term['title_'.session('lang')]}}
+                            </label>
+                        </td>
+                        <td colspan="7">
+                            <label class="form-check-label" for="term_{{$key}}">
+                                {{$term['description_'.session('lang')]}}
+                            </label>
+                        </td>
+                    </tr>
+                @endif
                 <tr>
                     <td colspan="1">
                         <div class="form-check">
                             <input class="form-check-input " type="radio" name="term"
-                                   {{isset($term['class_rooms_count']) > 0 ? '' : 'disabled'}}
+                                   {{$term['class_rooms_count'] > 0 ? '' : 'disabled'}}
                                    id=""
                                    value="{{$term['id']}}" {{$loop->first ? 'checked' : ''}}>
 

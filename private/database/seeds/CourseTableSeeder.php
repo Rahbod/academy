@@ -12,6 +12,8 @@ class CourseTableSeeder extends Seeder
      */
     public function run()
     {
+        Course::truncate();
+
 //        DB::statement('SET FOREIGN_KEY_CHECKS = 0'); // disable foreign key constraints
 //
 //        factory('App\Course', 20)->create();

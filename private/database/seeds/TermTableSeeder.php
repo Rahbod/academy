@@ -1,5 +1,6 @@
 <?php
 
+use App\Term;
 use Illuminate\Database\Seeder;
 
 class TermTableSeeder extends Seeder
@@ -11,6 +12,8 @@ class TermTableSeeder extends Seeder
      */
     public function run()
     {
+        Term::truncate();
+
         factory('App\Term', 40)->create();
     }
 }

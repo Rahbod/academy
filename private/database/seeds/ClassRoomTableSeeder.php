@@ -1,5 +1,6 @@
 <?php
 
+use App\ClassRoomTime;
 use Illuminate\Database\Seeder;
 
 class ClassRoomTableSeeder extends Seeder
@@ -11,6 +12,8 @@ class ClassRoomTableSeeder extends Seeder
      */
     public function run()
     {
+        ClassRoomTime::truncate();
+
         DB::statement('SET FOREIGN_KEY_CHECKS = 0'); // disable foreign key constraints
 
 //        factory('App\ClassRoom', 40)->create();
