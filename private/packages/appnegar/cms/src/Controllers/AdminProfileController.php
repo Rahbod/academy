@@ -103,9 +103,9 @@ class AdminProfileController extends AdminController
     {
         try {
             $status = \DB::transaction(function () use ($request) {
-                $this->updateUser($this->getUserRequest($request));
-                $status = $this->updateProfile($this->getProfileRequest($request));
-                return $status;
+                $user_status=$this->updateUser($this->getUserRequest($request));
+                $profile_status = $this->updateProfile($this->getProfileRequest($request));
+                return ($user_status || $profile_status);
             });
             if ($status) {
                 setUserSession(true);
@@ -114,13 +114,15 @@ class AdminProfileController extends AdminController
 
                 if ($status) {
                     $user = $this->getUserSession();
-                    return response()->json([
-                        'message' => __('main.messages.action_success', ['resource' => $resource, 'action' => $action]),
-                        'model' => $user
-                    ]);
+//                    return response()->json([
+//                        'message' => __('main.messages.action_success', ['resource' => $resource, 'action' => $action]),
+//                        'model' => $user
+//                    ]);
+                    return $this->getResponseMessage($status, 'Profile', 'edit');
                 }
             } else {
-                return $this->getResponseMessage($status, $this->resource, 'edit');
+//                dd($status);
+                return $this->getResponseMessage($status, 'Profile', 'edit');
             }
 
         } catch (\Exception $e) {

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>AppNegar Content Management</title>
+    <title>پنل مدیریت محتوا</title>
 
     <!-- Global stylesheets -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
@@ -139,7 +139,7 @@
 
             <div class="navbar-collapse collapse" id="navbar-footer">
 					<span class="navbar-text">
-						&copy; 2015 - 2019. <a href="#">Appnegar Content Management</a> by <a href="#" target="_blank">Hayatollah Rahimi</a>
+						&copy; 2015 - 2019. <a href="#">Rahbod Content Management</a></a>
 					</span>
             </div>
         </div>

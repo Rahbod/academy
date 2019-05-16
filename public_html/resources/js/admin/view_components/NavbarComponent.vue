@@ -2,7 +2,8 @@
     <div class="navbar navbar-expand-md navbar-dark">
         <div class="navbar-brand">
             <a href="./" class="d-inline-block">
-                <img src="/assets/admin/global_assets/images/logo_light.png" alt="">
+                ProfsAdvice
+                <!--<img src="/assets/admin/global_assets/images/logo_light.png" alt="">-->
             </a>
         </div>
 
