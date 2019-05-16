@@ -23,7 +23,7 @@ class UserTableSeeder extends Seeder
             'username' => 'admin',
             'name' => 'مدیر کل',
             'email' => 'admin@admin.com',
-            'password' => bcrypt('m_11177047'),
+            'password' => bcrypt('123456'),
             'type'=>'admin',
 
             'is_admin' => 1,
