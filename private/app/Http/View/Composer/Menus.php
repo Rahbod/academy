@@ -29,8 +29,7 @@ class Menus
 
             $static_menu = StaticMenu::with(['page' => function ($q) use ($lang) {
                 $q->where('status', 1)->where('lang', $lang)->orderBy('order')->select('id', 'title');
-            }])->where('status', 1)->where('lang', $lang)->orderBy('order')
-                ->get()->toTree();
+            }])->where('status', 1)->where('lang', $lang)->defaultOrder()->get()->toTree();
             $array_menu=[];
             foreach ($static_menu as $menu){
                 $array_menu[]=$this->setMenu($menu);
