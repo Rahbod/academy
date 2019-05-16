@@ -16,28 +16,32 @@ class CourseController extends Controller
 
     public function __construct()
     {
-//        $this->lang = session('lang');
-        $this->lang = 'en';
         $this->setQuery();
     }
 
     public function setQuery()
     {
+
         $this->query = Course::query();
-        $this->query->where('status', 1)->where('lang', $this->lang)
+        $this->query->where('status', 1)
             ->where(function ($q2) {
                 $q2->where('published_at', null)->orWhere('published_at', '<=', Carbon::now());
             });
     }
 
+    public function getQuery()
+    {
+        return $this->query;
+    }
+
     public function index()
     {
-        return view('main_template.pages.courses.index')->with('courses', $this->query->paginate(9));
+        return view('main_template.pages.courses.index')->with('courses', $this->query->where('lang', session('lang'))->paginate(9));
     }
 
     public function termShow($course_id)
     {
-        $course = $this->query
+        $course = $this->query->where('lang', session('lang'))
             ->with(['terms.class_rooms' => function ($q) {
                 $q->where('registration_start_date', '<=', Carbon::now())->where('registration_end_date', '>=', Carbon::now());
             }])
@@ -85,10 +89,10 @@ class CourseController extends Controller
     {
         $course = Course::with(['tags', 'category'])->with('comments')->findOrFail($id);
 
-        $related_courses = Category::where('lang', $this->lang)->where(function ($q2) {
+        $related_courses = Category::where('lang', session('lang'))->where(function ($q2) {
             $q2->where('published_at', null)->orWhere('published_at', '<=', Carbon::now());
         })->with(['courses' => function ($c) {
-            $c->where('lang', $this->lang)->where(function ($q2) {
+            $c->where('lang', session('lang'))->where(function ($q2) {
                 $q2->where('published_at', null)->orWhere('published_at', '<=', Carbon::now());
             })->take(4);
         }])->where('id', isset($course->category) ? $course->category->id : 3)->first();

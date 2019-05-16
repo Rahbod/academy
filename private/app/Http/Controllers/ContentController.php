@@ -16,15 +16,18 @@ class ContentController extends Controller
 
     public function __construct()
     {
-//        $this->lang = session('lang');
-        $this->lang = 'en';
         $this->setQuery();
+    }
+
+    public function getQuery()
+    {
+        return $this->query;
     }
 
     public function setQuery($column_name = 'id')
     {
         $this->query = Content::query();
-        $this->query->where('status', 1)->where('lang', $this->lang)
+        $this->query->where('status', 1)
             ->orderBy($column_name)->where(function ($q2) {
                 $q2->where('published_at', null)->orWhere('published_at', '<=', Carbon::now());
             });
@@ -51,12 +54,7 @@ class ContentController extends Controller
 
     public function show($id)
     {
-        $content = Content::with(['tags', 'author'])->findOrFail($id);
-//        $content = Content::with('tags')->with('author')
-//            ->with(['comments' => function ($q) {
-//                $q->where('status', 1)->where('lang', $this->lang)->with('author')->with('children.children');
-//            }])->findOrFail($id);
-
+        $content = $this->query->where('lang', session('lang'))->with(['tags', 'author'])->findOrFail($id);
         $tags_id = $content->tags->pluck('id');
 
         $related_contents = Tag::with(['contents' => function ($q) use ($content) {
@@ -93,11 +91,11 @@ class ContentController extends Controller
     public function getArticles($search_for)
     {
         $this->setQuery();
-        $articles = $this->query->whereType('article')
+        $articles = $this->getQuery()->whereType('article')->where('lang', session('lang'))
             ->where('title', 'like', '%' . $search_for . '%')
             ->orWhere('summary', 'like', '%' . $search_for . '%')
             ->orWhere('text', 'like', '%' . $search_for . '%')
-            ->orderBy('created_at', 'desc')->select('id', 'title', 'image', 'logo', 'created_at')->take(12)->get();
+            ->orderBy('created_at', 'desc')->select('id', 'title', 'image', 'logo', 'created_at','type')->take(12)->get();
 
         return $articles;
     }
@@ -106,21 +104,21 @@ class ContentController extends Controller
     {
 
         $this->setQuery();
-        $news = $this->query->whereType('news')
+        $news = $this->getQuery()->whereType('news')->where('lang', session('lang'))
             ->where('title', 'like', '%' . $search_for . '%')
             ->orWhere('summary', 'like', '%' . $search_for . '%')
             ->orWhere('text', 'like', '%' . $search_for . '%')
-            ->orderBy('created_at', 'desc')->select('id', 'title', 'image', 'logo', 'created_at')->take(12)->get();
+            ->orderBy('created_at', 'desc')->select('id', 'title', 'image', 'logo', 'created_at','type')->take(12)->get();
 
         return $news;
     }
 
     public function getCourses($search_for)
     {
-        $courses = Course::where('lang', $this->lang)
+        $courses = Course::where('lang', session('lang'))
             ->where('status', 1)
-            ->where('title', 'like', '%' . $search_for . '%')
-            ->orWhere('description', 'like', '%' . $search_for . '%')
+            ->where('title_'.session('lang'), 'like', '%' . $search_for . '%')
+            ->orWhere('description_'.session('lang'), 'like', '%' . $search_for . '%')
             ->orderBy('created_at', 'desc')->take(12)->get();
 
         return $courses;
