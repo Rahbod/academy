@@ -39,8 +39,11 @@ class CourseController extends Controller
     {
         $course = $this->query
             ->with(['terms.class_rooms' => function ($q) {
-            $q->where('registration_start_date', '<=', Carbon::now())->where('registration_end_date', '>=', Carbon::now());}])
-            ->with(['terms' => function ($q) {$q->withCount('class_rooms');}])->findOrFail($course_id);
+                $q->where('registration_start_date', '<=', Carbon::now())->where('registration_end_date', '>=', Carbon::now());
+            }])
+            ->with(['terms' => function ($q) {
+                $q->withCount('class_rooms');
+            }])->findOrFail($course_id);
 
 //        dd($course);
 
@@ -81,13 +84,14 @@ class CourseController extends Controller
     public function show($id)
     {
         $course = Course::with(['tags', 'category'])->with('comments')->findOrFail($id);
+
         $related_courses = Category::where('lang', $this->lang)->where(function ($q2) {
             $q2->where('published_at', null)->orWhere('published_at', '<=', Carbon::now());
         })->with(['courses' => function ($c) {
             $c->where('lang', $this->lang)->where(function ($q2) {
                 $q2->where('published_at', null)->orWhere('published_at', '<=', Carbon::now());
             })->take(4);
-        }])->where('id', $course->category->id)->first();
+        }])->where('id', isset($course->category) ? $course->category->id : 3)->first();
 
         return view('main_template.pages.courses.show')
             ->with('course', $course)
