@@ -78,7 +78,7 @@ class StaticMenuController extends AdminController{
             'parent_id' => "exists:{$this->getResourceName($this->resource)},id|nullable",
             'status' => 'numeric|between:0,1|nullable',
             'order' => 'numeric|min:0|nullable',
-            'has_content' => 'numeric|between:0,1|nullable',
+            'has_content' => 'numeric|between:0,1|required',
             'type' => 'nullable|in:action,page,link',
             'page_id' => 'nullable|exists:pages,id',
         ];

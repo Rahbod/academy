@@ -59,10 +59,10 @@ class Menus
         ];
 
         if($menu->type === 'page' && $menu->page !== null){
-            $menu_item['link']='/'.$lang.'/pages/show/'.$menu->page->id;
+            $menu_item['link']=url('/'.$lang.'/pages/show/'.$menu->page->id);
         }
         if($menu->type === 'action'){
-            $menu_item['link']='/'.$lang.'/'.$menu->link;
+            $menu_item['link']=url('/'.$lang.'/'.$menu->link);
         }
         if(count($menu->children)>0){
             foreach ($menu->children as $child){

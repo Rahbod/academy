@@ -221,6 +221,7 @@ trait AdminCrudActions
                 case 'status':
                 case 'is_news':
                 case 'verified':
+                case 'has_content':
                     $data[$item['name']] = 1;
                     break;
                 case 'lang':
