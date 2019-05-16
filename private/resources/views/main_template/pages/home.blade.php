@@ -51,7 +51,7 @@
                         <div class="col-lg-4 col-md-6 col-sm-6 m-b30 card-container">
                             <div class="dlab-box">
                                 <div class="dlab-media">
-                                    <a href="{{session('lang').'/courses/'. $course['id'] .'/'.str_replace(' ','-',$course['title']) }}">
+                                    <a href="{{session('lang').'/courses/'. $course['id'] .'/'.str_replace(' ','-',$course['title_'.session('lang')]) }}">
                                         <img class="img-fluid" src="{{$course['image']}}" alt="">
                                     </a>
 
@@ -61,22 +61,22 @@
                                 </div>
                                 <div class="dlab-info p-a20 border-1 text-center">
                                     <h4 class="dlab-title m-t0 -show2Lines">
-                                        <a title="{{$course['title']}}"
-                                           href="{{session('lang').'/courses/'. $course['id'] .'/'.str_replace(' ','-',$course['title']) }}">
-                                            {{$course['title']}}
+                                        <a title="{{$course['title_'.session('lang')]}}"
+                                           href="{{session('lang').'/courses/'. $course['id'] .'/'.str_replace(' ','-',$course['title_'.session('lang')]) }}">
+                                            {{$course['title_'.session('lang')]}}
                                         </a>
                                     </h4>
                                     <p class="-show2Lines">
-                                        {!! $course['description'] !!}
+                                        {!! $course['description_'.session('lang')] !!}
                                     </p>
 
                                     <div class="tr-btn-info d-flex justify-content-between">
-                                        <a href="{{session('lang').'/courses/register/'. $course['id'] .'/'.str_replace(' ','-',$course['title']) }}"
+                                        <a href="{{session('lang').'/courses/register/'. $course['id'] .'/'.str_replace(' ','-',$course['title_'.session('lang')]) }}"
                                            class="site-button radius-no">
                                             <i class="fa fa-location-arrow" aria-hidden="true"></i>
                                             register
                                         </a>
-                                        <a href="{{session('lang').'/courses/'. $course['id'] .'/'.str_replace(' ','-',$course['title']) }}"
+                                        <a href="{{session('lang').'/courses/'. $course['id'] .'/'.str_replace(' ','-',$course['title_'.session('lang')]) }}"
                                            class="site-button bg-primary-dark radius-no">
                                             <i class="fa fa-info-circle" aria-hidden="true"></i> details </a>
                                     </div>
