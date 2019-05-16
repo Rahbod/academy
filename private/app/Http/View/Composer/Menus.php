@@ -35,6 +35,7 @@ class Menus
             foreach ($static_menu as $menu){
                 $array_menu[]=$this->setMenu($menu);
             }
+            dd($array_menu);
             return $array_menu;
         });
 
@@ -55,6 +56,7 @@ class Menus
             'has_content'=>$menu->has_content,
             'type'=>$menu->type,
             'link'=>$menu->link,
+            'active'=>false,
             'children'=>[]
         ];
 
@@ -68,6 +70,9 @@ class Menus
             foreach ($menu->children as $child){
                 $menu_item['children'][]=$this->setMenu($child);
             }
+        }
+        if(url(request()->path() === $menu_item['link'])){
+            $menu_item['active']=true;
         }
 
         return $menu_item;
