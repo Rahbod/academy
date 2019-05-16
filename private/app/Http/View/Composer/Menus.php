@@ -20,9 +20,7 @@ class Menus
 
     public function __construct()
     {
-        Cache::flush();
-
-//        dd(request()->path());
+//        Cache::flush();
 
         $lang=$this->getLang();
 
@@ -61,7 +59,7 @@ class Menus
         ];
 
         if($menu->type === 'page' && $menu->page !== null){
-            $menu_item['link']='/'.$lang.'/pages/'.$menu->page->id;
+            $menu_item['link']='/'.$lang.'/pages/show/'.$menu->page->id;
         }
         if($menu->type === 'action'){
             $menu_item['link']='/'.$lang.'/'.$menu->link;

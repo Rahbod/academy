@@ -583,16 +583,16 @@ class ActionTableSeeder extends Seeder
                         $array_actions = $this->getCrudActions($resource);
                         $this->createActions($array_actions, $order, $department);
                     }
-                    if (in_array($resource->name, $commentable_resources)) {
-                        $actions = $this->getCommetableActions($resource);
-                        $this->createActions($actions, $order, $department);
-                    }
                     if (in_array($resource->name, $management_resources)) {
                         $array_actions = $this->getCrudActions($resource);
                         $this->createActions($array_actions, $order, $department);
                     }
                     if (in_array($resource->name, $have_file_manager_resource)) {
                         $actions = $this->getFileMangerActions($resource);
+                        $this->createActions($actions, $order, $department);
+                    }
+                    if (in_array($resource->name, $commentable_resources)) {
+                        $actions = $this->getCommetableActions($resource);
                         $this->createActions($actions, $order, $department);
                     }
                     if (in_array($resource->name, $have_settings)) {
