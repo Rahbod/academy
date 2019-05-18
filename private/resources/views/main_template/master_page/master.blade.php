@@ -31,9 +31,10 @@
     <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/sidebar.css')}}">
 
     {{--rtl styles : start--}}
-    <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/rtl-styles.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/iran-sans.css')}}">
-
+    @if(session('lang') == 'fa')
+        <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/rtl-styles.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/iran-sans.css')}}">
+    @endif
     {{--rtl styles : end--}}
 
     <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/responsive.css')}}">
