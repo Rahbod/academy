@@ -120,20 +120,23 @@ function setLang($request)
         session(['direction' => 'rtl']);
         abort(404);
     }
+//    else {
+//        session(['lang' => $lang]);
+//        app()->setLocale($lang);
+//    }
 
     session(['lang' => $lang]);
-    app()->setLocale($lang);
-
-    switch ($lang) {
-        case 'fa':
-        case 'ar':
-            session(['direction' => 'rtl']);
-            break;
-        default:
-            session(['direction' => 'ltr']);
-            break;
-    }
-//    dd(session('direction'));
+//    app()->setLocale($lang);
+//    switch ($lang) {
+//        case 'fa':
+//        case 'ar':
+//            session(['direction' => 'rtl']);
+//            break;
+//        default:
+//            session(['direction' => 'ltr']);
+//            break;
+//    }
+    session(['direction' => 'rtl']);
 }
 
 function trimArray($array_string)

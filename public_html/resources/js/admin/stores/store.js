@@ -40,6 +40,9 @@ export default new Vuex.Store({
         action(state) {
             return state.action;
         },
+        department(state) {
+            return state.department;
+        },
         resource(state) {
             return state.resource;
         },
