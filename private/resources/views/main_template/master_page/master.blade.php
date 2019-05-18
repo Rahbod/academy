@@ -31,13 +31,15 @@
     <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/sidebar.css')}}">
 
     {{--rtl styles : start--}}
-    {{--<link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/rtl-styles.css')}}">--}}
+    @if(session('lang') == 'fa')
+        <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/rtl-styles.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/iran-sans.css')}}">
+    @endif
     {{--rtl styles : end--}}
 
     <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/responsive.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/js/vendors/slick/slick.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/js/vendors/slick/slick-theme.css')}}">
-    {{--    <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/iran-sans.css')}}">--}}
     <link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 

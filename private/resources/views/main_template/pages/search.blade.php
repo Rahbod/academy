@@ -9,48 +9,52 @@
         <div class="dlab-bnr-inr overlay-black-middle">
             <div class="container">
                 <div class="dlab-bnr-inr-entry">
-                    <h1 class="text-white">Translation</h1>
+                    <h1 class="text-white">@lang('messages.global.search')</h1>
                     <!-- Breadcrumb row -->
-                    <div class="breadcrumb-row">
-                        <ul class="list-inline">
-                            <li><a href="#">Home</a></li>
-                            <li>Translation</li>
-                        </ul>
-                    </div>
-                    <!-- Breadcrumb row END -->
+                @include('main_template.modules.breadcrumb')
+
+                <!-- Breadcrumb row END -->
                 </div>
             </div>
         </div>
         <div class="content-inner-2">
             <div class="container">
-                <div class="section-head text-black text-center m-b20">
-                    <h2 class="m-b10">Search</h2>
+                <div class="section-head text-black text-center m-b20 pb-4 border-bottom">
+                    <h2 class="m-b10">@lang('messages.global.search')</h2>
                     <h5>
-                        you searched for : <span class="text-danger"><b>{{$search_for}}</b></span>
+                        @lang('messages.global.search-query') {{isset($search_in) ? __('messages.global.'.$search_in) : '' }}
+                        :
+                        <span class="text-danger"><b>{{isset($search_for) ? $search_for : __('messages.global.no-search-query')}}</b></span>
                     </h5>
                 </div>
 
                 <ul class="nav nav-pills mb-5 justify-content-center" id="pills-tab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="pills-news-tab" data-toggle="pill" href="#pills-news" role="tab"
-                           aria-controls="pills-news" aria-selected="true">News</a>
+                        <a class="nav-link {{isset($search_in) ? ($search_in=='news' ? 'active' : '') : '' }}"
+                           id="pills-news-tab" data-toggle="pill" href="#pills-news" role="tab"
+                           aria-controls="pills-news" aria-selected="true">@lang('messages.global.news')</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="pills-article-tab" data-toggle="pill" href="#pills-article" role="tab"
-                           aria-controls="pills-article" aria-selected="false">Article</a>
+                        <a class="nav-link {{isset($search_in) ? ($search_in=='article' ? 'active' : '') : '' }}"
+                           id="pills-article-tab" data-toggle="pill" href="#pills-article" role="tab"
+                           aria-controls="pills-article" aria-selected="false">@lang('messages.global.articles')</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="pills-course-tab" data-toggle="pill" href="#pills-course" role="tab"
-                           aria-controls="pills-course" aria-selected="false">Course</a>
+                        <a class="nav-link {{isset($search_in) ? ($search_in=='courses' ? 'active' : '') : '' }}"
+                           id="pills-course-tab" data-toggle="pill" href="#pills-course" role="tab"
+                           aria-controls="pills-course" aria-selected="false">@lang('messages.global.courses')</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="pills-translation-tab" data-toggle="pill" href="#pills-translation"
+                        <a class="nav-link {{isset($search_in) ? ($search_in=='translations' ? 'active' : '') : '' }}"
+                           id="pills-translation-tab" data-toggle="pill" href="#pills-translation"
                            role="tab"
-                           aria-controls="pills-translation" aria-selected="false">Translation</a>
+                           aria-controls="pills-translation"
+                           aria-selected="false">@lang('messages.global.translations')</a>
                     </li>
                 </ul>
                 <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-news" role="tabpanel"
+                    <div class="tab-pane fade {{isset($search_in) ? ($search_in=='news' ? 'show active' : '') : '' }}"
+                         id="pills-news" role="tabpanel"
                          aria-labelledby="pills-news-tab">
                         <div class="container">
                             <div class="row">
@@ -100,7 +104,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="pills-article" role="tabpanel" aria-labelledby="pills-article-tab">
+                    <div class="tab-pane fade {{isset($search_in) ? ($search_in=='article' ? 'show active' : '') : '' }}"
+                         id="pills-article" role="tabpanel" aria-labelledby="pills-article-tab">
                         <div class="container">
                             <div class="row">
                                 @if(isset($articles))
@@ -150,7 +155,8 @@
                         </div>
 
                     </div>
-                    <div class="tab-pane fade" id="pills-course" role="tabpanel" aria-labelledby="pills-course-tab">
+                    <div class="tab-pane fade {{isset($search_in) ? ($search_in=='courses' ? 'show active' : '') : '' }}"
+                         id="pills-course" role="tabpanel" aria-labelledby="pills-course-tab">
                         <div class="container">
                             <div class="row">
                                 @if(isset($courses))
@@ -201,7 +207,8 @@
                         </div>
 
                     </div>
-                    <div class="tab-pane fade" id="pills-translation" role="tabpanel"
+                    <div class="tab-pane fade {{isset($search_in) ? ($search_in=='translations' ? 'show active' : '') : '' }}"
+                         id="pills-translation" role="tabpanel"
                          aria-labelledby="pills-translation-tab">
                         <div class="container">
                             <div class="row">

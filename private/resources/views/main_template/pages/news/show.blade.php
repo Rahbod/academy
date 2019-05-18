@@ -6,7 +6,18 @@
 
 @section('content')
     <section class="newsIndex mb-5">
-        @include('main_template.modules.inner_pages_header')
+        <div class="dlab-bnr-inr overlay-black-middle">
+            <div class="container">
+                <div class="dlab-bnr-inr-entry">
+                    <h1 class="text-white">
+                        @lang('messages.global.'.$content_type)
+                    </h1>
+                    <!-- Breadcrumb row -->
+                @include('main_template.modules.breadcrumb')
+                <!-- Breadcrumb row END -->
+                </div>
+            </div>
+        </div>
 
         <div class="content-area">
             <div class="container">
@@ -18,7 +29,7 @@
                             <div class="dlab-post-meta">
                                 <ul class="d-flex align-items-center">
                                     <li class="post-date">{{$content['created_at']}}</li>
-                                    <li class="post-author">By
+                                    <li class="post-author">@lang('messages.global.by')
                                         <a href="{{url(session('lang') .'/users/show/'.$content['author']['id'] .'/'.str_replace(' ','-',$content['author']['name']))}}">{{isset($content['author']) ? $content['author']['name'] :'admin'}}</a>
                                     </li>
                                     <li class="post-comment"><a href="#">{{$content['show_count']}}</a></li>
@@ -241,7 +252,7 @@
                                     </div>
                                 </div>
                             </div>
-                        @endif
+                    @endif
                     <!-- blog END -->
                     </div>
                     <!-- Left part END -->
@@ -249,11 +260,15 @@
                     <div class="col-lg-4 col-md-5 sticky-top">
                         <aside class="side-bar">
                             <div class="widget">
-                                <h6 class="widget-title style-1">Search</h6>
+                                <h6 class="widget-title style-1">@lang('messages.global.search')</h6>
                                 <div class="search-bx style-1">
-                                    <form role="search" method="post">
+                                    <form action="{{url(session('lang').'/search')}}" enctype="multipart/form-data"
+                                          role="search" method="post">
+                                        @csrf
+                                        <input type="hidden" value="{{$content_type}}" name="search_in">
                                         <div class="input-group">
-                                            <input name="text" class="form-control" placeholder="Enter your keywords..."
+                                            <input name="text" class="form-control"
+                                                   placeholder="@lang('messages.global.search') ..."
                                                    type="text">
                                             <span class="input-group-btn">
 												<button type="submit" class="fa fa-search text-primary"></button>
@@ -263,37 +278,44 @@
                                 </div>
                             </div>
                             <div class="widget recent-posts-entry">
-                                <h6 class="widget-title style-1">Related Posts</h6>
+                                <h6 class="widget-title style-1">@lang('messages.global.related-posts')</h6>
                                 <div class="widget-post-bx">
-                                    @foreach($related_contents as $related_content)
-                                        @if(isset($related_content->contents))
-                                            @foreach($related_content->contents as $post)
-                                                <div class="widget-post clearfix">
-                                                    <div class="dlab-post-media">
-                                                        <img src="{{$post['logo']}}"
-                                                             width="200" height="143"
-                                                             alt="{{$post['title']}}">
-                                                    </div>
-                                                    <div class="dlab-post-info">
-                                                        <div class="dlab-post-header">
-                                                            <h6 class="post-title">
-                                                                <a href="{{url(session('lang').'/'.$post['type'].'/'.$post['id']
+                                    {{--                                    @foreach($related_contents as $related_content)--}}
+                                    @if(isset($related_content->contents))
+                                        @foreach($related_content->contents as $post)
+                                            <div class="widget-post clearfix">
+                                                <div class="dlab-post-media">
+                                                    <img src="{{$post['logo']}}"
+                                                         width="200" height="143"
+                                                         alt="{{$post['title']}}">
+                                                </div>
+                                                <div class="dlab-post-info">
+                                                    <div class="dlab-post-header">
+                                                        <h6 class="post-title">
+                                                            <a href="{{url(session('lang').'/'.$post['type'].'/'.$post['id']
                                                         .'/'.str_replace(' ','-',$post['title']))}}">{{$post['title']}}</a>
-                                                            </h6>
-                                                        </div>
-                                                        <div class="dlab-post-meta">
-                                                            <ul class="d-flex align-items-center">
-                                                                <li class="post-date">{{$post['created_at']}}</li>
-                                                                <li class="post-comment"><a
-                                                                            href="#">{{$post['show_count']}}</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
+                                                        </h6>
+                                                    </div>
+                                                    <div class="dlab-post-meta">
+                                                        <ul class="d-flex align-items-center">
+                                                            <li class="post-date">{{$post['created_at']}}</li>
+                                                            <li class="post-comment"><a
+                                                                        href="#">{{$post['show_count']}}</a>
+                                                            </li>
+                                                        </ul>
                                                     </div>
                                                 </div>
-                                            @endforeach
-                                        @endif
-                                    @endforeach
+                                            </div>
+                                        @endforeach
+                                        {{--@endif--}}
+                                    @else
+                                        <div class="col-12">
+                                            <div class="alert alert-info text-center rounded" role="alert">
+                                                <b>@lang('messages.global.no-result')</b>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    {{--@endforeach--}}
                                 </div>
                             </div>
 
@@ -360,7 +382,7 @@
                                     <div class="news-box">
                                         <p>Enter your e-mail and subscribe to our newsletter.</p>
                                         <form class="dzSubscribe" action="script/mailchamp.php" method="post">
-                                            <div class="dzSubscribeMsg"></div>
+                                            <input type="hidden" value="{{$content_type}}" name="search_in">
                                             <div class="input-group">
                                                 <input name="dzEmail" required="required" type="email"
                                                        class="form-control"

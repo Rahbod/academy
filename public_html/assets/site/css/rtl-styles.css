@@ -8,6 +8,9 @@ body {
 
 /*#endregion*/
 /*#region header*/
+.header-nav .nav > li > a {
+    font-weight: 500;
+}
 
 .leftMenu li {
     padding-right: auto;
@@ -16,7 +19,7 @@ body {
 
 .topBar li:first-child {
     padding-right: 0;
-    padding-left: auto;
+    padding-left: 1rem;
 }
 
 .topBar li:not(:last-child)::after {
@@ -68,15 +71,8 @@ body {
 
 /*#endregion*/
 /*#region main slider*/
-
-.slick-prev {
-    right: 0 !important;
-    left: auto !important;
-}
-
-.slick-next {
-    left: 0 !important;
-    right: auto !important;
+.newsSlider--container, .mainSlider {
+    direction: ltr;
 }
 
 .mainSlider--title {
@@ -112,6 +108,10 @@ button:after {
 
 .tr-btn-info a {
     float: right;
+}
+
+.tr-btn-info a i {
+    margin-left: 0.5rem;
 }
 
 .site-button-secondry:after, .site-button:after {
@@ -192,6 +192,14 @@ button:after {
 
 .widget_gallery li, .widget_gallery li:hover {
     float: right;
+}
+
+.footer-bottom .text-left {
+    text-align: right !important;
+}
+
+.footer-bottom .text-right {
+    text-align: left !important;
 }
 
 /*#endregion*/
@@ -376,6 +384,10 @@ ol.comment-list li .children {
     border-top-right-radius: 0;
     margin-right: 0;
     margin-left: auto;
+}
+
+.breadcrumb-row ul li:not(:last-child)::after {
+    content: "\f104";
 }
 
 /*#endregion*/

@@ -5,7 +5,7 @@
         <div class="dlab-bnr-inr overlay-black-middle">
             <div class="container">
                 <div class="dlab-bnr-inr-entry">
-                    <h1 class="text-white">Login</h1>
+                    <h1 class="text-white">@lang('messages.global.login')</h1>
                     <!-- Breadcrumb row -->
                 @include('main_template.modules.breadcrumb')
                 <!-- Breadcrumb row END -->
@@ -17,7 +17,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <h3 class="font-weight-700 m-t0 m-b20">Login Your Account</h3>
+                        <h3 class="font-weight-700 m-t0 m-b20">@lang('messages.global.login-description')</h3>
                     </div>
                 </div>
                 <div>
@@ -27,34 +27,26 @@
                                 <form method="post" id="login" enctype="multipart/form-data"
                                       action="{{ route('login',['lang'=>session('lang')]) }}"
                                       class="tab-pane col-12 p-a0 active">
-                                    <h4 class="font-weight-700">LOGIN</h4>
-                                    <p class="font-weight-600">If you have an account with us, please log in.</p>
+                                    <h4 class="font-weight-700">@lang('messages.global.login')</h4>
+                                    <p class="font-weight-600">@lang('messages.global.login-with')</p>
                                     <div class="form-group">
-                                        <label class="font-weight-700">E-MAIL *</label>
+                                        <label class="font-weight-700">@lang('messages.global.email') *</label>
                                         <input id="email" name="email" required=""
                                                class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
                                                value="{{ old('email') }}" autofocus
                                                placeholder="Your Email Id" type="email">
-                                        {{--@if ($errors->has('email'))--}}
-                                            {{--<span class="invalid-feedback">--}}
-                                        {{--<strong>{{ $errors->first('email') }}</strong>--}}
-                                    {{--</span>--}}
-                                        {{--@endif--}}
-                                        <div class="invalid-tooltip" role="alert"></div>
-
+                                        <span class="invalid-feedback">
+                                            <strong>{{ $errors->first('email') }}</strong>
+                                        </span>
                                     </div>
                                     <div class="form-group">
-                                        <label class="font-weight-700">PASSWORD *</label>
+                                        <label class="font-weight-700">@lang('messages.global.password') *</label>
                                         <input name="password" required=""
                                                class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
                                                placeholder="Type Password" type="password">
-                                        {{--@if ($errors->has('password'))--}}
-                                            {{--<span class="invalid-feedback">--}}
-                                                {{--<strong>{{ $errors->first('password') }}</strong>--}}
-                                            {{--</span>--}}
-                                        {{--@endif--}}
-                                        <div class="invalid-tooltip" role="alert"></div>
-
+                                        <span class="invalid-feedback">
+                                            <strong>{{ $errors->first('password') }}</strong>
+                                        </span>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-12">
@@ -68,10 +60,12 @@
                                     </div>
 
                                     <div class="text-left">
-                                        <button type="submit" class="site-button m-r5 button-lg radius-no">login
+                                        <button type="submit" class="site-button m-r5 button-lg radius-no">
+                                            @lang('messages.global.login')
                                         </button>
                                         <a data-toggle="tab" href="#forgot-password" class="m-l5"><i
-                                                    class="fa fa-unlock-alt"></i> Forgot Password</a>
+                                                    class="fa fa-unlock-alt"></i> @lang('messages.global.forgot-password')
+                                        </a>
                                     </div>
                                 </form>
                                 {{--<form method="post" id="forgot-password" enctype="multipart/form-data"--}}
@@ -133,7 +127,7 @@
                 },
                 error: function (data) {
                     $.each(data.responseJSON.errors, function (key, value) {
-                        $('#' + key).parents('.form-group').find('.invalid-feedback span').show().html(value[0]);
+                        $('#' + key).parents('.form-group').find('span.invalid-feedback').show().html(value[0]);
                         toaster('error', key, value);
                     });
                 },
