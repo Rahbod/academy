@@ -157,7 +157,7 @@
                 </div>
             </div>
             <div class="datatable-scroll" v-if="collection.data.length>0">
-                <table class="table datatable-basic table-bordered table-hover dataTable no-footer">
+                <table class="table datatable-basic table-bordered table-hover dataTable no-footer table-trsponsive">
                     <thead>
                     <tr role="row">
                         <th class="text-center">

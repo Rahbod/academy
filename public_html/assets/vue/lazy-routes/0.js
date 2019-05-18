@@ -21399,7 +21399,7 @@ var render = function() {
               "table",
               {
                 staticClass:
-                  "table datatable-basic table-bordered table-hover dataTable no-footer"
+                  "table datatable-basic table-bordered table-hover dataTable no-footer table-trsponsive"
               },
               [
                 _c("thead", [
