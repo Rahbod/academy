@@ -19,7 +19,7 @@
                             <a href="{{$slider['link']}}" title="{{ $slider['title'] }}"
                                class="mainSlider__site-button button-md">@lang('messages.global.details')</a>
                             {{--<a href="{{url(session('lang'). '/contact-us')}}"--}}
-                               {{--class="mainSlider__site-button white button-md" title="talk to us">@lang('messages.global.contact')</a>--}}
+                            {{--class="mainSlider__site-button white button-md" title="talk to us">@lang('messages.global.contact')</a>--}}
                         </div>
                     </div>
                 @endforeach
@@ -78,7 +78,8 @@
                                         </a>
                                         <a href="{{session('lang').'/courses/'. $course['id'] .'/'.str_replace(' ','-',$course['title_'.session('lang')]) }}"
                                            class="site-button bg-primary-dark radius-no">
-                                            <i class="fa fa-info-circle" aria-hidden="true"></i>@lang('messages.global.details')</a>
+                                            <i class="fa fa-info-circle"
+                                               aria-hidden="true"></i>@lang('messages.global.details')</a>
                                     </div>
                                 </div>
                             </div>
@@ -100,7 +101,8 @@
                         <p>If you’re looking for a truly precise translator with cool history,here you will see what
                             you are searching for
                         </p>
-                        <a title="@lang('messages.global.see-more-details')" href="{{route('translations',['lang'=>session('lang')])}}"
+                        <a title="@lang('messages.global.see-more-details')"
+                           href="{{route('translations',['lang'=>session('lang')])}}"
                            class="site-button white">@lang('messages.global.see-more-details')</a>
                     </div>
                 </div>
@@ -161,14 +163,14 @@
                             <div class="dlab-box">
                                 <div class="dlab-media">
                                     <a title="{{$article['title']}}"
-                                       href="{{url(session('lang').'/article/show/'.$article['id'].'/'.str_replace(' ','-',$article['title']))}}">
+                                       href="{{url(session('lang').'/article/'.$article['id'].'/'.str_replace(' ','-',$article['title']))}}">
                                         <img src="{{$article['logo']}}" alt="{{$article['title']}}">
                                     </a>
                                 </div>
                                 <div class="dlab-info p-a15 border-1">
                                     <h4 class="dlab-title m-t0 -show1Lines">
                                         <a class=""
-                                           {{$article['title']}} href="{{url(session('lang').'/article/show/'.$article['id'].'/'.str_replace(' ','-',$article['title']))}}">
+                                           {{$article['title']}} href="{{url(session('lang').'/article/'.$article['id'].'/'.str_replace(' ','-',$article['title']))}}">
                                             {{$article['title']}}
                                         </a>
                                     </h4>
@@ -176,13 +178,15 @@
                                     <div class="package-content">
                                         <ul class="package-meta">
                                             <li><span class="fa fa-calendar">
-                                                </span> @lang('messages.global.published-at') : {{$article['created_at']}}</li>
-                                            <li><span class="fa fa-user"></span> @lang('messages.global.seen') : {{$article['show_count']}}</li>
+                                                </span> @lang('messages.global.published-at')
+                                                : {{$article['created_at']}}</li>
+                                            <li><span class="fa fa-user"></span> @lang('messages.global.seen')
+                                                : {{$article['show_count']}}</li>
                                         </ul>
                                         <div class="clearfix">
                                             {{--<span class="package-price pull-left text-primary">900,00 T</span>--}}
                                             <a title="{{$article['title']}}"
-                                               href="{{url(session('lang').'/article/show/'.$article['id'].'/'.str_replace(' ','-',$article['title']))}}"
+                                               href="{{url(session('lang').'/article/'.$article['id'].'/'.str_replace(' ','-',$article['title']))}}"
                                                class="site-button float-right">@lang('messages.global.view-details')</a>
                                         </div>
                                     </div>

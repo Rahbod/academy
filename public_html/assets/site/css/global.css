@@ -637,15 +637,15 @@ button:after {
 }
 
 .sliderSection {
-    z-index: 1;
-    background-image: url(../media/images/main_slider/p2.jpg);
-    height: 100vh;
-    width: 100%;
-    background-attachment: fixed;
-    background-position: center;
-    -webkit-background-size: cover;
-    background-size: cover;
-    position: relative;
+    /*z-index: 1;*/
+    /*background-image: url(../media/images/main_slider/p2.jpg);*/
+    /*height: 100vh;*/
+    /*width: 100%;*/
+    /*background-attachment: fixed;*/
+    /*background-position: center;*/
+    /*-webkit-background-size: cover;*/
+    /*background-size: cover;*/
+    /*position: relative;*/
 
 }
 
