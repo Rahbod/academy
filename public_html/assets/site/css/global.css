@@ -507,8 +507,8 @@ a, .text-primary, .primary li:before, .breadcrumb-row ul li a, .header-nav .nav 
     display: block;
 }
 
-.slick-next:hover, .slick-prev:hover {
-    background: rgba(0, 0, 0, .5) !important;
+.slick-next:hover::before, .slick-prev:hover::before {
+    font-size: 30px;
 }
 
 .mainSlider--title {
@@ -881,6 +881,10 @@ img {
 
 .top-courses .dlab-info {
     padding-bottom: 0;
+}
+
+.top-courses .site-button, .top-courses .site-button-secondry {
+    font-weight: normal;
 }
 
 /*#endregion*/

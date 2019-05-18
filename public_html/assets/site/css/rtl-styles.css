@@ -8,6 +8,9 @@ body {
 
 /*#endregion*/
 /*#region header*/
+.header-nav .nav > li > a {
+    font-weight: 500;
+}
 
 .leftMenu li {
     padding-right: auto;

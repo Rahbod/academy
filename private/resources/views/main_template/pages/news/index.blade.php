@@ -21,7 +21,7 @@
         <div class="content-area">
             <div class="container">
                 <div class="row">
-                    @if( isset($contents) && count($contents)>0))
+                    @if( isset($contents) && count($contents)>0)
                     <!-- Left part start -->
                     <div class="col-lg-8 col-md-7 col-sm-12">
                         <!-- Blog large img -->
