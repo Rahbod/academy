@@ -1,9 +1,11 @@
 <div class="breadcrumb-row">
     <ul class="list-inline">
-        @if(isset($breadcrumb))
-            <li><a href="#">Home</a></li>
-            @foreach($breadcrumb as $value)
-                <li><a title="{{$value['title']}}" href="{{$value['link']}}">{{$value['title']}}</a></li>
+        @if(isset($breadcrumbs))
+            @foreach($breadcrumbs as $breadcrumb)
+                <li>
+                    <a title="{{$breadcrumb['title']}}" class="text-white"
+                       href="{{ url(session('lang'). '/'. $breadcrumb['link'])}}">{{$breadcrumb['title']}}</a>
+                </li>
             @endforeach
         @endif
     </ul>

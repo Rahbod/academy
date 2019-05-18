@@ -35,7 +35,20 @@ class CourseController extends Controller
 
     public function index()
     {
-        return view('main_template.pages.courses.index')->with('courses', $this->query->where('lang', session('lang'))->paginate(9));
+//        dd(session('lang'));
+        $courses = $this->getQuery()->where('lang', session('lang'))->paginate(9);
+//        dd($courses);
+
+        $breadcrumbs[0]['title'] = __('messages.global.home');
+        $breadcrumbs[0]['link'] = 'home';
+
+
+        $breadcrumbs[1]['title'] = __('messages.home.course-title');
+        $breadcrumbs[1]['link'] = 'courses';
+
+//        dd($breadcrumbs);
+
+        return view('main_template.pages.courses.index')->with('courses', $courses)->with('breadcrumbs',$breadcrumbs);
     }
 
     public function termShow($course_id)

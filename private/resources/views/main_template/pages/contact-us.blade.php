@@ -21,7 +21,7 @@
         <div class="dlab-bnr-inr overlay-black-middle">
             <div class="container">
                 <div class="dlab-bnr-inr-entry">
-                    <h1 class="text-white">Contact Us</h1>
+                    <h1 class="text-white">@lang('messages.global.contact-us')</h1>
                     <!-- Breadcrumb row -->
                 @include('main_template.modules.breadcrumb')
                 <!-- Breadcrumb row END -->
@@ -34,7 +34,7 @@
                     <!-- right part start -->
                     <div class="col-lg-4 col-md-6 d-lg-flex d-md-flex">
                         <div class="p-a30 border m-b30 contact-area border-1 align-self-stretch ">
-                            <h4 class="m-b10">Quick Contact</h4>
+                            <h4 class="m-b10">@lang('messages.global.quick-contact')</h4>
                             <p>If you have any questions simply use the following contact details.</p>
                             <ul class="no-margin">
                                 <li class="icon-bx-wraper left m-b30">
@@ -42,7 +42,8 @@
                                                     class="fas fa-map-marker-alt"></i>
                                         </a></div>
                                     <div class="icon-content">
-                                        <h6 class="text-uppercase m-tb0 dlab-tilte">Address:</h6>
+                                        <h6 class="text-uppercase m-tb0 dlab-tilte">@lang('messages.global.address')
+                                            :</h6>
                                         <p>{{config('system.about_us.address')}}</p>
                                     </div>
                                 </li>
@@ -50,7 +51,8 @@
                                     <div class="icon-bx-xs border-1"><a href="#" class="icon-cell"><i
                                                     class="far fa-envelope"></i></a></div>
                                     <div class="icon-content">
-                                        <h6 class="text-uppercase m-tb0 dlab-tilte">Email:</h6>
+                                        <h6 class="text-uppercase m-tb0 dlab-tilte">@lang('messages.global.email')
+                                            :</h6>
                                         <p>{{config('system.about_us.email')}}</p>
                                     </div>
                                 </li>
@@ -58,7 +60,8 @@
                                     <div class="icon-bx-xs border-1"><a href="#" class="icon-cell"><i
                                                     class="fas fa-phone-office"></i></a></div>
                                     <div class="icon-content">
-                                        <h6 class="text-uppercase m-tb0 dlab-tilte">PHONE</h6>
+                                        <h6 class="text-uppercase m-tb0 dlab-tilte">@lang('messages.global.phone')
+                                            :</h6>
                                         <p>{{config('system.about_us.phone')}}</p>
                                     </div>
                                 </li>
@@ -87,8 +90,8 @@
                     <!-- right part END -->
                     <!-- Left part start -->
                     <div class="col-lg-4 col-md-6">
-                        <div class="p-a30 m-b30 	bg-gray clearfix">
-                            <h4>Send Message Us</h4>
+                        <div class="p-a30 m-b30 bg-gray clearfix">
+                            <h4>@lang('messages.global.send-message-us')</h4>
                             <div class="dzFormMsg"></div>
                             <form enctype="multipart/form-data" method="post" class="contactUsForm"
                                   action="{{url(session('lang').'/contact-us')}}">
@@ -96,11 +99,14 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <select class="form-control" name="relevant_section" id="">
+                                            <select style="padding:0 20px;" class="form-control select-lg"
+                                                    name="relevant_section" id="">
                                                 {{--@if(isset(config('system.main.related_sections')))--}}
-                                                    @foreach(explode(',',config('system.main.related_sections')) as $value)
-                                                        <option value="{{$value}}">{{$value}}</option>
-                                                    @endforeach
+                                                <option value="">@lang('messages.global.section')</option>
+
+                                            @foreach(explode(',',config('system.main.related_sections')) as $value)
+                                                    <option value="{{$value}}">{{$value}}</option>
+                                                @endforeach
                                                 {{--@endif--}}
                                             </select>
                                         </div>
@@ -109,7 +115,7 @@
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <input name="name" type="text" required="" class="form-control"
-                                                       placeholder="Your Name">
+                                                       placeholder="@lang('messages.global.name')...">
                                             </div>
                                         </div>
                                     </div>
@@ -117,7 +123,7 @@
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <input name="email" type="email" class="form-control" required=""
-                                                       placeholder="Your Email Id">
+                                                       placeholder="@lang('messages.global.email')...">
                                             </div>
                                         </div>
                                     </div>
@@ -125,37 +131,14 @@
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <textarea name="content" rows="4" class="form-control" required=""
-                                                          placeholder="Your Message..."></textarea>
+                                                          placeholder="@lang('messages.global.your-message')..."></textarea>
                                             </div>
                                         </div>
                                     </div>
-                                    {{--<div class="col-lg-12">--}}
-                                    {{--<div class="form-group">--}}
-                                    {{--<div class="input-group">--}}
-                                    {{--<div class="g-recaptcha"--}}
-                                    {{--data-sitekey="6LefsVUUAAAAADBPsLZzsNnETChealv6PYGzv3ZN"--}}
-                                    {{--data-callback="verifyRecaptchaCallback"--}}
-                                    {{--data-expired-callback="expiredRecaptchaCallback">--}}
-                                    {{--<div style="width: 304px; height: 78px;">--}}
-                                    {{--<div>--}}
-                                    {{--<iframe src="https://www.google.com/recaptcha/api2/anchor?ar=2&amp;k=6LefsVUUAAAAADBPsLZzsNnETChealv6PYGzv3ZN&amp;co=aHR0cDovL3RyaXBlci5kZXhpZ25sYWIuY29tOjgw&amp;hl=en&amp;v=v1555968629716&amp;size=normal&amp;cb=l4p15dllxaax"--}}
-                                    {{--width="304" height="78" role="presentation"--}}
-                                    {{--name="a-yznmvzn2rbxr" frameborder="0" scrolling="no"--}}
-                                    {{--sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe>--}}
-                                    {{--</div>--}}
-                                    {{--<textarea id="g-recaptcha-response" name="g-recaptcha-response"--}}
-                                    {{--class="g-recaptcha-response"--}}
-                                    {{--style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea>--}}
-                                    {{--</div>--}}
-                                    {{--</div>--}}
-                                    {{--<input class="form-control d-none" style="display:none;"--}}
-                                    {{--data-recaptcha="true" required=""--}}
-                                    {{--data-error="Please complete the Captcha">--}}
-                                    {{--</div>--}}
-                                    {{--</div>--}}
-                                    {{--</div>--}}
+
                                     <div class="col-lg-12">
-                                        <button type="submit" class="site-button "><span>Submit</span>
+                                        <button type="submit" class="site-button ">
+                                            <span>@lang('messages.global.submit')</span>
                                         </button>
                                     </div>
                                 </div>
@@ -170,14 +153,14 @@
                                         src="https://maps.google.com/maps?q=tehran&t=&z=13&ie=UTF8&iwloc=&output=embed"
                                         frameborder="0" scrolling="no" marginheight="0"
                                         marginwidth="0"></iframe>
-                                <a href="https://www.emojilib.com">emojilib.com</a></div>
+                                {{--<a href="https://www.emojilib.com">emojilib.com</a></div>--}}
+
+                            </div>
 
                         </div>
-
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
 @endsection

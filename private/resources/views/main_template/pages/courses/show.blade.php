@@ -36,7 +36,7 @@
         <div class="dlab-bnr-inr overlay-black-middle">
             <div class="container">
                 <div class="dlab-bnr-inr-entry">
-                    <h1 class="text-white">Courses</h1>
+                    <h1 class="text-white">@lang('messages.home.course-title')</h1>
                     <!-- Breadcrumb row -->
                 @include('main_template.modules.breadcrumb')
                 <!-- Breadcrumb row END -->
@@ -66,23 +66,28 @@
                             <img src="{{$course['image']}}" class="img-fluid" alt="">
                         </div>
                         <div class="tour-days">
-                            <h2 class="m-b10">About Course</h2>
+                            <h2 class="m-b10">@lang('messages.home.about-course')</h2>
                             <p>{!! $course['description_'.session('lang')]!!}</p>
                         </div>
                         <div class="join">
-                            <a href="{{url(session('lang').'/courses/register/'.$course['id'])}}" class="site-button btn-block">register</a>
+                            <a href="{{url(session('lang').'/courses/register/'.$course['id'])}}"
+                               class="site-button btn-block">
+                                @lang('messages.global.register')
+                            </a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-5 sticky-top">
                         <aside class="side-bar">
                             <div class="widget">
-                                <h6 class="widget-title style-1">Search</h6>
+                                <h6 class="widget-title style-1">@lang('messages.global.search')</h6>
                                 <div class="search-bx style-1">
                                     <form role="search" method="post" enctype="multipart/form-data"
                                           action="{{url(session('lang').'/search')}}">
+                                        @csrf
                                         <input type="hidden" name="search_in" value="courses">
                                         <div class="input-group">
-                                            <input name="text" class="form-control" placeholder="Enter your keywords..."
+                                            <input name="search_query" class="form-control"
+                                                   placeholder="@lang('messages.global.search') ..."
                                                    type="text">
                                             <span class="input-group-btn">
 												<button type="submit" class="fa fa-search text-primary"></button>
@@ -92,9 +97,9 @@
                                 </div>
                             </div>
                             <div class="widget recent-posts-entry">
-                                <h6 class="widget-title style-1">Related Posts</h6>
+                                <h6 class="widget-title style-1">@lang('messages.global.related-posts')</h6>
                                 <div class="widget-post-bx">
-                                    @if($related_courses)
+                                    @if($related_courses && count($related_courses ) > 0)
                                         @foreach($related_courses as $related_course)
                                             <div class="widget-post clearfix">
                                                 <div class="dlab-post-media">
@@ -126,7 +131,7 @@
                                     @else
                                         <div class="col-12">
                                             <div class="alert alert-info text-center rounded" role="alert">
-                                                <b>no related course found !</b>
+                                                <b>@lang('messages.global.no-result')</b>
                                             </div>
                                         </div>
 
@@ -197,7 +202,7 @@
                                     <div class="news-box">
                                         <p>Enter your e-mail and subscribe to our newsletter.</p>
                                         <form class="dzSubscribe" action="script/mailchamp.php" method="post">
-                                            <div class="dzSubscribeMsg"></div>
+                                            <input type="hidden" value="courses" name="search_in">
                                             <div class="input-group">
                                                 <input name="dzEmail" required="required" type="email"
                                                        class="form-control"
@@ -212,97 +217,6 @@
                             @endif
                         </aside>
                     </div>
-
-
-                    {{--<div class="col-lg-4">--}}
-                    {{--<div class="sticky-top">--}}
-                    {{--<form class="hotel-booking">--}}
-                    {{--<div class="row">--}}
-                    {{--<div class="col-12 border-bottom mb-3">--}}
-                    {{--<div class="form-check">--}}
-                    {{--<label class="form-check-label">--}}
-                    {{--<input type="radio" class="form-check-input" name="optradio">Option 1--}}
-                    {{--</label>--}}
-                    {{--</div>--}}
-                    {{--<div class="form-check">--}}
-                    {{--<label class="form-check-label">--}}
-                    {{--<input type="radio" class="form-check-input" name="optradio">Option 2--}}
-                    {{--</label>--}}
-                    {{--</div>--}}
-                    {{--<div class="form-check disabled">--}}
-                    {{--<label class="form-check-label">--}}
-                    {{--<input type="radio" class="form-check-input" name="optradio" disabled>Option--}}
-                    {{--3--}}
-                    {{--</label>--}}
-                    {{--</div>--}}
-
-                    {{--<div class="form-group">--}}
-                    {{--<label for="classes">choose your class</label>--}}
-                    {{--<select class="form-control" name="classes" id="classes">--}}
-                    {{--@foreach($course['class_rooms'] as $class_room)--}}
-                    {{--<option value="{{$class_room['id']}}">{{$class_room['title_'.session('lang').'']}}</option>--}}
-                    {{--@endforeach--}}
-                    {{--</select>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div class="col-12 border-bottom mb-3">--}}
-                    {{--<div class="form-group">--}}
-                    {{--<div class="d-sm-flex justify-content-between">--}}
-                    {{--<label>master :</label>--}}
-                    {{--<span>{{$course['class_rooms']['teacher']['name']}}</span>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div class="form-group">--}}
-                    {{--<div class="d-sm-flex justify-content-between">--}}
-                    {{--<label>start day :</label>--}}
-                    {{--<span>{{$course['class_rooms']['course_start_date']}}</span>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div class="form-group">--}}
-                    {{--<div class="d-sm-flex justify-content-between">--}}
-                    {{--<label>end day :</label>--}}
-                    {{--<span>{{$course['class_rooms']['course_end_date']}}</span>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div class="form-group">--}}
-                    {{--<div class="d-sm-flex justify-content-between">--}}
-                    {{--<label>fee :</label>--}}
-                    {{--<span>{{number_format($course['class_rooms']['price'])}} T</span>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div class="form-group">--}}
-                    {{--<div class="d-sm-flex justify-content-between">--}}
-                    {{--<label>remaining capacity :</label>--}}
-                    {{--<span>{{number_format($course['class_rooms']['capacity'])}}</span>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div class="form-group">--}}
-                    {{--<label for="">week days :</label>--}}
-                    {{--<ul>--}}
-                    {{--@foreach($course['class_rooms']['class_room_times'] as $value)--}}
-                    {{--<li>--}}
-                    {{--<div class="d-sm-flex justify-content-between">--}}
-                    {{--<label for="">{{$value['week_day']}} :</label>--}}
-                    {{--<span>{{$value['start_time']}}--}}
-                    {{--- {{$value['end_time']}}</span>--}}
-                    {{--</div>--}}
-                    {{--</li>--}}
-                    {{--@endforeach--}}
-                    {{--</ul>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-
-                    {{--<div class="col-md-12 col-lg-12 col-xl-12 col-sm-12 col-12">--}}
-                    {{--<button type="submit" class="site-button btn-block">join now</button>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--</form>--}}
-                    {{--<div class="m-t30">--}}
-                    {{--<img src="{{asset('assets/site/media/images/top_courses/pic4.jpg')}}" class="img-fluid"--}}
-                    {{--alt="">--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
                 </div>
             </div>
         </div>

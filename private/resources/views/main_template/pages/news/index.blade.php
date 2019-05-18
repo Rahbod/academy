@@ -6,11 +6,22 @@
 
 @section('content')
     <section class="newsIndex mb-5">
-        @include('main_template.modules.inner_pages_header')
-
+        <div class="dlab-bnr-inr overlay-black-middle">
+            <div class="container">
+                <div class="dlab-bnr-inr-entry">
+                    <h1 class="text-white">
+                        @lang('messages.global.'.$content_type)
+                    </h1>
+                    <!-- Breadcrumb row -->
+                @include('main_template.modules.breadcrumb')
+                <!-- Breadcrumb row END -->
+                </div>
+            </div>
+        </div>
         <div class="content-area">
             <div class="container">
                 <div class="row">
+                    @if( isset($contents) && count($contents)>0))
                     <!-- Left part start -->
                     <div class="col-lg-8 col-md-7 col-sm-12">
                         <!-- Blog large img -->
@@ -26,7 +37,7 @@
                                     <div class="dlab-post-meta">
                                         <ul class="d-flex align-items-center">
                                             <li class="post-date">{{$content['created_at']}}</li>
-                                            <li class="post-author">By
+                                            <li class="post-author">@lang('messages.global.by')
                                                 <a href="{{url(session('lang') .'/users/'.$content['author']['id'] .'/'.str_replace(' ','-',$content['author']['name']))}}">{{isset($content['author']) ? $content['author']['name'] :'admin'}}</a>
                                             </li>
                                             <li class="post-comment"><a href="#">{{$content['show_count']}}</a></li>
@@ -45,13 +56,12 @@
                                         <a title="{{$content['title']}}"
                                            href="{{url(session('lang').'/'.$content['type'].'/'.$content['id'].'/'.str_replace(' ','-',$content['title']))}}"
                                            rel="bookmark"
-                                           class="site-button-link border-link black">READ MORE</a>
+                                           class="site-button-link border-link black">@lang('messages.global.view-details')</a>
                                     </div>
                                 </div>
 
                             </div>
-                    @endforeach
-                    <!-- Blog large img END -->
+                        @endforeach
                         <div class="pagination-bx clearfix text-center">
                             {{$contents->links()}}
 
@@ -63,20 +73,28 @@
                             {{--<li class="next ml-2"><a href="#">Next <i class="fal fa-arrow-right"></i></a></li>--}}
                             {{--</ul>--}}
                         </div>
-                        <!-- Pagination END -->
                     </div>
+                    @else
+                        <div class="col-lg-8 col-md-7 col-sm-12">
+                            <div class="alert alert-info text-center rounded" role="alert">
+                                <b>@lang('messages.global.no-result')</b>
+                            </div>
+                        </div>
+                @endif
                     <!-- Left part END -->
                     <!-- Side bar start -->
                     <div class="col-lg-4 col-md-5 col-sm-12 sticky-top">
                         <aside class="side-bar">
                             <div class="widget">
-                                <h6 class="widget-title style-1">Search</h6>
+                                <h6 class="widget-title style-1">@lang('messages.global.search')</h6>
                                 <div class="search-bx style-1">
                                     <form action="{{url(session('lang').'/search')}}" enctype="multipart/form-data"
                                           role="search" method="post">
+                                        @csrf
+                                        <input type="hidden" value="{{$content_type}}" name="search_in">
                                         <div class="input-group">
                                             <input name="search_query" class="form-control"
-                                                   placeholder="Enter your keywords..."
+                                                   placeholder="@lang('messages.global.search') ..."
                                                    type="text">
                                             <span class="input-group-btn">
 												<button type="submit" class="fa fa-search text-primary"></button>
@@ -86,7 +104,7 @@
                                 </div>
                             </div>
                             <div class="widget recent-posts-entry">
-                                <h6 class="widget-title style-1">Recent Posts</h6>
+                                <h6 class="widget-title style-1">@lang('messages.global.recent-posts')</h6>
                                 <div class="widget-post-bx">
                                     @if(isset($recent_posts) && count($recent_posts) >0)
                                         @foreach($recent_posts as $post)
@@ -99,7 +117,7 @@
                                                     <div class="dlab-post-header">
                                                         <h6 class="post-title">
                                                             <a title="{{$post['title']}}"
-                                                               href="{{url(session('lang').'/'.$content['type']. '/'.$post['id'].'/'.str_replace(' ','-',$post['title']))}}">{{$post['title']}}</a>
+                                                               href="{{url(session('lang').'/'.$post['type']. '/'.$post['id'].'/'.str_replace(' ','-',$post['title']))}}">{{$post['title']}}</a>
                                                         </h6>
                                                     </div>
                                                     <div class="dlab-post-meta">

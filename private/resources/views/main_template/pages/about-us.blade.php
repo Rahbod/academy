@@ -9,7 +9,7 @@
         <div class="dlab-bnr-inr overlay-black-middle">
             <div class="container">
                 <div class="dlab-bnr-inr-entry">
-                    <h1 class="text-white">Contact Us</h1>
+                    <h1 class="text-white">@lang('messages.global.about-us')</h1>
                     <!-- Breadcrumb row -->
                 @include('main_template.modules.breadcrumb')
                 <!-- Breadcrumb row END -->
@@ -49,7 +49,7 @@
                                     {{--<i class="icon ti-bar-chart text-primary"></i>--}}
                                     <span class="counter">46</span>
                                 </div>
-                                <span class="counter-text">Completed Courses</span>
+                                <span class="counter-text">@lang('messages.global.completed-courses')</span>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-6 col-sm-6 m-b30">
@@ -59,9 +59,10 @@
                                     {{--<i class="icon ti-user text-primary"></i>--}}
                                     <span class="counter">29</span>
                                 </div>
-                                <span class="counter-text">Happy Clients</span>
+                                <span class="counter-text">@lang('messages.global.happy-clients')</span>
                             </div>
                         </div>
+
                         <div class="col-lg-3 col-md-3 col-6 col-sm-6 m-b30">
                             <div class="counter-style-1 counter--container">
                                 <div class="">
@@ -69,7 +70,7 @@
                                     {{--<i class="icon ti-headphone-alt text-primary"></i>--}}
                                     <span class="counter">21</span>
                                 </div>
-                                <span class="counter-text">Questions Answered</span>
+                                <span class="counter-text">@lang('messages.global.all-articles')</span>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-6 col-sm-6 m-b30">
@@ -79,7 +80,7 @@
                                     {{--<i class="icon ti-cup text-primary"></i>--}}
                                     <span class="counter">12</span>
                                 </div>
-                                <span class="counter-text">Awards's</span>
+                                <span class="counter-text">@lang('messages.global.awards')</span>
                             </div>
                         </div>
                     </div>
@@ -99,8 +100,9 @@
                                     what
                                     you are searching for
                                 </p>
-                                <a href="{{route('translations',['lang'=>session('lang')])}}" class="site-button white">See more
-                                    details</a>
+                                <a href="{{route('translations',['lang'=>session('lang')])}}" class="site-button white">
+                                @lang('messages.global.see-more-details')
+                                </a>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6"></div>
@@ -112,7 +114,6 @@
     </section>
 
 @endsection
-
 
 @push('scripts')
 

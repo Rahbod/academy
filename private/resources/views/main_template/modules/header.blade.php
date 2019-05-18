@@ -4,12 +4,12 @@
             <div class="row d-flex justify-content-between">
                 <ul class="rightMenu">
                     <li>
-                        <a title="contact us" class="topbar__buttonLink"
-                           href="{{route('contact-us',['lang'=>session('lang')])}}">contact-us</a>
+                        <a title="@lang('messages.global.contact-us')" class="topbar__buttonLink"
+                           href="{{route('contact-us',['lang'=>session('lang')])}}">@lang('messages.global.contact-us')</a>
                     </li>
                     <li>
-                        <a title="about us" class="topbar__buttonLink"
-                           href="{{route('about-us',['lang'=>session('lang')])}}">about us</a>
+                        <a title="@lang('messages.global.about-us')" class="topbar__buttonLink"
+                           href="{{route('about-us',['lang'=>session('lang')])}}">@lang('messages.global.about-us')</a>
                     </li>
                     {{--<li>--}}
                     {{--<a title="translation" class="topbar__buttonLink" href="{{route('translations',['lang'=>session('lang')])}}">translation</a>--}}
@@ -17,11 +17,13 @@
                 </ul>
                 <ul class="leftMenu">
                     @guest
-                        <li><a title="login" href="{{route('login',['lang'=>session('lang')])}}"
-                               class="topbar__buttonLink">login</a>
+                        <li><a title="@lang('messages.global.login')"
+                               href="{{route('login',['lang'=>session('lang')])}}"
+                               class="topbar__buttonLink">@lang('messages.global.login')</a>
                         </li>
-                        <li><a title="regiser" href="{{route('register',['lang'=>session('lang')])}}"
-                               class="topbar__buttonLink">register</a></li>
+                        <li><a title="@lang('messages.global.register')"
+                               href="{{route('register',['lang'=>session('lang')])}}"
+                               class="topbar__buttonLink">@lang('messages.global.register')</a></li>
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -65,12 +67,14 @@
         <div class="main-bar clearfix onepage">
             <div class="container">
                 <nav class="header-nav navbar p-0">
-                    <a class="navbar-brand" href="{{route('home',['lang'=>session('lang')])}}">
-                        <!--<img src="./assets/media/images/public/site_logo.png"-->
-                        <!--class="siteLogo__image img-fluid" alt="آکادمی زبان ">-->
-                        <span class=""
-                              style="font-size: inherit;color: inherit;font-weight: inherit;">Academy</span>
-                    </a>
+                    @if(session('lang') !='fa')
+                        <a class="navbar-brand" href="{{route('home',['lang'=>session('lang')])}}">
+                            <!--<img src="./assets/media/images/public/site_logo.png"-->
+                            <!--class="siteLogo__image img-fluid" alt="آکادمی زبان ">-->
+                            <span class=""
+                                  style="font-size: inherit;color: inherit;font-weight: inherit;">Academy</span>
+                        </a>
+                    @endif
                     <div>
                         <div class="extra-nav d-lg-none">
                             <div class="extra-cell">
@@ -89,7 +93,7 @@
                         <form action="{{url(session('lang').'/search' )}}" enctype="multipart/form-data" method="post">
                             @csrf
                             <div class="input-group">
-                                <input autofocus type="text" class="form-control" placeholder="search ..."
+                                <input autofocus type="text" class="form-control" placeholder="@lang('messages.global.search') ..."
                                        name="search_query"
                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
                                 <div class="input-group-append">
@@ -105,9 +109,9 @@
                     </div>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
-                            <li class="active">
-                                <a title="home" href="{{route('home',['lang'=>session('lang')])}}">Home</a>
-                            </li>
+                            {{--<li class="active">--}}
+                            {{--<a title="home" href="{{route('home',['lang'=>session('lang')])}}">Home</a>--}}
+                            {{--</li>--}}
                             @foreach($main_menus as $item)
                                 @if(isset($item['children']) && count($item['children']) >0)
                                     <li class="">
@@ -140,17 +144,36 @@
                                     </li>
                                 @endif
                             @endforeach
-                            <li class="d-none d-lg-block ml-3">
-                                <div class="extra-nav">
-                                    <div class="extra-cell">
-                                        <button onclick="$('#showSearchForm').show().find('input').focus();" id=""
-                                                type="button"
-                                                class="site-button-link"><i
-                                                    class="fa fa-search"></i></button>
+                            @if(session('lang') !='fa')
+                                <li class="d-none d-lg-block ml-3">
+                                    <div class="extra-nav">
+                                        <div class="extra-cell">
+                                            <button onclick="$('#showSearchForm').show().find('input').focus();" id=""
+                                                    type="button"
+                                                    class="site-button-link"><i
+                                                        class="fa fa-search"></i></button>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
+                                </li>
+                            @endif
+
                         </ul>
+                        @if(session('lang') =='fa')
+                            <div class="extra-nav">
+                                <div class="extra-cell">
+                                    <button onclick="$('#showSearchForm').show().find('input').focus();" id=""
+                                            type="button"
+                                            class="site-button-link"><i
+                                                class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                            <a class="navbar-brand" href="{{route('home',['lang'=>session('lang')])}}">
+                                <!--<img src="./assets/media/images/public/site_logo.png"-->
+                                <!--class="siteLogo__image img-fluid" alt="آکادمی زبان ">-->
+                                <span class=""
+                                      style="font-size: inherit;color: inherit;font-weight: inherit;">Academy</span>
+                            </a>
+                        @endif
                     </div>
                 </nav>
             </div>

@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-12 footer-col-4">
                     <div class="widget widget_getintuch">
-                        <h6 class="m-b15 h6 text-uppercase">Address</h6>
+                        <h6 class="m-b15 h6 text-uppercase">@lang('messages.global.address')</h6>
                         <div class="dlab-separator bg-white"></div>
                         <ul class="info-contact">
                             <li>
@@ -15,43 +15,42 @@
 
                             <li>
 									<span>
-										<i class="fa fa-phone"></i> Mobile: {{config('system.about_us.phone')}}
-                                        <br>{{config('system.about_us.phone')}}
+										<i class="fa fa-phone"></i> @lang('messages.global.mobile') : {{config('system.about_us.phone')}}
 									</span>
                             </li>
 
                             <li>
 									<span>
-										<i class="fa fa-envelope"></i> Mail: {{config('system.about_us.email')}}
+										<i class="fa fa-envelope"></i> @lang('messages.global.email') : {{config('system.about_us.email')}}
 									</span>
                             </li>
                             <li>
 									<span>
-										<i class="fa fa-fax"></i> Fax: {{config('system.about_us.fax')}}
+										<i class="fa fa-fax"></i> @lang('messages.global.fax') : {{config('system.about_us.fax')}}
 									</span>
                             </li>
                         </ul>
                     </div>
                     <ul class="list-inline mb-5 mb-lg-0">
-                        <li><a title="facebook account" href="{{config('system.about_us.facebook')}}"
+                        <li><a title="@lang('messages.social.facebook')" href="{{config('system.about_us.facebook')}}"
                                class="site-button facebook sharp"><i
                                         class="fab fa-facebook-f"></i></a></li>
-                        <li><a title="google_plus account" href="{{config('system.about_us.google_plus')}}"
+                        <li><a title="@lang('messages.social.google-plus')" href="{{config('system.about_us.google_plus')}}"
                                class="site-button google-plus sharp"><i
                                         class="fab fa-google-plus-g"></i></a></li>
-                        <li><a title="telegram account" href="{{config('system.about_us.telegram')}}"
+                        <li><a title="@lang('messages.social.telegram')" href="{{config('system.about_us.telegram')}}"
                                class="site-button telegram sharp"><i class="fab fa-telegram-plane"></i></a></li>
-                        <li><a title="twitter account" href="{{config('system.about_us.twitter')}}"
+                        <li><a title="@lang('messages.social.twitter')" href="{{config('system.about_us.twitter')}}"
                                class="site-button twitter sharp"><i
                                         class="fab fa-twitter"></i></a></li>
-                        <li><a title="instagram account" href="{{config('system.about_us.instagram')}}"
+                        <li><a title="@lang('messages.social.instagram')" href="{{config('system.about_us.instagram')}}"
                                class="site-button instagram sharp"><i
                                         class="fab fa-instagram"></i></a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 footer-col-4">
                     <div class="widget  widget_tag_cloud">
-                        <h6 class="m-b15 h6 text-uppercase">Tag</h6>
+                        <h6 class="m-b15 h6 text-uppercase">@lang('messages.global.tag')</h6>
                         <div class="dlab-separator bg-white"></div>
                         <div class="tagcloud">
                             @foreach(explode(',',config('system.main.footer_tags')) as $footer_tag)
@@ -63,7 +62,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6 footer-col-4 d-none">
                     <div class="widget widget_getintuch">
-                        <h6 class="m-b15 h6 text-uppercase">Contact us</h6>
+                        <h6 class="m-b15 h6 text-uppercase">@lang('messages.global.contact-us')</h6>
                         <div class="dlab-separator bg-white"></div>
                         <div class="search-bx">
                             <form enctype="multipart/form-data" method="post" class="contactUsForm"
@@ -90,7 +89,7 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 footer-col-4">
                     <div class="widget widget_gallery">
-                        <h6 class="m-b15 h6 text-uppercase">GALLERY</h6>
+                        <h6 class="m-b15 h6 text-uppercase">@lang('messages.global.gallery')</h6>
                         <div class="dlab-separator bg-white"></div>
                         <ul class="clearfix mfp-gallery">
                             <li class="img-effect2">
@@ -143,9 +142,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-6 text-left">
-                    <span>Copyright © 2019 {{config('system.main.developer_name')}}</span></div>
-                <div class="col-lg-6 col-md-6 text-right "><span> Design With <i
-                                class="fa fa-heart text-primary heart"></i> By {{config('system.main.developer_name')}} </span>
+                    <span>@lang('messages.global.copyright') <span dir="ltr" class="">© <?php echo date("Y"); ?></span></span></div>
+                <div class="col-lg-6 col-md-6 text-right "><span>@lang('messages.global.design-by') <i
+                                class="fa fa-heart text-primary heart mx-2"></i>@lang('messages.global.with') {{config('system.main.developer_name')}} </span>
                 </div>
             </div>
         </div>

@@ -37,15 +37,11 @@
         <div class="dlab-bnr-inr overlay-black-middle">
             <div class="container">
                 <div class="dlab-bnr-inr-entry">
-                    <h1 class="text-white">Translation</h1>
+                    <h1 class="text-white">@lang('messages.global.translations')</h1>
                     <!-- Breadcrumb row -->
-                    <div class="breadcrumb-row">
-                        <ul class="list-inline">
-                            <li><a href="#">Home</a></li>
-                            <li>Translation</li>
-                        </ul>
-                    </div>
-                    <!-- Breadcrumb row END -->
+                @include('main_template.modules.breadcrumb')
+
+                <!-- Breadcrumb row END -->
                 </div>
             </div>
         </div>
@@ -71,7 +67,7 @@
                                             <label class="font-weight-700" for="category_id">Category *</label>
                                             <select name="category_id" id="category_id" class="form-control">
                                                 @foreach($categories as $category)
-                                                    <option value="{{$category->id}}" >{{$category->name}}</option>
+                                                    <option value="{{$category->id}}">{{$category->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -79,7 +75,8 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-12">
                                             <label class="font-weight-700">Title *</label>
-                                            <input name="title" id="title" required="" class="form-control" placeholder="Title"
+                                            <input name="title" id="title" required="" class="form-control"
+                                                   placeholder="Title"
                                                    type="text">
                                         </div>
                                     </div>
@@ -97,7 +94,8 @@
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label class="font-weight-700">Destination Language *</label>
-                                            <select name="translation_language" id="translation_language" class="form-control">
+                                            <select name="translation_language" id="translation_language"
+                                                    class="form-control">
                                                 <option value="english" selected>Destination Language</option>
                                                 <option value="france">france</option>
                                                 <option value="germany">germany</option>
@@ -139,7 +137,7 @@
     <script type="text/javascript" src="{{asset('assets/site/js/vendors/dropzone/dropzone.js')}}"></script>
 
     <script>
-//        let myDropzone=$("#my-dropzone").dropzone();
+        //        let myDropzone=$("#my-dropzone").dropzone();
         Dropzone.options.myDropzone = {
             url: "{{url(session('lang').'/translation-requests')}}",
             autoProcessQueue: false,
