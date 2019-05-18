@@ -1,9 +1,9 @@
 <?php
 return [
-    "title"=>"برگه ها",
-    "table_title" => "لیست تمام برگه های سیستم",
-    "create_form_title" => "فرم ایجاد برگه ها",
-    "edit_form_title" => "فرم ویرایش برگه ها",
+    "title"=>"صفحه ها",
+    "table_title" => "لیست تمام صفحه های ثابت",
+    "create_form_title" => "فرم ایجاد صفحه ",
+    "edit_form_title" => "فرم ویرایش صفحه ",
     "items" => [
         "author_id" => "نویسنده",
         "tag_id" => "برچسب ها",
@@ -27,6 +27,6 @@ return [
     ],
     "values" => [
         "select_items" => "گزینه ها ی مورد نظر خود را انتخاب کنید",
-        "create_new_record" => "ایجاد برگه جدید"
+        "create_new_record" => "ایجاد صفحه جدید"
     ],
 ];

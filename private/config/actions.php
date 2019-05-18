@@ -1,6 +1,7 @@
 <?php
 
 return [
+    ['id'=>'/','text'=>'خانه'],
     ['id'=>'contact-us','text'=>'تماس با ما'],
     ['id'=>'about-us','text'=>'درباره ما'],
     ['id'=>'login','text'=>'صفحه ورود'],

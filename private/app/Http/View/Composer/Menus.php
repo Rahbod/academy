@@ -22,8 +22,6 @@ class Menus
     {
         Cache::flush();
 
-//        dd(request()->path());
-
         $lang=$this->getLang();
 
         $this->main_menus = Cache::remember('main_menus_'.$lang, 5000, function () use ($lang){
@@ -31,12 +29,12 @@ class Menus
 
             $static_menu = StaticMenu::with(['page' => function ($q) use ($lang) {
                 $q->where('status', 1)->where('lang', $lang)->orderBy('order')->select('id', 'title');
-            }])->where('status', 1)->where('lang', $lang)->orderBy('order')
-                ->get()->toTree();
+            }])->where('status', 1)->where('lang', $lang)->defaultOrder()->get()->toTree();
             $array_menu=[];
             foreach ($static_menu as $menu){
                 $array_menu[]=$this->setMenu($menu);
             }
+//            dd($array_menu);
             return $array_menu;
         });
 
@@ -57,19 +55,23 @@ class Menus
             'has_content'=>$menu->has_content,
             'type'=>$menu->type,
             'link'=>$menu->link,
+            'active'=>false,
             'children'=>[]
         ];
 
         if($menu->type === 'page' && $menu->page !== null){
-            $menu_item['link']='/'.$lang.'/pages/'.$menu->page->id;
+            $menu_item['link']=url('/'.$lang.'/pages/show/'.$menu->page->id);
         }
         if($menu->type === 'action'){
-            $menu_item['link']='/'.$lang.'/'.$menu->link;
+            $menu_item['link']=url('/'.$lang.'/'.$menu->link);
         }
         if(count($menu->children)>0){
             foreach ($menu->children as $child){
                 $menu_item['children'][]=$this->setMenu($child);
             }
+        }
+        if(url(request()->path() )=== $menu_item['link']){
+            $menu_item['active']=true;
         }
 
         return $menu_item;
