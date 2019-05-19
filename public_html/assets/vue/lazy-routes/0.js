@@ -21399,7 +21399,7 @@ var render = function() {
               "table",
               {
                 staticClass:
-                  "table datatable-basic table-bordered table-hover dataTable no-footer"
+                  "table datatable-basic table-bordered table-hover dataTable no-footer table-trsponsive"
               },
               [
                 _c("thead", [
@@ -21444,7 +21444,7 @@ var render = function() {
                                 _vm.$t(
                                   _vm.resource + ":items." + table_field.name
                                 )
-                              ) + "\n                    "
+                              ) + "\n                        "
                             )
                           ]
                         )
@@ -21460,7 +21460,7 @@ var render = function() {
                         [
                           _vm._v(
                             _vm._s(_vm.$t("actions.actions")) +
-                              "\n                    "
+                              "\n                        "
                           )
                         ]
                       )

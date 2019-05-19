@@ -157,22 +157,22 @@
                 </div>
             </div>
             <div class="datatable-scroll" v-if="collection.data.length>0">
-                <table class="table datatable-basic table-bordered table-hover dataTable no-footer">
+                <table class="table datatable-basic table-bordered table-hover dataTable no-footer table-trsponsive">
                     <thead>
-                    <tr role="row">
-                        <th class="text-center">
-                            <input type="checkbox" class="form-check-input-styled-info" :value="true"
-                                   :checked="selectIDs.length === collection.data.length" @click="checkSelect()">
-                        </th>
-                        <th :class="headerClass(table_field)" :style="tableStyle(table_field)"
-                            v-for="table_field in table_fields"
-                            @click.prevent="sort(table_field)">{{$t(resource + ':items.' + table_field.name)}}
-                        </th>
+                        <tr role="row">
+                            <th class="text-center">
+                                <input type="checkbox" class="form-check-input-styled-info" :value="true"
+                                       :checked="selectIDs.length === collection.data.length" @click="checkSelect()">
+                            </th>
+                            <th :class="headerClass(table_field)" :style="tableStyle(table_field)"
+                                v-for="table_field in table_fields"
+                                @click.prevent="sort(table_field)">{{$t(resource + ':items.' + table_field.name)}}
+                            </th>
 
-                        <th class="text-center sorting_disabled" rowspan="1" colspan="1"
-                            style="width: 100px;">{{$t('actions.actions')}}
-                        </th>
-                    </tr>
+                            <th class="text-center sorting_disabled" rowspan="1" colspan="1"
+                                style="width: 100px;">{{$t('actions.actions')}}
+                            </th>
+                        </tr>
                     </thead>
                     <tbody>
 

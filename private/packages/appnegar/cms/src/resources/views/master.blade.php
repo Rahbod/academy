@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="{{session('lang')}}" dir="{{session('direction')}}">
+{{--<html lang="{{session('lang')}}" dir="{{session('direction')}}">--}}
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,18 +15,18 @@
     <link href="{{asset('assets/admin/global_assets/css/icons/icomoon/styles.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('assets/admin/global_assets/css/icons/fontawesome/styles.min.css')}}" rel="stylesheet" type="text/css">
 
-    @if(session('direction') == 'rtl')
+{{--    @if(session('direction') == 'rtl')--}}
     <link href="{{asset('assets/admin/css/rtl/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('assets/admin/css/rtl/bootstrap_limitless.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('assets/admin/css/rtl/layout.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('assets/admin/css/rtl/components.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('assets/admin/css/rtl/custom.css')}}" rel="stylesheet" type="text/css">
-    @else
-    <link href="{{asset('assets/admin/css/ltr/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('assets/admin/css/ltr/bootstrap_limitless.min.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('assets/admin/css/ltr/layout.min.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('assets/admin/css/ltr/components.min.css')}}" rel="stylesheet" type="text/css">
-    @endif
+    {{--@else--}}
+    {{--<link href="{{asset('assets/admin/css/ltr/bootstrap.min.css')}}" rel="stylesheet" type="text/css">--}}
+    {{--<link href="{{asset('assets/admin/css/ltr/bootstrap_limitless.min.css')}}" rel="stylesheet" type="text/css">--}}
+    {{--<link href="{{asset('assets/admin/css/ltr/layout.min.css')}}" rel="stylesheet" type="text/css">--}}
+    {{--<link href="{{asset('assets/admin/css/ltr/components.min.css')}}" rel="stylesheet" type="text/css">--}}
+    {{--@endif--}}
 
     <link href="{{ asset('assets/admin/global_assets/js/plugins/fonticonpicker/css/jquery.fonticonpicker.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/admin/global_assets/js/plugins/fonticonpicker/themes/grey-theme/jquery.fonticonpicker.grey.min.css')}}" rel="stylesheet" type="text/css">

@@ -35852,20 +35852,63 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['user']), {
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['user', 'lang', 'base_url', 'department']), {
         logout_url: function logout_url() {
             return this.$store.getters.main_url + '/logout';
         },
         token: function token() {
             return document.head.querySelector('meta[name="csrf-token"]').content;
+        },
+        lang_label: function lang_label() {
+            switch (this.lang) {
+                case 'fa':
+                    return 'فارسی';
+                    break;
+                case 'ar':
+                    return 'العربیه';
+                    break;
+                case 'en':
+                    return 'English';
+                    break;
+                default:
+                    return 'فارسی';
+                    break;
+            }
         }
     }),
     methods: {
         logout: function logout() {
             $('#logout-form').submit();
+        },
+        changeLang: function changeLang(lang) {
+            var route = this.base_url + '/' + lang + '/' + this.department + '#' + this.$route.path;
+            window.location = route;
         }
     }
 });
@@ -35891,6 +35934,111 @@ var render = function() {
       },
       [
         _vm._m(2),
+        _vm._v(" "),
+        _c("ul", { staticClass: "navbar-nav" }, [
+          _c("li", { staticClass: "nav-item dropdown language-switch" }, [
+            _c(
+              "a",
+              {
+                staticClass: "navbar-nav-link dropdown-toggle",
+                attrs: { "data-toggle": "dropdown" }
+              },
+              [
+                _c("img", {
+                  staticClass: "img-flag mr-2",
+                  attrs: {
+                    src:
+                      "/assets/admin/global_assets/images/lang/" +
+                      _vm.lang +
+                      ".png",
+                    alt: ""
+                  }
+                }),
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(_vm.lang_label) +
+                    "\n                "
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "dropdown-menu" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "dropdown-item",
+                  class: [_vm.lang == "fa" ? "active" : ""],
+                  on: {
+                    click: function($event) {
+                      if (
+                        !("button" in $event) &&
+                        _vm._k(
+                          $event.keyCode,
+                          "prervent",
+                          undefined,
+                          $event.key,
+                          undefined
+                        )
+                      ) {
+                        return null
+                      }
+                      _vm.changeLang("fa")
+                    }
+                  }
+                },
+                [
+                  _c("img", {
+                    staticClass: "img-flag",
+                    attrs: {
+                      src: "/assets/admin/global_assets/images/lang/fa.png",
+                      alt: ""
+                    }
+                  }),
+                  _vm._v(
+                    "\n                        فارسی\n                    "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "dropdown-item",
+                  class: [_vm.lang == "en" ? "active" : ""],
+                  on: {
+                    click: function($event) {
+                      if (
+                        !("button" in $event) &&
+                        _vm._k(
+                          $event.keyCode,
+                          "prervent",
+                          undefined,
+                          $event.key,
+                          undefined
+                        )
+                      ) {
+                        return null
+                      }
+                      _vm.changeLang("en")
+                    }
+                  }
+                },
+                [
+                  _c("img", {
+                    staticClass: "img-flag",
+                    attrs: {
+                      src: "/assets/admin/global_assets/images/lang/en.png",
+                      alt: ""
+                    }
+                  }),
+                  _vm._v(
+                    "\n                        English\n                    "
+                  )
+                ]
+              )
+            ])
+          ])
+        ]),
         _vm._v(" "),
         _c("ul", { staticClass: "navbar-nav ml-auto" }, [
           _c("li", { staticClass: "nav-item dropdown dropdown-user" }, [
@@ -35919,7 +36067,11 @@ var render = function() {
                   { staticClass: "dropdown-item", attrs: { to: "/profile" } },
                   [
                     _c("i", { staticClass: "icon-user-plus" }),
-                    _vm._v(" " + _vm._s(_vm.$t("attributes.my_profile")))
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.$t("attributes.my_profile")) +
+                        "\n                    "
+                    )
                   ]
                 ),
                 _vm._v(" "),
@@ -35939,7 +36091,10 @@ var render = function() {
                   },
                   [
                     _c("i", { staticClass: "icon-switch2" }),
-                    _vm._v(" " + _vm._s(_vm.$t("actions.logout")))
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.$t("actions.logout"))
+                    )
                   ]
                 )
               ],
@@ -35975,9 +36130,15 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "navbar-brand" }, [
-      _c("a", { staticClass: "d-inline-block", attrs: { href: "./" } }, [
-        _vm._v("\n            ProfsAdvice\n            ")
-      ])
+      _c(
+        "a",
+        {
+          staticClass: "d-inline-block",
+          staticStyle: { "font-size": "1rem", color: "#fff" },
+          attrs: { href: "./" }
+        },
+        [_vm._v("\n            ProfsAdvice\n            ")]
+      )
     ])
   },
   function() {
@@ -36465,6 +36626,9 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         },
         action: function action(state) {
             return state.action;
+        },
+        department: function department(state) {
+            return state.department;
         },
         resource: function resource(state) {
             return state.resource;
