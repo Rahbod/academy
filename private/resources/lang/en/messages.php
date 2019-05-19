@@ -52,6 +52,7 @@ return [
         'section' => 'Section',
         'search-query' => 'Search Query',
         'no-search-query' => 'No Search Query',
+        'course-registration' => 'Course Registration',
     ],
     'home' => [
         'course-title' => 'Course',

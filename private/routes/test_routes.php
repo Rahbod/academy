@@ -13,8 +13,9 @@ Route::get('translation-requests/create', 'TranslateRequestController@index')->n
 Route::post('translation-requests/', 'TranslateRequestController@store');
 
 Route::get('courses/register/{course_id}/{slug?}', 'CourseController@termShow');
-Route::get('courses/register/step2/{term_id}', 'CourseController@classShow');
-Route::get('courses/register/step3/{class_id}', 'CourseController@verify');
+Route::get('class-show/{term_id}', 'CourseController@classShow');
+Route::get('verify/{class_id}', 'CourseController@verify');
+Route::post('payment', 'PaymentController@pay');
 
 Route::get('courses', 'CourseController@index');
 Route::get('courses/{id}/{slug?}', 'CourseController@show');

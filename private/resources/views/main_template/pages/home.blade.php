@@ -151,51 +151,60 @@
         </section>
     @endif
     @if(isset($articles))
-        <div class="section-full bg-white content-inner dlab-about-1 promotions">
-            <div class="container">
-                <div class="section-head text-black text-center">
-                    <h2 class="text-uppercase m-b0">@lang('messages.home.article-title')</h2>
-                    <p class="font-18">@lang('messages.home.article-description')</p>
-                </div>
-                <div class="row packages">
-                    @foreach($articles as $article)
-                        <div class="col-lg-6 col-xl-3 col-sm-6 col-md-6 m-b30">
-                            <div class="dlab-box">
-                                <div class="dlab-media">
-                                    <a title="{{$article['title']}}"
-                                       href="{{url(session('lang').'/article/'.$article['id'].'/'.str_replace(' ','-',$article['title']))}}">
-                                        <img src="{{$article['logo']}}" alt="{{$article['title']}}">
-                                    </a>
-                                </div>
-                                <div class="dlab-info p-a15 border-1">
-                                    <h4 class="dlab-title m-t0 -show1Lines">
-                                        <a class=""
-                                           {{$article['title']}} href="{{url(session('lang').'/article/'.$article['id'].'/'.str_replace(' ','-',$article['title']))}}">
-                                            {{$article['title']}}
+        <section class="articlesSection">
+            <div class="section-full bg-white content-inner dlab-about-1 promotions">
+                <div class="container">
+                    <div class="section-head d-flex text-black">
+                        <div class="flex-grow-1">
+                            <h2 class="text-uppercase m-b0">@lang('messages.home.article-title')</h2>
+                            <p class="m-b0">@lang('messages.home.article-description')</p>
+                        </div>
+                        <div class="align-self-center">
+                            <a title="view all" href="{{url(session('lang').'/article' )}}"
+                               class="site-button button-md float-right m-t5">@lang('messages.global.view-all')</a>
+                        </div>
+                    </div>
+
+                    <div class="row packages">
+                        @foreach($articles as $article)
+                            <div class="col-lg-6 col-xl-3 col-sm-6 col-md-6 m-b30">
+                                <div class="dlab-box">
+                                    <div class="dlab-media">
+                                        <a title="{{$article['title']}}"
+                                           href="{{url(session('lang').'/article/'.$article['id'].'/'.str_replace(' ','-',$article['title']))}}">
+                                            <img src="{{$article['logo']}}" alt="{{$article['title']}}">
                                         </a>
-                                    </h4>
-                                    <span class="location">tag 1 ,tag 2 ,tag 3</span>
-                                    <div class="package-content">
-                                        <ul class="package-meta">
-                                            <li><span class="fa fa-calendar">
+                                    </div>
+                                    <div class="dlab-info p-a15 border-1">
+                                        <h4 class="dlab-title m-t0 -show1Lines">
+                                            <a class=""
+                                               {{$article['title']}} href="{{url(session('lang').'/article/'.$article['id'].'/'.str_replace(' ','-',$article['title']))}}">
+                                                {{$article['title']}}
+                                            </a>
+                                        </h4>
+                                        <span class="location">tag 1 ,tag 2 ,tag 3</span>
+                                        <div class="package-content">
+                                            <ul class="package-meta">
+                                                <li><span class="fa fa-calendar">
                                                 </span> @lang('messages.global.published-at')
-                                                : {{$article['created_at']}}</li>
-                                            <li><span class="fa fa-user"></span> @lang('messages.global.seen')
-                                                : {{$article['show_count']}}</li>
-                                        </ul>
-                                        <div class="clearfix">
-                                            {{--<span class="package-price pull-left text-primary">900,00 T</span>--}}
-                                            <a title="{{$article['title']}}"
-                                               href="{{url(session('lang').'/article/'.$article['id'].'/'.str_replace(' ','-',$article['title']))}}"
-                                               class="site-button float-right">@lang('messages.global.view-details')</a>
+                                                    : {{$article['created_at']}}</li>
+                                                <li><span class="fa fa-user"></span> @lang('messages.global.seen')
+                                                    : {{$article['show_count']}}</li>
+                                            </ul>
+                                            <div class="clearfix">
+                                                {{--<span class="package-price pull-left text-primary">900,00 T</span>--}}
+                                                <a title="{{$article['title']}}"
+                                                   href="{{url(session('lang').'/article/'.$article['id'].'/'.str_replace(' ','-',$article['title']))}}"
+                                                   class="site-button float-right">@lang('messages.global.view-details')</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
     @endif
 @endsection

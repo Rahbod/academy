@@ -48,11 +48,13 @@ class CourseController extends Controller
 
 //        dd($breadcrumbs);
 
-        return view('main_template.pages.courses.index')->with('courses', $courses)->with('breadcrumbs',$breadcrumbs);
+        return view('main_template.pages.courses.index')->with('courses', $courses);
     }
 
     public function termShow($course_id)
     {
+//        dd($course_id);
+
         $course = $this->query->where('lang', session('lang'))
             ->with(['terms.class_rooms' => function ($q) {
                 $q->where('registration_start_date', '<=', Carbon::now())->where('registration_end_date', '>=', Carbon::now());
@@ -68,6 +70,7 @@ class CourseController extends Controller
 
     public function classShow($id)
     {
+//        dd($id);
 //        $term = Term::with('class_rooms.teacher')->findOrFail($id);
         $term = Term::with(['class_rooms' => function ($q) {
             $q->with('class_room_times')->with('teacher');
