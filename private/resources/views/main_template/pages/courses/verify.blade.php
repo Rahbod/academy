@@ -102,7 +102,37 @@
         </div>
 
         <div class="col-12">
-            <form action="{{url(session('lang') .'/payment')}}">
+            <div class="container-fluid border-bottom mb-5 py-3">
+                <div class="row">
+                    <div class="col-12">
+                        <h4>user information</h4>
+                    </div>
+                    @auth
+                        <div class="col-md-4 text-left"><label>user name :</label></div>
+                        <div class="col-md-8">{{auth()->user()->name}}</div>
+
+                        <div class="col-md-4 text-left"><label>email :</label></div>
+                        <div class="col-md-8">{{auth()->user()->email}}</div>
+
+                        @if(isset(auth()->user()->mobile_number))
+                            <div class="col-md-4 text-left"><label>mobile_number :</label></div>
+                            <div class="col-md-8">{{auth()->user()->mobile_number }}</div>
+                        @endif
+                    @endauth
+                    @guest
+                        <div class="col-12">
+                            <div class="alert alert-info text-center rounded" role="alert">
+                                <b>user dit not logged in</b>
+                            </div>
+                        </div>
+                    @endguest
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <form action="{{url(session('lang') .'/payment')}}" method="post" enctype="multipart/form-data">
+                @csrf
                 <input type="hidden" name="class_id" value="{{$class_room['id']}}">
 
                 <div class="form-group row">
@@ -116,7 +146,7 @@
                 <div class="form-group row">
                     <div class="col-sm-12 text-center">
                         <a title="go to home page" href="{{url(session('lang').'/')}}" class="btn btn-danger">Cancel</a>
-                        <button type="submit" class="btn btn-primary">Pay</button>
+                        <button type="submit" class="btn btn-primary px-3">Pay</button>
                     </div>
                 </div>
             </form>

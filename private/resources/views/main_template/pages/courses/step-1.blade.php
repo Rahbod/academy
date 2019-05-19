@@ -1,6 +1,6 @@
 <div class="step1">
     <h1 class="text-center mb-4 border-bottom p-3">
-        Selected Course
+        Course Information
     </h1>
     <div class="d-flex justify-content-between mb-4">
         <img style="height: 300px!important;" src="{{$course['image']}}" alt="{{$course['image']}}">
@@ -14,7 +14,7 @@
 
 <div class="step2">
     <h3 class="text-center mb-4 border-bottom p-3">
-        Select Term
+        Select Your Term
     </h3>
     <table class="table table-hover">
         <thead class="thead-light">

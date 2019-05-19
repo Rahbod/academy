@@ -1,6 +1,6 @@
 <div class="step1">
     <h1 class="text-center mb-4 border-bottom p-3">
-        Selected Course Information
+        Course Information
     </h1>
     <div class="d-flex justify-content-between mb-4">
         <img style="height: 200px!important;" src="{{$course['image']}}" alt="{{$course['image']}}">
@@ -14,7 +14,7 @@
 
 <div class="step2">
     <h3 class="text-center mb-4 border-bottom p-3">
-        Selected Term Information
+        Term Information
     </h3>
     <div class="d-flex justify-content-between mb-4">
         {{--<img style="height: 200px!important;" src="{{$course['image']}}" alt="{{$course['image']}}">--}}
@@ -26,7 +26,7 @@
 </div>
 
 <div class="step3">
-    <h4 class="text-center mb-4 border-bottom p-3">Select Class</h4>
+    <h4 class="text-center mb-4 border-bottom p-3">Select Your Class</h4>
     <table class="table table-hover">
         <thead class="thead-light">
         <tr>

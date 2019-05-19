@@ -120,8 +120,8 @@
                         <p class="m-b0">@lang('messages.home.news-description')</p>
                     </div>
                     <div class="align-self-center">
-                        <a title="view all" href="{{url(session('lang').'/news' )}}"
-                           class="site-button button-md float-right m-t5">@lang('messages.global.details')</a>
+                        <a title="@lang('messages.global.view-all')" href="{{url(session('lang').'/news' )}}"
+                           class="site-button button-md float-right m-t5">@lang('messages.global.view-all')</a>
                     </div>
                 </div>
             </div>

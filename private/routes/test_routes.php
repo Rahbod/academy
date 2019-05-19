@@ -15,7 +15,7 @@ Route::post('translation-requests/', 'TranslateRequestController@store');
 Route::get('courses/register/{course_id}/{slug?}', 'CourseController@termShow');
 Route::get('class-show/{term_id}', 'CourseController@classShow');
 Route::get('verify/{class_id}', 'CourseController@verify');
-Route::post('payment', 'PaymentController@pay');
+Route::post('payment', 'PaymentController@store');
 
 Route::get('courses', 'CourseController@index');
 Route::get('courses/{id}/{slug?}', 'CourseController@show');

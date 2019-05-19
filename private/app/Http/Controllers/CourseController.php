@@ -53,7 +53,7 @@ class CourseController extends Controller
 
     public function termShow($course_id)
     {
-//        dd($course_id);
+//        return $course_id;
 
         $course = $this->query->where('lang', session('lang'))
             ->with(['terms.class_rooms' => function ($q) {
@@ -63,7 +63,12 @@ class CourseController extends Controller
                 $q->withCount('class_rooms');
             }])->findOrFail($course_id);
 
-//        dd($course);
+
+        if (request()->ajax()) {
+            $class_view = view('main_template.pages.courses.step-1')
+                ->with('course', $course);
+            return $class_view;
+        }
 
         return view('main_template.pages.courses.course-registration')->with('course', $course);
     }

@@ -32,14 +32,14 @@
                 <div class="row">
                     <div class="col-md-11 mx-auto m-b30">
                         {{-- steps --}}
-                        <div class="p-a30 border-1 m-auto">
-                            <div id="steps">
+                        <div class="p-a30  m-auto">
+                            <div id="steps" class="border-1">
                                 @include('main_template.pages.courses.step-1')
                             </div>
                             <div class="d-flex justify-content-center mt-3">
-                                <button id="prevStep" data-lang="{{session('lang')}}"
-                                        class="site-button mr-2">Prev
-                                </button>
+                                <a href="void:;" id="prevStep" data-lang="{{session('lang')}}"
+                                   class="site-button mr-2">Prev
+                                </a>
 
                                 <button id="nextStep" data-lang="{{session('lang')}}"
                                         class="site-button ml-2">Next
@@ -60,6 +60,8 @@
     <script>
         let steps = $('#steps');
         let idsArray = [];
+        idsArray.push("{{$course['id']}}");
+        console.log(idsArray);
 
         $('.courseRegisterPage').on('click', '#nextStep', function () {
             let This = $(this), url;
@@ -69,10 +71,10 @@
                 let lang = This.data('lang');
                 let radioValue = $(".courseRegisterPage input[type='radio']:checked").val();
 
-                if (counter === 0) {
+                if (counter == 0) {
                     url = '/' + lang + '/class-show/' + radioValue;
                 }
-                if (counter === 1) {
+                if (counter == 1) {
                     url = '/' + lang + '/verify/' + radioValue;
                 }
 
@@ -84,18 +86,15 @@
                         $('#stepIndicator').val(counter);
                         $('#prevStepId').val(radioValue);
                         steps.html(response);
-
                         idsArray.push(radioValue);
-                        console.log(idsArray);
 
-                        if (counter === 2) {
+                        if (counter == 2) {
                             This.hide().attr('disabled', true);
                             idsArray.splice(-1, 1);
                         }
 
                     },
                     error: function (error) {
-                        console.log(error);
                         if (typeof error.response == 'array')
                             $.each(error.responseJSON.errors, function (key, value) {
                                 // $('#' + key).parents('.form-group').find('.invalid-tooltip').show().html(value[0]);
@@ -105,7 +104,6 @@
 
                     },
                     fail: function (fail) {
-                        console.log(fail);
                         toaster('error', 'error', 'error');
                     }
                 })
@@ -123,18 +121,15 @@
             let counter = parseInt($('#stepIndicator').val());
             console.log(idsArray);
 
-            if (counter >= 0) {
+            if (counter > 0) {
                 let lang = This.data('lang');
 //                let radioValue = $(".courseRegisterPage input[type='radio']:checked").val();
 
-                if (counter === 2) {
-                    url = '/' + lang + '/class-show/' + idsArray[counter];
+                if (counter == 2) {
+                    url = '/' + lang + '/class-show/' + idsArray[counter - 1];
                 }
-//                if (counter === 1) {
-//                    url = '/' + lang + '/term-show/' + idsArray[counter -1]['id'];
-//                }
-                if (counter === 1) {
-                    url = '/' + lang + '/courses/register/' + idsArray[counter];
+                else if (counter == 1) {
+                    url = '/' + lang + '/courses/register/' + idsArray[counter - 1];
                 }
 
                 $.ajax({
@@ -167,7 +162,8 @@
                 })
             }
             else {
-//                counter = 3;
+                idsArray = [];
+                This.attr('href', "{{url(session('lang').'/courses')}}")
 //                This.attr('data-counter', counter);
             }
         });

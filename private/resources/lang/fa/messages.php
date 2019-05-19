@@ -52,6 +52,8 @@ return [
         'section' => 'بخش مورد نظر',
         'search-query' => 'کلمه مورد جستجو',
         'no-search-query' => 'کلمه مورد جستجو',
+        'need-login'=>'لطفا جهت ادامه ورود نمایید.',
+        'note'=>'توجه',
     ],
     'home' => [
         'course-title' => 'دوره ها',

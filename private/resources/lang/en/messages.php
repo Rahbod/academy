@@ -53,6 +53,9 @@ return [
         'search-query' => 'Search Query',
         'no-search-query' => 'No Search Query',
         'course-registration' => 'Course Registration',
+        'need-login' => 'Please Login In To Continue.',
+        'note' => 'note'
+
     ],
     'home' => [
         'course-title' => 'Course',
