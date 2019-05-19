@@ -33,11 +33,11 @@ Route::get('/artisan-call', function () {
 
 });
 
-Route::group(['middleware'=>['lang','remove_additional_params'],'prefix'=>"{lang}",],function () {
+Route::group(['middleware' => ['lang', 'set_locale', 'remove_additional_params'], 'prefix' => "{lang}",], function () {
     Auth::routes();
 //    Auth::routes(['register' => false,'reset' => false,'verify' => true]);
 
-    include ('test_routes.php');
+    include('test_routes.php');
 });
 
 

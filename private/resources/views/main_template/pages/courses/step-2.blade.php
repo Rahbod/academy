@@ -30,9 +30,9 @@
     <table class="table table-hover">
         <thead class="thead-light">
         <tr>
-            <th scope="col" colspan="1">#</th>
-            <th scope="col" colspan="3">class image</th>
-            <th scope="col" colspan="8">class descriptions</th>
+            <th colspan="1">#</th>
+            <th colspan="4">class image</th>
+            <th colspan="7">class descriptions</th>
         </tr>
         </thead>
         <tbody>
@@ -45,21 +45,26 @@
                                value="{{$class_room['id']}}" {{$loop->first ? 'checked' : ''}}>
                     </div>
                 </td>
-                <td colspan="3">
+                <td colspan="4">
                     <img class="img-fluid" src="{{$class_room['image']}}"
                          alt="{{$class_room['title_'.session('lang')]}}">
                 </td>
-                <td colspan="8">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Title : {{$class_room['title_'.session('lang')]}}</li>
-                        <li class="list-group-item">Capacity : {{$class_room['capacity']}}</li>
-                        <li class="list-group-item">Price : {{$class_room['price']}}</li>
-                        <li class="list-group-item">Master : {{$class_room['teacher']['name']}}</li>
-                        <li class="list-group-item">Registration Start : {{$class_room['registration_start_date']}}</li>
-                        <li class="list-group-item">Registration End : {{$class_room['registration_end_date']}}</li>
-                        <li class="list-group-item">Course Start Date : {{$class_room['course_start_date']}}</li>
-                        <li class="list-group-item">Course End Date : {{$class_room['course_end_date']}}</li>
-
+                <td colspan="7">
+                    <ul class="list-unstyled ">
+                        <li class=""><b>Title</b> : {{$class_room['title_'.session('lang')]}}</li>
+                        <li class=""><b>Capacity</b> : {{$class_room['capacity']}}</li>
+                        <li class=""><b>Price</b> : {{$class_room['price']}}</li>
+                        <li class=""><b>Master</b> : {{$class_room['teacher']['name']}}</li>
+                        <li class=""><b>Registration Start</b> : {{$class_room['registration_start_date']}}</li>
+                        <li class=""><b>Registration End</b> : {{$class_room['registration_end_date']}}</li>
+                        <li class=""><b>Course Start Date</b> : {{$class_room['course_start_date']}}</li>
+                        <li class=""><b>Course End Date</b> : {{$class_room['course_end_date']}}</li>
+                        @foreach($class_room['class_room_times'] as $class_room_time)
+                            <li class="">
+                                <b>{{$class_room_time['week_day']}}</b>
+                                {{$class_room_time['start_time']}} - {{$class_room_time['end_time']}}
+                            </li>
+                        @endforeach
                     </ul>
                 </td>
             </tr>

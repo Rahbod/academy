@@ -139,7 +139,7 @@
                     <label for="gateway" class="col-sm-4 col-form-label">Gateway</label>
                     <div class="col-sm-8">
                         <select id="gateway" name="gateway_id" class="custom-select my-1 mr-sm-2">
-                            <option value="1">Zarin Pal</option>
+                            <option value="zarinpal">Zarin Pal</option>
                         </select>
                     </div>
                 </div>

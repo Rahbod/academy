@@ -54,6 +54,7 @@ class Kernel extends HttpKernel
         'set_department'=>\Appnegar\Cms\Middleware\SetDepartment::class,
         'acl'=>\Appnegar\Cms\Middleware\Acl::class,
         'lang'=>\Appnegar\Cms\Middleware\Lang::class,
+        'set_locale'=>\Appnegar\Cms\Middleware\SetLocale::class,
         'remove_additional_params'=>\Appnegar\Cms\Middleware\RemoveAdditionalParams::class,
         'user_info'=>\Appnegar\Cms\Middleware\UserInfo::class,
         'basic_user_info'=>\Appnegar\Cms\Middleware\BasicUserInfo::class,
