@@ -108,7 +108,7 @@ class StaticMenuController extends AdminController{
         $form_date=[
             'model'=>$data,
             'options'=>[
-                'parent_id' => StaticMenu::whereNotIn('id',$not_in_ids)->select(['id','name As text'])->get(),
+                'parent_id' => StaticMenu::whereNotIn('id',$not_in_ids)->where('lang',session('lang'))->select(['id','name As text'])->get(),
                 'page_id' => Page::select(['id','title As text'])->get(),
                 'link'=>\Config::get('actions')
             ]

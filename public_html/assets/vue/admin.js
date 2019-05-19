@@ -35874,10 +35874,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
-//
 
 
 
@@ -36037,43 +36033,6 @@ var render = function() {
                   }),
                   _vm._v(
                     "\n                        English\n                    "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "dropdown-item",
-                  class: [_vm.lang == "ar" ? "active" : ""],
-                  on: {
-                    click: function($event) {
-                      if (
-                        !("button" in $event) &&
-                        _vm._k(
-                          $event.keyCode,
-                          "prervent",
-                          undefined,
-                          $event.key,
-                          undefined
-                        )
-                      ) {
-                        return null
-                      }
-                      _vm.changeLang("ar")
-                    }
-                  }
-                },
-                [
-                  _c("img", {
-                    staticClass: "img-flag",
-                    attrs: {
-                      src: "/assets/admin/global_assets/images/lang/ar.png",
-                      alt: ""
-                    }
-                  }),
-                  _vm._v(
-                    "\n                        العربیه\n                    "
                   )
                 ]
               )

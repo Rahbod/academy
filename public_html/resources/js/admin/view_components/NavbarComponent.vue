@@ -40,10 +40,6 @@
                             <img src="/assets/admin/global_assets/images/lang/en.png" class="img-flag" alt="">
                             English
                         </a>
-                        <a @click.prervent="changeLang('ar')" class="dropdown-item" :class="[lang == 'ar' ? 'active' : '']">
-                            <img src="/assets/admin/global_assets/images/lang/ar.png" class="img-flag" alt="">
-                            العربیه
-                        </a>
                     </div>
                 </li>
             </ul>
