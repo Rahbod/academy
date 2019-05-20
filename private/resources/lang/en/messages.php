@@ -54,7 +54,11 @@ return [
         'no-search-query' => 'No Search Query',
         'course-registration' => 'Course Registration',
         'need-login' => 'Please Login In To Continue.',
-        'note' => 'note'
+        'note' => 'note',
+        'success' => 'Success',
+        'success-description' => 'Operation Was Successful',
+        'error' => 'error',
+        'error-description' => 'Operation Was Unsuccessful',
 
     ],
     'home' => [

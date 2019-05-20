@@ -150,6 +150,14 @@ ul {
 
 /*#endregion*/
 /*#region header*/
+
+.user-avatar-nav {
+    width: 21px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+
 .header {
     height: 129px;
     position: relative;

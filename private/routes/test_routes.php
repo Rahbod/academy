@@ -17,7 +17,7 @@ Route::get('class-show/{term_id}', 'CourseController@classShow');
 Route::get('verify/{class_id}', 'CourseController@verify');
 Route::post('payment', 'PaymentController@store');
 
-Route::get('courses', 'CourseController@index');
+Route::get('courses', 'CourseController@index')->name('courses');
 Route::get('courses/{id}/{slug?}', 'CourseController@show');
 
 Route::get('contact-us', 'ContactUsController@index')->name('contact-us');
