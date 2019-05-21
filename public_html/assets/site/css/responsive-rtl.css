@@ -1,6 +1,5 @@
 /*#region max-width*/
 @media screen and (max-width: 991.98px) {
-
     .header .site-button-link i {
         font-size: 16px;
         color: #aaa;
@@ -61,48 +60,15 @@
         width: 100%;
     }
 
-    h2 {
-        font-size: 25px;
-    }
-
-    h3 {
-        font-size: 22px;
-    }
-
-    h4 {
-        font-size: 19px;
-    }
-
-    .add-area p {
-        font-size: 16px;
-    }
-
-    .add-area h2 {
-        font-size: 32px;
-    }
-
-    .section-head .button-md {
-        padding: 10px 20px;
-        margin-left: 1rem;
-    }
-
-    .sectionHeader p, .dlab-title a {
-        font-size: 18px;
-    }
 }
 
 @media screen and (max-width: 767.98px) {
     .container {
         max-width: none;
     }
-
-    .footer-bottom .-textLeft, .footer-bottom .-textRight {
-        text-align: left;
-    }
 }
 
 @media screen and (max-width: 575.98px) {
-
     .sliderSection {
         padding-bottom: 2rem;
         height: auto;
@@ -131,13 +97,7 @@
 }
 
 @media screen and (min-width: 768px) {
-    .footer-bottom .-textLeft, .footer-bottom .-textRight {
-        text-align: center;
-    }
 
-    .footer-bottom .list-inline > li {
-        margin-bottom: 6px;
-    }
 }
 
 @media screen and (max-width: 576px) {
@@ -145,7 +105,6 @@
 }
 
 /*#endregion*/
-
 .tr-btn-info a i {
-    margin-right: 5px;
+    margin-left: 5px;
 }

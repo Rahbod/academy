@@ -1,4 +1,51 @@
 /*#region public*/
+button.scrollUp {
+    background: rgba(255, 255, 255, 0.9) none repeat scroll 0 0;
+    border-color: #21ab64;
+    border-radius: 20px;
+    border-style: solid;
+    border-width: 0;
+    bottom: 15px;
+    box-shadow: 2px 2px 12px -5px #000000;
+    color: #21ab64;
+    cursor: pointer;
+    display: none;
+    height: 40px;
+    line-height: 26px;
+    margin: 0;
+    position: fixed;
+    right: 15px;
+    text-align: center;
+    width: 40px;
+    z-index: 999;
+    transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    outline: none !important;
+}
+
+button.scrollUp i {
+    font-size: 13px;
+}
+
+button.scrollUp:hover i {
+    -webkit-transform: translateY(-20%);
+    -moz-transform: translateY(-20%);
+    -ms-transform: translateY(-20%);
+    -o-transform: translateY(-20%);
+    transform: translateY(-20%);
+}
+
+.-textLeft {
+    text-align: left;
+}
+
+.-textRight {
+    text-align: right;
+}
+
 .content-inner-2 {
     padding-top: 80px;
     padding-bottom: 80px;
@@ -585,7 +632,7 @@ a, .text-primary, .primary li:before, .breadcrumb-row ul li a, .header-nav .nav 
     filter: blur(5px);
 }
 
-button:after {
+buttondasd:after {
     background-color: #fff;
     content: "";
     height: 100%;
@@ -1093,7 +1140,7 @@ h2 {
     font-size: 18px;
     margin-bottom: 10px;
     padding-left: 12px;
-    line-height: 22px;
+    /*line-height: 22px;*/
 }
 
 .newsSlider .dlab-info-has-text span {
@@ -2613,6 +2660,7 @@ ol.comment-list li.comment .comment-respond .comment-form p {
 .searchPage .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
     color: #333;
     background-color: transparent;
+    font-weight:bold;
 }
 
 .searchPage .nav-pills .nav-link:focus, .nav-pills .nav-link:hover {
@@ -2636,6 +2684,59 @@ ol.comment-list li.comment .comment-respond .comment-form p {
 
 /*#endregion*/
 
+/*#region message page*/
+
+.message__container {
+    width: 460px;
+    height: auto;
+    padding: 4rem 2rem;
+    margin: 2rem 0;
+}
+
+.message_about-link {
+    position: relative;
+}
+
+.message_about-link::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: grey;
+    z-index: -1;
+}
+
+.message_logo {
+    border: 2px solid white;
+    padding: 10px;
+}
+
+.message_home-link {
+    color: #fff;
+    text-decoration: none;
+    width: 100%;
+    display: block;
+    margin-top: 30px;
+    padding: 20px;
+    /*background: #16a085c2;*/
+}
+
+.message_home-link:hover {
+    color: #fff;
+    /*-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";*/
+    /*filter: alpha(opacity=50);*/
+    /*opacity: 0.8;*/
+    background: #16A085;
+}
+
+.message_text::after, .message_text::before {
+    content: '“';
+    clear: both;
+}
+
+/*#endregion*/
 @media (max-width: 991.98px) {
 
 }

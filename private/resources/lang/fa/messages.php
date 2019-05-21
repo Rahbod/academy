@@ -54,10 +54,13 @@ return [
         'no-search-query' => 'کلمه مورد جستجو',
         'need-login' => 'لطفا جهت ادامه ورود نمایید.',
         'note' => 'توجه',
+        'profile' => 'پنل کاربری',
         'success' => 'موفقیت آمیز',
         'success-description' => 'عملیات با موفقیت انجام شد.',
         'error' => 'ناموفق',
         'error-description' => 'عملیات موفقیت آمیز نبود.',
+        'logout'=>'خروج',
+        'in'=>'در',
     ],
     'home' => [
         'course-title' => 'دوره ها',

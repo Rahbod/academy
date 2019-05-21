@@ -28,14 +28,13 @@
 
         @if(isset($course['terms']))
             @foreach($course['terms'] as $key => $term)
-                @if($term['class_rooms_count'] <=0)
+                @if($term['class_rooms_count'] <= 0)
                     <tr>
                         <td colspan="1">
                             <div class="form-check">
                                 <input class="form-check-input " type="radio" name="term"
                                        {{$term['class_rooms_count'] > 0 ? '' : 'disabled'}}
-                                       id=""
-                                       value="{{$term['id']}}" {{$loop->first ? 'checked' : ''}}>
+                                       id="" value="{{$term['id']}}">
 
                             </div>
                         </td>
@@ -54,9 +53,7 @@
                 <tr>
                     <td colspan="1">
                         <div class="form-check">
-                            <input class="form-check-input " type="radio" name="term"
-                                   {{$term['class_rooms_count'] > 0 ? '' : 'disabled'}}
-                                   id=""
+                            <input class="form-check-input " type="radio" name="term" id=""
                                    value="{{$term['id']}}" {{$loop->first ? 'checked' : ''}}>
 
                         </div>

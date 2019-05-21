@@ -41,10 +41,11 @@
                                     {{--href="{{ url('/profile/'.Auth::user()->name) }}">--}}
                                     {{--{!! trans('titles.profile') !!}--}}
                                     {{--</a>--}}
-                                    <a class="dropdown-item active" href="void:;" title="profile">profile</a>
-                                    <a class="dropdown-item" href="void:;" title="My Articles">My Articles</a>
-                                    <a class="dropdown-item" href="void:;" title="My Requests">My
-                                        Translations</a>
+                                    <a class="dropdown-item active" href="{{url( session('lang') .'/profile')}}"
+                                       title="profile">profile</a>
+                                    {{--<a class="dropdown-item" href="void:;" title="My Articles">My Articles</a>--}}
+                                    {{--<a class="dropdown-item" href="void:;" title="My Requests">My--}}
+                                    {{--Translations</a>--}}
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('logout',['lang'=>session('lang')]) }}"
                                        onclick="event.preventDefault();
@@ -93,7 +94,8 @@
                         <form action="{{url(session('lang').'/search' )}}" enctype="multipart/form-data" method="post">
                             @csrf
                             <div class="input-group">
-                                <input autofocus type="text" class="form-control" placeholder="@lang('messages.global.search') ..."
+                                <input autofocus type="text" class="form-control"
+                                       placeholder="@lang('messages.global.search') ..."
                                        name="search_query"
                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
                                 <div class="input-group-append">
@@ -112,51 +114,53 @@
                             {{--<li class="active">--}}
                             {{--<a title="home" href="{{route('home',['lang'=>session('lang')])}}">Home</a>--}}
                             {{--</li>--}}
-                            @foreach($main_menus as $item)
-                                @if(isset($item['children']) && count($item['children']) >0)
-                                    <li class="">
-                                        <a title="{{$item['name']}}" href="void:;">{{$item['name']}}<i
-                                                    class="fa fa-chevron-down"></i></a>
-                                        <ul class="sub-menu">
-                                            @foreach($item['children'] as $child)
-                                                <li>
-                                                    @if($child['type'] === 'action' || $child['type'] === 'link')
+                            @if(isset($main_menus))
+                                @foreach($main_menus as $item)
+                                    @if(isset($item['children']) && count($item['children']) >0)
+                                        <li class="">
+                                            <a title="{{$item['name']}}" href="void:;">{{$item['name']}}<i
+                                                        class="fa fa-chevron-down"></i></a>
+                                            <ul class="sub-menu">
+                                                @foreach($item['children'] as $child)
+                                                    <li>
+                                                        {{--                                                        @if($child['type'] === 'action' || $child['type'] === 'link')--}}
                                                         <a href="{{url($child['link'])}}" title="{{$child['name']}}"
                                                            class="dez-page">{{$child['name']}}</a>
-                                                    @else
-                                                        <a href="{{url(session('lang') .'/pages/show/'.$child['id'].'/'.str_replace(' ','-',$child['name']) )}}"
-                                                           class="dez-page">{{$child['name']}}</a>
-                                                    @endif
+                                                        {{--@else--}}
+                                                        {{--<a href="{{url(session('lang') .'/pages/show/'.$child['id'].'/'.str_replace(' ','-',$child['name']) )}}"--}}
+                                                        {{--class="dez-page">{{$child['name']}}</a>--}}
+                                                        {{--@endif--}}
 
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    </li>
-                                @else
-                                    <li>
-                                        @if($item['type'] === 'action' || $item['type'] === 'link')
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </li>
+                                    @else
+                                        <li>
+                                            {{--@if($item['type'] === 'action' || $item['type'] === 'link')--}}
                                             <a href="{{$item['link']}}" title="{{$item['name']}}"
                                                class="dez-page">{{$item['name']}}</a>
-                                        @else
-                                            <a href="{{url(session('lang') .'/pages/show/'.$item['id'].'/'.str_replace(' ','-',$item['name']) )}}"
-                                               class="dez-page">{{$item['name']}}</a>
-                                        @endif
+                                            {{--@else--}}
+                                            {{--<a href="{{url(session('lang') .'/pages/show/'.$item['id'].'/'.str_replace(' ','-',$item['name']) )}}"--}}
+                                            {{--class="dez-page">{{$item['name']}}</a>--}}
+                                            {{--@endif--}}
+                                        </li>
+                                    @endif
+                                @endforeach
+                                @if(session('lang') !='fa')
+                                    <li class="d-none d-lg-block ml-3">
+                                        <div class="extra-nav">
+                                            <div class="extra-cell">
+                                                <button onclick="$('#showSearchForm').show().find('input').focus();"
+                                                        id=""
+                                                        type="button"
+                                                        class="site-button-link"><i
+                                                            class="fa fa-search"></i></button>
+                                            </div>
+                                        </div>
                                     </li>
                                 @endif
-                            @endforeach
-                            @if(session('lang') !='fa')
-                                <li class="d-none d-lg-block ml-3">
-                                    <div class="extra-nav">
-                                        <div class="extra-cell">
-                                            <button onclick="$('#showSearchForm').show().find('input').focus();" id=""
-                                                    type="button"
-                                                    class="site-button-link"><i
-                                                        class="fa fa-search"></i></button>
-                                        </div>
-                                    </div>
-                                </li>
                             @endif
-
                         </ul>
                         @if(session('lang') =='fa')
                             <div class="extra-nav">
@@ -181,8 +185,11 @@
     </div>
     <nav id="sidebar">
         <div class="sidebar-header">
-            <h4 class="text-white">language</h4>
-            <h5 class="text-white">academy</h5>
+            {{--<h4 class="text-white">language</h4>--}}
+            <h4 class="text-left">
+                <a class="text-white" href="{{url(session('lang').'/')}}"
+                   title="@lang('messages.global.home')">Academy</a>
+            </h4>
         </div>
 
         <div id="dismiss">
@@ -190,55 +197,73 @@
         </div>
 
         <ul class="list-unstyled">
-            <li>
-                <a class="menu-item active" href="void:;">home</a>
-            </li>
-            <li>
-                <a class="menu-item" href="void:;">news</a>
-            </li>
-            <li>
-                <a class="menu-item" href="void:;">articles</a>
-            </li>
-            <li>
-                <a class="menu-item" href="void:;">translation</a>
-            </li>
-            <li>
-                <a class="menu-item submenu" href="#homeSubmenu2" data-toggle="collapse" aria-expanded="false">
-                    menu
-                </a>
-                <ul class="collapse list-unstyled" id="homeSubmenu2">
+            @if(isset($main_menus))
+                @foreach($main_menus as $item)
+                    @if(isset($item['children']) && count($item['children']) >0)
+                        @foreach($item['children'] as $child)
+                            <li>
+                                <a title="{{$child['name']}}"
+                                   class="menu-item submenu"
+                                   href="#homeSubmenu{{$child['id']}}"
+                                   data-toggle="collapse" aria-expanded="false">
+                                    {{$item['name']}}
+                                </a>
+                                <ul class="collapse list-unstyled" id="homeSubmenu{{$child['id']}}">
+                                    <li>
+                                        <a title="{{$child['name']}}" class="menu-item"
+                                           href="{{$child['link']}}">{{$child['name']}}</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endforeach
+                    @else
+                        <li>
+                            <a title="{{$item['name']}}" class="menu-item"
+                               href="{{$item['link']}}">{{$item['name']}}</a>
+                        </li>
+                    @endif
+                @endforeach
+            @endif
+            @guest
+                <li><a title="@lang('messages.global.login')"
+                       href="{{route('login',['lang'=>session('lang')])}}"
+                       class="menu-item">@lang('messages.global.login')</a>
+                </li>
+                <li><a title="@lang('messages.global.register')"
+                       href="{{route('register',['lang'=>session('lang')])}}"
+                       class="menu-item">@lang('messages.global.register')</a></li>
+                @else
                     <li>
-                        <a class="menu-item" href="void:;">sub menu</a>
+                        <a title=""
+                           class="menu-item submenu"
+                           href="#log"
+                           data-toggle="collapse" aria-expanded="false">
+                            @if ((Auth::user()->profile) && Auth::user()->avatar)
+                                <img src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }}"
+                                     class="user-avatar-nav">
+                            @else
+                                <div class="user-avatar-nav"></div>
+                            @endif
+                            {{ Auth::user()->name }}
+                        </a>
+                        <ul class="collapse list-unstyled" id="log">
+                            <li>
+                                <a class="dropdown-item" title="@lang('messages.global.profile')" href="{{url( session('lang') .'/profile')}}">
+                                    @lang('messages.global.profile')</a>
+                                <a class="dropdown-item" href="{{ route('logout',['lang'=>session('lang')]) }}"
+                                   onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                    @lang('messages.global.logout')
+                                </a>
+                                <form id="logout-form" action="{{ route('logout',['lang'=>session('lang')]) }}"
+                                      method="POST"
+                                      style="display: none;">
+                                    @csrf
+                                </form>
+                            </li>
+                        </ul>
                     </li>
-                    <li>
-                        <a class="menu-item" href="void:;">اطلاعیه ها</a>
-                    </li>
-                    <li>
-                        <a class="menu-item" href="void:;">لیست های من</a>
-                    </li>
-                    <li>
-                        <a class="menu-item" href="void:;">لیست های ذخیره شده</a>
-                    </li>
-                    <li>
-                        <a class="menu-item" href="void:;">لیست های پیشنهادی</a>
-                    </li>
-                    <li>
-                        <a class="menu-item" href="void:;">خروج</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="void:;" class="menu-item">
-                    login
-                </a>
-            </li>
-            <li>
-                <a href="void:;" class="menu-item">
-                    register
-                </a>
-            </li>
-
-
+                    @endguest
         </ul>
 
     </nav>

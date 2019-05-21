@@ -21,11 +21,11 @@
             <div class="container">
                 <div class="section-head text-black text-center m-b20 pb-4 border-bottom">
                     <h2 class="m-b10">@lang('messages.global.search')</h2>
-                    <h5>
-                        @lang('messages.global.search-query') {{isset($search_in) ? __('messages.global.'.$search_in) : '' }}
+                    <div>
+                        @lang('messages.global.search-query') @lang('messages.global.in') <b>{{isset($search_in) ? __('messages.global.'.$search_in) : '' }}</b>
                         :
                         <span class="text-danger"><b>{{isset($search_for) ? $search_for : __('messages.global.no-search-query')}}</b></span>
-                    </h5>
+                    </div>
                 </div>
 
                 <ul class="nav nav-pills mb-5 justify-content-center" id="pills-tab" role="tablist">

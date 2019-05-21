@@ -6,6 +6,16 @@ body {
     text-align: right;
 }
 
+h1, h2, h3, h4, h5, h6, p {
+    font-family: 'IRANSans', 'Lato', sans-serif;
+}
+
+.-show2Lines {
+    line-height: 27px;
+    height: 54px;
+    max-height: 54px;
+}
+
 /*#endregion*/
 /*#region header*/
 .header-nav .nav > li > a {
@@ -39,18 +49,18 @@ body {
     margin-left: auto;
 }
 
-.extra-nav {
-    float: left;
-}
+/*.extra-nav {*/
+/*float: left;*/
+/*}*/
 
 .extra-nav .extra-cell {
-    margin-right: 10px;
-    margin-left: auto;
+    /*margin-right: 10px;*/
+    margin-left: 0;
 }
 
 .site-button-link i {
-    margin-right: 10px;
-    margin-left: auto;
+    /*margin-right: 10px;*/
+    margin-left: 0;
 }
 
 .dlab-quik-search {
@@ -67,6 +77,11 @@ body {
     top: 0;
     right: 0;
     left: auto;
+}
+
+#sidebar ul .submenu::after {
+    left: 0;
+    right: auto;
 }
 
 /*#endregion*/

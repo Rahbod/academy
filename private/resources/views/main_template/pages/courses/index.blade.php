@@ -46,24 +46,22 @@
                                                    class="site-button outline outline-2 radius-xl" title="register">
                                                     @lang('messages.global.register')
                                                 </a>
-                                                @else
-                                                    <a href="{{ url(session('lang') .'/courses/register/'.$course['id'].'/'.str_replace(' ','-',$course['title_'.session('lang')]))}}"
-                                                       class="site-button outline outline-2 radius-xl" title="register">
-                                                        @lang('messages.global.register')
-                                                    </a>
-                                                    {{--<a href="void:;"--}}
-                                                    {{--class="site-button outline outline-2 radius-xl" onclick="toaster('error','{{__('messages.global.note')}}','{{__('messages.global.need-login')}}')" title="please logged in to continue">--}}
-                                                    {{--                                                        @lang('messages.global.register')--}}
-                                                    </a>
-                                                    @endauth
+                                            @endauth
+
+                                            @guest
+                                                <a href="{{url(session('lang').'/login') }}"
+                                                   class="site-button outline outline-2 radius-xl">
+                                                    <i class="fas fa-sign-in-alt"></i>
+                                                    @lang('messages.global.login')
+                                                </a>
+                                            @endguest
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
-
                         <div class="col-12">
-                            <div class="text-left my-5">
+                            <div class="text-left my-5 pagination-bx clearfix text-center">
                                 {{$courses->links()}}
                             </div>
                         </div>

@@ -78,7 +78,7 @@
                                         @guest
                                             <a href="{{url(session('lang').'/login') }}"
                                                class="site-button radius-no">
-                                                <i class="fa fa-location-arrow" aria-hidden="true"></i>
+                                                <i class="fas fa-sign-in-alt"></i>
                                                 @lang('messages.global.login')
                                             </a>
                                         @endguest
@@ -189,7 +189,14 @@
                                                 {{$article['title']}}
                                             </a>
                                         </h4>
-                                        <span class="location">tag 1 ,tag 2 ,tag 3</span>
+                                        <span class="location">
+                                            @if(isset($article['tags']))
+                                                @foreach($article['tags'] as $tag)
+                                                    <a title="{{$tag['name']}}"
+                                                       href="{{url(session('lang').'/tags/'.$tag['id'])}}">{{$tag['name']}}</a>
+                                                @endforeach
+                                            @endif
+                                            </span>
                                         <div class="package-content">
                                             <ul class="package-meta">
                                                 <li><span class="fa fa-calendar">

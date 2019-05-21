@@ -46,7 +46,7 @@
         <div class="section-full content-inner">
             <div class="container">
                 <div class="row m-b30">
-                    <div class="col-lg-8">
+                    <div class="col-lg-8 col-md-7 m-b10">
                         <div class="d-flex info-bx m-b30">
                             <div class="tour-title">
                                 <h2>{{$course['title_'.session('lang')]}}</h2>
@@ -70,10 +70,22 @@
                             <p>{!! $course['description_'.session('lang')]!!}</p>
                         </div>
                         <div class="join">
-                            <a href="{{url(session('lang').'/courses/register/'.$course['id'])}}"
-                               class="site-button btn-block">
-                                @lang('messages.global.register')
-                            </a>
+                            @auth
+                                <a href="{{url(session('lang').'/courses/register/'.$course['id'])}}"
+                                   class="site-button btn-block">
+                                    @lang('messages.global.register')
+                                </a>
+                            @endauth
+
+                            @guest
+                                <a href="{{url(session('lang').'/login') }}"
+                                   class="site-button btn-block">
+                                    <i class="fas fa-sign-in-alt"></i>
+                                    @lang('messages.global.login')
+                                </a>
+                            @endguest
+
+
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-5 sticky-top">

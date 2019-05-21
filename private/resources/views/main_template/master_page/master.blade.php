@@ -34,6 +34,7 @@
     @if(session('lang') == 'fa')
         <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/rtl-styles.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('./assets/site/css/iran-sans.css')}}">
+        <link type="text/css" rel="stylesheet" href="{{asset('./assets/css/iran-sans-fa-num.css')}}">
     @endif
     {{--rtl styles : end--}}
 

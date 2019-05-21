@@ -92,6 +92,18 @@ $(window).on("load resize scroll", function () {
     }
 });
 
+$(window).on("load resize scroll", function () {
+    var headerHeight = $('header').height();
+    var scroll = $(window).scrollTop();
+    if (scroll > headerHeight) {
+        $('.scrollUp').fadeIn();
+    }
+    else {
+        $('.scrollUp').fadeOut();
+
+    }
+});
+
 $('#dismiss, .overlay').on('click', function () {
     $('#sidebar').removeClass('active');
     $('.overlay').removeClass('active');
@@ -104,7 +116,11 @@ $('#sidebarCollapse').on('click', function () {
     $('a[aria-expanded=true]').attr('aria-expanded', 'false');
 });
 
-
+$(".scrollUp").on('click', function () {
+    $('html, body').animate({
+        scrollTop: $("body").offset().top
+    }, 1500);
+});
 // });
 
 $('form.contact-us').on('submit', function (e) {
@@ -113,8 +129,6 @@ $('form.contact-us').on('submit', function (e) {
     let formMethod = $(e.target).attr('method');
     let url = form.attr('action');
     let formData = new FormData(this);
-
-    console.log(form);
 
     $.ajax({
         url: url,

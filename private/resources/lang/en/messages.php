@@ -55,11 +55,13 @@ return [
         'course-registration' => 'Course Registration',
         'need-login' => 'Please Login In To Continue.',
         'note' => 'note',
+        'profile' => 'dashboard',
         'success' => 'Success',
         'success-description' => 'Operation Was Successful',
         'error' => 'error',
         'error-description' => 'Operation Was Unsuccessful',
-
+        'logout' => 'Logout',
+        'in' => 'in',
     ],
     'home' => [
         'course-title' => 'Course',

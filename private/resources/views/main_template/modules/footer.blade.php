@@ -15,18 +15,21 @@
 
                             <li>
 									<span>
-										<i class="fa fa-phone"></i> @lang('messages.global.mobile') : {{config('system.about_us.phone')}}
+										<i class="fa fa-phone"></i> @lang('messages.global.mobile')
+                                        : {{config('system.about_us.phone')}}
 									</span>
                             </li>
 
                             <li>
 									<span>
-										<i class="fa fa-envelope"></i> @lang('messages.global.email') : {{config('system.about_us.email')}}
+										<i class="fa fa-envelope"></i> @lang('messages.global.email')
+                                        : {{config('system.about_us.email')}}
 									</span>
                             </li>
                             <li>
 									<span>
-										<i class="fa fa-fax"></i> @lang('messages.global.fax') : {{config('system.about_us.fax')}}
+										<i class="fa fa-fax"></i> @lang('messages.global.fax')
+                                        : {{config('system.about_us.fax')}}
 									</span>
                             </li>
                         </ul>
@@ -35,7 +38,8 @@
                         <li><a title="@lang('messages.social.facebook')" href="{{config('system.about_us.facebook')}}"
                                class="site-button facebook sharp"><i
                                         class="fab fa-facebook-f"></i></a></li>
-                        <li><a title="@lang('messages.social.google-plus')" href="{{config('system.about_us.google_plus')}}"
+                        <li><a title="@lang('messages.social.google-plus')"
+                               href="{{config('system.about_us.google_plus')}}"
                                class="site-button google-plus sharp"><i
                                         class="fab fa-google-plus-g"></i></a></li>
                         <li><a title="@lang('messages.social.telegram')" href="{{config('system.about_us.telegram')}}"
@@ -141,12 +145,15 @@
     <div class="footer-bottom">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-md-6 text-left">
-                    <span>@lang('messages.global.copyright') <span dir="ltr" class="">© <?php echo date("Y"); ?></span></span></div>
-                <div class="col-lg-6 col-md-6 text-right "><span>@lang('messages.global.design-by') <i
+                <div class="col-lg-6 col-md-6 -textLeft">
+                    <span>@lang('messages.global.copyright') <span dir="ltr" class="">© <?php echo date("Y"); ?></span></span>
+                </div>
+                <div class="col-lg-6 col-md-6 -textRight "><span>@lang('messages.global.design-by') <i
                                 class="fa fa-heart text-primary heart mx-2"></i>@lang('messages.global.with') {{config('system.main.developer_name')}} </span>
                 </div>
             </div>
         </div>
     </div>
 </footer>
+<button class="scrollUp"><i class="fas fa-chevron-double-up"></i></button>
+{{--<button class="scrollUp"><i class="fas fa-chevron-up"></i></button>--}}

@@ -18,7 +18,7 @@ class PaymentController extends Controller
 
         if (\Auth::check()) {
             $user_class = UserClass::create([
-                'user_id' => auth()->id,
+                'user_id' => auth()->id(),
                 'class_room_id' => $request->class_id,
                 'status' => 1,
             ]);
@@ -29,11 +29,17 @@ class PaymentController extends Controller
 
 
             if ($user_class)
-                return response()->json(['type' => 'success', 'title' => __('messages.global.success'), 'description' => __('messages.global.success-description')]);
-            return response()->json(['type' => 'error', 'title' => __('messages.global.error'), 'description' => __('messages.global.error-description')]);
+                return view('main_template.pages.message')
+                    ->with('type', 'success')
+                    ->with('title', __('messages.global.success'))
+                    ->with('message', __('messages.global.success-description'));
 
+            return view('main_template.pages.message')
+                ->with('type', 'error')
+                ->with('title', __('messages.global.error'))
+                ->with('message', __('messages.global.error-description'));
         }
-        return response()->json(['message'=>'unauthenticated!'],401);
+        return response()->json(['message' => 'unauthenticated!'], 401);
 
     }
 }

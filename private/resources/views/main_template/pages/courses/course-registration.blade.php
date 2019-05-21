@@ -61,7 +61,6 @@
         let steps = $('#steps');
         let idsArray = [];
         idsArray.push("{{$course['id']}}");
-        console.log(idsArray);
 
         $('.courseRegisterPage').on('click', '#nextStep', function () {
             let This = $(this), url;
@@ -119,7 +118,6 @@
         $('.courseRegisterPage').on('click', '#prevStep', function () {
             let This = $(this), url;
             let counter = parseInt($('#stepIndicator').val());
-            console.log(idsArray);
 
             if (counter > 0) {
                 let lang = This.data('lang');
@@ -146,7 +144,6 @@
 
                     },
                     error: function (error) {
-                        console.log(error);
                         if (typeof error.response == 'array')
                             $.each(error.responseJSON.errors, function (key, value) {
                                 // $('#' + key).parents('.form-group').find('.invalid-tooltip').show().html(value[0]);
@@ -156,7 +153,6 @@
 
                     },
                     fail: function (fail) {
-                        console.log(fail);
                         toaster('error', 'error', 'error');
                     }
                 })
