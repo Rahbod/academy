@@ -1,9 +1,9 @@
 @extends('main_template.master_page.master')
 
 @section('content')
-    @if(isset($main_sliders))
-        <section class="sliderSection">
-            <div class="mainSlider">
+    <section class="sliderSection">
+        <div class="mainSlider">
+            @if(isset($main_sliders))
                 @foreach($main_sliders['sliders'] as $slider)
                     <div class="mainSlider--item position-relative">
                         <img class="" src="{{$slider['image']}}" alt="{{$slider['title']}}"/>
@@ -19,32 +19,38 @@
                         </div>
                     </div>
                 @endforeach
+
+            @else
+                <div class="mainSlider--item position-relative">
+                    <img class="" src="{{asset('assets/site/media/images/main_slider/p6.jpg')}}"
+                         alt="no slider defined"/>
+                </div>
+            @endif
+        </div>
+    </section>
+    <section class="top-courses sectionPadding bg-white">
+        <div class="container">
+            <div class="sectionHeader text-center">
+                <h2 class="text-uppercase mb-0">@lang('messages.home.course-title')</h2>
+                <p class="font-18">@lang('messages.home.course-description')</p>
             </div>
-        </section>
-    @endif
 
-    @if(isset($courses) && count($courses) > 0 )
-        <section class="top-courses sectionPadding bg-white">
-            <div class="container">
-                <div class="sectionHeader text-center">
-                    <h2 class="text-uppercase mb-0">@lang('messages.home.course-title')</h2>
-                    <p class="font-18">@lang('messages.home.course-description')</p>
-                </div>
-
-                <div class="row d-flex mb-3 px-3 tags">
-                    @foreach($courses as $course)
-                        @foreach($course['tags'] as $tag)
-                            <a href="{{url(session('lang'). '/course/tags/'.$tag['id'].'/'.str_replace(' ','-',$tag['name']))}}"
-                               class="site-button mb-2 mb-lg-0">
-                                {{$tag['name']}}
-                            </a>
-                        @endforeach
+            <div class="row d-flex mb-3 px-3 tags">
+                @foreach($courses as $course)
+                    @foreach($course['tags'] as $tag)
+                        <a href="{{url(session('lang'). '/course/tags/'.$tag['id'].'/'.str_replace(' ','-',$tag['name']))}}"
+                           class="site-button mb-2 mb-lg-0">
+                            {{$tag['name']}}
+                        </a>
                     @endforeach
-                </div>
+                @endforeach
+            </div>
 
-                <div class="row">
+            <div class="row">
+                @if(isset($courses) && count($courses) > 0 )
+
                     @foreach($courses as $course)
-                        <div class="col-lg-4 col-md-6 col-sm-6 m-b30 card-container">
+                        <div class="col-md-4 col-sm-6 m-b30 card-container">
                             <div class="dlab-box">
                                 <div class="dlab-media">
                                     <a href="{{url(session('lang').'/courses/'. $course['id'] .'/'.str_replace(' ','-',$course['title_'.session('lang')]) )}}">
@@ -92,11 +98,15 @@
                             </div>
                         </div>
                     @endforeach
-                </div>
-            </div>
-        </section>
-    @endif
+                @else
+                    <div class="col-12 alert alert-info" role="alert">
+                        @lang('messages.global.no-result')
+                    </div>
+                @endif
 
+            </div>
+        </div>
+    </section>
     <section class="translation"
              style="background-image:url('{{asset('/assets/site/media/images/translation/translation_2000x767.jpg')}}')">
         <div class="container">
@@ -117,21 +127,23 @@
             </div>
         </div>
     </section>
+    <section class="newsSlider content-inner">
+        <div class="container">
+            <div class="section-head d-flex text-black">
+                <div class="flex-grow-1">
+                    <h2 class="text-uppercase m-b0">@lang('messages.home.news-title')</h2>
+                    <p class="m-b0">@lang('messages.home.news-description')</p>
+                </div>
+                @if(isset($news))
 
-    @if(isset($news))
-        <section class="newsSlider content-inner">
-            <div class="container">
-                <div class="section-head d-flex text-black">
-                    <div class="flex-grow-1">
-                        <h2 class="text-uppercase m-b0">@lang('messages.home.news-title')</h2>
-                        <p class="m-b0">@lang('messages.home.news-description')</p>
-                    </div>
                     <div class="align-self-center">
                         <a title="@lang('messages.global.view-all')" href="{{url(session('lang').'/news' )}}"
                            class="site-button button-md float-right m-t5">@lang('messages.global.view-all')</a>
                     </div>
-                </div>
+                @endif
             </div>
+        </div>
+        @if(isset($news))
             <div class="newsSlider--container">
                 @foreach($news as $item)
                     <div class="item">
@@ -155,26 +167,33 @@
 
                 @endforeach
             </div>
-        </section>
-    @endif
-    @if(isset($articles))
-        <section class="articlesSection">
-            <div class="section-full bg-white content-inner dlab-about-1 promotions">
-                <div class="container">
-                    <div class="section-head d-flex text-black">
-                        <div class="flex-grow-1">
-                            <h2 class="text-uppercase m-b0">@lang('messages.home.article-title')</h2>
-                            <p class="m-b0">@lang('messages.home.article-description')</p>
-                        </div>
+        @else
+            <div class="alert alert-info mx-5 text-center" role="alert">
+                @lang('messages.global.no-result')
+            </div>
+        @endif
+    </section>
+    <section class="articlesSection mb-5">
+        <div class="section-full bg-white content-inner dlab-about-1 promotions">
+            <div class="container">
+                <div class="section-head d-flex text-black">
+                    <div class="flex-grow-1">
+                        <h2 class="text-uppercase m-b0">@lang('messages.home.article-title')</h2>
+                        <p class="m-b0">@lang('messages.home.article-description')</p>
+                    </div>
+                    @if(isset($articles))
+
                         <div class="align-self-center">
                             <a title="view all" href="{{url(session('lang').'/article' )}}"
                                class="site-button button-md float-right m-t5">@lang('messages.global.view-all')</a>
                         </div>
-                    </div>
+                    @endif
+                </div>
 
-                    <div class="row packages">
+                <div class="row packages">
+                    @if(isset($articles))
                         @foreach($articles as $article)
-                            <div class="col-lg-6 col-xl-3 col-sm-6 col-md-6 m-b30">
+                            <div class=" col-xl-3 col-lg-4 col-sm-6 col-md-6 m-b30">
                                 <div class="dlab-box">
                                     <div class="dlab-media">
                                         <a title="{{$article['title']}}"
@@ -216,9 +235,16 @@
                                 </div>
                             </div>
                         @endforeach
-                    </div>
+
+                    @else
+                        <div class="col-12 text-center">
+                            <div class="alert alert-info mx-3" role="alert">
+                                @lang('messages.global.no-result')
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
-        </section>
-    @endif
+        </div>
+    </section>
 @endsection

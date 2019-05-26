@@ -68,14 +68,14 @@
         <div class="main-bar clearfix onepage">
             <div class="container">
                 <nav class="header-nav navbar p-0">
-                    @if(session('lang') !='fa')
-                        <a class="navbar-brand" href="{{route('home',['lang'=>session('lang')])}}">
-                            <!--<img src="./assets/media/images/public/site_logo.png"-->
-                            <!--class="siteLogo__image img-fluid" alt="آکادمی زبان ">-->
-                            <span class=""
-                                  style="font-size: inherit;color: inherit;font-weight: inherit;">Academy</span>
-                        </a>
-                    @endif
+                    {{--@if(session('lang') !='fa')--}}
+                    <a class="navbar-brand d-lg-none" href="{{route('home',['lang'=>session('lang')])}}">
+                        <!--<img src="./assets/media/images/public/site_logo.png"-->
+                        <!--class="siteLogo__image img-fluid" alt="آکادمی زبان ">-->
+                        <span class=""
+                              style="font-size: inherit;color: inherit;font-weight: inherit;">Academy</span>
+                    </a>
+                    {{--@endif--}}
                     <div>
                         <div class="extra-nav d-lg-none">
                             <div class="extra-cell">
@@ -171,7 +171,7 @@
                                                 class="fa fa-search"></i></button>
                                 </div>
                             </div>
-                            <a class="navbar-brand" href="{{route('home',['lang'=>session('lang')])}}">
+                            <a class="navbar-brand ml-3" href="{{route('home',['lang'=>session('lang')])}}">
                                 <!--<img src="./assets/media/images/public/site_logo.png"-->
                                 <!--class="siteLogo__image img-fluid" alt="آکادمی زبان ">-->
                                 <span class=""
@@ -248,7 +248,8 @@
                         </a>
                         <ul class="collapse list-unstyled" id="log">
                             <li>
-                                <a class="dropdown-item" title="@lang('messages.global.profile')" href="{{url( session('lang') .'/profile')}}">
+                                <a class="dropdown-item" title="@lang('messages.global.profile')"
+                                   href="{{url( session('lang') .'/profile')}}">
                                     @lang('messages.global.profile')</a>
                                 <a class="dropdown-item" href="{{ route('logout',['lang'=>session('lang')]) }}"
                                    onclick="event.preventDefault();

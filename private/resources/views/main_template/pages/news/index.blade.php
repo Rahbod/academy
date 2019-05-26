@@ -21,59 +21,59 @@
         <div class="content-area">
             <div class="container">
                 <div class="row">
-                    @if( isset($contents) && count($contents)>0)
+                @if( isset($contents) && count($contents)>0)
                     <!-- Left part start -->
-                    <div class="col-lg-8 col-md-7 col-sm-12">
-                        <!-- Blog large img -->
-                        @foreach($contents as $content)
-                            <div class="blog-post blog-lg blog-style-1">
-                                <div class="dlab-post-media dlab-img-effect zoom-slow radius-sm">
-                                    {{--<a title="{{$content['title']}}"--}}
-                                    {{--                                       href="{{url(session('lang').'/'.$content['type']. '/show/'.$content['id'].'/'.str_replace(' ','-',$content['title']))}}">--}}
-                                    <img src="{{$content['logo']}}" alt="{{$content['title']}}">
-                                    {{--</a>--}}
-                                </div>
-                                <div class="dlab-info">
-                                    <div class="dlab-post-meta">
-                                        <ul class="d-flex align-items-center">
-                                            <li class="post-date">{{$content['created_at']}}</li>
-                                            <li class="post-author">@lang('messages.global.by')
-                                                <a href="{{url(session('lang') .'/users/'.$content['author']['id'] .'/'.str_replace(' ','-',$content['author']['name']))}}">{{isset($content['author']) ? $content['author']['name'] :'admin'}}</a>
-                                            </li>
-                                            <li class="post-comment"><a href="#">{{$content['show_count']}}</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="dlab-post-title">
-                                        <h4 class="post-title font-24">
-                                            <a title="{{$content['title']}}"
-                                               href="{{url(session('lang').'/'.$content['type']. '/'.$content['id'].'/'.str_replace(' ','-',$content['title']))}}">{{$content['title']}}</a>
-                                        </h4>
-                                    </div>
-                                    <div class="dlab-post-text">
-                                        <p>{!! $content['text'] !!}</p>
-                                    </div>
-                                    <div class="dlab-post-readmore blog-share">
+                        <div class="col-lg-8 col-md-7 col-sm-12">
+                            <!-- Blog large img -->
+                            @foreach($contents as $content)
+                                <div class="blog-post blog-lg blog-style-1">
+                                    <div class="dlab-post-media dlab-img-effect zoom-slow radius-sm">
                                         <a title="{{$content['title']}}"
-                                           href="{{url(session('lang').'/'.$content['type'].'/'.$content['id'].'/'.str_replace(' ','-',$content['title']))}}"
-                                           rel="bookmark"
-                                           class="site-button-link border-link black">@lang('messages.global.view-details')</a>
+                                           href="{{url(session('lang').'/'.$content['type']. '/'.$content['id'].'/'.str_replace(' ','-',$content['title']))}}">
+                                            <img src="{{$content['logo']}}" alt="{{$content['title']}}">
+                                        </a>
                                     </div>
+                                    <div class="dlab-info">
+                                        <div class="dlab-post-meta">
+                                            <ul class="d-flex align-items-center">
+                                                <li class="post-date">{{$content['created_at']}}</li>
+                                                <li class="post-author">@lang('messages.global.by')
+                                                    <a href="{{url(session('lang') .'/users/'.$content['author']['id'] .'/'.str_replace(' ','-',$content['author']['name']))}}">{{isset($content['author']) ? $content['author']['name'] :'admin'}}</a>
+                                                </li>
+                                                <li class="post-comment"><a href="#">{{$content['show_count']}}</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="dlab-post-title">
+                                            <h4 class="post-title font-24">
+                                                <a title="{{$content['title']}}"
+                                                   href="{{url(session('lang').'/'.$content['type']. '/'.$content['id'].'/'.str_replace(' ','-',$content['title']))}}">{{$content['title']}}</a>
+                                            </h4>
+                                        </div>
+                                        <div class="dlab-post-text">
+                                            <p>{!! $content['text'] !!}</p>
+                                        </div>
+                                        <div class="dlab-post-readmore blog-share">
+                                            <a title="{{$content['title']}}"
+                                               href="{{url(session('lang').'/'.$content['type'].'/'.$content['id'].'/'.str_replace(' ','-',$content['title']))}}"
+                                               rel="bookmark"
+                                               class="site-button-link border-link black">@lang('messages.global.view-details')</a>
+                                        </div>
+                                    </div>
+
                                 </div>
+                            @endforeach
+                            <div class="pagination-bx clearfix text-center my-5">
+                                {{$contents->links()}}
 
+                                {{--<ul class="pagination">--}}
+                                {{--<li class="previous mr-2"><a href="#"><i class="fal fa-arrow-left"></i> Prev</a></li>--}}
+                                {{--<li class="active"><a href="#">1</a></li>--}}
+                                {{--<li><a href="#">2</a></li>--}}
+                                {{--<li><a href="#">3</a></li>--}}
+                                {{--<li class="next ml-2"><a href="#">Next <i class="fal fa-arrow-right"></i></a></li>--}}
+                                {{--</ul>--}}
                             </div>
-                        @endforeach
-                        <div class="pagination-bx clearfix text-center">
-                            {{$contents->links()}}
-
-                            {{--<ul class="pagination">--}}
-                            {{--<li class="previous mr-2"><a href="#"><i class="fal fa-arrow-left"></i> Prev</a></li>--}}
-                            {{--<li class="active"><a href="#">1</a></li>--}}
-                            {{--<li><a href="#">2</a></li>--}}
-                            {{--<li><a href="#">3</a></li>--}}
-                            {{--<li class="next ml-2"><a href="#">Next <i class="fal fa-arrow-right"></i></a></li>--}}
-                            {{--</ul>--}}
                         </div>
-                    </div>
                     @else
                         <div class="col-lg-8 col-md-7 col-sm-12">
                             <div class="alert alert-info text-center rounded" role="alert">
@@ -81,7 +81,7 @@
                             </div>
                         </div>
                 @endif
-                    <!-- Left part END -->
+                <!-- Left part END -->
                     <!-- Side bar start -->
                     <div class="col-lg-4 col-md-5 col-sm-12 sticky-top">
                         <aside class="side-bar">

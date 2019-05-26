@@ -2,6 +2,42 @@
 
 return [
     'global' => [
+        'class-information' => 'Class Information',
+        'class-capacity' => 'Class Capacity',
+        'class-price' => 'Class Price',
+        'class-master' => 'Master',
+        'class-registration-start-day' => 'Class Registration Start Day',
+        'class-registration-end-day' => 'Class Registration End Day',
+        'class-start-day' => 'Class Start Day',
+        'class-end-day' => 'Class End Day',
+        'class-times' => 'Class Times',
+        'class-title' => 'Title',
+        'class-description' => 'Descriptions',
+
+
+        'term-title' => 'Term Title',
+        'term-description' => 'Term Description',
+
+        'course-title' => 'Course Title',
+        'course-description' => 'Course Description',
+        'course-duration' => 'Course Duration',
+
+        'user-information' => 'User Information',
+        'pay' => 'Pay',
+        'cancel' => 'انصراف',
+        'class-image' => 'Class Image',
+        'select-class' => 'Select Your Class',
+        'term-information' => 'Term Information',
+        'choose' => 'Choose',
+        'name' => 'Name',
+        'descriptions' => 'Descriptions',
+        'select-term' => 'Select Your Term',
+        'course-information' => 'Course Information',
+        'next' => 'Next',
+        'prev' => 'Prev',
+        'course-registration' => 'Course Registration',
+        'remember-me' => 'Remember Me',
+        'back' => 'Back',
         'contact-us' => 'Contact Us',
         'about-us' => 'About Us',
         'login' => 'Login',
@@ -31,6 +67,7 @@ return [
         'login-with' => 'If you have an account with us, please log in.',
         'password' => 'Password',
         'forgot-password' => 'Forgot Password',
+        'send-email' => 'We will send you an email to reset your password.',
         'no-result' => 'no result !',
         'related-posts' => 'Related Posts',
         'recent-posts' => 'Recent Post',
@@ -62,6 +99,7 @@ return [
         'error-description' => 'Operation Was Unsuccessful',
         'logout' => 'Logout',
         'in' => 'in',
+        'links' => 'Links',
     ],
     'home' => [
         'course-title' => 'Course',

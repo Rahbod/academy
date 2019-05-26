@@ -1,4 +1,5 @@
 /*#region public*/
+
 button.scrollUp {
     background: rgba(255, 255, 255, 0.9) none repeat scroll 0 0;
     border-color: #21ab64;
@@ -2660,7 +2661,7 @@ ol.comment-list li.comment .comment-respond .comment-form p {
 .searchPage .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
     color: #333;
     background-color: transparent;
-    font-weight:bold;
+    font-weight: bold;
 }
 
 .searchPage .nav-pills .nav-link:focus, .nav-pills .nav-link:hover {
@@ -2737,38 +2738,164 @@ ol.comment-list li.comment .comment-respond .comment-form p {
 }
 
 /*#endregion*/
-@media (max-width: 991.98px) {
+
+
+/*#region max-width*/
+@media screen and (max-width: 991.98px) {
+    .container {
+        max-width: none;
+    }
+
+    .dlab-quik-search .form-control {
+        padding: 0 15px;
+        height: 62px;
+    }
+
+    .header .site-button-link i {
+        font-size: 16px;
+        color: #aaa;
+    }
+
+    .sticky-header {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1030;
+    }
+
+    .topBar {
+        display: none;
+    }
+
+    .header {
+        /*height: auto;*/
+        height: 62px;
+    }
+
+    .extra-nav {
+        padding: 19px 4px;
+    }
+
+    .navbar-toggler {
+        padding: 15px 10px !important;
+    }
+
+    .mainSlider--title {
+        display: none;
+    }
+
+    .top-courses .dlab-box {
+        padding: 0 0.25rem;
+    }
+
+    .top-courses .dlab-media {
+        overflow: visible;
+    }
+
+    .top-courses .tags .site-button {
+        margin-left: 0.5rem !important;
+    }
+
+    .main-bar {
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .slick-prev, .slick-next {
+        width: 60px !important;
+        /*height: 60px !important;*/
+        height: 100% !important;
+    }
+
+    .footer-top .dlab-separator {
+        width: 100%;
+    }
+
+    h2 {
+        font-size: 25px;
+    }
+
+    h3 {
+        font-size: 22px;
+    }
+
+    h4 {
+        font-size: 19px;
+    }
+
+    .add-area p {
+        font-size: 16px;
+    }
+
+    .add-area h2 {
+        font-size: 32px;
+    }
+
+    .section-head .button-md {
+        padding: 10px 20px;
+        margin-left: 1rem;
+    }
+
+    .sectionHeader p, .dlab-title a {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 767.98px) {
+
+    .footer-bottom .-textLeft, .footer-bottom .-textRight {
+        text-align: left;
+    }
+}
+
+@media screen and (max-width: 575.98px) {
+
+    .sliderSection {
+        padding-bottom: 2rem;
+        height: auto;
+    }
+
+    .tr-btn-info a {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 399.98px) {
 
 }
 
-@media (max-width: 767.98px) {
+/*#endregion*/
+/*#region min-width*/
+@media screen and (min-width: 992px) {
+
+    .top-courses .site-button:not(:first-child) {
+        margin-left: 0.5rem;
+    }
+
+    .slick-prev, .slick-next {
+        width: 100px !important;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .footer-bottom .-textLeft, .footer-bottom .-textRight {
+        text-align: center;
+    }
+
+    .footer-bottom .list-inline > li {
+        margin-bottom: 6px;
+    }
+}
+
+@media screen and (max-width: 576px) {
 
 }
 
-@media (max-width: 575.98px) {
+/*#endregion*/
 
+.tr-btn-info a i {
+    margin-right: 5px;
 }
-
-@media (max-width: 400px) {
-
-}
-
-@media (min-width: 992px) {
-
-}
-
-@media (min-width: 768px) {
-
-}
-
-@media (min-width: 576px) {
-
-}
-
-@media (min-width: 401px) {
-
-}
-
 .-d-none {
     display: none;
 }
