@@ -280,13 +280,13 @@ trait AdminCrudActions
             $new_order = $this->updateOrder($model, $request['order'], $order_conditions);
         }
         foreach ($fields as $key => $value) {
-            if (isset($value['is_relation']) and $value['is_relation'] == true) {
+            if (isset($value['is_relation']) && $value['is_relation'] === true) {
                 unset($value['is_relation']);
                 $relations[$key] = $value;
 
             } else if ($key !== 'id' && $key !== 'password_confirmation') {
-                if (isset($value['is_related_field']) && $value['is_related_field'] == true) {
-                    $model_key = str_plural(str_replace_last('_id', "", $key));
+                if (isset($value['is_related_field']) && $value['is_related_field'] === true) {
+                    $model_key = str_plural(str_replace_last('_id', '', $key));
                     if ($model_key === 'tags') {
                         $tag_ids = [];
                         if (isset($request[$key])) {
@@ -307,7 +307,7 @@ trait AdminCrudActions
                 }
                 elseif (in_array($value['type'], ['image', 'file'])) {
 
-                    $delete_file_status = ($request[$key . '_src'] == null);
+                    $delete_file_status = ($request[$key . '_src'] === null);
                     $file_name = null;
 
                     if (isset($request[$key])) {
@@ -315,7 +315,7 @@ trait AdminCrudActions
                         if (isset($this->config[$config_name][$key])) {
                             $config = $this->config[$config_name][$key];
 
-                            if ($value['type'] == 'image') {
+                            if ($value['type'] === 'image') {
                                 $file_status = $this->saveImage($request[$key], $config);
                             } else {
                                 $file_status = $this->saveFile($request[$key], $config);
@@ -341,7 +341,7 @@ trait AdminCrudActions
                         case 'order':
                             if ($order_conditions !== null) {
                                 $model->$key = $new_order;
-                            } elseif (isset($request[$key]) && $request[$key] != null) {
+                            } elseif (isset($request[$key]) && $request[$key] !== null) {
                                 $model->$key = $request[$key];
                             }
 
@@ -354,7 +354,7 @@ trait AdminCrudActions
                             break;
                         case 'user_id':
                         case 'author_id':
-                        if ($request['id'] == 0) {
+                        if ($request['id'] === 0) {
                             $user = session('user_info_' . session('department'));
                            $model->$key = $user['id'];
                         }
@@ -365,9 +365,9 @@ trait AdminCrudActions
                         case 'status':
                         case 'view_count':
                         case 'show_count':
-                            if (isset($request[$key]) && $request[$key] != null ) {
+                            if (isset($request[$key]) && $request[$key] !== null ) {
                                 $model->$key = $request[$key];
-                            } else if ($model->$key == null) {
+                            } else if ($model->$key === null) {
                                 $model->$key = 0;
                             }
                             break;
@@ -393,7 +393,7 @@ trait AdminCrudActions
             $model->$key()->sync($value);
         }
 
-        foreach ($relations as $relation_name => $fields) {
+        foreach ($relations as $relation_name => $relation_fields) {
             $relation_info = $model->getRelationInfo($relation_name);
             $sub_class_name = $relation_info['related_model_name'];
 
@@ -404,7 +404,7 @@ trait AdminCrudActions
                     $delete_items = $model->$relation_name()->get()->pluck('id')->toArray();
                     if (isset($request[$relation_name])) {
                         foreach ($request[$relation_name] as $sub_request) {
-                            $this->saveSubModel($model, $sub_request, $relation_name, $fields, $action, $delete_items);
+                            $this->saveSubModel($model, $sub_request, $relation_name, $relation_fields, $action, $delete_items);
                         }
                     }
                     if (count($delete_items) > 0) {
@@ -419,7 +419,7 @@ trait AdminCrudActions
                 case 'MorphOne':
                     {
                     $sub_request = $request[$relation_name];
-                    $this->saveSubModel($model, $sub_request, $relation_name, $fields, $action);
+                    $this->saveSubModel($model, $sub_request, $relation_name, $relation_fields, $action);
                     break;
                 }
             }

@@ -15,13 +15,17 @@
     import {mapMutations, mapActions, mapGetters} from 'vuex';
 
     export default {
-        components: {data_viewer,content_view},
+        components: {data_viewer, content_view},
         computed: {
             ...mapGetters('filterable_table', ['filterCandidates']),
+            ...mapGetters(['main_url']),
+            list_view_route() {
+                return this.main_url + '/list-view'
+            }
         },
         methods: {
-            ... mapMutations('form', ['setInfo']),
-            ...mapMutations('filterable_table', ['setEl', 'addFilter', 'resetState']),
+            ...mapMutations('form', ['setInfo']),
+            ...mapMutations('filterable_table', ['setEl', 'addFilter', 'resetState','setListViewUrl']),
             ...mapActions('filterable_table', ['fetch']),
 
             getResource(route) {
@@ -35,6 +39,7 @@
                 return resource;
             },
             initView() {
+                this.setListViewUrl(this.list_view_route);
                 this.fetch();
                 if (this.filterCandidates.length === 0) {
                     this.addFilter();

@@ -36674,7 +36674,13 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
             return state.base_url;
         },
         main_url: function main_url(state) {
-            return state.base_url + '/' + state.lang + '/' + state.department;
+            var main_url = state.base_url + '/' + state.lang + '/' + state.department;
+            if (state.base_resource !== null && state.use_base_resource === true) {
+                main_url += '/' + state.base_resource;
+            }
+            main_url += '/' + state.resource;
+            return main_url;
+            // return state.base_url + '/' + state.lang + '/' + state.department;
         },
         base_resource_url: function base_resource_url(state) {
             var url = state.base_url + '/' + state.lang + '/' + state.department;
@@ -39367,10 +39373,6 @@ function transformOptions(options) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_i18next__ = __webpack_require__(6);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _getters;
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -39378,6 +39380,7 @@ var filterable_table = {
     namespaced: true,
     state: {
         el: null,
+        list_view_url: '',
         table_actions: {
             edit: {
                 active_class: "icon-pencil7 text-primary-600",
@@ -39426,7 +39429,10 @@ var filterable_table = {
         },
         availableOperators: [{ name: 'equal_to', parent: ['numeric', 'string', 'date', 'select'], component: 'single' }, { name: 'not_equal_to', parent: ['numeric', 'string', 'date', 'select'], component: 'single' }, { name: 'less_than', parent: ['numeric', 'date'], component: 'single' }, { name: 'greater_than', parent: ['numeric', 'date'], component: 'single' }, { name: 'between', parent: ['numeric', 'date'], component: 'double' }, { name: 'not_between', parent: ['numeric', 'date'], component: 'double' }, { name: 'contains', parent: ['string'], component: 'single' }, { name: 'starts_with', parent: ['string'], component: 'single' }, { name: 'ends_with', parent: ['string'], component: 'single' }, { name: 'equal_to_count', parent: ['counter'], component: 'single' }, { name: 'not_equal_to_count', parent: ['counter'], component: 'single' }, { name: 'less_than_count', parent: ['counter'], component: 'single' }, { name: 'greater_than_count', parent: ['counter'], component: 'single' }]
     },
-    getters: (_getters = {
+    getters: {
+        list_view_url: function list_view_url(state) {
+            return state.list_view_url;
+        },
         table_actions: function table_actions(state) {
             return state.table_actions;
         },
@@ -39472,37 +39478,43 @@ var filterable_table = {
         show_filters: function show_filters(state) {
             return state.show_filters;
         },
+        filterCandidates: function filterCandidates(state) {
+            return state.filterCandidates;
+        },
         appliedFilters: function appliedFilters(state) {
             return state.appliedFilters;
         },
-        filterCandidates: function filterCandidates(state) {
-            return state.filterCandidates;
+        selectIDs: function selectIDs(state) {
+            return state.selectIDs;
+        },
+        query: function query(state) {
+            return state.query;
+        },
+        collection: function collection(state) {
+            return state.collection;
+        },
+        availableOperators: function availableOperators(state) {
+            return state.availableOperators;
+        },
+        getFilters: function getFilters(state) {
+            var f = {};
+            state.appliedFilters.forEach(function (filter, i) {
+                if (filter.column && filter.operator.name) {
+                    f['f[' + i + '][column]'] = filter.column;
+                    f['f[' + i + '][operator]'] = filter.operator.name;
+                    f['f[' + i + '][query_1]'] = filter.query_1;
+                    f['f[' + i + '][query_2]'] = filter.query_2;
+                }
+            });
+            return f;
         }
-    }, _defineProperty(_getters, 'appliedFilters', function appliedFilters(state) {
-        return state.appliedFilters;
-    }), _defineProperty(_getters, 'selectIDs', function selectIDs(state) {
-        return state.selectIDs;
-    }), _defineProperty(_getters, 'query', function query(state) {
-        return state.query;
-    }), _defineProperty(_getters, 'collection', function collection(state) {
-        return state.collection;
-    }), _defineProperty(_getters, 'availableOperators', function availableOperators(state) {
-        return state.availableOperators;
-    }), _defineProperty(_getters, 'getFilters', function getFilters(state) {
-        var f = {};
-        state.appliedFilters.forEach(function (filter, i) {
-            if (filter.column && filter.operator.name) {
-                f['f[' + i + '][column]'] = filter.column;
-                f['f[' + i + '][operator]'] = filter.operator.name;
-                f['f[' + i + '][query_1]'] = filter.query_1;
-                f['f[' + i + '][query_2]'] = filter.query_2;
-            }
-        });
-        return f;
-    }), _getters),
+    },
     mutations: {
         setEl: function setEl(state, el) {
             state.el = el;
+        },
+        setListViewUrl: function setListViewUrl(state, url) {
+            state.list_view_url = url;
         },
         setLoading: function setLoading(state, loading) {
             state.loading = loading;
@@ -39757,8 +39769,9 @@ var filterable_table = {
             var filters = context.getters.getFilters;
             var params = _extends({}, filters, context.getters.query);
 
-            var routes = context.rootGetters.resource_routes;
-            var url = routes.list_view.url;
+            // let routes = context.rootGetters.resource_routes;
+            // let url = routes.list_view.url;
+            var url = context.getters.list_view_url;
 
             context.dispatch('setViewLoading', { el: context.state.el, status: true }, { root: true });
 

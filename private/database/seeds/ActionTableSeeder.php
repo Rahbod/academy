@@ -12,7 +12,7 @@ class ActionTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
 
         DB::statement('SET FOREIGN_KEY_CHECKS = 0'); // disable foreign key constraints
@@ -50,8 +50,8 @@ class ActionTableSeeder extends Seeder
         ];
 
         $commentable_resources = ['Content', 'Page'];
-        $have_file_manager_resource = ['Content','Page','Course','ClassRoom', 'Slider', 'Attachment'];
-        $have_settings = ['Content','Page', 'Course', 'ClassRoom', 'Slider', 'Attachment'];
+        $have_file_manager_resource = ['Content','Page','Course','ClassRoom', 'Slider', 'Attachment','TranslateRequest'];
+        $have_settings = ['Content','Page', 'Course', 'ClassRoom', 'Slider', 'Attachment','TranslateRequest'];
         $profile_actions = [
             [
                 'name' => 'getActions',

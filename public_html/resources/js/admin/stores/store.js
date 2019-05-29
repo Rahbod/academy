@@ -87,7 +87,13 @@ export default new Vuex.Store({
             return state.base_url;
         },
         main_url(state) {
-            return state.base_url + '/' + state.lang + '/' + state.department;
+            let main_url = state.base_url + '/' + state.lang + '/' + state.department;
+            if (state.base_resource !== null && state.use_base_resource === true) {
+                main_url += '/' + state.base_resource;
+            }
+            main_url += '/' + state.resource;
+            return main_url;
+            // return state.base_url + '/' + state.lang + '/' + state.department;
         },
         base_resource_url(state) {
             let url= state.base_url + '/' + state.lang + '/' + state.department;
