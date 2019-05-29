@@ -30,6 +30,10 @@
                         @foreach($courses as $course)
                             <div class="col-md-6 col-lg-4 col-sm-6 m-b30">
                                 <div class="dlab-box hotal-box" data-tilt="" data-tilt-max="10" data-tilt-speed="1">
+                                    {{--<a title="{{$course['title_'.session('lang')]}}"--}}
+                                       {{--href="{{ url(session('lang') .'/courses/'.$course['id'].'/'.str_replace(' ','-',$course['title_'.session('lang')]))}}">--}}
+                                        {{--<img src="{{$course['image']}}" alt="{{$course['image']}}">--}}
+                                    {{--</a>--}}
                                     <div class="dlab-media dlab-img-effect dlab-img-overlay2">
                                         <img src="{{$course['image']}}" alt="{{$course['image']}}">
                                         <div class="dlab-info-has p-a20 text-white no-hover">

@@ -36,9 +36,9 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6 m-b30 col-6"><img
+                        <div class="col-lg-6 col-md-6 m-b30"><img
                                     src="{{asset('assets/site/media/images/about_us/p1.jpg')}}" alt=""></div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 m-b30 col-6"><img
+                        <div class="col-lg-6 col-md-6 m-b30"><img
                                     src="{{asset('assets/site/media/images/about_us/p2.jpg')}}" alt=""></div>
                     </div>
                     <div class="row">
@@ -101,7 +101,7 @@
                                     you are searching for
                                 </p>
                                 <a href="{{route('translations',['lang'=>session('lang')])}}" class="site-button white">
-                                @lang('messages.global.see-more-details')
+                                    @lang('messages.global.see-more-details')
                                 </a>
                             </div>
                         </div>

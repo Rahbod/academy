@@ -122,7 +122,7 @@ trait AuthenticatesUsers
         $authenticated = $this->authenticated($request, $this->guard()->user());
 
         if ($authenticated && $request->ajax()) {
-            return response()->json(['title' => 'success', 'message' => 'wellcome ' . auth()->user()->name]);
+            return response()->json(['title' => 'success', 'message' => 'welcome ' . auth()->user()->name]);
         }
 
         return $this->authenticated($request, $this->guard()->user())

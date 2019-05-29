@@ -2,6 +2,14 @@
 
 @push('styles')
     <style>
+        button:disabled {
+            background-color: grey;
+        }
+
+        button:disabled:hover {
+            background-color: grey;
+            cursor: not-allowed;
+        }
 
     </style>
 @endpush
@@ -24,7 +32,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <h3 class="font-weight-700 m-t0 m-b20">Course Registration</h3>
+                        <h3 class="font-weight-700 m-t0 m-b20">@lang('messages.global.course-registration')</h3>
                         {{--<p>please select your term from the list</p>--}}
                     </div>
                 </div>
@@ -38,11 +46,11 @@
                             </div>
                             <div class="d-flex justify-content-center mt-3">
                                 <a href="void:;" id="prevStep" data-lang="{{session('lang')}}"
-                                   class="site-button mr-2">Prev
+                                   class="site-button mx-2">@lang('messages.global.prev')
                                 </a>
 
                                 <button id="nextStep" data-lang="{{session('lang')}}"
-                                        class="site-button ml-2">Next
+                                        class="site-button mx-2">@lang('messages.global.next')
                                 </button>
                             </div>
                             <input type="hidden" value="0"
@@ -61,58 +69,67 @@
         let steps = $('#steps');
         let idsArray = [];
         idsArray.push("{{$course['id']}}");
+        let checkedRadiosCount = $(".courseRegisterPage input[type='radio']:checked").length;
 
-        $('.courseRegisterPage').on('click', '#nextStep', function () {
-            let This = $(this), url;
-            let counter = parseInt($('#stepIndicator').val());
+        if (checkedRadiosCount > 0) {
+            $('.courseRegisterPage').on('click', '#nextStep', function () {
+                let This = $(this), url;
+                let counter = parseInt($('#stepIndicator').val());
+                if (counter < 3) {
+                    let lang = This.data('lang');
+                    let radioValue = $(".courseRegisterPage input[type='radio']:checked").val();
 
-            if (counter < 3) {
-                let lang = This.data('lang');
-                let radioValue = $(".courseRegisterPage input[type='radio']:checked").val();
-
-                if (counter == 0) {
-                    url = '/' + lang + '/class-show/' + radioValue;
-                }
-                if (counter == 1) {
-                    url = '/' + lang + '/verify/' + radioValue;
-                }
-
-                $.ajax({
-                    url: url,
-                    type: 'get',
-                    success: function (response) {
-                        counter = counter + 1;
-                        $('#stepIndicator').val(counter);
-                        $('#prevStepId').val(radioValue);
-                        steps.html(response);
-                        idsArray.push(radioValue);
-
-                        if (counter == 2) {
-                            This.hide().attr('disabled', true);
-                            idsArray.splice(-1, 1);
-                        }
-
-                    },
-                    error: function (error) {
-                        if (typeof error.response == 'array')
-                            $.each(error.responseJSON.errors, function (key, value) {
-                                // $('#' + key).parents('.form-group').find('.invalid-tooltip').show().html(value[0]);
-                                toaster('error', key, value);
-                            });
-                        toaster('error', 'error', error.responseJSON.message);
-
-                    },
-                    fail: function (fail) {
-                        toaster('error', 'error', 'error');
+                    if (counter == 0) {
+                        url = '/' + lang + '/class-show/' + radioValue;
                     }
-                })
-            }
-            else {
-                toaster('error', 'error', 'error');
+                    if (counter == 1) {
+                        url = '/' + lang + '/verify/' + radioValue;
+                    }
+
+                    $.ajax({
+                        url: url,
+                        type: 'get',
+                        success: function (response) {
+                            counter = counter + 1;
+                            $('#stepIndicator').val(counter);
+                            $('#prevStepId').val(radioValue);
+                            steps.html(response);
+                            idsArray.push(radioValue);
+
+                            if (counter == 2) {
+                                This.hide().attr('disabled', true);
+                                idsArray.splice(-1, 1);
+                            }
+
+                        },
+                        error: function (error) {
+                            if (typeof error.response == 'array')
+                                $.each(error.responseJSON.errors, function (key, value) {
+                                    // $('#' + key).parents('.form-group').find('.invalid-tooltip').show().html(value[0]);
+                                    toaster('error', key, value);
+                                });
+                            toaster('error', 'error', error.responseJSON.message);
+
+                        },
+                        fail: function (fail) {
+                            toaster('error', 'error', 'error');
+                        }
+                    })
+                }
+                else {
+                    toaster('error', 'error', 'error');
 
 //                counter = 3;
 //                This.attr('data-counter', counter);
-            }
+                }
+            });
+        }
+        else {
+            $('.courseRegisterPage #nextStep').attr('disabled', true);
+        }
+
+        $(".courseRegisterPage input[type='radio']").on('click', function () {
+            $('.courseRegisterPage #nextStep').attr('disabled', false);
         });
 
         $('.courseRegisterPage').on('click', '#prevStep', function () {

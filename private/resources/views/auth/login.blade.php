@@ -53,13 +53,13 @@
                                             <div class="checkbox">
                                                 <label>
                                                     <input type="checkbox"
-                                                           name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember Me') }}
+                                                           name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('messages.global.remember-me') }}
                                                 </label>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="text-left">
+                                    <div class="">
                                         <button type="submit" class="site-button m-r5 button-lg radius-no">
                                             @lang('messages.global.login')
                                         </button>
@@ -68,31 +68,34 @@
                                         </a>
                                     </div>
                                 </form>
-                                {{--<form method="post" id="forgot-password" enctype="multipart/form-data"--}}
-                                {{--action="{{ route('password.reset',['lang'=>session('lang')]) }}"--}}
-                                {{--class="tab-pane fade col-12 p-a0">--}}
-                                {{--<h4 class="font-weight-700">FORGET PASSWORD ?</h4>--}}
-                                {{--<p class="font-weight-600">We will send you an email to reset your password. </p>--}}
-                                {{--<div class="form-group">--}}
-                                {{--<label class="font-weight-700">E-MAIL *</label>--}}
-                                {{--<input name="email" required=""--}}
-                                {{--class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"--}}
-                                {{--placeholder="Your Email Id" type="email" value="{{ old('email') }}"--}}
-                                {{--autofocus>--}}
-                                {{--@if ($errors->has('email'))--}}
-                                {{--<span class="invalid-feedback">--}}
-                                {{--<strong>{{ $errors->first('email') }}</strong>--}}
-                                {{--</span>--}}
-                                {{--@endif--}}
-                                {{--</div>--}}
-                                {{--<div class="text-left">--}}
-                                {{--<a class="site-button outline gray button-lg radius-no"--}}
-                                {{--data-toggle="tab" href="#login">Back</a>--}}
-                                {{--<button type="submit" class="site-button pull-right button-lg radius-no">--}}
-                                {{--Submit--}}
-                                {{--</button>--}}
-                                {{--</div>--}}
-                                {{--</form>--}}
+                                <form method="post" id="forgot-password" enctype="multipart/form-data"
+                                      action="{{ url(session('lang'). '/password/reset') }}"
+                                      class="tab-pane fade col-12 p-a0">
+                                    <h4 class="font-weight-700">@lang('messages.global.forgot-password') ?</h4>
+                                    <p class="font-weight-600">
+                                        @lang('messages.global.send-email')
+                                    </p>
+                                    <div class="form-group">
+                                        <label class="font-weight-700">@lang('messages.global.email') *</label>
+                                        <input name="email" required=""
+                                               class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                                               placeholder="@lang('messages.global.email')" type="email"
+                                               value="{{ old('email') }}"
+                                               autofocus>
+                                        @if ($errors->has('email'))
+                                            <span class="invalid-feedback">
+                                <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                                        @endif
+                                    </div>
+                                    <div class="text-left">
+                                        <a class="site-button outline gray button-lg radius-no"
+                                           data-toggle="tab" href="#login">@lang('messages.global.back')</a>
+                                        <button type="submit" class="site-button pull-right button-lg radius-no">
+                                            @lang('messages.global.submit')
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

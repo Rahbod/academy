@@ -7,7 +7,6 @@ use App\ClassRoom;
 use App\Course;
 use App\Term;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
@@ -57,12 +56,12 @@ class CourseController extends Controller
 
         $course = $this->query->where('lang', session('lang'))
             ->with(['terms.class_rooms' => function ($q) {
-                $q->where('status', 1)->where('registration_start_date', '<=', Carbon::now())->where('registration_end_date', '>=', Carbon::now());
+                $q->where('status', 1)->where('registration_start_date', '<=', Carbon::now())
+                    ->where('registration_end_date', '>=', Carbon::now());
             }])
             ->with(['terms' => function ($q) {
-                $q->where('status', 1)->withCount('class_rooms');
+                $q->where('status', 1);
             }])->findOrFail($course_id);
-
 
         if (request()->ajax()) {
             $class_view = view('main_template.pages.courses.step-1')
@@ -75,16 +74,17 @@ class CourseController extends Controller
 
     public function classShow($id)
     {
-//        dd($id);
-//        $term = Term::with('class_rooms.teacher')->findOrFail($id);
         $term = Term::with(['class_rooms' => function ($q) {
             $q->where('status', 1)->where('lang', session('lang'))
+                ->where('registration_start_date', '<=', Carbon::now())
+                ->where('registration_end_date', '>=', Carbon::now())
                 ->with('class_room_times')->with(['teacher' => function ($q3) {
                     $q3->where('status', 1);
                 }]);
         }])
             ->with('course')->findOrFail($id);
 //        dd($term);
+
         $class_view = view('main_template.pages.courses.step-2')
             ->with('course', $term['course'])
             ->with('term', $term)
@@ -129,8 +129,8 @@ class CourseController extends Controller
         $breadcrumbs[1]['title'] = __('messages.home.course-title');
         $breadcrumbs[1]['link'] = 'courses';
 
-        $breadcrumbs[2]['title'] = $course['title_'.session('lang')];
-        $breadcrumbs[2]['link'] = "courses/$course->id/".$course['title_'.session('lang')];
+        $breadcrumbs[2]['title'] = $course['title_' . session('lang')];
+        $breadcrumbs[2]['link'] = "courses/$course->id/" . $course['title_' . session('lang')];
 
 
         return view('main_template.pages.courses.show')

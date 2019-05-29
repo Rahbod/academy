@@ -18,15 +18,18 @@
                 <div class="container-fluid border-bottom mb-5 py-3">
                     <div class="row">
                         <div class="col-12">
-                            <h4>course information</h4>
+                            <h4>
+                                @lang('messages.global.course-information')
+                            </h4>
                         </div>
-                        <div class="col-md-4 text-left"><label>course title</label></div>
+                        <div class="col-md-4 text-left"><label>@lang('messages.global.course-title')</label></div>
                         <div class="col-md-8">{{$term['course']['title_'.session('lang')]}}</div>
 
-                        <div class="col-md-4 text-left"><label>course description :</label></div>
+                        <div class="col-md-4 text-left"><label>
+                                @lang('messages.global.course-title') :</label></div>
                         <div class="col-md-8">{{$term['course']['description_'.session('lang')]}}</div>
 
-                        <div class="col-md-4 text-left"><label>course description :</label></div>
+                        <div class="col-md-4 text-left"><label>@lang('messages.global.course-duration') :</label></div>
                         <div class="col-md-8">{{$term['course']['duration']}}</div>
                     </div>
                 </div>
@@ -38,12 +41,17 @@
                 <div class="container-fluid border-bottom mb-5 py-3">
                     <div class="row">
                         <div class="col-12">
-                            <h4>term information</h4>
+                            <h4>
+                                @lang('messages.global.term-information')
+                            </h4>
                         </div>
-                        <div class="col-md-4 text-left"><label>term title</label></div>
+                        <div class="col-md-4 text-left"><label>
+                                @lang('messages.global.term-title') :
+                            </label>
+                        </div>
                         <div class="col-md-8">{{$term['title_'.session('lang')]}}</div>
 
-                        <div class="col-md-4 text-left"><label>term description :</label></div>
+                        <div class="col-md-4 text-left"><label>@lang('messages.global.term-description') :</label></div>
                         <div class="col-md-8">{{$term['description_'.session('lang')]}}</div>
                     </div>
                 </div>
@@ -55,33 +63,35 @@
                 <div class="container-fluid border-bottom mb-5 py-3">
                     <div class="row">
                         <div class="col-12">
-                            <h4>class information</h4>
+                            <h4>@lang('message.global.class-information')</h4>
                         </div>
-                        <div class="col-md-4 text-left"><label>class title</label></div>
+                        <div class="col-md-4 text-left"><label>@lang('message.global.class-title') :</label></div>
                         <div class="col-md-8">{{$class_room['title_'.session('lang')]}}</div>
 
-                        <div class="col-md-4 text-left"><label>class capacity:</label></div>
+                        <div class="col-md-4 text-left"><label>@lang('message.global.class-capacity') :</label></div>
                         <div class="col-md-8">{{$class_room['capacity']}}</div>
 
-                        <div class="col-md-4 text-left"><label>class price:</label></div>
+                        <div class="col-md-4 text-left"><label>@lang('message.global.class-price') :</label></div>
                         <div class="col-md-8">{{$class_room['price']}}</div>
 
-                        <div class="col-md-4 text-left"><label>class master:</label></div>
+                        <div class="col-md-4 text-left"><label>@lang('message.global.class-master') :</label></div>
                         <div class="col-md-8">{{$class_room['teacher']['name']}}</div>
 
-                        <div class="col-md-4 text-left"><label>class registration start day:</label></div>
+                        <div class="col-md-4 text-left"><label>@lang('message.global.class-registration-start-day')
+                                :</label></div>
                         <div class="col-md-8">{{$class_room['registration_start_date']}}</div>
 
-                        <div class="col-md-4 text-left"><label>class registration end day:</label></div>
+                        <div class="col-md-4 text-left"><label>@lang('message.global.class-registration-end-day')
+                                :</label></div>
                         <div class="col-md-8">{{$class_room['registration_end_date']}}</div>
 
-                        <div class="col-md-4 text-left"><label>course start day:</label></div>
+                        <div class="col-md-4 text-left"><label>@lang('message.global.class-start-day') :</label></div>
                         <div class="col-md-8">{{$class_room['course_start_date']}}</div>
 
-                        <div class="col-md-4 text-left"><label>course end day:</label></div>
+                        <div class="col-md-4 text-left"><label>@lang('message.global.class-end-day') :</label></div>
                         <div class="col-md-8">{{$class_room['course_end_date']}}</div>
 
-                        <div class="col-md-4 text-left"><label>class times :</label></div>
+                        <div class="col-md-4 text-left"><label>@lang('message.global.class-times') :</label></div>
                         <div class="col-md-8">
                             <div class="container-fluid">
                                 <div class="row">
@@ -105,24 +115,24 @@
             <div class="container-fluid border-bottom mb-5 py-3">
                 <div class="row">
                     <div class="col-12">
-                        <h4>user information</h4>
+                        <h4>@lang('messages.global.user-information')</h4>
                     </div>
                     @auth
-                        <div class="col-md-4 text-left"><label>user name :</label></div>
+                        <div class="col-md-4 text-left"><label>@lang('messages.global.name') :</label></div>
                         <div class="col-md-8">{{auth()->user()->name}}</div>
 
-                        <div class="col-md-4 text-left"><label>email :</label></div>
+                        <div class="col-md-4 text-left"><label>@lang('messages.global.email') :</label></div>
                         <div class="col-md-8">{{auth()->user()->email}}</div>
 
                         @if(isset(auth()->user()->mobile_number))
-                            <div class="col-md-4 text-left"><label>mobile_number :</label></div>
+                            <div class="col-md-4 text-left"><label>@lang('messages.global.mobile') :</label></div>
                             <div class="col-md-8">{{auth()->user()->mobile_number }}</div>
                         @endif
                     @endauth
                     @guest
                         <div class="col-12">
                             <div class="alert alert-info text-center rounded" role="alert">
-                                <b>user dit not logged in</b>
+                                <b>@lang('messages.global.login')</b>
                             </div>
                         </div>
                     @endguest
@@ -136,7 +146,7 @@
                 <input type="hidden" name="class_id" value="{{$class_room['id']}}">
 
                 <div class="form-group row">
-                    <label for="gateway" class="col-sm-4 col-form-label">Gateway</label>
+                    <label for="gateway" class="col-sm-4 col-form-label">@lang('messages.global.pay')</label>
                     <div class="col-sm-8">
                         <select id="gateway" name="gateway_id" class="custom-select my-1 mr-sm-2">
                             <option value="zarinpal">Zarin Pal</option>
@@ -145,8 +155,9 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-12 text-center">
-                        <a title="go to home page" href="{{url(session('lang').'/')}}" class="btn btn-danger">Cancel</a>
-                        <button type="submit" class="btn btn-primary px-3">Pay</button>
+                        <a title="go to home page" href="{{url(session('lang').'/')}}"
+                           class="btn btn-danger">@lang('messages.global.cancel')</a>
+                        <button type="submit" class="btn btn-primary px-3">@lang('messages.global.pay')</button>
                     </div>
                 </div>
             </form>
