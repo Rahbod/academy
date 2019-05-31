@@ -31,35 +31,39 @@ class AdminController extends Controller
         return ['actions' => $actions, 'lang_resource' => $lang_resource, 'fields' => $fields];
     }
 
-    protected function getTrans($resource = null)
+    protected function getTrans($resource = null,$fields=null)
     {
-        if ($resource == null) {
+        if ($resource === null) {
             $resource = $this->resource;
         }
         $resource_name = $this->getResourceName($resource);
         $lang_resource = trans($resource_name);
-        if ($lang_resource == $resource_name) {
+        if ($lang_resource === $resource_name) {
             $lang_resource = [];
         } else {
-            $model_name = '\\App\\' . $resource;
-            $fields = $model_name::getFields();
+
+            if($fields === null){
+                $model_name = '\\App\\' . $resource;
+                $fields = $model_name::getFields();
+            }
+
 
             foreach ($fields as $field) {
                 if ($field['name'] !== $resource_name && $field['table']) {
                     $sub_lang_resource = trans($field['table']);
                     if ($sub_lang_resource !== $field['table']) {
                         $sub_items = [];
-                        $relation_trans_name = $resource_name . ".relations." . $field['name'];
+                        $relation_trans_name = $resource_name . '.relations.' . $field['name'];
                         $sub_items['main_name'] = trans($relation_trans_name);
 
                         if ($sub_items['main_name'] !== $relation_trans_name) {
                             foreach ($sub_lang_resource['items'] as $key => $value) {
-                                if ($key !== 'main_name' and !is_array($value)) {
+                                if ($key !== 'main_name' && !is_array($value)) {
 
-                                    if (session('lang') == 'fa') {
+                                    if (session('lang') === 'fa') {
                                         $sub_items[$key] = $value . " " . $sub_items['main_name'];
                                     } else {
-                                        $sub_items[$key] = $sub_items['main_name'] . " - " . $value;
+                                        $sub_items[$key] = $sub_items['main_name'] . ' - ' . $value;
                                     }
                                 }
                             }
@@ -126,8 +130,11 @@ class AdminController extends Controller
     }
 
 
-    protected function getResourceName($resource, $singular = false)
+    protected function getResourceName($resource=null, $singular = false)
     {
+        if($resource === null){
+            $resource=$this->resource;
+        }
         $resource_name = ltrim(strtolower(preg_replace('/[A-Z]([A-Z](?![a-z]))*/', '_$0', $resource)), '_');
         if ($singular == false) {
             $resource_name = str_plural($resource_name);

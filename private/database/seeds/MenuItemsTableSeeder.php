@@ -31,8 +31,10 @@ class MenuItemsTableSeeder extends Seeder
             'register',
             'classrooms',
             'unverifiedRequests',
+            'rejectedRequests',
             'awaitingPaymentRequests',
             'paidRequests',
+            'translatedRequests',
         ];
 
         foreach ($menus as $menu) {

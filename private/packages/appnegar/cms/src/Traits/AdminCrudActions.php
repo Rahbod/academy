@@ -354,8 +354,13 @@ trait AdminCrudActions
                             break;
                         case 'user_id':
                         case 'author_id':
-                        if ($request['id'] === 0) {
-                            $user = session('user_info_' . session('department'));
+                        if ($request['id'] == 0) {
+//                            dd($request['author_id']);
+                            $session_key = 'user_info';
+                            if (session('department') !== 'profile') {
+                                $session_key = 'user_info_' . session('department');
+                            }
+                            $user=session($session_key);
                            $model->$key = $user['id'];
                         }
                         break;
@@ -386,6 +391,7 @@ trait AdminCrudActions
 
             }
         }
+//        dd($request->all(),$fields,$model->toArray());
         $status = $model->save();
 
 

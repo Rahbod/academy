@@ -20,7 +20,32 @@
             ...mapGetters('filterable_table', ['filterCandidates']),
             ...mapGetters(['main_url']),
             list_view_route() {
-                return this.main_url + '/list-view'
+                let route='list-view';
+                let action=this.getRouteAction();
+                switch (action) {
+                    case 'listView':
+                        route='list-view';
+                        break;
+                    case 'unverifiedRequests':
+                        route='unverified_requests';
+                        break;
+                    case 'rejectedRequests':
+                        route='rejected_requests';
+                        break;
+                    case 'awaitingPaymentRequests':
+                        route='awaiting_payment_requests';
+                        break;
+                    case 'paidRequests':
+                        route='paid_requests';
+                        break;
+                    case 'translatedRequests':
+                        route='translated_requests';
+                        break;
+                    default:
+                        route='list-view';
+                        break;
+                }
+                return this.main_url + '/'+route
             }
         },
         methods: {
@@ -37,6 +62,16 @@
                     }
                 });
                 return resource;
+            },
+            getRouteAction() {
+                let routes = this.$route.matched;
+                let action = null;
+                routes.forEach(route => {
+                    if (route.meta.action !== undefined) {
+                        action = route.meta.action;
+                    }
+                });
+                return action;
             },
             initView() {
                 this.setListViewUrl(this.list_view_route);

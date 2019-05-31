@@ -409,12 +409,16 @@
                                                             
                         
                                                             Route::get('/translate_requests', ['uses' =>'TranslateRequestController@index','as' =>'profile.TranslateRequest.index']);
-                                                                                Route::get('/translate_requests/register', ['uses' =>'TranslateRequestController@register','as' =>'profile.TranslateRequest.register']);
-                                                                                Route::post('/translate_requests/register', ['uses' =>'TranslateRequestController@register','as' =>'profile.TranslateRequest.register']);
-                                                                                Route::get('/translate_requests/unverified_requests', ['uses' =>'TranslateRequestController@unverifiedRequests','as' =>'profile.TranslateRequest.unverifiedRequests']);
-                                                                                Route::get('/translate_requests/awaiting_payment_requests', ['uses' =>'TranslateRequestController@awaitingPaymentRequests','as' =>'profile.TranslateRequest.awaitingPaymentRequests']);
+                                                                                Route::get('/translate_requests/create', ['uses' =>'TranslateRequestController@create','as' =>'profile.TranslateRequest.create']);
+                                                                                Route::post('/translate_requests', ['uses' =>'TranslateRequestController@create','as' =>'profile.TranslateRequest.store']);
                                                                                 Route::get('/translate_requests/payment_requests/{id}', ['uses' =>'TranslateRequestController@paymentRequests','as' =>'profile.TranslateRequest.paymentRequests']);
+                                                                                Route::get('/translate_requests/list-view', ['uses' =>'TranslateRequestController@listView','as' =>'profile.TranslateRequest.listView']);
+                                                                                Route::get('/translate_requests/unverified_requests', ['uses' =>'TranslateRequestController@unverifiedRequests','as' =>'profile.TranslateRequest.unverifiedRequests']);
+                                                                                Route::get('/translate_requests/rejected_requests', ['uses' =>'TranslateRequestController@rejectedRequests','as' =>'profile.TranslateRequest.rejectedRequests']);
+                                                                                Route::get('/translate_requests/awaiting_payment_requests', ['uses' =>'TranslateRequestController@awaitingPaymentRequests','as' =>'profile.TranslateRequest.awaitingPaymentRequests']);
                                                                                 Route::get('/translate_requests/paid_requests', ['uses' =>'TranslateRequestController@paidRequests','as' =>'profile.TranslateRequest.paidRequests']);
+                                                                                Route::get('/translate_requests/translated_requests', ['uses' =>'TranslateRequestController@translatedRequests','as' =>'profile.TranslateRequest.translatedRequests']);
+                                                                                Route::get('/translate_requests/{id}', ['uses' =>'TranslateRequestController@show','as' =>'profile.TranslateRequest.show']);
                                                                                 
                         
                                                             Route::get('/user_transactions', ['uses' =>'UserTransactionController@index','as' =>'profile.UserTransaction.index']);

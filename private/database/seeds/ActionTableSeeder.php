@@ -436,7 +436,7 @@ class ActionTableSeeder extends Seeder
                 'TranslateRequest'=>[
                     [
                         'name' => 'index',
-                        'display_name' => 'درخواست ها ترجمه',
+                        'display_name' => 'درخواست های ترجمه',
                         'need_allow' => 0,
                         'status' => 1,
                         'paths' => [
@@ -449,23 +449,51 @@ class ActionTableSeeder extends Seeder
                         ]
                     ],
                     [
-                        'name' => 'register',
+                        'name' => 'create',
                         'display_name' => 'ثبت درخواست جدید',
                         'need_allow' => 0,
                         'status' => 1,
                         'paths' => [
                             [
-                                'name' => 'TranslateRequest.register',
+                                'name' => 'TranslateRequest.create',
                                 'display_name' => ' ثبت درخواست جدید' ,
-                                'slug' => 'translate_requests/register',
+                                'slug' => 'translate_requests/create',
                                 'method' => 'get',
                             ],
                             [
-                                'name' => 'TranslateRequest.register',
+                                'name' => 'TranslateRequest.store',
                                 'display_name' => 'ذخیره درخواست ترجمه' ,
-                                'slug' => 'translate_requests/register',
+                                'slug' => 'translate_requests',
                                 'method' => 'post',
                             ]
+                        ]
+                    ],
+                    [
+                        'name' => 'paymentRequests',
+                        'display_name' => 'پرداخت مبلغ ترجمه',
+                        'need_allow' => 0,
+                        'status' => 1,
+                        'paths' => [
+                            [
+                                'name' => 'TranslateRequest.paymentRequests',
+                                'display_name' => 'پرداخت' ,
+                                'slug' => 'translate_requests/payment_requests/{id}',
+                                'method' => 'get',
+                            ],
+                        ]
+                    ],
+                    [
+                        'name' => 'listView',
+                        'display_name' => 'لیست تمام درخواست ها',
+                        'need_allow' => 0,
+                        'status' => 1,
+                        'paths' => [
+                            [
+                                'name' => 'TranslateRequest.listView',
+                                'display_name' => 'لیست تمام درخواست ها' ,
+                                'slug' => 'translate_requests/list-view',
+                                'method' => 'get',
+                            ],
                         ]
                     ],
                     [
@@ -478,6 +506,20 @@ class ActionTableSeeder extends Seeder
                                 'name' => 'TranslateRequest.unverifiedRequests',
                                 'display_name' => 'درخواست های بررسی نشده' ,
                                 'slug' => 'translate_requests/unverified_requests',
+                                'method' => 'get',
+                            ],
+                        ]
+                    ],
+                    [
+                        'name' => 'rejectedRequests',
+                        'display_name' => 'درخواست های رد شده',
+                        'need_allow' => 0,
+                        'status' => 1,
+                        'paths' => [
+                            [
+                                'name' => 'TranslateRequest.rejectedRequests',
+                                'display_name' => 'درخواست های رد شده' ,
+                                'slug' => 'translate_requests/rejected_requests',
                                 'method' => 'get',
                             ],
                         ]
@@ -497,20 +539,6 @@ class ActionTableSeeder extends Seeder
                         ]
                     ],
                     [
-                        'name' => 'paymentRequests',
-                        'display_name' => 'پرداخت مبلغ ترجمه',
-                        'need_allow' => 0,
-                        'status' => 1,
-                        'paths' => [
-                            [
-                                'name' => 'TranslateRequest.paymentRequests',
-                                'display_name' => 'پرداخت' ,
-                                'slug' => 'translate_requests/payment_requests/{id}',
-                                'method' => 'get',
-                            ],
-                        ]
-                    ],
-                    [
                         'name' => 'paidRequests',
                         'display_name' => 'درخواست های پرداخت شده',
                         'need_allow' => 0,
@@ -520,6 +548,34 @@ class ActionTableSeeder extends Seeder
                                 'name' => 'TranslateRequest.paidRequests',
                                 'display_name' => 'درخواست های پرداخت شده' ,
                                 'slug' => 'translate_requests/paid_requests',
+                                'method' => 'get',
+                            ],
+                        ]
+                    ],
+                    [
+                        'name' => 'translatedRequests',
+                        'display_name' => 'درخواست های پرداخت شده',
+                        'need_allow' => 0,
+                        'status' => 1,
+                        'paths' => [
+                            [
+                                'name' => 'TranslateRequest.translatedRequests',
+                                'display_name' => 'درخواست های ترجمه شده' ,
+                                'slug' => 'translate_requests/translated_requests',
+                                'method' => 'get',
+                            ],
+                        ]
+                    ],
+                    [
+                        'name' => 'show',
+                        'display_name' => 'مشاهده درخواست جدید',
+                        'need_allow' => 0,
+                        'status' => 1,
+                        'paths' => [
+                            [
+                                'name' => 'TranslateRequest.show',
+                                'display_name' => ' مشاهده درخواست جدید' ,
+                                'slug' => 'translate_requests/{id}',
                                 'method' => 'get',
                             ],
                         ]

@@ -18854,7 +18854,7 @@ exports = module.exports = __webpack_require__(11)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -18891,7 +18891,32 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     components: { data_viewer: __WEBPACK_IMPORTED_MODULE_0__view_components_data_viewer_DataViewer_vue___default.a, content_view: __WEBPACK_IMPORTED_MODULE_1__views_ShowView_vue___default.a },
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["c" /* mapGetters */])('filterable_table', ['filterCandidates']), Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["c" /* mapGetters */])(['main_url']), {
         list_view_route: function list_view_route() {
-            return this.main_url + '/list-view';
+            var route = 'list-view';
+            var action = this.getRouteAction();
+            switch (action) {
+                case 'listView':
+                    route = 'list-view';
+                    break;
+                case 'unverifiedRequests':
+                    route = 'unverified_requests';
+                    break;
+                case 'rejectedRequests':
+                    route = 'rejected_requests';
+                    break;
+                case 'awaitingPaymentRequests':
+                    route = 'awaiting_payment_requests';
+                    break;
+                case 'paidRequests':
+                    route = 'paid_requests';
+                    break;
+                case 'translatedRequests':
+                    route = 'translated_requests';
+                    break;
+                default:
+                    route = 'list-view';
+                    break;
+            }
+            return this.main_url + '/' + route;
         }
     }),
     methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["d" /* mapMutations */])('form', ['setInfo']), Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["d" /* mapMutations */])('filterable_table', ['setEl', 'addFilter', 'resetState', 'setListViewUrl']), Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["b" /* mapActions */])('filterable_table', ['fetch']), {
@@ -18904,6 +18929,16 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 }
             });
             return resource;
+        },
+        getRouteAction: function getRouteAction() {
+            var routes = this.$route.matched;
+            var action = null;
+            routes.forEach(function (route) {
+                if (route.meta.action !== undefined) {
+                    action = route.meta.action;
+                }
+            });
+            return action;
         },
         initView: function initView() {
             this.setListViewUrl(this.list_view_route);

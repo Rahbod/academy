@@ -24,7 +24,13 @@ function makeSettingFile()
 
 function getActions($department_name, $resource_name)
 {
-    $user = $user = \Auth::user();
+    $session_key = 'user_info';
+    if (session('department') !== 'profile') {
+        $session_key = 'user_info_' . session('department');
+    }
+    $user=session($session_key);
+//    dd($user,$session_key,$department_name,$resource_name);
+
     $actions = [];
     if ($user) {
 
@@ -35,12 +41,12 @@ function getActions($department_name, $resource_name)
             $departments = \App\Department::with(['resource_groups' => function ($query) {
                 $query->with(['resources' => function ($query) {
                     $query->with(['actions' => function ($query) {
-                        $query->select(['id', 'resource_id', 'name', 'display_name']);
+                        $query->select(['id', 'resource_id', 'name', 'display_name','need_allow']);
                     }]);
                     $query->with(['children' => function ($query) {
                         $query->select(['id', 'parent_id', 'name', 'display_name']);
                         $query->with(['actions' => function ($query) {
-                            $query->select(['id', 'resource_id', 'name', 'display_name']);
+                            $query->select(['id', 'resource_id', 'name', 'display_name','need_allow']);
                         }]);
                     }]);
                     $query->select(['id', 'resource_group_id', 'name', 'display_name']);
@@ -66,7 +72,7 @@ function getActions($department_name, $resource_name)
                                 if (strtolower($resource['name']) == strtolower($resource_name)) {
                                     if ($resource['actions']) {
                                         foreach ($resource['actions'] as $action) {
-                                            if ($user->canDo($action['id'], $department['id'])) {
+                                            if ($user->canDo($action['id'], $department['id']) || $action['need_allow']===0) {
                                                 $array_actions[$action['name']] = 1;
                                             }
                                         }
