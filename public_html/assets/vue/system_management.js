@@ -39904,6 +39904,10 @@ var show = {
         setInfo: function setInfo(context, fields) {
             context.commit('setInfo', []);
             var resource = context.rootGetters.resource;
+            var department = context.rootGetters.department;
+            if (resource === 'courses' && department === 'profile') {
+                resource = 'user_classes';
+            }
             var info = {};
             info.items = [];
             if (fields !== undefined && Array.isArray(fields)) {
@@ -39924,7 +39928,7 @@ var show = {
 
                                 info[index] = temp_item;
                             });
-                        } else if (field.show_in_form === true) {
+                        } else {
 
                             var sub_info = {};
                             sub_info.name = field.name;

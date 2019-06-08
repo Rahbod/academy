@@ -29,6 +29,9 @@
                     case 'unverifiedRequests':
                         route='unverified_requests';
                         break;
+                    case 'myClassrooms':
+                        route='my_classrooms';
+                        break;
                     case 'rejectedRequests':
                         route='rejected_requests';
                         break;

@@ -29,7 +29,7 @@ class MenuItemsTableSeeder extends Seeder
             'showFileManager',
             'reports',
             'register',
-            'classrooms',
+            'myClassrooms',
             'unverifiedRequests',
             'rejectedRequests',
             'awaitingPaymentRequests',
@@ -288,12 +288,11 @@ class MenuItemsTableSeeder extends Seeder
                 case 'user_transaction';
                     $menu_item->icon = 'icon-coins';
                     break;
-                default:
-                    $this->setMenuIcon($menu_item);
-                    break;
-
                 case 'feedback';
                     $menu_item->icon = 'icon-feed';
+                    break;
+                default:
+                    $this->setMenuIcon($menu_item);
                     break;
             }
 
@@ -325,8 +324,27 @@ class MenuItemsTableSeeder extends Seeder
                         case 'updateAllSettings';
                             $menu_item->icon = 'icon-cogs';
                             break;
+                        case 'myClassrooms';
+                            $menu_item->icon = 'icon-magazine';
+                            break;
+                        case 'unverifiedRequests';
+                            $menu_item->icon = 'icon-stack-empty';
+                            break;
+                        case 'rejectedRequests';
+                            $menu_item->icon = 'icon-stack-cancel';
+                            break;
+                        case 'awaitingPaymentRequests';
+                            $menu_item->icon = 'icon-spinner3';
+                            break;
+                        case 'paidRequests';
+                            $menu_item->icon = 'icon-cash2';
+                            break;
+                        case 'translatedRequests';
+                            $menu_item->icon = 'icon-stack-check';
+                            break;
                         default:
                             echo $menu_item->name;
+                            echo "\n";
                             break;
 
                     }

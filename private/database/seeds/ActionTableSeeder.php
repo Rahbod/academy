@@ -385,49 +385,29 @@ class ActionTableSeeder extends Seeder
                         ]
                     ],
                     [
-                        'name' => 'register',
-                        'display_name' => 'ثبت نام در دوره',
-                        'need_allow' => 0,
-                        'status' => 1,
-                        'paths' => [
-                            [
-                                'name' => 'Course.register',
-                                'display_name' => ' ثبت نام در دوره جدید' ,
-                                'slug' => 'courses/register',
-                                'method' => 'get',
-                            ],
-                            [
-                                'name' => 'Course.register',
-                                'display_name' => 'ذخیره ثبت نام در دوره' ,
-                                'slug' => 'courses/register',
-                                'method' => 'post',
-                            ]
-                        ]
-                    ],
-                    [
-                        'name' => 'classrooms',
+                        'name' => 'myClassrooms',
                         'display_name' => 'کلاس ها من',
                         'need_allow' => 0,
                         'status' => 1,
                         'paths' => [
                             [
-                                'name' => 'Course.classrooms',
+                                'name' => 'Course.myClassrooms',
                                 'display_name' => 'کلاس های من' ,
-                                'slug' => 'courses/classrooms',
+                                'slug' => 'courses/my_classrooms',
                                 'method' => 'get',
                             ]
                         ]
                     ],
                     [
-                        'name' => 'showClassroom',
+                        'name' => 'show',
                         'display_name' => 'مشاهده کلاس',
                         'need_allow' => 0,
                         'status' => 1,
                         'paths' => [
                             [
-                                'name' => 'Course.showClassrooms',
+                                'name' => 'Course.show',
                                 'display_name' => 'مشاهده کلاس' ,
-                                'slug' => 'courses/classrooms/{id}',
+                                'slug' => 'courses/{id}',
                                 'method' => 'get',
                             ]
                         ]

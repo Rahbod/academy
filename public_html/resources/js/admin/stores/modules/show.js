@@ -49,6 +49,10 @@ export const show = {
         setInfo(context, fields) {
             context.commit('setInfo', []);
             let resource = context.rootGetters.resource;
+            let department=context.rootGetters.department;
+            if(resource === 'courses' && department === 'profile'){
+                resource = 'user_classes'
+            }
             let info = {};
             info.items = [];
             if (fields !== undefined && Array.isArray(fields)) {
@@ -70,7 +74,7 @@ export const show = {
                                     info[index] = temp_item;
                             })
                         }
-                        else if (field.show_in_form === true) {
+                        else  {
 
                             let sub_info = {};
                             sub_info.name = field.name;

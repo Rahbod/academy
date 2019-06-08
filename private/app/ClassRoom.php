@@ -6,6 +6,11 @@ use Appnegar\Cms\Traits\GetImageAttributesTrait;
 use Appnegar\Cms\Traits\ModelTrait;
 use Appnegar\Cms\Traits\SetAndGetDateAttributesTrait;
 use Illuminate\Database\Eloquent\Model;
+use App\User;
+use App\Tag;
+use App\Comment;
+use App\ClassRoomTime;
+use App\Term;
 
 class ClassRoom extends Model
 {
@@ -136,6 +141,7 @@ class ClassRoom extends Model
                     'orderable' => true,
                     'searchable' => true,
                     'show_in_table' => true,
+                    'show_in_sub_table' => false,
                     'show_in_form' => true
                 ],
                 [
@@ -235,34 +241,46 @@ class ClassRoom extends Model
                 'show_in_form' => true,
                 'show_in_table' => false,
                 'items' => ClassRoomTime::getSubFields()
+            ],
+            [
+                'name' => 'users',
+                'table' => User::getTableName(),
+                'show_in_form' => false,
+                'show_in_table' => false,
+                'items' => User::getSubFields()
             ]
         ];
     }
 
     public function author()
     {
-        return $this->belongsTo('App\User', 'author_id', 'id');
+        return $this->belongsTo(User::class, 'author_id', 'id');
     }
     public function teacher()
     {
-        return $this->belongsTo('App\User', 'teacher_id', 'id');
+        return $this->belongsTo(User::class, 'teacher_id', 'id');
     }
     public function term()
     {
-        return $this->belongsTo('App\Term', 'term_id');
+        return $this->belongsTo(Term::class, 'term_id');
     }
     public function class_room_times()
     {
-        return $this->hasMany('App\ClassRoomTime', 'class_room_id');
+        return $this->hasMany(ClassRoomTime::class, 'class_room_id');
     }
 
     public function comments()
     {
-        return $this->morphMany('App\Comment', 'commentable');
+        return $this->morphMany(Comment::class, 'commentable');
     }
 
     public function tags()
     {
-        return $this->morphToMany('App\Tag', 'taggable');
+        return $this->morphToMany(Tag::class, 'taggable');
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class,'user_classes','class_room_id','user_id');
     }
 }

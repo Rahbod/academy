@@ -63,7 +63,7 @@ function getActions($department_name, $resource_name)
 
         $array_actions = [];
         foreach ($departments as $department) {
-            if ($department['name'] == $department_name) {
+            if ($department['name'] === $department_name) {
 
                 if ($department['resource_groups']) {
                     foreach ($department['resource_groups'] as $resource_group) {
@@ -91,14 +91,14 @@ function getActions($department_name, $resource_name)
                                         }
                                     }
                                 }
-
-
+//                                echo strtolower($resource['name']) .'-'. strtolower($resource_name)."<br/>";
                             }
                         }
                     }
                 }
             }
         }
+//        dd('end');
         return $array_actions;
 
     }

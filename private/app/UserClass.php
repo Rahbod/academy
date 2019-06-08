@@ -87,7 +87,7 @@ class UserClass extends Model
                 'items' => User::getSubFields()
             ],
             [
-                'name' => 'class_room',
+                'name' => 'classroom',
                 'table' => ClassRoom::getTableName(),
                 'show_in_form' => false,
                 'show_in_table' => true,
@@ -113,7 +113,7 @@ class UserClass extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function class_room()
+    public function classroom()
     {
         return $this->belongsTo('App\ClassRoom');
     }

@@ -56,10 +56,10 @@ export default new VueRouter ({
                     name: 'courses-resource-view',
                 },
                 {
-                    component: RegisterCourse,
-                    path: 'register',
-                    name: 'courses-register',
-                    meta: { action: 'register' },
+                    component: ListView,
+                    path: 'my_classrooms',
+                    name: 'courses-my-classrooms',
+                    meta: { action: 'myClassrooms' },
                 },
 
             ]
