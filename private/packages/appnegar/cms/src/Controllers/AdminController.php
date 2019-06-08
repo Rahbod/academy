@@ -88,6 +88,10 @@ class AdminController extends Controller
         return $models;
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function show($id)
     {
         $model_name = "App\\" . $this->resource;
@@ -130,6 +134,11 @@ class AdminController extends Controller
     }
 
 
+    /**
+     * @param null $resource
+     * @param bool $singular
+     * @return string
+     */
     protected function getResourceName($resource=null, $singular = false)
     {
         if($resource === null){
@@ -142,7 +151,7 @@ class AdminController extends Controller
         return $resource_name;
     }
 
-    protected function setDepartment()
+    protected function setDepartment(): void
     {
         if ($this->department == null) {
             $this->department = Department::where('name', session('department'))->first();
@@ -150,6 +159,14 @@ class AdminController extends Controller
     }
 
 
+    /**
+     * @param $status
+     * @param $resource
+     * @param $action
+     * @param null $message
+     * @param bool $json_response
+     * @return array|\Illuminate\Http\JsonResponse
+     */
     protected function getResponseMessage($status, $resource, $action, $message = null, $json_response = true)
     {
         $default_massage = $this->getMessage($status, $resource, $action);
@@ -168,6 +185,12 @@ class AdminController extends Controller
         return ['message' => $message, 'status' => $status];
     }
 
+    /**
+     * @param $status
+     * @param $resource
+     * @param $action
+     * @return array|string|\Underscore\Underscore|null
+     */
     protected function getMessage($status, $resource, $action)
     {
         $resource_name = $this->getResourceName($resource);
