@@ -4,6 +4,7 @@
 
     <section class="sliderSection">
         <div class="mainSlider">
+            {{dd($main_sliders)}}
             @if(isset($main_sliders['sliders']))
 
                 @foreach($main_sliders['sliders'] as $slider)
