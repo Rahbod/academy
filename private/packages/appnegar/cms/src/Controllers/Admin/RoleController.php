@@ -70,7 +70,7 @@ class RoleController extends AdminController
     protected function getFormData($data)
     {
         $departments = $this->getDepartments();
-        if(!is_array($data['action_id'])){
+        if(!isset($data['action_id'])){
             $data['action_id']=[];
         }
         return [
