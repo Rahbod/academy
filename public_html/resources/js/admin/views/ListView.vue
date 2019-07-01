@@ -15,13 +15,45 @@
     import {mapMutations, mapActions, mapGetters} from 'vuex';
 
     export default {
-        components: {data_viewer,content_view},
+        components: {data_viewer, content_view},
         computed: {
             ...mapGetters('filterable_table', ['filterCandidates']),
+            ...mapGetters(['main_url']),
+            list_view_route() {
+                let route='list-view';
+                let action=this.getRouteAction();
+                switch (action) {
+                    case 'listView':
+                        route='list-view';
+                        break;
+                    case 'unverifiedRequests':
+                        route='unverified_requests';
+                        break;
+                    case 'myClassrooms':
+                        route='my_classrooms';
+                        break;
+                    case 'rejectedRequests':
+                        route='rejected_requests';
+                        break;
+                    case 'awaitingPaymentRequests':
+                        route='awaiting_payment_requests';
+                        break;
+                    case 'paidRequests':
+                        route='paid_requests';
+                        break;
+                    case 'translatedRequests':
+                        route='translated_requests';
+                        break;
+                    default:
+                        route='list-view';
+                        break;
+                }
+                return this.main_url + '/'+route
+            }
         },
         methods: {
-            ... mapMutations('form', ['setInfo']),
-            ...mapMutations('filterable_table', ['setEl', 'addFilter', 'resetState']),
+            ...mapMutations('form', ['setInfo']),
+            ...mapMutations('filterable_table', ['setEl', 'addFilter', 'resetState','setListViewUrl']),
             ...mapActions('filterable_table', ['fetch']),
 
             getResource(route) {
@@ -34,7 +66,18 @@
                 });
                 return resource;
             },
+            getRouteAction() {
+                let routes = this.$route.matched;
+                let action = null;
+                routes.forEach(route => {
+                    if (route.meta.action !== undefined) {
+                        action = route.meta.action;
+                    }
+                });
+                return action;
+            },
             initView() {
+                this.setListViewUrl(this.list_view_route);
                 this.fetch();
                 if (this.filterCandidates.length === 0) {
                     this.addFilter();

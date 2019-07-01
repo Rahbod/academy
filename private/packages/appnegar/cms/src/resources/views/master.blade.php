@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>profsadvice</title>
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
-    <meta name="app_url" content="{{env('APP_URL')}}">
+{{--    <meta name="app_url" content="{{env('APP_URL')}}">--}}
+    <meta name="app_url" content="{{url('/')}}">
 
     <!-- Global stylesheets -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet"

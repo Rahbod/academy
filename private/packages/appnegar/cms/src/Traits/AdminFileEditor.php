@@ -55,7 +55,7 @@ trait AdminFileEditor{
                 $error_massages[] = $file->getError();
             } else {
                 if ($file->getClientSize() > $config['size'] * 1024) {
-                    $error_massages[] = "اندازه فایل بیشتر از " . $config['size'] . ' کیلو بایت نمی تواند باشد.';
+                    $error_massages[] = 'اندازه فایل بیشتر از ' . $config['size'] . ' کیلو بایت نمی تواند باشد.';
                 }
                 $photo_extension = explode(',', $config['extension']);
                 foreach ($photo_extension as $key => $value) {
@@ -66,20 +66,20 @@ trait AdminFileEditor{
                 }
             }
 
-            if (count($error_massages) == 0) {
+            if (count($error_massages) === 0) {
                 $name = uniqid($prefix) . '.' . $file->getClientOriginalExtension();
                 $status = Storage::putFileAs($config['destination'], $file, $name, 'public');
                 if ($status) {
-                    return (['status' =>$status, 'data' => $name]);
+                    return ['status' =>$status, 'data' => $name];
                 } else {
-                    return (['status' => $status, 'data' => ['خطایی در دخیره ی فایل بوجود امده است.']]);
+                    return ['status' => $status, 'data' => ['خطایی در دخیره ی فایل بوجود امده است.']];
                 }
 
             } else {
-                return (['status' => false, 'data' => $error_massages]);
+                return ['status' => false, 'data' => $error_massages];
             }
         }
-        return (['status' => true, 'data' => $name]);
+        return ['status' => true, 'data' => $name];
     }
 
     /**

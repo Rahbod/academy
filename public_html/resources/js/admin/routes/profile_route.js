@@ -56,15 +56,73 @@ export default new VueRouter ({
                     name: 'courses-resource-view',
                 },
                 {
-                    component: RegisterCourse,
-                    path: 'register',
-                    name: 'courses-register',
-                    meta: { action: 'register' },
+                    component: ListView,
+                    path: 'my_classrooms',
+                    name: 'courses-my-classrooms',
+                    meta: { action: 'myClassrooms' },
                 },
 
             ]
         },
-
+        {
+            component: RouterViewApp,
+            path: '/translate_requests',
+            meta: {resource: 'translate_requests'},
+            children: [
+                {
+                    component: ResourceView,
+                    path: '/',
+                    name: 'translate_requests-resource-view',
+                },
+                {
+                    component: ListView,
+                    path: 'list-view',
+                    name: 'translate_requests-list-view',
+                    meta: {action: 'listView'},
+                },
+                {
+                    component: ListView,
+                    path: 'unverified_requests',
+                    name: 'translate_requests-unverified_requests',
+                    meta: {action: 'unverifiedRequests'},
+                },
+                {
+                    component: ListView,
+                    path: 'rejected_requests',
+                    name: 'translate_requests-rejected_requests',
+                    meta: {action: 'rejectedRequests'},
+                },
+                {
+                    component: ListView,
+                    path: 'awaiting_payment_requests',
+                    name: 'translate_requests-awaiting_payment_requests',
+                    meta: {action: 'awaitingPaymentRequests'},
+                },
+                {
+                    component: ListView,
+                    path: 'paid_requests',
+                    name: 'translate_requests-paid_requests',
+                    meta: {action: 'paidRequests'},
+                },
+                {
+                    component: ListView,
+                    path: 'translated_requests',
+                    name: 'translate_requests-translated_requests',
+                    meta: {action: 'translatedRequests'},
+                },
+                {
+                    component: FormView,
+                    path: 'create',
+                    name: 'translate_requests-create',
+                    meta: {action: 'create'},
+                },
+                {
+                    component: ShowView,
+                    path: ':id',
+                    name: 'translate_requests-show',
+                },
+            ]
+        },
 
     ]
 });

@@ -701,7 +701,18 @@ export default new VueRouter({
                     path: ':id',
                     name: 'translate_requests-show',
                 },
-
+                {
+                    component: FileManagerView,
+                    path: 'file_manager/index',
+                    name: 'translate_requests-file-manager-show',
+                    meta: {action: 'showFileManager'},
+                },
+                {
+                    component: UpdateSettingFormView,
+                    path: 'settings/form',
+                    name: 'translate_requests-settings-form',
+                    meta: {action: 'updateSettings'},
+                },
             ]
         },
         {

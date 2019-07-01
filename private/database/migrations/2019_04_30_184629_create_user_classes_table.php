@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateUserClassesTable extends Migration
 {
@@ -17,8 +17,8 @@ class CreateUserClassesTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index()->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
-            $table->integer('class_room_id')->unsigned()->index()->nullable();
-            $table->foreign('class_room_id')->references('id')->on('class_rooms')->onDelete('set null');
+            $table->integer('classroom_id')->unsigned()->index()->nullable();
+            $table->foreign('classroom_id')->references('id')->on('class_rooms')->onDelete('set null');
             $table->tinyInteger('status')->defaule(1);
             $table->timestamps();
 
@@ -33,9 +33,9 @@ class CreateUserClassesTable extends Migration
      */
     public function down()
     {
-        Schema::table('user_classes', function (Blueprint $table) {
+        Schema::table('user_classes', function (Blueprint $table){
             $table->dropForeign(['user_id']);
-            $table->dropForeign(['class_room_id']);
+            $table->dropForeign(['classroom_id']);
         });
         Schema::dropIfExists('user_classes');
     }

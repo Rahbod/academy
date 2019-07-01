@@ -18854,7 +18854,7 @@ exports = module.exports = __webpack_require__(11)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -18889,8 +18889,40 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: { data_viewer: __WEBPACK_IMPORTED_MODULE_0__view_components_data_viewer_DataViewer_vue___default.a, content_view: __WEBPACK_IMPORTED_MODULE_1__views_ShowView_vue___default.a },
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["c" /* mapGetters */])('filterable_table', ['filterCandidates'])),
-    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["d" /* mapMutations */])('form', ['setInfo']), Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["d" /* mapMutations */])('filterable_table', ['setEl', 'addFilter', 'resetState']), Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["b" /* mapActions */])('filterable_table', ['fetch']), {
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["c" /* mapGetters */])('filterable_table', ['filterCandidates']), Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["c" /* mapGetters */])(['main_url']), {
+        list_view_route: function list_view_route() {
+            var route = 'list-view';
+            var action = this.getRouteAction();
+            switch (action) {
+                case 'listView':
+                    route = 'list-view';
+                    break;
+                case 'unverifiedRequests':
+                    route = 'unverified_requests';
+                    break;
+                case 'myClassrooms':
+                    route = 'my_classrooms';
+                    break;
+                case 'rejectedRequests':
+                    route = 'rejected_requests';
+                    break;
+                case 'awaitingPaymentRequests':
+                    route = 'awaiting_payment_requests';
+                    break;
+                case 'paidRequests':
+                    route = 'paid_requests';
+                    break;
+                case 'translatedRequests':
+                    route = 'translated_requests';
+                    break;
+                default:
+                    route = 'list-view';
+                    break;
+            }
+            return this.main_url + '/' + route;
+        }
+    }),
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["d" /* mapMutations */])('form', ['setInfo']), Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["d" /* mapMutations */])('filterable_table', ['setEl', 'addFilter', 'resetState', 'setListViewUrl']), Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["b" /* mapActions */])('filterable_table', ['fetch']), {
         getResource: function getResource(route) {
             var routes = route.matched;
             var resource = null;
@@ -18901,7 +18933,18 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             });
             return resource;
         },
+        getRouteAction: function getRouteAction() {
+            var routes = this.$route.matched;
+            var action = null;
+            routes.forEach(function (route) {
+                if (route.meta.action !== undefined) {
+                    action = route.meta.action;
+                }
+            });
+            return action;
+        },
         initView: function initView() {
+            this.setListViewUrl(this.list_view_route);
             this.fetch();
             if (this.filterCandidates.length === 0) {
                 this.addFilter();
@@ -19337,7 +19380,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             if (this.fields.length > 0) {
                 this.fields.forEach(function (field) {
                     var option_group = { 'text': '', children: [] };
-                    if (field.name == vm.resource) {
+                    if (field.name === vm.resource) {
                         option_group.text = _this.$t(vm.resource + ':title');
                     } else {
                         option_group.text = _this.$t(vm.resource + ':relations.' + field.name);
@@ -21605,7 +21648,7 @@ var render = function() {
           ])
         : _vm._e(),
       _vm._v(" "),
-      _vm.collection.data.length == 0 && !_vm.loading
+      _vm.collection.data.length === 0 && !_vm.loading
         ? _c(
             "div",
             {

@@ -225,7 +225,7 @@
                 </table>
             </div>
             <div class="alert alert-warning alert-bordered" style="margin: 1rem"
-                 v-if="collection.data.length == 0 && !loading">
+                 v-if="collection.data.length === 0 && !loading">
                 {{$t('messages.not_found_record')}}
             </div>
             <div style="display: none;">{{updating}}</div>
@@ -290,7 +290,7 @@
                 if (this.fields.length > 0) {
                     this.fields.forEach(field => {
                         let option_group = {'text': '', children: []};
-                        if(field.name == vm.resource){
+                        if(field.name === vm.resource){
                             option_group.text = this.$t(vm.resource + ':title');
                         }
                         else {

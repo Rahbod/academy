@@ -70,6 +70,9 @@ class RoleController extends AdminController
     protected function getFormData($data)
     {
         $departments = $this->getDepartments();
+        if(!isset($data['action_id'])){
+            $data['action_id']=[];
+        }
         return [
             'model' => $data,
             'options' => ['departments' => $departments],

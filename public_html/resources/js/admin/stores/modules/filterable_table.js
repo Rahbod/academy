@@ -6,6 +6,7 @@ export const filterable_table = {
     namespaced: true,
     state: {
         el: null,
+        list_view_url:'',
         table_actions:{
             edit:{
                 active_class:"icon-pencil7 text-primary-600",
@@ -74,6 +75,9 @@ export const filterable_table = {
         ]
     },
     getters: {
+        list_view_url(state){
+            return state.list_view_url;
+        },
         table_actions(state){
           return state.table_actions;
         },
@@ -119,9 +123,6 @@ export const filterable_table = {
         show_filters(state) {
             return state.show_filters
         },
-        appliedFilters(state) {
-            return state.appliedFilters
-        },
         filterCandidates(state) {
             return state.filterCandidates
         },
@@ -157,6 +158,9 @@ export const filterable_table = {
     mutations: {
         setEl(state, el) {
             state.el = el;
+        },
+        setListViewUrl(state,url){
+          state.list_view_url=url;
         },
         setLoading(state, loading) {
             state.loading = loading;
@@ -427,8 +431,9 @@ export const filterable_table = {
                 ...context.getters.query
             };
 
-            let routes = context.rootGetters.resource_routes;
-            let url = routes.list_view.url;
+            // let routes = context.rootGetters.resource_routes;
+            // let url = routes.list_view.url;
+            let url = context.getters.list_view_url;
 
             context.dispatch('setViewLoading', {el: context.state.el, status: true}, {root: true});
 

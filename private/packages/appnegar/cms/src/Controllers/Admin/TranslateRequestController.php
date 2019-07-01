@@ -3,8 +3,12 @@ namespace Appnegar\Cms\Controllers\Admin;
 
 
 use Appnegar\Cms\Controllers\AdminController;
+use Appnegar\Cms\Traits\AdminFileManager;
+use Appnegar\Cms\Traits\AdminSettingTrait;
 
 class TranslateRequestController extends AdminController{
+    use AdminFileManager;
+    use AdminSettingTrait;
 
     public function __construct(){
         $this->resource='TranslateRequest';
@@ -36,7 +40,6 @@ class TranslateRequestController extends AdminController{
         $model = $model_name::with('transaction')->with(['attachments'=>function ($query){
             $query->select(['id','attachmentable_id','attachmentable_type','source','title']);
         }])->findOrFail($id);
-//        dd($model->toArray());
 
         $data = json_encode($model->toArray());
         $data = json_decode($data);

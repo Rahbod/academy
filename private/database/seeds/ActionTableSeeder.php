@@ -12,7 +12,7 @@ class ActionTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
 
         DB::statement('SET FOREIGN_KEY_CHECKS = 0'); // disable foreign key constraints
@@ -50,8 +50,8 @@ class ActionTableSeeder extends Seeder
         ];
 
         $commentable_resources = ['Content', 'Page'];
-        $have_file_manager_resource = ['Content','Page','Course','ClassRoom', 'Slider', 'Attachment'];
-        $have_settings = ['Content','Page', 'Course', 'ClassRoom', 'Slider', 'Attachment'];
+        $have_file_manager_resource = ['Content','Page','Course','ClassRoom', 'Slider', 'Attachment','TranslateRequest'];
+        $have_settings = ['Content','Page', 'Course', 'ClassRoom', 'Slider', 'Attachment','TranslateRequest'];
         $profile_actions = [
             [
                 'name' => 'getActions',
@@ -385,49 +385,29 @@ class ActionTableSeeder extends Seeder
                         ]
                     ],
                     [
-                        'name' => 'register',
-                        'display_name' => 'ثبت نام در دوره',
-                        'need_allow' => 0,
-                        'status' => 1,
-                        'paths' => [
-                            [
-                                'name' => 'Course.register',
-                                'display_name' => ' ثبت نام در دوره جدید' ,
-                                'slug' => 'courses/register',
-                                'method' => 'get',
-                            ],
-                            [
-                                'name' => 'Course.register',
-                                'display_name' => 'ذخیره ثبت نام در دوره' ,
-                                'slug' => 'courses/register',
-                                'method' => 'post',
-                            ]
-                        ]
-                    ],
-                    [
-                        'name' => 'classrooms',
+                        'name' => 'myClassrooms',
                         'display_name' => 'کلاس ها من',
                         'need_allow' => 0,
                         'status' => 1,
                         'paths' => [
                             [
-                                'name' => 'Course.classrooms',
+                                'name' => 'Course.myClassrooms',
                                 'display_name' => 'کلاس های من' ,
-                                'slug' => 'courses/classrooms',
+                                'slug' => 'courses/my_classrooms',
                                 'method' => 'get',
                             ]
                         ]
                     ],
                     [
-                        'name' => 'showClassroom',
+                        'name' => 'show',
                         'display_name' => 'مشاهده کلاس',
                         'need_allow' => 0,
                         'status' => 1,
                         'paths' => [
                             [
-                                'name' => 'Course.showClassrooms',
+                                'name' => 'Course.show',
                                 'display_name' => 'مشاهده کلاس' ,
-                                'slug' => 'courses/classrooms/{id}',
+                                'slug' => 'courses/{id}',
                                 'method' => 'get',
                             ]
                         ]
@@ -436,7 +416,7 @@ class ActionTableSeeder extends Seeder
                 'TranslateRequest'=>[
                     [
                         'name' => 'index',
-                        'display_name' => 'درخواست ها ترجمه',
+                        'display_name' => 'درخواست های ترجمه',
                         'need_allow' => 0,
                         'status' => 1,
                         'paths' => [
@@ -449,23 +429,51 @@ class ActionTableSeeder extends Seeder
                         ]
                     ],
                     [
-                        'name' => 'register',
+                        'name' => 'create',
                         'display_name' => 'ثبت درخواست جدید',
                         'need_allow' => 0,
                         'status' => 1,
                         'paths' => [
                             [
-                                'name' => 'TranslateRequest.register',
+                                'name' => 'TranslateRequest.create',
                                 'display_name' => ' ثبت درخواست جدید' ,
-                                'slug' => 'translate_requests/register',
+                                'slug' => 'translate_requests/create',
                                 'method' => 'get',
                             ],
                             [
-                                'name' => 'TranslateRequest.register',
+                                'name' => 'TranslateRequest.store',
                                 'display_name' => 'ذخیره درخواست ترجمه' ,
-                                'slug' => 'translate_requests/register',
+                                'slug' => 'translate_requests',
                                 'method' => 'post',
                             ]
+                        ]
+                    ],
+                    [
+                        'name' => 'paymentRequests',
+                        'display_name' => 'پرداخت مبلغ ترجمه',
+                        'need_allow' => 0,
+                        'status' => 1,
+                        'paths' => [
+                            [
+                                'name' => 'TranslateRequest.paymentRequests',
+                                'display_name' => 'پرداخت' ,
+                                'slug' => 'translate_requests/payment_requests/{id}',
+                                'method' => 'get',
+                            ],
+                        ]
+                    ],
+                    [
+                        'name' => 'listView',
+                        'display_name' => 'لیست تمام درخواست ها',
+                        'need_allow' => 0,
+                        'status' => 1,
+                        'paths' => [
+                            [
+                                'name' => 'TranslateRequest.listView',
+                                'display_name' => 'لیست تمام درخواست ها' ,
+                                'slug' => 'translate_requests/list-view',
+                                'method' => 'get',
+                            ],
                         ]
                     ],
                     [
@@ -478,6 +486,20 @@ class ActionTableSeeder extends Seeder
                                 'name' => 'TranslateRequest.unverifiedRequests',
                                 'display_name' => 'درخواست های بررسی نشده' ,
                                 'slug' => 'translate_requests/unverified_requests',
+                                'method' => 'get',
+                            ],
+                        ]
+                    ],
+                    [
+                        'name' => 'rejectedRequests',
+                        'display_name' => 'درخواست های رد شده',
+                        'need_allow' => 0,
+                        'status' => 1,
+                        'paths' => [
+                            [
+                                'name' => 'TranslateRequest.rejectedRequests',
+                                'display_name' => 'درخواست های رد شده' ,
+                                'slug' => 'translate_requests/rejected_requests',
                                 'method' => 'get',
                             ],
                         ]
@@ -497,20 +519,6 @@ class ActionTableSeeder extends Seeder
                         ]
                     ],
                     [
-                        'name' => 'paymentRequests',
-                        'display_name' => 'پرداخت مبلغ ترجمه',
-                        'need_allow' => 0,
-                        'status' => 1,
-                        'paths' => [
-                            [
-                                'name' => 'TranslateRequest.paymentRequests',
-                                'display_name' => 'پرداخت' ,
-                                'slug' => 'translate_requests/payment_requests/{id}',
-                                'method' => 'get',
-                            ],
-                        ]
-                    ],
-                    [
                         'name' => 'paidRequests',
                         'display_name' => 'درخواست های پرداخت شده',
                         'need_allow' => 0,
@@ -520,6 +528,34 @@ class ActionTableSeeder extends Seeder
                                 'name' => 'TranslateRequest.paidRequests',
                                 'display_name' => 'درخواست های پرداخت شده' ,
                                 'slug' => 'translate_requests/paid_requests',
+                                'method' => 'get',
+                            ],
+                        ]
+                    ],
+                    [
+                        'name' => 'translatedRequests',
+                        'display_name' => 'درخواست های پرداخت شده',
+                        'need_allow' => 0,
+                        'status' => 1,
+                        'paths' => [
+                            [
+                                'name' => 'TranslateRequest.translatedRequests',
+                                'display_name' => 'درخواست های ترجمه شده' ,
+                                'slug' => 'translate_requests/translated_requests',
+                                'method' => 'get',
+                            ],
+                        ]
+                    ],
+                    [
+                        'name' => 'show',
+                        'display_name' => 'مشاهده درخواست جدید',
+                        'need_allow' => 0,
+                        'status' => 1,
+                        'paths' => [
+                            [
+                                'name' => 'TranslateRequest.show',
+                                'display_name' => ' مشاهده درخواست جدید' ,
+                                'slug' => 'translate_requests/{id}',
                                 'method' => 'get',
                             ],
                         ]
