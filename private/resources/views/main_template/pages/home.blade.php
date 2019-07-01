@@ -1,10 +1,11 @@
 @extends('main_template.master_page.master')
 
 @section('content')
-    @if(isset($main_sliders['sliders']))
 
-        <section class="sliderSection">
-            <div class="mainSlider">
+    <section class="sliderSection">
+        <div class="mainSlider">
+            @if(isset($main_sliders['sliders']))
+
                 @foreach($main_sliders['sliders'] as $slider)
                     <div class="mainSlider--item position-relative">
                         <img class="" src="{{$slider['image']}}" alt="{{$slider['title']}}"/>
@@ -20,15 +21,15 @@
                         </div>
                     </div>
                 @endforeach
+            @endif
 
-                {{--@else--}}
-                {{--<div class="mainSlider--item position-relative">--}}
-                {{--<img class="" src="{{asset('assets/site/media/images/main_slider/p6.jpg')}}"--}}
-                {{--alt="no slider defined"/>--}}
-                {{--</div>--}}
-            </div>
-        </section>
-    @endif
+            {{--@else--}}
+            {{--<div class="mainSlider--item position-relative">--}}
+            {{--<img class="" src="{{asset('assets/site/media/images/main_slider/p6.jpg')}}"--}}
+            {{--alt="no slider defined"/>--}}
+            {{--</div>--}}
+        </div>
+    </section>
 
     @if(isset($courses) && count($courses) > 0 )
 
