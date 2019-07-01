@@ -40,6 +40,11 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    public function redirectTo()
+    {
+        return session('lang') . '/profile';
+    }
+
     public function authenticated(Request $request, $user)
     {
         if ($user->verified) {

@@ -31,9 +31,15 @@ class RegisterController extends Controller
 
     protected $redirectTo = '/';
 
+
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    public function redirectTo()
+    {
+        return session('lang') . '/profile';
     }
 
     protected function validator(array $data)
