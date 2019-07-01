@@ -1,9 +1,10 @@
 @extends('main_template.master_page.master')
 
 @section('content')
-    <section class="sliderSection">
-        <div class="mainSlider">
-            @if(isset($main_sliders))
+    @if(isset($main_sliders))
+
+        <section class="sliderSection">
+            <div class="mainSlider">
                 @foreach($main_sliders['sliders'] as $slider)
                     <div class="mainSlider--item position-relative">
                         <img class="" src="{{$slider['image']}}" alt="{{$slider['title']}}"/>
@@ -20,34 +21,37 @@
                     </div>
                 @endforeach
 
-            @else
-                <div class="mainSlider--item position-relative">
-                    <img class="" src="{{asset('assets/site/media/images/main_slider/p6.jpg')}}"
-                         alt="no slider defined"/>
+                {{--@else--}}
+                {{--<div class="mainSlider--item position-relative">--}}
+                {{--<img class="" src="{{asset('assets/site/media/images/main_slider/p6.jpg')}}"--}}
+                {{--alt="no slider defined"/>--}}
+                {{--</div>--}}
+            </div>
+        </section>
+    @endif
+
+    @if(isset($courses) && count($courses) > 0 )
+
+        <section class="top-courses sectionPadding bg-white">
+            <div class="container">
+                <div class="sectionHeader text-center">
+                    <h2 class="text-uppercase mb-0">@lang('messages.home.course-title')</h2>
+                    <p class="font-18">@lang('messages.home.course-description')</p>
                 </div>
-            @endif
-        </div>
-    </section>
-    <section class="top-courses sectionPadding bg-white">
-        <div class="container">
-            <div class="sectionHeader text-center">
-                <h2 class="text-uppercase mb-0">@lang('messages.home.course-title')</h2>
-                <p class="font-18">@lang('messages.home.course-description')</p>
-            </div>
 
-            <div class="row d-flex mb-3 px-3 tags">
-                @foreach($courses as $course)
-                    @foreach($course['tags'] as $tag)
-                        <a href="{{url(session('lang'). '/course/tags/'.$tag['id'].'/'.str_replace(' ','-',$tag['name']))}}"
-                           class="site-button mb-2 mb-lg-0">
-                            {{$tag['name']}}
-                        </a>
+                <div class="row d-flex mb-3 px-3 tags">
+                    @foreach($courses as $course)
+                        @foreach($course['tags'] as $tag)
+                            <a href="{{url(session('lang'). '/course/tags/'.$tag['id'].'/'.str_replace(' ','-',$tag['name']))}}"
+                               class="site-button mb-2 mb-lg-0">
+                                {{$tag['name']}}
+                            </a>
+                        @endforeach
                     @endforeach
-                @endforeach
-            </div>
+                </div>
 
-            <div class="row">
-                @if(isset($courses) && count($courses) > 0 )
+                <div class="row">
+                    {{--                @if(isset($courses) && count($courses) > 0 )--}}
 
                     @foreach($courses as $course)
                         <div class="col-md-4 col-sm-6 m-b30 card-container">
@@ -98,15 +102,16 @@
                             </div>
                         </div>
                     @endforeach
-                @else
-                    <div class="col-12 alert alert-info" role="alert">
-                        @lang('messages.global.no-result')
-                    </div>
-                @endif
+                    {{--@else--}}
+                    {{--<div class="col-12 alert alert-info" role="alert">--}}
+                    {{--@lang('messages.global.no-result')--}}
+                    {{--</div>--}}
 
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
+
     <section class="translation"
              style="background-image:url('{{asset('/assets/site/media/images/translation/translation_2000x767.jpg')}}')">
         <div class="container">
