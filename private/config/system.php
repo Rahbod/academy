@@ -73,7 +73,7 @@ return [
         ],
     'translate_request' => [
             'translated_file_size' =>  '500',
-            'translated_file_extension' =>  'doc,docx,pdf,zip,rar',
+            'translated_file_extension' =>  'jpg,jpeg,png,doc,docx,pdf,zip,rar',
             'translated_file_destination' =>  'translate_request/',
         ],
     'attachment' => [

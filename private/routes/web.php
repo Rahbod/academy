@@ -34,12 +34,17 @@ Route::get('/artisan-call', function () {
 
 });
 
+
 Route::group(['middleware' => ['lang', 'set_locale', 'remove_additional_params'], 'prefix' => "{lang}",], function () {
+    Route::get('verify_account/{verify_email_link}', 'Auth\RegisterController@verifyAccount')
+        ->name('verify_account')->middleware('signed');
+
     Auth::routes();
 //    Auth::routes(['register' => false,'reset' => false,'verify' => true]);
 
     include('test_routes.php');
 });
+
 
 
 

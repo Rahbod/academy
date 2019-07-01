@@ -27,7 +27,7 @@ class ContentController extends Controller
     {
         $this->query = Content::query();
         $this->query->where('status', 1)
-            ->orderBy($column_name)->where(function ($q2) {
+            ->where(function ($q2) {
                 $q2->where('published_at', null)->orWhere('published_at', '<=', Carbon::now());
             });
     }
@@ -93,6 +93,8 @@ class ContentController extends Controller
         $search_for = $request->search_query;
         $search_in = $request->search_in ?? 'news';
 
+//        dd($request->all());
+
         $breadcrumbs[0]['title'] = __('messages.global.home');
         $breadcrumbs[0]['link'] = 'home';
 
@@ -105,35 +107,40 @@ class ContentController extends Controller
             $translations = null;
             $articles = null;
 
-            if ($search_in == 'courses') {
-                return view('main_template.pages.search')
-                    ->with('courses', $this->getCourses($search_for))
-                    ->with('breadcrumbs', $breadcrumbs)
-                    ->with('search_in', $search_in)
-                    ->with('search_for', $search_for);
-            } else if ($search_in == 'news') {
-                return view('main_template.pages.search')
-                    ->with('news', $this->getNews($search_for))
-                    ->with('breadcrumbs', $breadcrumbs)
-                    ->with('search_in', $search_in)
-                    ->with('search_for', $search_for);
-            } else if ($search_in == 'article') {
-                return view('main_template.pages.search')
-                    ->with('articles', $this->getArticles($search_for))
-                    ->with('breadcrumbs', $breadcrumbs)
-                    ->with('search_in', $search_in)
-                    ->with('search_for', $search_for);
-            } else {
-                return view('main_template.pages.search')
-                    ->with('news', $this->getNews($search_for))
-                    ->with('courses', $this->getCourses($search_for))
-                    ->with('articles', $this->getArticles($search_for))
-                    ->with('breadcrumbs', $breadcrumbs)
-                    ->with('search_in', $search_in)
-                    ->with('search_for', $search_for);
+            switch ($search_in) {
+                case 'courses':
+                    return view('main_template.pages.search')
+                        ->with('courses', $this->getCourses($search_for))
+                        ->with('breadcrumbs', $breadcrumbs)
+                        ->with('search_in', $search_in)
+                        ->with('search_for', $search_for);
+                    break;
+                case 'news' :
+                    return view('main_template.pages.search')
+                        ->with('news', $this->getNews($search_for))
+                        ->with('breadcrumbs', $breadcrumbs)
+                        ->with('search_in', $search_in)
+                        ->with('search_for', $search_for);
+                    break;
+                case  'article':
+                    return view('main_template.pages.search')
+                        ->with('articles', $this->getArticles($search_for))
+                        ->with('breadcrumbs', $breadcrumbs)
+                        ->with('search_in', $search_in)
+                        ->with('search_for', $search_for);
+                    break;
+                default:
+                    return view('main_template.pages.search')
+                        ->with('news', $this->getNews($search_for))
+                        ->with('courses', $this->getCourses($search_for))
+                        ->with('articles', $this->getArticles($search_for))
+                        ->with('breadcrumbs', $breadcrumbs)
+                        ->with('search_in', $search_in)
+                        ->with('search_for', $search_for);
             }
         }
 
+//        dd($search_for);
         return view('main_template.pages.search')
             ->with('news', null)
             ->with('courses', null)

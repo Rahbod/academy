@@ -4,6 +4,8 @@ body {
     font-family: 'IRANSans', 'Lato', sans-serif;
     direction: rtl;
     text-align: right;
+    font-size: 14px;
+    font-weight: 400;
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -420,7 +422,13 @@ ol.comment-list li .children {
 /*#endregion*/
 
 @media (max-width: 991.98px) {
+    .courseRegisterPage .p-a30 {
+        padding: 0;
+    }
 
+    .translationPage .p-a30 {
+        padding: 1rem;
+    }
 }
 
 @media (max-width: 767.98px) {

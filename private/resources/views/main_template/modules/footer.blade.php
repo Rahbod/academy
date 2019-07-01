@@ -93,6 +93,12 @@
                                         @lang('messages.global.courses')
                                     </a>
                                 </li>
+                                <li class="mb-2">
+                                    <a class="text-white" title="@lang('messages.global.translation-request')"
+                                       href="{{url(session('lang'). '/translation-requests/create')}}">
+                                        @lang('messages.global.translation-request')
+                                    </a>
+                                </li>
                             </ul>
 
                             {{--<form enctype="multipart/form-data" method="post" class="contactUsForm"--}}

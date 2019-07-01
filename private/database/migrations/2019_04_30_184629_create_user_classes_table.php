@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateUserClassesTable extends Migration
 {
@@ -22,7 +22,7 @@ class CreateUserClassesTable extends Migration
             $table->tinyInteger('status')->defaule(1);
             $table->timestamps();
 
-            $table->unique('user_id', 'class_room_id');
+//            $table->unique('user_id', 'class_room_id');
         });
     }
 
@@ -33,7 +33,7 @@ class CreateUserClassesTable extends Migration
      */
     public function down()
     {
-        Schema::table('user_classes', function (Blueprint $table){
+        Schema::table('user_classes', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
             $table->dropForeign(['class_room_id']);
         });

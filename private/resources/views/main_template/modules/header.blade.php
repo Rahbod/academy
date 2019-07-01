@@ -42,15 +42,15 @@
                                     {{--{!! trans('titles.profile') !!}--}}
                                     {{--</a>--}}
                                     <a class="dropdown-item active" href="{{url( session('lang') .'/profile')}}"
-                                       title="profile">profile</a>
+                                       title="@lang('messages.global.profile')">@lang('messages.global.profile')</a>
                                     {{--<a class="dropdown-item" href="void:;" title="My Articles">My Articles</a>--}}
                                     {{--<a class="dropdown-item" href="void:;" title="My Requests">My--}}
                                     {{--Translations</a>--}}
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="{{ route('logout',['lang'=>session('lang')]) }}"
+                                    <a title="@lang('messages.global.logout')" class="dropdown-item" href="{{ route('logout',['lang'=>session('lang')]) }}"
                                        onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        @lang('messages.global.logout')
                                     </a>
                                     <form id="logout-form" action="{{ route('logout',['lang'=>session('lang')]) }}"
                                           method="POST"
@@ -68,14 +68,14 @@
         <div class="main-bar clearfix onepage">
             <div class="container">
                 <nav class="header-nav navbar p-0">
-                    {{--@if(session('lang') !='fa')--}}
-                    <a class="navbar-brand d-lg-none" href="{{route('home',['lang'=>session('lang')])}}">
-                        <!--<img src="./assets/media/images/public/site_logo.png"-->
-                        <!--class="siteLogo__image img-fluid" alt="آکادمی زبان ">-->
-                        <span class=""
-                              style="font-size: inherit;color: inherit;font-weight: inherit;">Academy</span>
-                    </a>
-                    {{--@endif--}}
+                    @if(session('lang') !='fa')
+                        <a class="navbar-brand" href="{{route('home',['lang'=>session('lang')])}}">
+                            <!--<img src="./assets/media/images/public/site_logo.png"-->
+                            <!--class="siteLogo__image img-fluid" alt="آکادمی زبان ">-->
+                            <span class=""
+                                  style="font-size: inherit;color: inherit;font-weight: inherit;">{{__('messages.global.site-name')}}</span>
+                        </a>
+                    @endif
                     <div>
                         <div class="extra-nav d-lg-none">
                             <div class="extra-cell">
@@ -148,7 +148,7 @@
                                     @endif
                                 @endforeach
                                 @if(session('lang') !='fa')
-                                    <li class="d-none d-lg-block ml-3">
+                                    <li class="d-none d-lg-block mx-3">
                                         <div class="extra-nav">
                                             <div class="extra-cell">
                                                 <button onclick="$('#showSearchForm').show().find('input').focus();"
@@ -175,9 +175,10 @@
                                 <!--<img src="./assets/media/images/public/site_logo.png"-->
                                 <!--class="siteLogo__image img-fluid" alt="آکادمی زبان ">-->
                                 <span class=""
-                                      style="font-size: inherit;color: inherit;font-weight: inherit;">Academy</span>
+                                      style="font-size: inherit;color: inherit;font-weight: inherit;">{{__('messages.global.site-name')}}</span>
                             </a>
                         @endif
+
                     </div>
                 </nav>
             </div>

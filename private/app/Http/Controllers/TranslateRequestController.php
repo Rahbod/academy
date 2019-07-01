@@ -45,6 +45,8 @@ class TranslateRequestController extends Controller
 
     public function store(Request $request)
     {
+//        return $request->all();
+
         $this->validate($request,[
             'category_id'=>'required|exists:categories,id',
             'title'=>'required',
@@ -110,7 +112,7 @@ class TranslateRequestController extends Controller
             ], $status_code);
         }
 
-        return ['message' => $message, 'status' => $status];
+        return ['message' => trans($message), 'status' => $status];
     }
 
     protected function getMessage($status, $resource, $action)

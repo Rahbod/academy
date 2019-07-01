@@ -2,6 +2,22 @@
 
 return [
     'global' => [
+        "tags"=> "برچسب ها",
+        "tags-description"=> "تمامی مطالب با عنوان : ",
+
+        "sorry"=> "با احترام",
+        'popover-title'=>'ترم شامل کلاسی نمی باشد و یا ظرفیت آن تکمیل شده است.',
+
+        'site-name'=>'مجموعه آموزشی زبان های خارجه',
+        'remove' => 'حذف',
+        'source-language' => 'زبان مبدا',
+        'destination-language' => 'زبان مقصد',
+        'category' => 'دسته',
+        'fill-carefully' => 'لطفا اطلاعات را با دقت وارد نمایید.',
+        'translation-request-form' => 'فرم درخواست ',
+        'translation-request' => 'درخواست ترجمه',
+        'person' => 'نفر',
+
         'class-information' => 'اطلاعات کلاس',
         'class-capacity' => 'ظرفیت کلاس',
         'class-price' => 'شهریه کلاس',
@@ -11,8 +27,8 @@ return [
         'class-start-day' => 'روز شروع',
         'class-end-day' => 'روز پایان',
         'class-times' => 'زمان',
-        'class-title' => 'عنوان ترم',
-        'class-description' => 'توضیحات ترم',
+        'class-title' => 'عنوان',
+        'class-description' => 'توضیحات',
 
         'term-title' => 'عنوان ترم',
         'term-description' => 'توضیحات ترم',
@@ -83,7 +99,6 @@ return [
         'quick-contact' => 'تماس سریع',
         'send-message-us' => 'منتظر پیام های شما هستیم.',
         'your-message' => 'پیام',
-        'name' => 'نام',
         'submit' => 'ارسال',
         'section' => 'بخش مورد نظر',
         'search-query' => 'کلمه مورد جستجو',

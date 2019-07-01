@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Appnegar\Cms\Traits\UserTrait;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Appnegar\Cms\Traits\ModelTrait;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+
 
 class User extends Authenticatable
 {

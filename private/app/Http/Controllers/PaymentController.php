@@ -17,27 +17,24 @@ class PaymentController extends Controller
         ]);
 
         if (\Auth::check()) {
-            $user_class = UserClass::create([
-                'user_id' => auth()->id(),
-                'class_room_id' => $request->class_id,
-                'status' => 1,
-            ]);
+            $user = auth()->user();
 
-
-            //        todos
-//        1-payment
-
+            $user_class = new UserClass();
+            $user_class->user_id = $user->id;
+            $user_class->class_room_id = $request->class_id;
+            $user_class->status = 1;
+            $user_class->save();
 
             if ($user_class)
                 return view('main_template.pages.message')
                     ->with('type', 'success')
                     ->with('title', __('messages.global.success'))
                     ->with('message', __('messages.global.success-description'));
-
-            return view('main_template.pages.message')
-                ->with('type', 'error')
-                ->with('title', __('messages.global.error'))
-                ->with('message', __('messages.global.error-description'));
+            else
+                return view('main_template.pages.message')
+                    ->with('type', 'error')
+                    ->with('title', __('messages.global.error'))
+                    ->with('message', __('messages.global.error-description'));
         }
         return response()->json(['message' => 'unauthenticated!'], 401);
 

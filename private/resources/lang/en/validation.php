@@ -112,6 +112,7 @@ return [
     'unique'               => 'The :attribute has already been taken.',
     'uploaded'             => 'The :attribute failed to upload.',
     'url'                  => 'The :attribute format is invalid.',
+    'captcha' => 'The Captcha Is Not Correct',
 
     /*
     |--------------------------------------------------------------------------
@@ -126,7 +127,7 @@ return [
 
     'custom' => [
         'attribute-name' => [
-            'rule-name' => 'custom-message',
+            'captcha' => 'captcha',
         ],
     ],
 

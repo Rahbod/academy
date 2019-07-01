@@ -31,15 +31,15 @@
                             <div class="col-md-6 col-lg-4 col-sm-6 m-b30">
                                 <div class="dlab-box hotal-box" data-tilt="" data-tilt-max="10" data-tilt-speed="1">
                                     {{--<a title="{{$course['title_'.session('lang')]}}"--}}
-                                       {{--href="{{ url(session('lang') .'/courses/'.$course['id'].'/'.str_replace(' ','-',$course['title_'.session('lang')]))}}">--}}
-                                        {{--<img src="{{$course['image']}}" alt="{{$course['image']}}">--}}
+                                    {{--href="{{ url(session('lang') .'/courses/'.$course['id'].'/'.str_replace(' ','-',$course['title_'.session('lang')]))}}">--}}
+                                    {{--<img src="{{$course['image']}}" alt="{{$course['image']}}">--}}
                                     {{--</a>--}}
                                     <div class="dlab-media dlab-img-effect dlab-img-overlay2">
                                         <img src="{{$course['image']}}" alt="{{$course['image']}}">
                                         <div class="dlab-info-has p-a20 text-white no-hover">
                                             <h4 class="m-t0 m-b10">english</h4>
                                             {{--<span>{{$course['terms']['']}}</span>--}}
-                                            <h2 class="m-t10 m-b20">{{$course['duration']}} month</h2>
+                                            <h2 class="m-t10 m-b20">{{session("lang")=='en' ?  $course['duration'] : numberConvertor($course['duration'])}} @lang('messages.global.month')</h2>
                                             <a href="{{ url(session('lang') .'/courses/'.$course['id'].'/'.str_replace(' ','-',$course['title_'.session('lang')]))}}"
                                                class="site-button outline outline-2 radius-xl"
                                                title="{{$course['title_'.session('lang')]}}">
@@ -83,6 +83,3 @@
     </section>
 @endsection
 
-@push('scripts')
-
-@endpush

@@ -6,6 +6,7 @@ use App\Category;
 use App\ClassRoom;
 use App\Course;
 use App\Term;
+use App\UserClass;
 use Carbon\Carbon;
 
 class CourseController extends Controller
@@ -34,9 +35,7 @@ class CourseController extends Controller
 
     public function index()
     {
-//        dd(session('lang'));
         $courses = $this->getQuery()->where('lang', session('lang'))->paginate(9);
-//        dd($courses);
 
         $breadcrumbs[0]['title'] = __('messages.global.home');
         $breadcrumbs[0]['link'] = 'home';
@@ -45,15 +44,11 @@ class CourseController extends Controller
         $breadcrumbs[1]['title'] = __('messages.home.course-title');
         $breadcrumbs[1]['link'] = 'courses';
 
-//        dd($breadcrumbs);
-
         return view('main_template.pages.courses.index')->with('courses', $courses)->with('breadcrumbs', $breadcrumbs);
     }
 
     public function termShow($course_id)
     {
-//        return $course_id;
-
         $course = $this->query->where('lang', session('lang'))
             ->with(['terms.class_rooms' => function ($q) {
                 $q->where('status', 1)->where('registration_start_date', '<=', Carbon::now())
@@ -63,13 +58,23 @@ class CourseController extends Controller
                 $q->where('status', 1);
             }])->findOrFail($course_id);
 
+        $breadcrumbs[0]['title'] = __('messages.global.home');
+        $breadcrumbs[0]['link'] = 'home';
+
+
+        $breadcrumbs[1]['title'] = __('messages.home.course-title');
+        $breadcrumbs[1]['link'] = 'courses';
+
+//        dd($course);
         if (request()->ajax()) {
             $class_view = view('main_template.pages.courses.step-1')
                 ->with('course', $course);
             return $class_view;
         }
 
-        return view('main_template.pages.courses.course-registration')->with('course', $course);
+        return view('main_template.pages.courses.course-registration')
+            ->with('breadcrumbs', $breadcrumbs)
+            ->with('course', $course);
     }
 
     public function classShow($id)
@@ -83,7 +88,6 @@ class CourseController extends Controller
                 }]);
         }])
             ->with('course')->findOrFail($id);
-//        dd($term);
 
         $class_view = view('main_template.pages.courses.step-2')
             ->with('course', $term['course'])
@@ -94,10 +98,19 @@ class CourseController extends Controller
 
     public function verify($class_id)
     {
+        $user=auth()->user();
+
         $class_room = ClassRoom:: with('term.course')->with('class_room_times')->with(['teacher' => function ($q) {
             $q->where('status', 1);
         }])->findOrFail($class_id);
-//        dd($class_room);
+
+        $class_id_array = ClassRoom::where('term_id', $class_room->term->id)->get()->pluck('id');
+
+        $user_registered_before = UserClass::where('status', 1)->where('user_id', $user->id)->whereIn('class_room_id',$class_id_array)->first();
+
+        if ($user_registered_before) {
+            return response()->json(['title' => trans('messages.global.sorry'), 'message' => trans('notifications.registered-before')], 422);
+        }
 
         $class_view = view('main_template.pages.courses.verify')
             ->with('class_room', $class_room)

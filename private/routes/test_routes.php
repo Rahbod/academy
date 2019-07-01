@@ -33,3 +33,47 @@ Route::get('about-us', 'ContactUsController@aboutUs')->name('about-us');
 Route::view('404', 'errors.404');
 Route::view('500', 'errors.500');
 Route::view('under_maintenance', 'errors.under_maintenance');
+
+Route::get('messages', function () {
+    return view('main_template.pages.message')->with([
+        'type' => 'success',
+        'title' => 'ثبت نام با موفقیت انجام شد.',
+        'message' => 'ثبت نام شما با موفقیت انجام شد.لطفا جهت فعال سازی حسابتان به پست الکترونیکی خود مراجعه و بر روی لینک فعال سازی کلیک نمایید.'
+    ]);
+});
+
+Route::get('renew-captcha-image', function () {
+    return captcha_img('flat');
+});
+
+Route::get('test-static-page', 'ContactUsController@test');
+
+Route::get('{resource}/tags/show/{id}/{slug}', 'TagController@show');
+
+Route::get('test/mailable', function () {
+    $user = new App\User();
+    $user->username = 'mustafa';
+    $user->name = 'mustafa';
+    $user->type = 'user';
+    $user->is_admin = '0';
+    $user->status = '1';
+    $user->verified = '0';
+    $user->access_level = 1;
+    $user->password = bcrypt('mustafa');
+    $user->verify_email_link = 'mustafa';
+    $user->email = 'mustafa.rezae01@gmail.com';
+    $user->save();
+
+    Log::info($user);
+
+    Mail::to($user)->send(new App\Mail\VerifyAccount($user));
+    return (new App\Mail\VerifyAccount($user))->render();
+
+
+//    return (new App\Mail\Notification('عنوان ازمایشی','متن ازمایشی'));
+
+
+    return response()->json([
+        'success' => 'ارسال ایمیل با موفقیت انجام شد.'
+    ]);
+});

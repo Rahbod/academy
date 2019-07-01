@@ -20,14 +20,36 @@ class ComposerServiceProvider extends ServiceProvider
             'errors.404',
             'errors.500',
 
+            'auth.passwords.email',
+            'auth.passwords.reset',
+
             'auth.login',
             'auth.register',
+            'auth.verify',
 
-            'main_template.pages.comment.comment_form',
-            'main_template.pages.comment.comment_list',
+            'main_template.master_page.master',
+
+            'main_template.modules.header',
+
+            'main_template.pages.courses.course-registration',
+            'main_template.pages.courses.index',
+            'main_template.pages.courses.show',
+            'main_template.pages.courses.verify',
+
+            'main_template.pages.news.index',
+            'main_template.pages.news.show',
+
+            'main_template.pages.about-us',
+            'main_template.pages.contact-us',
+            'main_template.pages.home',
+            'main_template.pages.message',
+            'main_template.pages.search',
+            'main_template.pages.translation',
+
+            'main_template.pages.static_pages.test',
 
         ];
-        View::composer('*','App\Http\View\Composer\Menus');
+        View::composer($global_views, 'App\Http\View\Composer\Menus');
 
     }
 

@@ -47,14 +47,16 @@
                                 <img src="{{$content['image']}}" alt="{{$content['title']}}">
                                 {{--</a>--}}
                             </div>
+
                             <div class="dlab-post-text">
                                 {!! $content['text'] !!}
                             </div>
+
                             <div class="dlab-post-tags clear">
                                 <div class="post-tags">
                                     @foreach($content->tags as $tag)
                                         <a title="{{$tag['name']}}"
-                                           href="{{url(session('lang').'/tags/show/'.$tag['id'].'/'.str_replace(' ','-',$tag['name']))}}">{{$tag['name']}}</a>
+                                           href="{{url(session('lang').'content/tags/show/'.$tag['id'].'/'.str_replace(' ','-',$tag['name']))}}">{{$tag['name']}}</a>
                                     @endforeach
                                 </div>
                             </div>
@@ -62,19 +64,37 @@
 
                             <div class="share-details-btn">
                                 <ul>
-                                    <li><h5 class="m-a0">Share Post</h5></li>
-                                    <li><a href="#" class="site-button facebook button-sm"><i
-                                                    class="fa fa-facebook"></i> Facebook</a></li>
-                                    <li><a href="#" class="site-button google-plus button-sm"><i
-                                                    class="fa fa-google-plus"></i> Google Plus</a></li>
-                                    <li><a href="#" class="site-button linkedin button-sm"><i
-                                                    class="fa fa-linkedin"></i> Linkedin</a></li>
-                                    <li><a href="#" class="site-button instagram button-sm"><i
-                                                    class="fa fa-instagram"></i> Instagram</a></li>
-                                    <li><a href="#" class="site-button twitter button-sm"><i class="fa fa-twitter"></i>
-                                            Twitter</a></li>
-                                    <li><a href="#" class="site-button whatsapp button-sm"><i
-                                                    class="fa fa-whatsapp"></i> Whatsapp</a></li>
+                                    <li><h5 class="m-a0">@lang('social.share-post')</h5></li>
+                                    <li>
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{request()->fullUrl()}}"
+                                           target="_blank" class="site-button facebook button-sm"
+                                           title="@lang('social.facebook')">
+                                            @lang('social.facebook')
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank"
+                                           href="https://plus.google.com/share?url={{request()->fullUrl()}}"
+                                           title="@lang('social.google-plus')"
+                                           class="site-button google-plus button-sm"> @lang('social.google-plus')</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.linkedin.com/cws/share?url={{request()->fullUrl()}}"
+                                           class="site-button linkedin button-sm" @lang('social.linkedin')> @lang('social.linkedin')</a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank"
+                                           href="https://telegram.me/share/url?url={{request()->fullUrl()}}"
+                                           class="site-button instagram button-sm" title="@lang('social.twitter')"> @lang('social.instagram')</a></li>
+                                    <li>
+                                        <a target="_blank"
+                                           href="https://twitter.com/home?status={{request()->fullUrl()}}"
+                                           class="site-button twitter button-sm" title="@lang('social.twitter')">
+                                            @lang('social.twitter')</a></li>
+                                    <li>
+                                    {{--<a href="https://telegram.me/share/url?url={{request()->fullUrl()}}"--}}
+                                    {{--class="site-button whatsapp button-sm"><i--}}
+                                    {{--class="fa fa-whatsapp"></i> Whatsapp</a></li>--}}
                                 </ul>
                             </div>
                         </div>

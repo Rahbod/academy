@@ -41,15 +41,15 @@
                     <div class="col-md-11 mx-auto m-b30">
                         {{-- steps --}}
                         <div class="p-a30  m-auto">
-                            <div id="steps" class="border-1">
+                            <div id="steps" class="border-1 p-2 p-md-0">
                                 @include('main_template.pages.courses.step-1')
                             </div>
                             <div class="d-flex justify-content-center mt-3">
                                 <a href="void:;" id="prevStep" data-lang="{{session('lang')}}"
-                                   class="site-button mx-2">@lang('messages.global.prev')
+                                   class="site-button mx-2 site-button google-plus">@lang('messages.global.prev')
                                 </a>
 
-                                <button id="nextStep" data-lang="{{session('lang')}}"
+                                <button disabled="" id="nextStep" data-lang="{{session('lang')}}"
                                         class="site-button mx-2">@lang('messages.global.next')
                                 </button>
                             </div>
@@ -70,65 +70,73 @@
         let idsArray = [];
         idsArray.push("{{$course['id']}}");
         let checkedRadiosCount = $(".courseRegisterPage input[type='radio']:checked").length;
+        console.log(checkedRadiosCount);
 
-        if (checkedRadiosCount > 0) {
-            $('.courseRegisterPage').on('click', '#nextStep', function () {
-                let This = $(this), url;
-                let counter = parseInt($('#stepIndicator').val());
-                if (counter < 3) {
-                    let lang = This.data('lang');
-                    let radioValue = $(".courseRegisterPage input[type='radio']:checked").val();
+        //        if (checkedRadiosCount > 0) {
+        //            console.log('inside if');
+        $('.courseRegisterPage').on('click', '#nextStep', function () {
+//            console.log(sdfsdfsdf);
 
-                    if (counter == 0) {
-                        url = '/' + lang + '/class-show/' + radioValue;
-                    }
-                    if (counter == 1) {
-                        url = '/' + lang + '/verify/' + radioValue;
-                    }
+            let This = $(this), url;
+            let counter = parseInt($('#stepIndicator').val());
+            if (counter < 3) {
+                let lang = This.data('lang');
+                let radioValue = $(".courseRegisterPage input[type='radio']:checked").val();
 
-                    $.ajax({
-                        url: url,
-                        type: 'get',
-                        success: function (response) {
-                            counter = counter + 1;
-                            $('#stepIndicator').val(counter);
-                            $('#prevStepId').val(radioValue);
-                            steps.html(response);
-                            idsArray.push(radioValue);
-
-                            if (counter == 2) {
-                                This.hide().attr('disabled', true);
-                                idsArray.splice(-1, 1);
-                            }
-
-                        },
-                        error: function (error) {
-                            if (typeof error.response == 'array')
-                                $.each(error.responseJSON.errors, function (key, value) {
-                                    // $('#' + key).parents('.form-group').find('.invalid-tooltip').show().html(value[0]);
-                                    toaster('error', key, value);
-                                });
-                            toaster('error', 'error', error.responseJSON.message);
-
-                        },
-                        fail: function (fail) {
-                            toaster('error', 'error', 'error');
-                        }
-                    })
+                if (counter == 0) {
+                    url = '/' + lang + '/class-show/' + radioValue;
                 }
-                else {
-                    toaster('error', 'error', 'error');
+                if (counter == 1) {
+                    url = '/' + lang + '/verify/' + radioValue;
+                }
+
+                $.ajax({
+                    url: url,
+                    type: 'get',
+                    success: function (response) {
+                        console.log('request sent');
+                        counter = counter + 1;
+                        $('#stepIndicator').val(counter);
+                        $('#prevStepId').val(radioValue);
+                        steps.html(response);
+                        idsArray.push(radioValue);
+
+                        if (counter == 2) {
+                            This.hide().attr('disabled', true);
+                            idsArray.splice(-1, 1);
+                        }
+
+                    },
+                    error: function (error) {
+                        console.log(error);
+                        if (typeof error.response == 'array')
+                            $.each(error.responseJSON.errors, function (key, value) {
+                                // $('#' + key).parents('.form-group').find('.invalid-tooltip').show().html(value[0]);
+                                toaster('error', key, value);
+                            });
+                        toaster('error', error.responseJSON.title, error.responseJSON.message);
+
+                    },
+                    fail: function (fail) {
+                        toaster('error', 'error', 'error');
+                    }
+                })
+            }
+            else {
+                toaster('error', 'error', 'error');
 
 //                counter = 3;
 //                This.attr('data-counter', counter);
-                }
-            });
-        }
-        else {
-            $('.courseRegisterPage #nextStep').attr('disabled', true);
-        }
+            }
+        });
+        //        }
+        //        else {
+        //            console.log('inside else');
+        //        $('.courseRegisterPage #nextStep').attr('disabled', true);
+        //        }
 
         $(".courseRegisterPage input[type='radio']").on('click', function () {
+//            checkedRadiosCount = 1;
             $('.courseRegisterPage #nextStep').attr('disabled', false);
         });
 
@@ -181,6 +189,19 @@
             }
         });
 
+        function showMessage() {
+            toaster('error', "{{trans('messages.global.note')}}", "{{trans('messages.global.popover-title')}}")
+        }
 
+        function checkRadio(el) {
+            $radioInputs = document.querySelectorAll("input[type = 'radio']");
+            $.each($radioInputs, function (key, value) {
+                $(value).attr('checked', false);
+            });
+
+            $(el).first('td').find('input').attr('checked', true);
+            $('.courseRegisterPage #nextStep').attr('disabled', false);
+
+        }
     </script>
 @endpush

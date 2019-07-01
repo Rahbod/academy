@@ -2,15 +2,32 @@
 
 return [
     'global' => [
-        'class-information' => 'Class Information',
-        'class-capacity' => 'Class Capacity',
-        'class-price' => 'Class Price',
+        "tags"=> "Tags",
+        "tags-description"=> "All Contents With Title Of : ",
+        "sorry"=> "sorry",
+
+        'popover-title'=>'The Term Has No Class Or It Is Filled',
+        'site-name'=>'English Training Complex',
+
+        'remove' => 'Remove',
+        'category' => 'Category',
+        'source-language' => 'Source Language',
+        'destination-language' => 'Destination Language',
+        'fill-carefully'=>'Please Fill The Blanks Carefully',
+        'translation-request-form'=>'Request Form',
+        'translation-request'=>'Translation Request',
+
+        'person' => 'person',
+
+        'class-information' => 'Information',
+        'class-capacity' => 'Capacity',
+        'class-price' => 'Price',
         'class-master' => 'Master',
-        'class-registration-start-day' => 'Class Registration Start Day',
-        'class-registration-end-day' => 'Class Registration End Day',
-        'class-start-day' => 'Class Start Day',
-        'class-end-day' => 'Class End Day',
-        'class-times' => 'Class Times',
+        'class-registration-start-day' => 'Registration Start Day',
+        'class-registration-end-day' => 'Registration End Day',
+        'class-start-day' => 'Start Day',
+        'class-end-day' => 'End Day',
+        'class-times' => 'Times',
         'class-title' => 'Title',
         'class-description' => 'Descriptions',
 
@@ -24,7 +41,7 @@ return [
 
         'user-information' => 'User Information',
         'pay' => 'Pay',
-        'cancel' => 'انصراف',
+        'cancel' => 'Cancel',
         'class-image' => 'Class Image',
         'select-class' => 'Select Your Class',
         'term-information' => 'Term Information',

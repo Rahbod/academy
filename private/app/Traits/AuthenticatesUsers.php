@@ -26,7 +26,6 @@ trait AuthenticatesUsers
      */
     public function showLoginForm()
     {
-//        dd(request());
         return view('auth.login');
     }
 
@@ -43,9 +42,6 @@ trait AuthenticatesUsers
 //        return $request->all();
         $this->validateLogin($request);
 
-        // If the class is using the ThrottlesLogins trait, we can automatically throttle
-        // the login attempts for this application. We'll key this by the username and
-        // the IP address of the client making these requests into this application.
         if ($this->hasTooManyLoginAttempts($request)) {
             $this->fireLockoutEvent($request);
 
@@ -56,9 +52,6 @@ trait AuthenticatesUsers
             return $this->sendLoginResponse($request);
         }
 
-        // If the login attempt was unsuccessful we will increment the number of attempts
-        // to login and redirect the user back to the login form. Of course, when this
-        // user surpasses their maximum number of attempts they will get locked out.
         $this->incrementLoginAttempts($request);
 
         return $this->sendFailedLoginResponse($request);
@@ -103,7 +96,7 @@ trait AuthenticatesUsers
     protected function credentials(Request $request)
     {
         $credentials = $request->only($this->username(), 'password');
-        return array_merge($credentials, ['status' => 1,'verified'=>1]);
+        return array_merge($credentials, ['status' => 1, 'verified' => 1]);
 //        return $request->only($this->username(), 'password');
     }
 
@@ -115,15 +108,10 @@ trait AuthenticatesUsers
      */
     protected function sendLoginResponse(Request $request)
     {
+
         $request->session()->regenerate();
 
         $this->clearLoginAttempts($request);
-
-        $authenticated = $this->authenticated($request, $this->guard()->user());
-
-        if ($authenticated && $request->ajax()) {
-            return response()->json(['title' => 'success', 'message' => 'welcome ' . auth()->user()->name]);
-        }
 
         return $this->authenticated($request, $this->guard()->user())
             ?: redirect()->intended($this->redirectPath());

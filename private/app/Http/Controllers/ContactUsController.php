@@ -35,10 +35,16 @@ class ContactUsController extends Controller
         $feedback->name = $request->name;
         $feedback->email = $request->email;
         $feedback->content = $request->input('content');
-        $feedback->archive = 0;
+//        $feedback->archive = 0;
         $status = $feedback->save();
 
-        return response()->json(['message' => 'information stored successfully'], 200);
+        return view('main_template.pages.message')->with([
+            'type' => 'success',
+            'title' => trans('notifications.stored_successfully'),
+            'message' => trans('notifications.stored_successfully_content')
+        ]);
+
+//        return response()->json(['message' => 'information stored successfully'], 200);
     }
 
     public function storeNewsLetter(Request $request)
@@ -59,5 +65,17 @@ class ContactUsController extends Controller
         $breadcrumbs[1]['link'] = 'about-us';
 
         return view('main_template.pages.about-us')->with('breadcrumbs', $breadcrumbs);
+    }
+
+    public function test()
+    {
+        $breadcrumbs[0]['title'] = __('messages.global.home');
+        $breadcrumbs[0]['link'] = 'home';
+
+
+        $breadcrumbs[1]['title'] = __('pages.breadcrumb-title');
+        $breadcrumbs[1]['link'] = 'test';
+
+        return view('main_template.pages.static_pages.test')->with('breadcrumbs', $breadcrumbs);
     }
 }
