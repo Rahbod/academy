@@ -1,7 +1,7 @@
 @extends('main_template.master_page.master')
 
 @section('content')
-    @if(isset($main_sliders))
+    @if(isset($main_sliders['sliders']))
 
         <section class="sliderSection">
             <div class="mainSlider">
