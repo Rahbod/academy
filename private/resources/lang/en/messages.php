@@ -7,7 +7,7 @@ return [
         "sorry"=> "sorry",
 
         'popover-title'=>'The Term Has No Class Or It Is Filled',
-        'site-name'=>'English Training Complex',
+        'site-name'=>'ETC',
 
         'remove' => 'Remove',
         'category' => 'Category',
