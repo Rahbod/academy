@@ -106,7 +106,7 @@ class CourseController extends Controller
 
         $class_id_array = ClassRoom::where('term_id', $class_room->term->id)->get()->pluck('id');
 
-        $user_registered_before = UserClass::where('status', 1)->where('user_id', $user->id)->whereIn('class_room_id',$class_id_array)->first();
+        $user_registered_before = UserClass::where('status', 1)->where('user_id', $user->id)->whereIn('classroom_id',$class_id_array)->first();
 
         if ($user_registered_before) {
             return response()->json(['title' => trans('messages.global.sorry'), 'message' => trans('notifications.registered-before')], 422);

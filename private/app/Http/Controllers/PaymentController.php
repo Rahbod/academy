@@ -21,7 +21,7 @@ class PaymentController extends Controller
 
             $user_class = new UserClass();
             $user_class->user_id = $user->id;
-            $user_class->class_room_id = $request->class_id;
+            $user_class->classroom_id = $request->class_id;
             $user_class->status = 1;
             $user_class->save();
 
