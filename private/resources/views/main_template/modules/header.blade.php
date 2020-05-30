@@ -5,31 +5,35 @@ if (session('lang') === 'fa') {
     $siteName =config('system.main.title');
 }
 ?><header class="header">
-    <div class="topBar bg-dark">
+    <div class="topBar">
         <div class="container">
             <div class="row d-flex justify-content-between">
                 <ul class="rightMenu">
-                    <li>
-                        <a title="@lang('messages.global.contact-us')" class="topbar__buttonLink"
-                           href="{{route('contact-us',['lang'=>session('lang')])}}">@lang('messages.global.contact-us')</a>
-                    </li>
-                    <li>
-                        <a title="@lang('messages.global.about-us')" class="topbar__buttonLink"
-                           href="{{route('about-us',['lang'=>session('lang')])}}">@lang('messages.global.about-us')</a>
-                    </li>
-                    {{--<li>--}}
-                    {{--<a title="translation" class="topbar__buttonLink" href="{{route('translations',['lang'=>session('lang')])}}">translation</a>--}}
-                    {{--</li>--}}
+{{--                    <li>--}}
+{{--                        <a title="@lang('messages.global.contact-us')" class="topbar__buttonLink"--}}
+{{--                           href="{{route('contact-us',['lang'=>session('lang')])}}">@lang('messages.global.contact-us')</a>--}}
+{{--                    </li>--}}
+{{--                    <li>--}}
+{{--                        <a title="@lang('messages.global.about-us')" class="topbar__buttonLink"--}}
+{{--                           href="{{route('about-us',['lang'=>session('lang')])}}">@lang('messages.global.about-us')</a>--}}
+{{--                    </li>--}}
+{{--                    <li>--}}
+{{--                    <a title="translation" class="topbar__buttonLink" href="{{route('translations',['lang'=>session('lang')])}}">translation</a>--}}
+{{--                    </li>--}}
                 </ul>
                 <ul class="leftMenu">
+                    <div class="extra-nav">
+                        <div class="extra-cell">
+                            <button onclick="$('#showSearchForm').show().find('input').focus();" id=""
+                                    type="button"
+                                    class="site-button-link"><i
+                                        class="fa fa-search"></i></button>
+                        </div>
+                    </div>
                     @guest
                         <li><a title="@lang('messages.global.login')"
                                href="{{route('login',['lang'=>session('lang')])}}"
-                               class="topbar__buttonLink">@lang('messages.global.login')</a>
-                        </li>
-                        <li><a title="@lang('messages.global.register')"
-                               href="{{route('register',['lang'=>session('lang')])}}"
-                               class="topbar__buttonLink">@lang('messages.global.register')</a></li>
+                               class="topbar__buttonLink">@lang('messages.global.login')</a></li>
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle p-0" href="#" role="button"
@@ -153,30 +157,22 @@ if (session('lang') === 'fa') {
                                         </li>
                                     @endif
                                 @endforeach
-                                @if(session('lang') !='fa')
-                                    <li class="d-none d-lg-block mx-3">
-                                        <div class="extra-nav">
-                                            <div class="extra-cell">
-                                                <button onclick="$('#showSearchForm').show().find('input').focus();"
-                                                        id=""
-                                                        type="button"
-                                                        class="site-button-link"><i
-                                                            class="fa fa-search"></i></button>
-                                            </div>
-                                        </div>
-                                    </li>
-                                @endif
+{{--                                @if(session('lang') !='fa')--}}
+{{--                                    <li class="d-none d-lg-block mx-3">--}}
+{{--                                        <div class="extra-nav">--}}
+{{--                                            <div class="extra-cell">--}}
+{{--                                                <button onclick="$('#showSearchForm').show().find('input').focus();"--}}
+{{--                                                        id=""--}}
+{{--                                                        type="button"--}}
+{{--                                                        class="site-button-link"><i--}}
+{{--                                                            class="fa fa-search"></i></button>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </li>--}}
+{{--                                @endif--}}
                             @endif
                         </ul>
                         @if(session('lang') =='fa')
-                            <div class="extra-nav">
-                                <div class="extra-cell">
-                                    <button onclick="$('#showSearchForm').show().find('input').focus();" id=""
-                                            type="button"
-                                            class="site-button-link"><i
-                                                class="fa fa-search"></i></button>
-                                </div>
-                            </div>
                             <a class="navbar-brand ml-3" href="{{route('home',['lang'=>session('lang')])}}">
                                 <!--<img src="./assets/media/images/public/site_logo.png"-->
                                 <!--class="siteLogo__image img-fluid" alt="آکادمی زبان ">-->
@@ -234,11 +230,7 @@ if (session('lang') === 'fa') {
             @guest
                 <li><a title="@lang('messages.global.login')"
                        href="{{route('login',['lang'=>session('lang')])}}"
-                       class="menu-item">@lang('messages.global.login')</a>
-                </li>
-                <li><a title="@lang('messages.global.register')"
-                       href="{{route('register',['lang'=>session('lang')])}}"
-                       class="menu-item">@lang('messages.global.register')</a></li>
+                       class="menu-item">@lang('messages.global.login')</a></li>
                 @else
                     <li>
                         <a title=""

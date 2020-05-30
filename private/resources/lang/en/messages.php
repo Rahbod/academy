@@ -57,7 +57,7 @@ return [
         'back' => 'Back',
         'contact-us' => 'Contact Us',
         'about-us' => 'About Us',
-        'login' => 'Login',
+        'login' => 'Login | Register',
         'register' => 'Register',
         'home' => 'Home',
         'details' => 'Details',

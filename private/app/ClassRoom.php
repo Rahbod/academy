@@ -44,15 +44,15 @@ class ClassRoom extends Model
                     'show_in_sub_table' => false,
                     'show_in_form' => true
                 ],
-                [
-                    'name' => 'author_id',
-                    'type' => 'numeric',
-                    'input_type' => 'hidden',
-                    'orderable' => true,
-                    'searchable' => true,
-                    'show_in_table' => false,
-                    'show_in_form' => true,
-                ],
+//                [
+//                    'name' => 'author_id',
+//                    'type' => 'numeric',
+//                    'input_type' => 'hidden',
+//                    'orderable' => true,
+//                    'searchable' => true,
+//                    'show_in_table' => false,
+//                    'show_in_form' => true,
+//                ],
                 [
                     'name' => 'teacher_id',
                     'type' => 'select',

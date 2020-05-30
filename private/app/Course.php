@@ -46,15 +46,15 @@ class Course extends Model
                     'show_in_sub_table' => false,
                     'show_in_form' => true
                 ],
-                [
-                    'name' => 'author_id',
-                    'type' => 'numeric',
-                    'input_type' => 'disable',
-                    'orderable' => true,
-                    'searchable' => true,
-                    'show_in_table' => false,
-                    'show_in_form' => true,
-                ],
+//                [
+//                    'name' => 'author_id',
+//                    'type' => 'numeric',
+//                    'input_type' => 'disable',
+//                    'orderable' => true,
+//                    'searchable' => true,
+//                    'show_in_table' => false,
+//                    'show_in_form' => true,
+//                ],
                 [
                     'name' => 'category_id',
                     'type' => 'select',
