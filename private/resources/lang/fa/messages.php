@@ -127,9 +127,9 @@ return [
     ],
     'social' => [
         'telegram' => 'تلگرام',
-        'facebook' => 'فیسبوک',
+        'whatsapp' => 'واتس او',
         'twitter' => 'توییتر',
         'instagram' => 'اینستاگرام',
-        'google-plus' => 'گوگل پلاس',
+        'linked_in' => 'لینکداین',
     ],
 ];

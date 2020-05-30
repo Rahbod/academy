@@ -136,18 +136,18 @@ class SettingsTableSeeder extends Seeder
         ]);
         Setting::create([
             'setting_group_id' => $setting_group->id,
-            'name' => 'facebook',
-            'display_name' => 'facebook',
-            'value' => 'https://www.facebook.com/test.org',
+            'name' => 'whatsapp',
+            'display_name' => 'whatsapp',
+            'value' => 'https://www.whatsapp.com/test.org',
             'type' => 'text',
             'direction' => 'ltr',
             'order' => $order++
         ]);
         Setting::create([
             'setting_group_id' => $setting_group->id,
-            'name' => 'google_plus',
-            'display_name' => 'google plus',
-            'value' => 'https://plus.google.com/+test.org',
+            'name' => 'linked_in',
+            'display_name' => 'linked_in',
+            'value' => 'https://linked-in.com/test.org',
             'type' => 'text',
             'direction' => 'ltr',
             'order' => $order++

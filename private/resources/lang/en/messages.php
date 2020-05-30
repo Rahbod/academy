@@ -129,9 +129,9 @@ return [
     ],
     'social' => [
         'telegram' => 'telegram',
-        'facebook' => 'facebook',
+        'linked_in' => 'Linked-in',
         'twitter' => 'twitter',
         'instagram' => 'instagram',
-        'google-plus' => 'google-plus',
+        'whatsapp' => 'Whatsapp',
     ],
 ];

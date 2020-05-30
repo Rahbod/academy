@@ -1,8 +1,8 @@
 <?php
 return [
     "share-post" => 'Share Post',
-    "facebook" => 'facebook',
-    "google-plus" => "google-plus",
+    "linked_in" => 'linked_in',
+    "whatsapp" => "whatsapp",
     "telegram" => "telegram",
     "twitter" => "twitter",
     "instagram" => "instagram",

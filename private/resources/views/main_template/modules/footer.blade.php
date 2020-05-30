@@ -35,14 +35,14 @@
                         </ul>
                     </div>
                     <ul class="list-inline mb-5 mb-lg-0">
-                        <li class="mb-2"><a title="@lang('messages.social.facebook')"
-                                            href="{{config('system.about_us.facebook')}}"
-                                            class="site-button facebook sharp"><i
-                                        class="fab fa-facebook-f"></i></a></li>
-                        <li class="mb-2"><a title="@lang('messages.social.google-plus')"
-                                            href="{{config('system.about_us.google_plus')}}"
-                                            class="site-button google-plus sharp"><i
-                                        class="fab fa-google-plus-g"></i></a></li>
+                        <li class="mb-2"><a title="@lang('messages.social.whatsapp')"
+                                            href="{{config('system.about_us.whatsapp')}}"
+                                            class="site-button whatsapp sharp"><i
+                                        class="fab fa-whatsapp"></i></a></li>
+                        <li class="mb-2"><a title="@lang('messages.social.linked_in')"
+                                            href="{{config('system.about_us.linked_in')}}"
+                                            class="site-button linkedin sharp"><i
+                                        class="fab fa-linkedin-in"></i></a></li>
                         <li class="mb-2"><a title="@lang('messages.social.telegram')"
                                             href="{{config('system.about_us.telegram')}}"
                                             class="site-button telegram sharp"><i class="fab fa-telegram-plane"></i></a>

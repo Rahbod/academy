@@ -1,8 +1,8 @@
 <?php
 return [
     "share-post"=>'اشراک گذاری',
-    "facebook"=>'فیسبوک',
-    "google-plus" => "گوگل پلاس",
+    "linked_in"=>'لینکداین',
+    "whatsapp" => "واتس اپ",
     "telegram" => "تلگرام",
     "twitter" => "توییتر",
     "instagram" => "اینستاگرام",
