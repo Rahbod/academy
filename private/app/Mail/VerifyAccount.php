@@ -39,7 +39,7 @@ class VerifyAccount extends Mailable
                 'level' => 'success',
                 'actionText' => trans('notifications.verify-account.action'),
                 'actionUrl' => url($url),
-                'siteName' => trans('messages.global.site-name'),
+                'siteName' => config('system.main.title'),
                 'activation' => trans('notifications.verify-account.subject'),
             ])
             ->from('info@profsadvice.com')

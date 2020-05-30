@@ -6,16 +6,16 @@
 
 @section('content')
     <section class="aboutUs mb-5">
-        <div class="dlab-bnr-inr overlay-black-middle">
-            <div class="container">
-                <div class="dlab-bnr-inr-entry">
-                    <h1 class="text-white">@lang('messages.global.about-us')</h1>
-                    <!-- Breadcrumb row -->
-                @include('main_template.modules.breadcrumb')
-                <!-- Breadcrumb row END -->
-                </div>
-            </div>
-        </div>
+{{--        <div class="dlab-bnr-inr overlay-black-middle">--}}
+{{--            <div class="container">--}}
+{{--                <div class="dlab-bnr-inr-entry">--}}
+{{--                    <h1 class="text-white">@lang('messages.global.about-us')</h1>--}}
+{{--                    <!-- Breadcrumb row -->--}}
+{{--                @include('main_template.modules.breadcrumb')--}}
+{{--                <!-- Breadcrumb row END -->--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
         <div class="content-block">
             <div class="section-full content-inner overlay-white-middle">
                 <div class="container">

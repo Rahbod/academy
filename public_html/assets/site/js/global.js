@@ -203,3 +203,15 @@ jQuery.fn.extend({
 function toaster(type, title, message) {
     toastr[type](message, title)
 }
+
+
+$(function () {
+    $("body").on("click", ".scroll-link", function (e) {
+        e.preventDefault();
+        let el = $(this).parents('section').next('section');
+        if (el)
+            $('html, body').animate({
+                scrollTop: (el.offset().top)
+            }, 1000);
+    });
+})

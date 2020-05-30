@@ -1,4 +1,10 @@
-<header class="header">
+<?php
+if (session('lang') === 'fa') {
+    $siteName =config('system.main.fa_title');
+} else {
+    $siteName =config('system.main.title');
+}
+?><header class="header">
     <div class="topBar bg-dark">
         <div class="container">
             <div class="row d-flex justify-content-between">
@@ -73,7 +79,7 @@
                             <!--<img src="./assets/media/images/public/site_logo.png"-->
                             <!--class="siteLogo__image img-fluid" alt="آکادمی زبان ">-->
                             <span class=""
-                                  style="font-size: inherit;color: inherit;font-weight: inherit;">{{__('messages.global.site-name')}}</span>
+                                  style="font-size: inherit;color: inherit;font-weight: inherit;">{{ $siteName }}</span>
                         </a>
                     @endif
                     <div>
@@ -175,7 +181,7 @@
                                 <!--<img src="./assets/media/images/public/site_logo.png"-->
                                 <!--class="siteLogo__image img-fluid" alt="آکادمی زبان ">-->
                                 <span class=""
-                                      style="font-size: inherit;color: inherit;font-weight: inherit;">{{__('messages.global.site-name')}}</span>
+                                      style="font-size: inherit;color: inherit;font-weight: inherit;">{{ $siteName }}</span>
                             </a>
                         @endif
 

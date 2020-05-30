@@ -6,17 +6,17 @@
 
 @section('content')
     <section class="searchPage">
-        <div class="dlab-bnr-inr overlay-black-middle">
-            <div class="container">
-                <div class="dlab-bnr-inr-entry">
-                    <h1 class="text-white">@lang('messages.global.search')</h1>
-                    <!-- Breadcrumb row -->
-                @include('main_template.modules.breadcrumb')
+{{--        <div class="dlab-bnr-inr overlay-black-middle">--}}
+{{--            <div class="container">--}}
+{{--                <div class="dlab-bnr-inr-entry">--}}
+{{--                    <h1 class="text-white">@lang('messages.global.search')</h1>--}}
+{{--                    <!-- Breadcrumb row -->--}}
+{{--                @include('main_template.modules.breadcrumb')--}}
 
-                <!-- Breadcrumb row END -->
-                </div>
-            </div>
-        </div>
+{{--                <!-- Breadcrumb row END -->--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
         <div class="content-inner-2">
             <div class="container">
                 @if(isset($contents))

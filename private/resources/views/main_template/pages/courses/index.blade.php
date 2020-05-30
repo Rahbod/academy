@@ -6,16 +6,16 @@
 
 @section('content')
     <section class="courseIndex mb-5">
-        <div class="dlab-bnr-inr overlay-black-middle">
-            <div class="container">
-                <div class="dlab-bnr-inr-entry">
-                    <h1 class="text-white">@lang('messages.home.course-title')</h1>
-                    <!-- Breadcrumb row -->
-                @include('main_template.modules.breadcrumb')
-                <!-- Breadcrumb row END -->
-                </div>
-            </div>
-        </div>
+{{--        <div class="dlab-bnr-inr overlay-black-middle">--}}
+{{--            <div class="container">--}}
+{{--                <div class="dlab-bnr-inr-entry">--}}
+{{--                    <h1 class="text-white">@lang('messages.home.course-title')</h1>--}}
+{{--                    <!-- Breadcrumb row -->--}}
+{{--                @include('main_template.modules.breadcrumb')--}}
+{{--                <!-- Breadcrumb row END -->--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
 
         <div class="section-full bg-white content-inner dlab-about-1">
             <div class="container">

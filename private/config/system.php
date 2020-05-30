@@ -2,7 +2,8 @@
 return [
 
     'main' => [
-            'title' =>  'موسسه زبان',
+            'title' =>  'ETC',
+            'fa_title' =>  'موسسه زبان',
             'related_sections' =>  'courses,translations,other',
             'status' =>  '1',
             'meta_keywords' =>  'زبان، اموزش، زبان انگلیسی',
@@ -44,7 +45,7 @@ return [
             'image_destination' =>  'content/image/',
         ],
     'page' => [
-            'image_size' =>  '500',
+            'image_size' =>  '5120',
             'image_width' =>  '200',
             'image_height' =>  '278',
             'image_extension' =>  'jpg, jpeg, png',
@@ -58,14 +59,14 @@ return [
             'image_destination' =>  'course/image/',
         ],
     'class_room' => [
-            'image_size' =>  '500',
+            'image_size' =>  '5120',
             'image_width' =>  '700',
             'image_height' =>  '450',
             'image_extension' =>  'jpg, jpeg, png',
             'image_destination' =>  'class_room/image/',
         ],
     'slider' => [
-            'image_size' =>  '2048',
+            'image_size' =>  '5120',
             'image_width' =>  '2000',
             'image_height' =>  '767',
             'image_extension' =>  'jpg, jpeg, png',
