@@ -20,6 +20,9 @@ Route::post('payment', 'PaymentController@store');
 Route::get('courses', 'CourseController@index')->name('courses');
 Route::get('courses/{id}/{slug?}', 'CourseController@show');
 
+Route::get('pages', 'PageController@index')->name('pages');
+Route::get('pages/{id}/{slug?}', 'PageController@show');
+
 Route::get('contact-us', 'ContactUsController@index')->name('contact-us');
 Route::post('contact-us', 'ContactUsController@store');
 Route::post('newsletter', 'ContactUsController@newsletter');

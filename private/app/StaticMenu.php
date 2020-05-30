@@ -198,7 +198,7 @@ class StaticMenu extends Model
 
     public function page()
     {
-        return $this->belongsTo('App\Page');
+        return $this->belongsTo('App\Page','page_id', 'id');
     }
 
 }

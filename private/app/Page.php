@@ -166,4 +166,9 @@ class Page extends Model
     {
         return $this->morphToMany('App\Tag', 'taggable');
     }
+
+    public function getUrl()
+    {
+        return url('/pages/',['id' => $this->id]);
+    }
 }

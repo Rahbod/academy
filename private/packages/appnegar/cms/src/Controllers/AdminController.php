@@ -9,6 +9,7 @@ use Appnegar\Cms\Traits\AdminCrudActions;
 use Appnegar\Cms\Traits\AdminFileEditor;
 use Appnegar\Cms\Traits\AdminFilterData;
 use Appnegar\Cms\Traits\Dataviewer;
+use phpDocumentor\Reflection\DocBlock\Description;
 
 
 class AdminController extends Controller
@@ -94,6 +95,7 @@ class AdminController extends Controller
      */
     public function show($id)
     {
+        dd($id);
         $model_name = "App\\" . $this->resource;
         $model = $model_name::findOrFail($id);
         $data = json_encode($model->toArray());

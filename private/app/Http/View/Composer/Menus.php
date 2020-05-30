@@ -28,7 +28,7 @@ class Menus
 
 
             $static_menu = StaticMenu::with(['page' => function ($q) use ($lang) {
-                $q->where('status', 1)->where('lang', $lang)->orderBy('order')->select('id', 'title');
+                $q->where('status', 1)->orderBy('order')->select('id', 'title');
             }])->where('status', 1)->where('lang', $lang)->defaultOrder()->get()->toTree();
             $array_menu=[];
             foreach ($static_menu as $menu){
@@ -60,7 +60,7 @@ class Menus
         ];
 
         if($menu->type === 'page' && $menu->page !== null){
-            $menu_item['link']=url('/'.$lang.'/pages/show/'.$menu->page->id);
+            $menu_item['link']=url('/'.$lang.'/pages/'.$menu->page->id);
         }
         if($menu->type === 'action'){
             $menu_item['link']=url('/'.$lang.'/'.$menu->link);
