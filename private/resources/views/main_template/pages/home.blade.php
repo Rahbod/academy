@@ -129,14 +129,14 @@
     @endif
 
     <section class="translation"
-             style="background-image:url('{{asset('/assets/site/media/images/translation/translation_2000x767.jpg')}}')">
+             style="background-image:url('{{ config('system.main.box_image_url') }}')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-12">
                     <div class="add-area">
-                        <h3>{{__('translate_requests.home_title')}}</h3>
-                        <h2>{{__('translate_requests.home_discount')}} <span style="color:#21ab64;">10-30%</span></h2>
-                        <p>{{__('translate_requests.home_content')}}</p>
+                        <h3>{{ config('system.main.box_title') }}</h3>
+                        <h2><span style="color:#21ab64;">{{ config('system.main.box_subtitle') }}</span></h2>
+                        <p>{{ config('system.main.box_description') }}</p>
                         @auth
                             <a title="@lang('messages.global.see-more-details')"
                                href="{{route('translations',['lang'=>session('lang')])}}"

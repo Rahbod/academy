@@ -18,6 +18,7 @@ return [
         'target'=>'مقصد',
         'order'=>'ترتیب نمایش',
         "description" => "توضیحات",
+        "location" => "مکان منو",
 
     ],
     'relations'=>[

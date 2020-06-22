@@ -13,7 +13,7 @@ class StaticMenu extends Model
     use ModelTrait;
     use SetAndGetDateAttributesTrait;
 
-    protected $fillable=['author_id','parent_id','name','special_name','lang','description','order','status','_lft','_rgt'];
+    protected $fillable=['author_id','parent_id','name','special_name','lang','description','order','status','_lft','_rgt','location'];
 
     protected function getScopeAttributes()
     {
@@ -40,7 +40,7 @@ class StaticMenu extends Model
                     'input_type' => 'hidden',
                     'orderable' => true,
                     'searchable' => true,
-                    'show_in_table' => true,
+                    'show_in_table' => false,
                     'show_in_sub_table' => false,
                     'show_in_form' => true
                 ],
@@ -98,7 +98,7 @@ class StaticMenu extends Model
                     'input_type' => 'number',
                     'orderable' => true,
                     'searchable' => true,
-                    'show_in_table' => true,
+                    'show_in_table' => false,
                     'show_in_form' => true
                 ],
                 [
@@ -138,7 +138,7 @@ class StaticMenu extends Model
                     'direction'=>'ltr',
                     'orderable' => true,
                     'searchable' => true,
-                    'show_in_table' => true,
+                    'show_in_table' => false,
                     'show_in_form' => true,
                 ],
                 [
@@ -167,7 +167,17 @@ class StaticMenu extends Model
                     'searchable' => true,
                     'show_in_table' => false,
                     'show_in_form' => false,
-                ]
+                ],
+                [
+                        'name' => 'location',
+                        'type' => 'select',
+                        'input_type' => 'select',
+                        'options' => [['id' => 'header', 'text' => 'منوی هدر'], ['id' => 'footer', 'text' => 'منوی فوتر']],
+                        'orderable' => true,
+                        'searchable' => true,
+                        'show_in_table' => true,
+                        'show_in_form' => true,
+                ],
             ]
         ];
     }

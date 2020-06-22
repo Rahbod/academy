@@ -79,7 +79,7 @@ class MenuItem extends Model
                     'input_type' => 'text',
                     'orderable' => true,
                     'searchable' => true,
-                    'show_in_table' => true,
+                    'show_in_table' => false,
                     'show_in_sub_table' => false,
                     'show_in_form' => true,
                 ],
@@ -100,7 +100,7 @@ class MenuItem extends Model
                     'table_style'=>'{"text-align":"center"}',
                     'orderable' => true,
                     'searchable' => true,
-                    'show_in_table' => true,
+                    'show_in_table' => false,
                     'show_in_form' => true,
                 ],
                 [

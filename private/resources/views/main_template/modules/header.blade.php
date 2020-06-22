@@ -23,13 +23,17 @@ if (session('lang') === 'fa') {
                 </ul>
                 <ul class="leftMenu">
                     <div class="extra-nav">
-                        <div class="extra-cell">
-                            <button onclick="$('#showSearchForm').show().find('input').focus();" id=""
-                                    type="button"
-                                    class="site-button-link"><i
-                                        class="fa fa-search"></i></button>
+                            <div class="extra-cell">
+                                <button onclick="$('#showSearchForm').show().find('input').focus();" id=""
+                                        type="button"
+                                        class="site-button-link"><i
+                                            class="fa fa-search"></i></button>
+                            </div>
                         </div>
-                    </div>
+                    <li><a title="@lang('messages.global.contact-us')"
+                           href="{{url( session('lang') .'/contact-us')}}"
+                           class="topbar__buttonLink">@lang('messages.global.contact-us')</a></li>
+                    |
                     @guest
                         <li><a title="@lang('messages.global.login')"
                                href="{{route('login',['lang'=>session('lang')])}}"
@@ -38,12 +42,12 @@ if (session('lang') === 'fa') {
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle p-0" href="#" role="button"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    @if ((Auth::user()->profile) && Auth::user()->avatar)
-                                        <img src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }}"
-                                             class="user-avatar-nav">
-                                    @else
-                                        <div class="user-avatar-nav"></div>
-                                    @endif
+{{--                                    @if ((Auth::user()->profile) && Auth::user()->avatar)--}}
+{{--                                        <img src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }}"--}}
+{{--                                             class="user-avatar-nav">--}}
+{{--                                    @else--}}
+{{--                                        <div class="user-avatar-nav"></div>--}}
+{{--                                    @endif--}}
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -80,10 +84,10 @@ if (session('lang') === 'fa') {
                 <nav class="header-nav navbar p-0">
                     @if(session('lang') !='fa')
                         <a class="navbar-brand" href="{{route('home',['lang'=>session('lang')])}}">
-                            <!--<img src="./assets/media/images/public/site_logo.png"-->
-                            <!--class="siteLogo__image img-fluid" alt="آکادمی زبان ">-->
-                            <span class=""
-                                  style="font-size: inherit;color: inherit;font-weight: inherit;">{{ $siteName }}</span>
+                            <img src="{{ config('system.main.site_logo') }}"
+                            class="siteLogo__image img-fluid" alt="{{ $siteName }}">
+                            <h1 class="d-none"
+                                  style="font-size: inherit;color: inherit;font-weight: inherit;">{{ $siteName }}</h1>
                         </a>
                     @endif
                     <div>

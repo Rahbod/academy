@@ -34,28 +34,6 @@
                             </li>
                         </ul>
                     </div>
-                    <ul class="list-inline mb-5 mb-lg-0">
-                        <li class="mb-2"><a title="@lang('messages.social.whatsapp')"
-                                            href="{{config('system.about_us.whatsapp')}}"
-                                            class="site-button whatsapp sharp"><i
-                                        class="fab fa-whatsapp"></i></a></li>
-                        <li class="mb-2"><a title="@lang('messages.social.linked_in')"
-                                            href="{{config('system.about_us.linked_in')}}"
-                                            class="site-button linkedin sharp"><i
-                                        class="fab fa-linkedin-in"></i></a></li>
-                        <li class="mb-2"><a title="@lang('messages.social.telegram')"
-                                            href="{{config('system.about_us.telegram')}}"
-                                            class="site-button telegram sharp"><i class="fab fa-telegram-plane"></i></a>
-                        </li>
-                        <li class="mb-2"><a title="@lang('messages.social.twitter')"
-                                            href="{{config('system.about_us.twitter')}}"
-                                            class="site-button twitter sharp"><i
-                                        class="fab fa-twitter"></i></a></li>
-                        <li class="mb-2"><a title="@lang('messages.social.instagram')"
-                                            href="{{config('system.about_us.instagram')}}"
-                                            class="site-button instagram sharp"><i
-                                        class="fab fa-instagram"></i></a></li>
-                    </ul>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 footer-col-4">
                     <div class="widget widget_getintuch">
@@ -63,63 +41,17 @@
                         <div class="dlab-separator bg-white"></div>
                         <div class="search-bx">
                             <ul class="mb-5 mb-lg-0">
-                                <li class="mb-2">
-                                    <a class="text-white" title="@lang('messages.global.contact-us')"
-                                       href="{{url(session('lang'). '/contact-us')}}">
-                                        @lang('messages.global.contact-us')
-                                    </a>
-                                </li>
-                                <li class="mb-2">
-                                    <a class="text-white" title="@lang('messages.global.about-us')"
-                                       href="{{url(session('lang'). '/about-us')}}">
-                                        @lang('messages.global.about-us')
-                                    </a>
-                                </li>
-                                <li class="mb-2">
-                                    <a class="text-white" title="@lang('messages.global.news')"
-                                       href="{{url(session('lang'). '/news')}}">
-                                        @lang('messages.global.news')
-                                    </a>
-                                </li>
-                                <li class="mb-2">
-                                    <a class="text-white" title="@lang('messages.global.article')"
-                                       href="{{url(session('lang'). '/article')}}">
-                                        @lang('messages.global.article')
-                                    </a>
-                                </li>
-                                <li class="mb-2">
-                                    <a class="text-white" title="@lang('messages.global.courses')"
-                                       href="{{url(session('lang'). '/courses')}}">
-                                        @lang('messages.global.courses')
-                                    </a>
-                                </li>
-                                <li class="mb-2">
-                                    <a class="text-white" title="@lang('messages.global.translation-request')"
-                                       href="{{url(session('lang'). '/translation-requests/create')}}">
-                                        @lang('messages.global.translation-request')
-                                    </a>
-                                </li>
+                                @if(isset($footer_menus))
+                                    @foreach($footer_menus as $item)
+                                        <li class="mb-2">
+                                            <a class="text-white" title="{{$item['name']}}"
+                                               href="{{$item['link']}}">
+                                                {{$item['name']}}
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                @endif
                             </ul>
-
-                            {{--<form enctype="multipart/form-data" method="post" class="contactUsForm"--}}
-                            {{--action="{{url(session('lang').'/contact-us')}}">--}}
-                            {{--<div class="input-group">--}}
-                            {{--<input name="name" type="text" required="" class="form-control"--}}
-                            {{--placeholder="Your Name">--}}
-                            {{--</div>--}}
-                            {{--<div class="input-group">--}}
-                            {{--<input name="email" type="email" class="form-control" required=""--}}
-                            {{--placeholder="Your Email Address">--}}
-                            {{--</div>--}}
-                            {{--<div class="input-group">--}}
-                            {{--<textarea name="description" rows="4" class="form-control" required=""--}}
-                            {{--placeholder="Your Message..."></textarea>--}}
-                            {{--</div>--}}
-                            {{--<div class="input-group">--}}
-                            {{--<button type="submit" class="site-button ">--}}
-                            {{--<span>Submit</span></button>--}}
-                            {{--</div>--}}
-                            {{--</form>--}}
                         </div>
                     </div>
                 </div>
@@ -182,6 +114,30 @@
                         </ul>
                     </div>
                 </div>
+            </div>
+            <div class="row text-center">
+                <ul class="list-inline mb-5 mb-lg-0" style="margin: 0 auto">
+                    <li class="mb-2"><a title="@lang('messages.social.whatsapp')"
+                                        href="{{config('system.about_us.whatsapp')}}"
+                                        class="site-button whatsapp sharp"><i
+                                    class="fab fa-whatsapp"></i></a></li>
+                    <li class="mb-2"><a title="@lang('messages.social.linked_in')"
+                                        href="{{config('system.about_us.linked_in')}}"
+                                        class="site-button linkedin sharp"><i
+                                    class="fab fa-linkedin-in"></i></a></li>
+                    <li class="mb-2"><a title="@lang('messages.social.telegram')"
+                                        href="{{config('system.about_us.telegram')}}"
+                                        class="site-button telegram sharp"><i class="fab fa-telegram-plane"></i></a>
+                    </li>
+                    <li class="mb-2"><a title="@lang('messages.social.twitter')"
+                                        href="{{config('system.about_us.twitter')}}"
+                                        class="site-button twitter sharp"><i
+                                    class="fab fa-twitter"></i></a></li>
+                    <li class="mb-2"><a title="@lang('messages.social.instagram')"
+                                        href="{{config('system.about_us.instagram')}}"
+                                        class="site-button instagram sharp"><i
+                                    class="fab fa-instagram"></i></a></li>
+                </ul>
             </div>
         </div>
     </div>
