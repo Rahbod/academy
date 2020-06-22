@@ -3,7 +3,7 @@
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'payment'], function () {
-    Route::post('/pay','PaymentController@pay');
+    Route::get('/pay','PaymentController@pay');
     Route::post('/callback','PaymentController@callback');
 });
 
