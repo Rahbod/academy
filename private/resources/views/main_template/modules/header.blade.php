@@ -23,13 +23,17 @@ if (session('lang') === 'fa') {
                 </ul>
                 <ul class="leftMenu">
                     <div class="extra-nav">
-                        <div class="extra-cell">
-                            <button onclick="$('#showSearchForm').show().find('input').focus();" id=""
-                                    type="button"
-                                    class="site-button-link"><i
-                                        class="fa fa-search"></i></button>
+                            <div class="extra-cell">
+                                <button onclick="$('#showSearchForm').show().find('input').focus();" id=""
+                                        type="button"
+                                        class="site-button-link"><i
+                                            class="fa fa-search"></i></button>
+                            </div>
                         </div>
-                    </div>
+                    <li><a title="@lang('messages.global.contact-us')"
+                           href="{{url( session('lang') .'/contact-us')}}"
+                           class="topbar__buttonLink">@lang('messages.global.contact-us')</a></li>
+                    |
                     @guest
                         <li><a title="@lang('messages.global.login')"
                                href="{{route('login',['lang'=>session('lang')])}}"

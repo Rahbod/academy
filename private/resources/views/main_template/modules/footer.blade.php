@@ -34,28 +34,6 @@
                             </li>
                         </ul>
                     </div>
-                    <ul class="list-inline mb-5 mb-lg-0">
-                        <li class="mb-2"><a title="@lang('messages.social.whatsapp')"
-                                            href="{{config('system.about_us.whatsapp')}}"
-                                            class="site-button whatsapp sharp"><i
-                                        class="fab fa-whatsapp"></i></a></li>
-                        <li class="mb-2"><a title="@lang('messages.social.linked_in')"
-                                            href="{{config('system.about_us.linked_in')}}"
-                                            class="site-button linkedin sharp"><i
-                                        class="fab fa-linkedin-in"></i></a></li>
-                        <li class="mb-2"><a title="@lang('messages.social.telegram')"
-                                            href="{{config('system.about_us.telegram')}}"
-                                            class="site-button telegram sharp"><i class="fab fa-telegram-plane"></i></a>
-                        </li>
-                        <li class="mb-2"><a title="@lang('messages.social.twitter')"
-                                            href="{{config('system.about_us.twitter')}}"
-                                            class="site-button twitter sharp"><i
-                                        class="fab fa-twitter"></i></a></li>
-                        <li class="mb-2"><a title="@lang('messages.social.instagram')"
-                                            href="{{config('system.about_us.instagram')}}"
-                                            class="site-button instagram sharp"><i
-                                        class="fab fa-instagram"></i></a></li>
-                    </ul>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 footer-col-4">
                     <div class="widget widget_getintuch">
@@ -136,6 +114,30 @@
                         </ul>
                     </div>
                 </div>
+            </div>
+            <div class="row text-center">
+                <ul class="list-inline mb-5 mb-lg-0" style="margin: 0 auto">
+                    <li class="mb-2"><a title="@lang('messages.social.whatsapp')"
+                                        href="{{config('system.about_us.whatsapp')}}"
+                                        class="site-button whatsapp sharp"><i
+                                    class="fab fa-whatsapp"></i></a></li>
+                    <li class="mb-2"><a title="@lang('messages.social.linked_in')"
+                                        href="{{config('system.about_us.linked_in')}}"
+                                        class="site-button linkedin sharp"><i
+                                    class="fab fa-linkedin-in"></i></a></li>
+                    <li class="mb-2"><a title="@lang('messages.social.telegram')"
+                                        href="{{config('system.about_us.telegram')}}"
+                                        class="site-button telegram sharp"><i class="fab fa-telegram-plane"></i></a>
+                    </li>
+                    <li class="mb-2"><a title="@lang('messages.social.twitter')"
+                                        href="{{config('system.about_us.twitter')}}"
+                                        class="site-button twitter sharp"><i
+                                    class="fab fa-twitter"></i></a></li>
+                    <li class="mb-2"><a title="@lang('messages.social.instagram')"
+                                        href="{{config('system.about_us.instagram')}}"
+                                        class="site-button instagram sharp"><i
+                                    class="fab fa-instagram"></i></a></li>
+                </ul>
             </div>
         </div>
     </div>
