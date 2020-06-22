@@ -27,6 +27,7 @@ class CreateStaticMenusTable extends Migration
             $table->tinyInteger('status')->defaule(0);
             $table->tinyInteger('has_content')->defaule(0);
             $table->enum('type',['page','action','link'])->nullable();
+            $table->enum('location',['header','footer'])->default('header');
             $table->string('link')->nullable();
             $table->integer('page_id')->unsigned()->index()->nullable();
             $table->integer('_lft')->nullable();
