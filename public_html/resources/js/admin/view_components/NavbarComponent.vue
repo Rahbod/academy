@@ -32,11 +32,13 @@
                         {{lang_label}}
                     </a>
                     <div class="dropdown-menu">
-                        <a @click.prervent="changeLang('fa')" class="dropdown-item" :class="[lang == 'fa' ? 'active' : '']">
+                        <a @click.prervent="changeLang('fa')" class="dropdown-item"
+                           :class="[lang == 'fa' ? 'active' : '']">
                             <img src="/assets/admin/global_assets/images/lang/fa.png" class="img-flag" alt="">
                             فارسی
                         </a>
-                        <a @click.prervent="changeLang('en')" class="dropdown-item" :class="[lang == 'en' ? 'active' : '']">
+                        <a @click.prervent="changeLang('en')" class="dropdown-item"
+                           :class="[lang == 'en' ? 'active' : '']">
                             <img src="/assets/admin/global_assets/images/lang/en.png" class="img-flag" alt="">
                             English
                         </a>
@@ -73,15 +75,15 @@
 
     export default {
         computed: {
-            ...mapGetters(['user', 'lang','base_url','department']),
+            ...mapGetters(['user', 'lang', 'base_url', 'department']),
             logout_url() {
-                return this.$store.getters.main_url + '/logout';
+                return this.$store.getters.base_url + '/' + this.$store.getters.lang + '/logout';
             },
             token() {
                 return document.head.querySelector('meta[name="csrf-token"]').content;
             },
-            lang_label(){
-                switch (this.lang){
+            lang_label() {
+                switch (this.lang) {
                     case 'fa':
                         return 'فارسی';
                         break;
@@ -101,9 +103,9 @@
             logout() {
                 $('#logout-form').submit();
             },
-            changeLang(lang){
-                let route=this.base_url+'/'+lang+'/'+this.department+'#'+this.$route.path;
-                window.location=route;
+            changeLang(lang) {
+                let route = this.base_url + '/' + lang + '/' + this.department + '#' + this.$route.path;
+                window.location = route;
             }
         },
     }

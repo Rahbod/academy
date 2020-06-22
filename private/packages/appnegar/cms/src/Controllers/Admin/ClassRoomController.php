@@ -65,6 +65,9 @@ class ClassRoomController extends AdminController{
             'course_start_date'=>'required',
             'course_end_date'=>'required',
         ];
+        if($id !== null){
+            $rules['image']='required|image|max:'.$this->config['class_room']['image']['size'] . '|mimes:' . trimArrayString($this->config['class_room']['image']['extension']);
+        }
         return $rules;
     }
 
