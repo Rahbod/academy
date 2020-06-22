@@ -132,8 +132,7 @@ if (session('lang') === 'fa') {
                                 @foreach($main_menus as $item)
                                     @if(isset($item['children']) && count($item['children']) >0)
                                         <li class="">
-                                            <a title="{{$item['name']}}" href="void:;">{{$item['name']}}<i
-                                                        class="fa fa-chevron-down"></i></a>
+                                            <a title="{{$item['name']}}" href="void:;">{{$item['name']}}</a>
                                             <ul class="sub-menu">
                                                 @foreach($item['children'] as $child)
                                                     <li>
