@@ -12,7 +12,7 @@ class Attachment extends Model
     use SetAndGetDateAttributesTrait;
 
     protected $fillable = [
-        'user_id','title','source','attachmentable_id ','attachmentable_type ',
+        'user_id','title','source','attachmentable_id ','attachmentable_type',
     ];
 
     public static function mainFields(){

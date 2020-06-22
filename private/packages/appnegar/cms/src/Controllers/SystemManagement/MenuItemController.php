@@ -139,18 +139,18 @@ class MenuItemController extends AdminController
             'target' => 'required',
             'order' => 'numeric|min:0',
         ];
-        if ($request->parent_id !== null) {
-            $rules['parent_id'] = [
-                Rule::exists('menu_items', 'id')->where(function ($query) use ($request, $id) {
-                    $query->where('menu_id', $request->menu_id);
-                    if ($id !== null) {
-                        $model = MenuItem::findOrFail($id);
-                        $not_in_ids = array_merge([$id], $model->descendants()->pluck('id')->toArray());
-                        $query->whereNotIn('id', $not_in_ids);
-                    }
-                })
-            ];
-        }
+//        if ($request->parent_id !== null) {
+//            $rules['parent_id'] = [
+//                Rule::exists('menu_items', 'id')->where(function ($query) use ($request, $id) {
+//                    $query->where('menu_id', $request->menu_id);
+//                    if ($id !== null) {
+//                        $model = MenuItem::findOrFail($id);
+//                        $not_in_ids = array_merge([$id], $model->descendants()->pluck('id')->toArray());
+//                        $query->whereNotIn('id', $not_in_ids);
+//                    }
+//                })
+//            ];
+//        }
         return $rules;
     }
 

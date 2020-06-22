@@ -15,6 +15,7 @@ class Menus
      * @var $categories
      */
     protected $main_menus;
+    protected $footer_menus;
     protected $menus;
 
 
@@ -29,7 +30,27 @@ class Menus
 
             $static_menu = StaticMenu::with(['page' => function ($q) use ($lang) {
                 $q->where('status', 1)->orderBy('order')->select('id', 'title');
-            }])->where('status', 1)->where('lang', $lang)->defaultOrder()->get()->toTree();
+            }])->where('status', 1)
+                    ->where('lang', $lang)
+                    ->where('location', 'header')
+                    ->defaultOrder()->get()->toTree();
+            $array_menu=[];
+            foreach ($static_menu as $menu){
+                $array_menu[]=$this->setMenu($menu);
+            }
+//            dd($array_menu);
+            return $array_menu;
+        });
+
+        $this->footer_menus = Cache::remember('footer_menus_'.$lang, 5000, function () use ($lang){
+
+
+            $static_menu = StaticMenu::with(['page' => function ($q) use ($lang) {
+                $q->where('status', 1)->orderBy('order')->select('id', 'title');
+            }])->where('status', 1)
+                    ->where('lang', $lang)
+                    ->where('location', 'footer')
+                    ->defaultOrder()->get()->toTree();
             $array_menu=[];
             foreach ($static_menu as $menu){
                 $array_menu[]=$this->setMenu($menu);
@@ -42,7 +63,8 @@ class Menus
 
     public function compose(View $view)
     {
-        $view->with('main_menus', $this->main_menus);
+        $view->with('main_menus',$this->main_menus)
+            ->with('footer_menus',$this->footer_menus);
     }
 
     protected function setMenu($menu){
