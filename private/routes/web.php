@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
 //    return view('welcome');
-    return redirect()->to('en');
+    return redirect()->to('fa');
 });
 
 

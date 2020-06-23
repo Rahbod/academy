@@ -38,9 +38,28 @@ class TranslateRequestController extends Controller
 
     public function index()
     {
+        if(!\Auth::check())
+        {
+
+            return redirect('login');
+        }
+
         $categories=Category::where('lang',session('lang'))->where('type','translate')->get();
 //        dd($categories);
-        return view('main_template.pages.translation')->with('categories',$categories);
+        return view('main_template.pages.translation')->with('categories',$categories)->with('type', 'translate');
+    }
+
+    public function editing()
+    {
+        if(!\Auth::check())
+        {
+
+            return redirect('login');
+        }
+
+        $categories=Category::where('lang',session('lang'))->where('type','translate')->get();
+//        dd($categories);
+        return view('main_template.pages.translation')->with('categories',$categories)->with('type', 'editing');
     }
 
     public function store(Request $request)

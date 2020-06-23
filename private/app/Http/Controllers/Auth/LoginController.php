@@ -48,6 +48,10 @@ class LoginController extends Controller
     public function authenticated(Request $request, $user)
     {
         if ($user->verified) {
+            if ($redirect = session('redirect')) {
+                session(['redirect' => null]);
+                return redirect()->intended($redirect);
+            }
             return redirect()->intended($this->redirectPath());
         }
         $this->logout($request);

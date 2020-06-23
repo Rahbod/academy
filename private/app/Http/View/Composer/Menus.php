@@ -33,7 +33,7 @@ class Menus
             }])->where('status', 1)
                     ->where('lang', $lang)
                     ->where('location', 'header')
-                    ->defaultOrder()->get()->toTree();
+                    ->orderBy('order')->get()->toTree();
             $array_menu=[];
             foreach ($static_menu as $menu){
                 $array_menu[]=$this->setMenu($menu);
@@ -50,7 +50,7 @@ class Menus
             }])->where('status', 1)
                     ->where('lang', $lang)
                     ->where('location', 'footer')
-                    ->defaultOrder()->get()->toTree();
+                    ->orderBy('order')->get()->toTree();
             $array_menu=[];
             foreach ($static_menu as $menu){
                 $array_menu[]=$this->setMenu($menu);

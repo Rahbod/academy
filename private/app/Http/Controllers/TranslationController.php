@@ -13,7 +13,12 @@ class TranslationController extends Controller
      */
     public function index()
     {
-        return view('main_template.pages.translation');
+        return view('main_template.pages.translation')->with('type', 'translate');
+    }
+
+    public function editing()
+    {
+        return view('main_template.pages.translation')->with('type', 'editing');
     }
 
     /**
@@ -34,7 +39,7 @@ class TranslationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
