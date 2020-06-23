@@ -112,6 +112,8 @@ return [
         'wednesday'=>'چهارشنبه',
         'thursday'=>'پنج شنبه',
         'friday'=>'جمعه',
+        "header"=>'منوي هدر',
+        "footer"=>'منوي فوتر',
 
 
         'TranslateRequest'=>'درخواست ترجمه',

@@ -52,13 +52,16 @@ class CourseController extends AdminController{
             'tag_id'=>'nullable|array',
             'title_fa'=>'required',
             'title_en'=>'required',
-            'image'=>'nullable|image|max:'.$this->config['course']['image']['size'] . '|mimes:' . trimArrayString($this->config['course']['image']['extension']),
+            'image'=>'required|image|max:'.$this->config['course']['image']['size'] . '|mimes:' . trimArrayString($this->config['course']['image']['extension']),
             'description_fa'=>'nullable',
             'description_en'=>'nullable',
             'duration'=>'required',
             'order'=>'nullable|numeric|min:1',
             'status'=>'nullable|numeric|min:0|max:1'
         ];
+        if($id !== null){
+            $rules['image']='nullable|image|max:'.$this->config['course']['image']['size'] . '|mimes:' . trimArrayString($this->config['course']['image']['extension']);
+        }
         return $rules;
     }
 

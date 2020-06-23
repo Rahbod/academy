@@ -35874,13 +35874,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['user', 'lang', 'base_url', 'department']), {
         logout_url: function logout_url() {
-            return this.$store.getters.main_url + '/logout';
+            return this.$store.getters.base_url + '/' + this.$store.getters.lang + '/logout';
         },
         token: function token() {
             return document.head.querySelector('meta[name="csrf-token"]').content;

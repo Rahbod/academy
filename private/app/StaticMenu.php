@@ -40,7 +40,7 @@ class StaticMenu extends Model
                     'input_type' => 'hidden',
                     'orderable' => true,
                     'searchable' => true,
-                    'show_in_table' => false,
+                    'show_in_table' => true,
                     'show_in_sub_table' => false,
                     'show_in_form' => true
                 ],
@@ -172,7 +172,7 @@ class StaticMenu extends Model
                         'name' => 'location',
                         'type' => 'select',
                         'input_type' => 'select',
-                        'options' => [['id' => 'header', 'text' => 'منوی هدر'], ['id' => 'footer', 'text' => 'منوی فوتر']],
+                        'options' => [['id' => 'header', 'text' => 'header'], ['id' => 'footer', 'text' => 'footer']],
                         'orderable' => true,
                         'searchable' => true,
                         'show_in_table' => true,

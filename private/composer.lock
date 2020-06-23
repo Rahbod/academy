@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ff78818e527945e7f465cb83bba221fe",
+    "content-hash": "c3d1c83d160104a925385a72d8535650",
     "packages": [
         {
             "name": "anahkiasen/underscore-php",
@@ -704,22 +704,27 @@
         },
         {
             "name": "hekmatinasser/verta",
-            "version": "v1.9.9",
+            "version": "v1.10.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hekmatinasser/verta.git",
-                "reference": "67d9b3e4ecf95155d8049c69986de3ec29332254"
+                "reference": "c62f2a6c94065d06edb08f997a7626f05df78d8f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hekmatinasser/verta/zipball/67d9b3e4ecf95155d8049c69986de3ec29332254",
-                "reference": "67d9b3e4ecf95155d8049c69986de3ec29332254",
+                "url": "https://api.github.com/repos/hekmatinasser/verta/zipball/c62f2a6c94065d06edb08f997a7626f05df78d8f",
+                "reference": "c62f2a6c94065d06edb08f997a7626f05df78d8f",
                 "shasum": ""
             },
             "require": {
                 "hekmatinasser/notowo": "^1.0",
-                "illuminate/validation": "^5",
+                "illuminate/support": "^5|^6|^7",
+                "illuminate/validation": "^5|^6|^7",
                 "php": ">=5.5"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0",
+                "phpunit/phpunit": "7.2.*"
             },
             "type": "library",
             "extra": {
@@ -759,7 +764,7 @@
                 "laravel",
                 "shamsi"
             ],
-            "time": "2018-07-22T10:34:43+00:00"
+            "time": "2020-03-05T16:01:37+00:00"
         },
         {
             "name": "intervention/image",
@@ -980,20 +985,20 @@
         },
         {
             "name": "larabook/gateway",
-            "version": "3.4.2",
+            "version": "3.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/larabook/gateway.git",
-                "reference": "30272bc0bacd4ae5cc66b865f5a4766f53ebba19"
+                "reference": "1ad00bf32bd0d61f8afc697407b52bfa3d7217a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/larabook/gateway/zipball/30272bc0bacd4ae5cc66b865f5a4766f53ebba19",
-                "reference": "30272bc0bacd4ae5cc66b865f5a4766f53ebba19",
+                "url": "https://api.github.com/repos/larabook/gateway/zipball/1ad00bf32bd0d61f8afc697407b52bfa3d7217a3",
+                "reference": "1ad00bf32bd0d61f8afc697407b52bfa3d7217a3",
                 "shasum": ""
             },
             "require": {
-                "nesbot/carbon": "*",
+                "nesbot/carbon": "~1.20",
                 "paypal/rest-api-sdk-php": "*"
             },
             "type": "library",
@@ -1019,12 +1024,12 @@
             ],
             "authors": [
                 {
-                    "name": "Hamed Pakdaman",
-                    "email": "pakdaman.it@gmail.com"
-                },
-                {
                     "name": "MohammadReza Honarkhah",
                     "email": "m.honar@gmail.com"
+                },
+                {
+                    "name": "Hamed Pakdaman",
+                    "email": "pakdaman.it@gmail.com"
                 },
                 {
                     "name": "Amir Khorsandi",
@@ -1061,7 +1066,7 @@
                 "shaparak",
                 "zarinpal"
             ],
-            "time": "2019-11-01T16:53:41+00:00"
+            "time": "2018-06-08T05:18:45+00:00"
         },
         {
             "name": "laravel/framework",

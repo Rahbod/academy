@@ -20,6 +20,7 @@ return [
         'updated_at' => 'تاریخ بروزرسانی',
         'created_at' => 'تاریخ ایجاد',
         'lang' => 'زبان',
+        'location' => 'موقعيت',
 
     ],
     'relations'=>[
@@ -28,7 +29,7 @@ return [
     ],
     "values" => [
         "select_items" => "گزینه ها ی مورد نظر خود را انتخاب کنید",
-        "create_new_record" => "ایجاد منو جدید"
+        "create_new_record" => "ایجاد منو جدید",
     ],
 
 ];
