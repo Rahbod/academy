@@ -137,7 +137,7 @@ if (session('lang') === 'fa') {
                                                 @foreach($item['children'] as $child)
                                                     <li>
                                                         {{--                                                        @if($child['type'] === 'action' || $child['type'] === 'link')--}}
-                                                        <a href="{{url($child['link'])}}" title="{{$child['name']}}"
+                                                        <a href="{{$child['link']}}" title="{{$child['name']}}"
                                                            class="dez-page">{{$child['name']}}</a>
                                                         {{--@else--}}
                                                         {{--<a href="{{url(session('lang') .'/pages/show/'.$child['id'].'/'.str_replace(' ','-',$child['name']) )}}"--}}
@@ -194,7 +194,7 @@ if (session('lang') === 'fa') {
             {{--<h4 class="text-white">language</h4>--}}
             <h4 class="text-left">
                 <a class="text-white" href="{{url(session('lang').'/')}}"
-                   title="@lang('messages.global.home')">Academy</a>
+                   title="@lang('messages.global.home')">{{ $siteName }}</a>
             </h4>
         </div>
 

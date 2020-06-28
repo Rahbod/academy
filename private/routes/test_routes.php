@@ -14,8 +14,9 @@ Route::get('news/{id}/{slug?}', 'ContentController@show');
 Route::get('article', 'ContentController@index');
 Route::get('article/{id}/{slug?}', 'ContentController@show');
 
-Route::get('translation-requests/create', 'TranslateRequestController@index')->name('translations');
-Route::post('translation-requests/', 'TranslateRequestController@store');
+Route::get('editing-request', 'TranslateRequestController@editing')->name('editing');
+Route::get('translate-request', 'TranslateRequestController@index')->name('translations');
+Route::post('request-store', 'TranslateRequestController@store');
 
 Route::get('courses/register/{course_id}/{slug?}', 'CourseController@termShow');
 Route::get('class-show/{term_id}', 'CourseController@classShow');

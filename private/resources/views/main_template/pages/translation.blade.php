@@ -534,9 +534,10 @@
                     <div class="col-md-10 mx-auto m-b30">
                         <div class="p-a30 border-1 m-auto">
                             <div class="">
-                                <form action="{{url(session('lang').'/translations')}}" method="post"
+                                <form action="{{url(session('lang').'/request-store')}}" method="post"
                                       enctype="multipart/form-data"
                                       id="translationForm" class="">
+                                    <input type="hidden" name="type" value="{{ $type }}">
                                     <h4 class="font-weight-700">@lang('messages.global.translation-request-form')</h4>
                                     <p class="font-weight-600">@lang('messages.global.fill-carefully')</p>
                                     <div class="form-row">
