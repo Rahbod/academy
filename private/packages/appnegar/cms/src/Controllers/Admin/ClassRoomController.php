@@ -95,5 +95,6 @@ class ClassRoomController extends AdminController{
             'course_id'=>'required|exists:courses,id'
         ]);
         $terms=Term::where('course_id',$request->course_id)->select('id','title_fa AS text')->get();
+        return $terms;
     }
 }
