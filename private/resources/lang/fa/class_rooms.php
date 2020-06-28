@@ -9,6 +9,7 @@ return [
         'author_id' => 'نویسنده',
         'teacher_id' => 'استاد',
         'term_id' => 'ترم',
+        'course_id' => 'دوره',
         'title_fa' => 'عنوان فارسی',
         'title_en' => 'عنوان انگلیسی',
         'image' => 'تصویر',

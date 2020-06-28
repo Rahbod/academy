@@ -2,8 +2,7 @@
 return [
 
     'main' => [
-            'title' =>  'ETC',
-            'fa_title' =>  'موسسه زبان',
+            'title' =>  'موسسه زبان',
             'related_sections' =>  'courses,translations,other',
             'status' =>  '1',
             'meta_keywords' =>  'زبان، اموزش، زبان انگلیسی',
@@ -16,8 +15,8 @@ return [
             'email' =>  'info@zaban.com',
             'telegram' =>  'https://telegram.me/test.org',
             'instagram' =>  'https://www.instagram.com/test.org',
-            'whatsapp' =>  'https://www.facebook.com/test.org',
-            'linked_in' =>  'https://plus.google.com/+test.org',
+            'whatsapp' =>  'https://www.whatsapp.com/test.org',
+            'linked_in' =>  'https://linked-in.com/test.org',
             'twitter' =>  'https://twitter.com/test.org',
             'phone' =>  '0098253700000',
             'fax' =>  '009823000000',
@@ -45,7 +44,7 @@ return [
             'image_destination' =>  'content/image/',
         ],
     'page' => [
-            'image_size' =>  '5120',
+            'image_size' =>  '500',
             'image_width' =>  '200',
             'image_height' =>  '278',
             'image_extension' =>  'jpg, jpeg, png',
@@ -59,14 +58,14 @@ return [
             'image_destination' =>  'course/image/',
         ],
     'class_room' => [
-            'image_size' =>  '5120',
+            'image_size' =>  '500',
             'image_width' =>  '700',
             'image_height' =>  '450',
             'image_extension' =>  'jpg, jpeg, png',
             'image_destination' =>  'class_room/image/',
         ],
     'slider' => [
-            'image_size' =>  '5120',
+            'image_size' =>  '2048',
             'image_width' =>  '2000',
             'image_height' =>  '767',
             'image_extension' =>  'jpg, jpeg, png',
@@ -74,7 +73,7 @@ return [
         ],
     'translate_request' => [
             'translated_file_size' =>  '500',
-            'translated_file_extension' =>  'jpg,jpeg,png,doc,docx,pdf,zip,rar',
+            'translated_file_extension' =>  'doc,docx,pdf,zip,rar',
             'translated_file_destination' =>  'translate_request/',
         ],
     'attachment' => [

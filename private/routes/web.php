@@ -24,15 +24,17 @@ Route::get('/generate_files', function () {
     makeRouteFile();
     makeSettingFile();
 });
-Route::get('/artisan-call', function () {
+//Route::get('/artisan-call', function () {
+////
+//////    Artisan::call('migrate:fresh');
+////    Artisan::call('db:seed');
+////
+////    makeRouteFile();
+////    makeSettingFile();
+////
+////});
 
-//    Artisan::call('migrate:fresh');
-    Artisan::call('db:seed');
-
-    makeRouteFile();
-    makeSettingFile();
-
-});
+Route::get('artisan-call/{command?}','DevController@artisan');
 
 
 Route::group(['middleware' => ['lang', 'set_locale', 'remove_additional_params'], 'prefix' => "{lang}",], function () {

@@ -157,9 +157,6 @@ export const form = {
         setModel(state, model) {
             state.model = model;
         },
-        setInfo(state, info) {
-            state.info = info;
-        },
         removeError(state, key) {
             delete state.errors[key];
         },
@@ -541,6 +538,11 @@ export const form = {
                         context.dispatch('changeAttachmentableType', payload);
                         break;
                 }
+                switch (key_name) {
+                    case 'class_rooms-course_id':
+                        context.dispatch('changeCourse', payload);
+                        break;
+                }
             }
             // console.log(key_name);
 
@@ -679,6 +681,21 @@ export const form = {
                 .catch(error => {
                     // console.log(error);
                 })
+        },
+        changeCourse(context,payload){
+            let url = context.rootGetters.main_url + '/' + context.rootGetters.resource + '/change_course';
+            let data = {};
+            data[payload.key] = payload.value;
+            if(![null,undefined,''].includes(payload.value)){
+                context.dispatch('sendRequest', {url: url, data: data}, {root: true})
+                    .then(response => {
+                        context.commit('updateOptions', {key: 'term_id', value: response.data});
+                    })
+                    .catch(error => {
+                        // console.log(error);
+                    })
+            }
+
         }
     }
 };
