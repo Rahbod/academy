@@ -28,7 +28,7 @@ class DevController extends Controller
             case 'seed':
                 $this->clear();
                 Artisan::call('db:seed');
-                Artisan::call('optimize');
+//                Artisan::call('optimize');
                 dd('db:seed');
                 break;
             case 'optimize':
@@ -71,7 +71,7 @@ class DevController extends Controller
                 break;
             default:
                 $this->makeFiles();
-                Artisan::call('optimize');
+//                Artisan::call('optimize');
                 dd('files generated');
                 break;
         }

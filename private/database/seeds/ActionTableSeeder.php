@@ -365,6 +365,22 @@ class ActionTableSeeder extends Seeder
                         ]
                     ]
                 ],
+                'ClassRoom' => [
+                    [
+                        'name' => 'changeCourse',
+                        'display_name' => 'تغییر دوره',
+                        'need_allow' => 0,
+                        'status' => 1,
+                        'paths' => [
+                            [
+                                'name' => 'ClassRoom.changeCourse',
+                                'display_name' => 'تغییر دوره',
+                                'slug' => 'class_rooms/change_course',
+                                'method' => 'post',
+                            ]
+                        ]
+                    ],
+                ],
             ],
             'profile'=>[
                 'Dashboard' => $dashboard_actions,
@@ -606,22 +622,7 @@ class ActionTableSeeder extends Seeder
                     ],
                 ]
             ],
-            'ClassRoom' => [
-                [
-                    'name' => 'changeCourse',
-                    'display_name' => 'تغییر دپارتمان',
-                    'need_allow' => 0,
-                    'status' => 1,
-                    'paths' => [
-                        [
-                            'name' => 'Path.changeCourse',
-                            'display_name' => 'تغییر دوره',
-                            'slug' => 'class_rooms/change_course',
-                            'method' => 'post',
-                        ]
-                    ]
-                ],
-            ],
+
 
         ];
         $departments = \App\Department::with('resources')->get();

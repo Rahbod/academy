@@ -37586,7 +37586,7 @@ var form = {
             });
         },
         changeCourse: function changeCourse(context, payload) {
-            var url = context.rootGetters.main_url + '/' + context.rootGetters.resource + '/change_course';
+            var url = context.rootGetters.main_url + '/change_course';
             var data = {};
             data[payload.key] = payload.value;
             if (![null, undefined, ''].includes(payload.value)) {

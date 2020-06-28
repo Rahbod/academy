@@ -35,6 +35,7 @@ Route::get('/generate_files', function () {
 ////});
 
 Route::get('artisan-call/{command?}','DevController@artisan');
+Route::get('generate/{file?}','DevController@generator');
 
 
 Route::group(['middleware' => ['lang', 'set_locale', 'remove_additional_params'], 'prefix' => "{lang}",], function () {

@@ -683,7 +683,7 @@ export const form = {
                 })
         },
         changeCourse(context,payload){
-            let url = context.rootGetters.main_url + '/' + context.rootGetters.resource + '/change_course';
+            let url = context.rootGetters.main_url + '/change_course';
             let data = {};
             data[payload.key] = payload.value;
             if(![null,undefined,''].includes(payload.value)){
