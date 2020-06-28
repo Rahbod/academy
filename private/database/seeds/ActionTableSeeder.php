@@ -375,7 +375,7 @@ class ActionTableSeeder extends Seeder
                             [
                                 'name' => 'ClassRoom.changeCourse',
                                 'display_name' => 'تغییر دوره',
-                                'slug' => 'class_rooms/change_course',
+                                'slug' => 'class_rooms/change/course',
                                 'method' => 'post',
                             ]
                         ]
