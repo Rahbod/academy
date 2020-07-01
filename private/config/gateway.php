@@ -44,8 +44,8 @@ return [
     // PayIr gateway
     //--------------------------------
     'payir'    => [
-        'api'          => 'xxxxxxxxxxxxxxxxxxxx',
-        'callback-url' => '/'
+        'api'          => 'test',
+        'callback-url' => '/payment/callback'
     ],
 
     //--------------------------------

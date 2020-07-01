@@ -2,10 +2,9 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::group(['prefix' => 'payment'], function () {
-    Route::get('/pay','PaymentController@pay');
-    Route::post('/callback','PaymentController@callback');
-});
+
+Route::get('payment/pay','PaymentController@pay');
+Route::get('payment/callback','PaymentController@callback');
 
 Route::get('news', 'ContentController@index');
 Route::get('news/{id}/{slug?}', 'ContentController@show');

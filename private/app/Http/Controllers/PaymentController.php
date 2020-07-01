@@ -48,9 +48,9 @@ class PaymentController extends Controller
         try {
 
             /** @var Zarinpal $gateway */
-            $gateway = \Gateway::make('zarinpal');
+            $gateway = \Gateway::make('payir');
 
-            $gateway->setCallback(url('/payment/callback')); // You can also change the callback
+            $gateway->setCallback(url(session('lang') . '/payment/callback')); // You can also change the callback
             $gateway->price(1000)
                     // setShipmentPrice(10) // optional - just for paypal
                     // setProductName("My Product") // optional - just for paypal
@@ -76,11 +76,11 @@ class PaymentController extends Controller
     {
         try {
             /** @var PortInterface $gateway */
-            $gateway = \Gateway::verify();
+            $gateway = \Gateway::verify($request->transaction_id);
             $trackingCode = $gateway->trackingCode();
             $refId = $gateway->refId();
             $cardNumber = $gateway->cardNumber();
-
+dd($trackingCode,$refId,$cardNumber);
             // تراکنش با موفقیت سمت بانک تایید گردید
             // در این مرحله عملیات خرید کاربر را تکمیل میکنیم
 
