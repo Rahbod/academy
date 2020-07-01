@@ -42,20 +42,26 @@
 
                 <ul class="nav nav-pills mb-5 justify-content-center" id="pills-tab" role="tablist">
                     @if(! isset($contents))
-                        <li class="nav-item">
+                        <li class="nav-item text-center">
                             <a class="nav-link {{isset($search_in) ? ($search_in=='news' ? 'active' : '') : '' }}"
                                id="pills-news-tab" data-toggle="pill" href="#pills-news" role="tab"
-                               aria-controls="pills-news" aria-selected="true">@lang('messages.global.news')</a>
+                               aria-controls="pills-news" aria-selected="true">@lang('messages.global.news')<br>
+                                <small>({{ count($news) }})</small>
+                            </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item text-center">
                             <a class="nav-link {{isset($search_in) ? ($search_in=='article' ? 'active' : '') : '' }}"
                                id="pills-article-tab" data-toggle="pill" href="#pills-article" role="tab"
-                               aria-controls="pills-article" aria-selected="false">@lang('messages.global.articles')</a>
+                               aria-controls="pills-article" aria-selected="false">@lang('messages.global.articles')<br>
+                                <small>({{ count($articles) }})</small>
+                            </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item text-center">
                             <a class="nav-link {{isset($search_in) ? ($search_in=='courses' ? 'active' : '') : '' }}"
                                id="pills-course-tab" data-toggle="pill" href="#pills-course" role="tab"
-                               aria-controls="pills-course" aria-selected="false">@lang('messages.global.courses')</a>
+                               aria-controls="pills-course" aria-selected="false">@lang('messages.global.courses')<br>
+                                <small>({{ count($courses) }})</small>
+                            </a>
                         </li>
                     @endif
                 </ul>

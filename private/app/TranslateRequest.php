@@ -11,6 +11,7 @@ class TranslateRequest extends Model
 
     const TYPE_TRANSLATE = 'translate';
     const TYPE_EDITING = 'editing';
+    const TYPE_CONSULTATION = 'consultation';
 
     protected $fillable = [
             'author_id',
@@ -27,7 +28,8 @@ class TranslateRequest extends Model
 
     public static $types = [
             self::TYPE_TRANSLATE => 'translate',
-            self::TYPE_EDITING => 'editing'
+            self::TYPE_EDITING => 'editing',
+            self::TYPE_CONSULTATION => 'consultation'
     ];
 
     public static function mainFields()

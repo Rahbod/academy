@@ -26,12 +26,6 @@
                                         : {{config('system.about_us.email')}}
 									</span>
                             </li>
-                            <li>
-									<span>
-										<i class="fa fa-fax"></i> @lang('messages.global.fax')
-                                        : {{config('system.about_us.fax')}}
-									</span>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -81,16 +75,16 @@
                         </ul>
                     </div>
 
-                    <div class="widget  widget_tag_cloud">
-                        <h6 class="m-b15 h6 text-uppercase">@lang('messages.global.tag')</h6>
-                        <div class="dlab-separator bg-white"></div>
-                        <div class="tagcloud">
-                            @foreach(explode(',',config('system.main.footer_tags')) as $footer_tag)
-                                <a title="{{$footer_tag}}"
-                                   href="{{url(session('lang').'/tags/show/'.$footer_tag)}}">{{$footer_tag}}</a>
-                            @endforeach
-                        </div>
-                    </div>
+{{--                    <div class="widget  widget_tag_cloud">--}}
+{{--                        <h6 class="m-b15 h6 text-uppercase">@lang('messages.global.tag')</h6>--}}
+{{--                        <div class="dlab-separator bg-white"></div>--}}
+{{--                        <div class="tagcloud">--}}
+{{--                            @foreach(explode(',',config('system.main.footer_tags')) as $footer_tag)--}}
+{{--                                <a title="{{$footer_tag}}"--}}
+{{--                                   href="{{url(session('lang').'/tags/show/'.$footer_tag)}}">{{$footer_tag}}</a>--}}
+{{--                            @endforeach--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 footer-col-4">

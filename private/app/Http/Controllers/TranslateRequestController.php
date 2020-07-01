@@ -38,28 +38,29 @@ class TranslateRequestController extends Controller
 
     public function index()
     {
-        if(!\Auth::check())
-        {
-
-            return redirect(session('lang').'/login');
-        }
-
-        $categories=Category::where('lang',session('lang'))->where('type','translate')->get();
-//        dd($categories);
-        return view('main_template.pages.translation')->with('categories',$categories)->with('type', 'translate');
+        return $this->viewPage('translate');
     }
 
     public function editing()
     {
-        if(!\Auth::check())
-        {
+        return $this->viewPage('editing');
+    }
 
-            return redirect('login');
+    public function consultation()
+    {
+        return $this->viewPage('consultation');
+    }
+
+    public function viewPage($type)
+    {
+        if(!\Auth::check()) {
+            session(['redirect' => url(session('lang') . "/{$type}-request")]);
+            return redirect(session('lang') . '/login');
         }
 
         $categories=Category::where('lang',session('lang'))->where('type','translate')->get();
 //        dd($categories);
-        return view('main_template.pages.translation')->with('categories',$categories)->with('type', 'editing');
+        return view('main_template.pages.translation')->with('categories',$categories)->with('type', $type);
     }
 
     public function store(Request $request)
@@ -69,6 +70,7 @@ class TranslateRequestController extends Controller
         $this->validate($request,[
             'category_id'=>'required|exists:categories,id',
             'title'=>'required',
+            'type'=>'required',
             'source_language'=>'required',
             'translation_language'=>'required',
             'description'=>'nullable',
@@ -81,6 +83,7 @@ class TranslateRequestController extends Controller
             $model=new TranslateRequest();
             $model->author_id=$user->id;
             $model->category_id=$request->category_id;
+            $model->type=$request->type;
             $model->title=$request->title;
             $model->source_language=$request->source_language;
             $model->translation_language=$request->translation_language;

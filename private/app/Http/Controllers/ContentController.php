@@ -27,6 +27,7 @@ class ContentController extends Controller
     {
         $this->query = Content::query();
         $this->query->where('status', 1)
+            ->orderBy($column_name)
             ->where(function ($q2) {
                 $q2->where('published_at', null)->orWhere('published_at', '<=', Carbon::now());
             });
@@ -43,10 +44,10 @@ class ContentController extends Controller
             $content_type_name = $url_array[count($url_array) - 1];
         }
 
-        $contents = $this->query->whereType($content_type_name)->where('lang', session('lang'))->with('author')->paginate(6);
+        $contents = $this->query->whereType($content_type_name)->paginate(6);
 
         $this->setQuery('created_at');
-        $recent_contents = $this->query->whereType($content_type_name)->take(3)->get();
+        $recent_contents = $this->query->whereType($content_type_name)->whereLang(session('lang'))->take(3)->get();
 
         $breadcrumbs[0]['title'] = __('messages.global.home');
         $breadcrumbs[0]['link'] = 'home';
@@ -90,10 +91,8 @@ class ContentController extends Controller
 
     public function search(Request $request)
     {
-        $search_for = $request->search_query;
-        $search_in = $request->search_in ?? 'news';
-
-//        dd($request->all());
+        $search_for = $request->search_query ?? $request->text;
+        $search_in = $request->search_in;
 
         $breadcrumbs[0]['title'] = __('messages.global.home');
         $breadcrumbs[0]['link'] = 'home';
@@ -130,17 +129,30 @@ class ContentController extends Controller
                         ->with('search_for', $search_for);
                     break;
                 default:
+                    $news = $this->getNews($search_for);
+                    $courses = $this->getCourses($search_for);
+                    $articles = $this->getArticles($search_for);
+
+                    $c = count($news);
+                    $active ='news';
+                    if(count($courses)>$c){
+                        $c = count($courses);
+                        $active = 'courses';
+                    }
+                    if(count($articles)>$c) {
+                        $active = 'articles';
+                    }
+
                     return view('main_template.pages.search')
-                        ->with('news', $this->getNews($search_for))
-                        ->with('courses', $this->getCourses($search_for))
-                        ->with('articles', $this->getArticles($search_for))
+                        ->with('news', $news)
+                        ->with('courses', $courses)
+                        ->with('articles', $articles)
                         ->with('breadcrumbs', $breadcrumbs)
-                        ->with('search_in', $search_in)
+                        ->with('search_in', $active)
                         ->with('search_for', $search_for);
             }
         }
 
-//        dd($search_for);
         return view('main_template.pages.search')
             ->with('news', null)
             ->with('courses', null)

@@ -37,7 +37,7 @@
                                     <div class="dlab-media dlab-img-effect dlab-img-overlay2">
                                         <img src="{{$course['image']}}" alt="{{$course['image']}}">
                                         <div class="dlab-info-has p-a20 text-white no-hover">
-                                            <h4 class="m-t0 m-b10">english</h4>
+                                            <h4 class="m-t0 m-b10">{{ $course['title_'.session('lang')] }}</h4>
                                             {{--<span>{{$course['terms']['']}}</span>--}}
                                             <h2 class="m-t10 m-b20">{{session("lang")=='en' ?  $course['duration'] : numberConvertor($course['duration'])}} @lang('messages.global.month')</h2>
                                             <a href="{{ url(session('lang') .'/courses/'.$course['id'].'/'.str_replace(' ','-',$course['title_'.session('lang')]))}}"

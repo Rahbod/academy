@@ -104,7 +104,7 @@
                             </div>
                             <div class="tab-content nav reg">
                                 <form enctype="multipart/form-data" id="register" method="post"
-                                      action="{{ route('register',['lang'=>session('lang')]) }}"
+                                      action="{{ url(session('lang').'/register') }}"
                                       class="tab-pane active">
                                     @csrf
                                     <h4 class="font-weight-700">@lang('messages.global.register')</h4>

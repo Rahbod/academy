@@ -10,6 +10,8 @@ return [
     ['id' => 'articles', 'text' => 'مقاله ها'],
     ['id' => 'news', 'text' => 'اخبار'],
     ['id' => 'translate-request', 'text' => 'درخواست ترجمه'],
+    ['id' => 'editing-request', 'text' => 'درخواست ویرایش'],
+    ['id' => 'consultation-request', 'text' => 'درخواست مشاوره'],
 
     ['url' => 'auth.login', 'text' => 'ورود به حساب'],
     ['url' => 'auth.register', 'text' => 'ایجاد حساب'],

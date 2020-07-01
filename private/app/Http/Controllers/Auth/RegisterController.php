@@ -54,8 +54,8 @@ class RegisterController extends Controller
 
 //            profile fields
             'mobile_number' => 'required|max:11|unique:profiles',
-            'melli_code' => 'required|unique:profiles',
-            'gender' => 'required|boolean',
+//            'melli_code' => 'required|unique:profiles',
+//            'gender' => 'required|boolean',
         ]);
     }
 
