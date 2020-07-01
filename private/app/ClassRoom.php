@@ -63,6 +63,17 @@ class ClassRoom extends Model
                     'show_in_form' => true,
                 ],
                 [
+                    'name' => 'course_id',
+                    'type' => 'select',
+                    'input_type' => 'select',
+                    'is_table_field' => false,
+                    'orderable' => false,
+                    'searchable' => false,
+                    'show_in_table' => false,
+                    'show_in_form' => true,
+                    'show_in_sub_form' => false
+                ],
+                [
                     'name' => 'term_id',
                     'type' => 'select',
                     'input_type' => 'select',

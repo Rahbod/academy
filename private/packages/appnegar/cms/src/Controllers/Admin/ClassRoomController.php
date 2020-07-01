@@ -9,6 +9,7 @@ use Appnegar\Cms\Controllers\AdminController;
 use Appnegar\Cms\Traits\AdminComment;
 use Appnegar\Cms\Traits\AdminFileManager;
 use Appnegar\Cms\Traits\AdminSettingTrait;
+use Illuminate\Http\Request;
 
 class ClassRoomController extends AdminController{
     use AdminComment;
@@ -73,13 +74,27 @@ class ClassRoomController extends AdminController{
 
     protected function getFormData($data)
     {
+        $terms=[];
+        if(!in_array($data['id'],[null,'',0])){
+            $current_term=Term::findOrFail($data['term_id']);
+            $data['course_id']=$current_term['course_id'];
+            $terms=Term::where('course_id',$current_term['course_id'])->select('id','title_fa AS text')->get();
+        }
         return[
             'model'=>$data,
             'options'=>[
-                'term_id'=>Term::select('id','title_fa AS text')->get(),
+                'course_id'=>Course::select('id','title_fa as text')->get(),
+                'term_id'=>$terms,
                 'teacher_id'=>User::where('type','teacher')->select('id','name AS text')->get(),
                 'tag_id'=>Tag::select('id','name as text')->get()
             ]
         ];
+    }
+    public function changeCourse(Request $request){
+        $this->validate($request,[
+            'course_id'=>'required|exists:courses,id'
+        ]);
+        $terms=Term::where('course_id',$request->course_id)->select('id','title_fa AS text')->get();
+        return $terms;
     }
 }

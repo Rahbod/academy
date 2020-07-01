@@ -36945,10 +36945,6 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_i18next__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue__);
-var _mutations;
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -36987,7 +36983,7 @@ var form = {
             return state.options;
         }
     },
-    mutations: (_mutations = {
+    mutations: {
         setEl: function setEl(state, el) {
             state.el = el;
         },
@@ -37100,16 +37096,17 @@ var form = {
         },
         setModel: function setModel(state, model) {
             state.model = model;
+        },
+        removeError: function removeError(state, key) {
+            delete state.errors[key];
+        },
+        updateOptions: function updateOptions(state, payload) {
+            __WEBPACK_IMPORTED_MODULE_1_vue___default.a.set(state.options, payload.key, payload.value);
+        },
+        deleteOption: function deleteOption(state, key) {
+            delete state.options[key];
         }
-    }, _defineProperty(_mutations, 'setInfo', function setInfo(state, info) {
-        state.info = info;
-    }), _defineProperty(_mutations, 'removeError', function removeError(state, key) {
-        delete state.errors[key];
-    }), _defineProperty(_mutations, 'updateOptions', function updateOptions(state, payload) {
-        __WEBPACK_IMPORTED_MODULE_1_vue___default.a.set(state.options, payload.key, payload.value);
-    }), _defineProperty(_mutations, 'deleteOption', function deleteOption(state, key) {
-        delete state.options[key];
-    }), _mutations),
+    },
     actions: {
         setInfo: function setInfo(context, fields) {
             context.commit('setInfo', []);
@@ -37457,6 +37454,11 @@ var form = {
                         context.dispatch('changeAttachmentableType', payload);
                         break;
                 }
+                switch (key_name) {
+                    case 'class_rooms-course_id':
+                        context.dispatch('changeCourse', payload);
+                        break;
+                }
             }
             // console.log(key_name);
         },
@@ -37582,6 +37584,18 @@ var form = {
             }).catch(function (error) {
                 // console.log(error);
             });
+        },
+        changeCourse: function changeCourse(context, payload) {
+            var url = context.rootGetters.main_url + '/change/course';
+            var data = {};
+            data[payload.key] = payload.value;
+            if (![null, undefined, ''].includes(payload.value)) {
+                context.dispatch('sendRequest', { url: url, data: data }, { root: true }).then(function (response) {
+                    context.commit('updateOptions', { key: 'term_id', value: response.data });
+                }).catch(function (error) {
+                    // console.log(error);
+                });
+            }
         }
     }
 };
