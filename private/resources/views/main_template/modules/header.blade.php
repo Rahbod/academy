@@ -176,11 +176,11 @@ if (session('lang') === 'fa') {
                             @endif
                         </ul>
                         @if(session('lang') =='fa')
-                            <a class="navbar-brand ml-3" href="{{route('home',['lang'=>session('lang')])}}">
-                                <!--<img src="./assets/media/images/public/site_logo.png"-->
-                                <!--class="siteLogo__image img-fluid" alt="آکادمی زبان ">-->
-                                <span class=""
-                                      style="font-size: inherit;color: inherit;font-weight: inherit;">{{ $siteName }}</span>
+                            <a class="navbar-brand" href="{{route('home',['lang'=>session('lang')])}}">
+                                <img src="{{ config('system.main.site_logo') }}"
+                                     class="siteLogo__image img-fluid" alt="{{ $siteName }}">
+                                <h1 class="d-none"
+                                    style="font-size: inherit;color: inherit;font-weight: inherit;">{{ $siteName }}</h1>
                             </a>
                         @endif
 

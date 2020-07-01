@@ -141,7 +141,7 @@
 
                                 <div class="form-group text-left">
                                     <button type="submit" class="site-button radius-no">
-                                        ثبت نظر
+                                        @lang('messages.global.save_comment')
                                     </button>
                                 </div>
                             </form>
@@ -183,8 +183,7 @@
                 <div class="col-lg-6 col-md-6 -textLeft">
                     <span>@lang('messages.global.copyright') <span dir="ltr" class="">© <?php echo date("Y"); ?></span></span>
                 </div>
-                <div class="col-lg-6 col-md-6 -textRight "><span>@lang('messages.global.design-by') <i
-                                class="fa fa-heart text-primary heart mx-2"></i>@lang('messages.global.with') {{config('system.main.developer_name')}} </span>
+                <div class="col-lg-6 col-md-6 -textRight "><span>@lang('messages.global.design-by') {{config('system.main.developer_name')}} </span>
                 </div>
             </div>
         </div>

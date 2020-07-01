@@ -8,7 +8,7 @@ return [
             'meta_keywords' =>  'زبان، آموزش، زبان انگلیسی',
             'meta_description' =>  'موسسه اموزش زبان',
             'footer_tags' =>  'English,Editing,Translation,Design',
-            'developer_name' =>  'Eahbod',
+            'developer_name' =>  'Rahbod',
             'fa_title' =>  'موسسه زبان',
             'box_title' =>  'translate your documents with us',
             'box_subtitle' =>  'off 10-50%',
