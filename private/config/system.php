@@ -2,13 +2,21 @@
 return [
 
     'main' => [
-            'title' =>  'موسسه زبان',
+            'title' =>  'ProfsAdvice',
             'related_sections' =>  'courses,translations,other',
             'status' =>  '1',
-            'meta_keywords' =>  'زبان، اموزش، زبان انگلیسی',
+            'meta_keywords' =>  'زبان، آموزش، زبان انگلیسی',
             'meta_description' =>  'موسسه اموزش زبان',
-            'footer_tags' =>  'language,english,francais,persian',
-            'developer_name' =>  'Rahbod',
+            'footer_tags' =>  'English,Editing,Translation,Design',
+            'developer_name' =>  'Eahbod',
+            'fa_title' =>  'موسسه زبان',
+            'box_title' =>  'translate your documents with us',
+            'box_subtitle' =>  'off 10-50%',
+            'box_description' =>  'If you’re looking for a truly precise translator with cool history,here you will see what you are searching for',
+            'box_link_title' =>  'Login | Register',
+            'box_link_url' =>  'http://www.profsadvice.com/en/login',
+            'box_image_url' =>  'http://profsadvice.ir/storage/attachment/KING%2037%201920x1280%20(3).jpg?_t=1592844335',
+            'site_logo' =>  'http://profsadvice.ir/storage/attachment/site_logo.png?_t=1592847376',
         ],
     'about_us' => [
             'introduction' =>  'این متن ازمایشی است',
@@ -44,7 +52,7 @@ return [
             'image_destination' =>  'content/image/',
         ],
     'page' => [
-            'image_size' =>  '500',
+            'image_size' =>  '5120',
             'image_width' =>  '200',
             'image_height' =>  '278',
             'image_extension' =>  'jpg, jpeg, png',
@@ -58,27 +66,27 @@ return [
             'image_destination' =>  'course/image/',
         ],
     'class_room' => [
-            'image_size' =>  '500',
+            'image_size' =>  '5000',
             'image_width' =>  '700',
             'image_height' =>  '450',
             'image_extension' =>  'jpg, jpeg, png',
             'image_destination' =>  'class_room/image/',
         ],
     'slider' => [
-            'image_size' =>  '2048',
+            'image_size' =>  '5000',
             'image_width' =>  '2000',
             'image_height' =>  '767',
             'image_extension' =>  'jpg, jpeg, png',
             'image_destination' =>  'slider/image/',
         ],
     'translate_request' => [
-            'translated_file_size' =>  '500',
+            'translated_file_size' =>  '5000',
             'translated_file_extension' =>  'doc,docx,pdf,zip,rar',
             'translated_file_destination' =>  'translate_request/',
         ],
     'attachment' => [
-            'attachment_size' =>  '2048',
-            'attachment_extension' =>  'doc,docx,pdf,zip,rar,txt',
+            'attachment_size' =>  '5000',
+            'attachment_extension' =>  'doc,docx,pdf,zip,rar,txt,jpeg,jpg,png,svg',
             'attachment_destination' =>  'attachment/',
         ],
 

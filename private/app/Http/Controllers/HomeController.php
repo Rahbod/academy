@@ -12,11 +12,11 @@ class HomeController extends Controller
     public function index()
     {
         $main_sliders = SliderGroup::with(['sliders'=> function($q){
-            $q->where('lang',session('lang'))->where('status',1);
+            $q->where('lang',session('lang'))->orderBy('order')->where('status',1);
         }])
             ->where('special_name', 'main_slider')
             ->where('status',1)
-            ->where('lang',session('lang'))
+           // ->where('lang',session('lang'))
             ->limit(5)->first();
 
         $courses = Course::with('tags')->whereStatus(1)->whereLang(session('lang'))->where(function ($q) {

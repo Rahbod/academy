@@ -65,7 +65,6 @@ class CourseController extends Controller
         $breadcrumbs[1]['title'] = __('messages.home.course-title');
         $breadcrumbs[1]['link'] = 'courses';
 
-//        dd($course);
         if (request()->ajax()) {
             $class_view = view('main_template.pages.courses.step-1')
                 ->with('course', $course);
@@ -80,7 +79,7 @@ class CourseController extends Controller
     public function classShow($id)
     {
         $term = Term::with(['class_rooms' => function ($q) {
-            $q->where('status', 1)->where('lang', session('lang'))
+            $q->where('status', 1)
                 ->where('registration_start_date', '<=', Carbon::now())
                 ->where('registration_end_date', '>=', Carbon::now())
                 ->with('class_room_times')->with(['teacher' => function ($q3) {
