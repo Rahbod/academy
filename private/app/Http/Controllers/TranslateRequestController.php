@@ -41,7 +41,7 @@ class TranslateRequestController extends Controller
         if(!\Auth::check())
         {
 
-            return redirect('login');
+            return redirect(session('lang').'/login');
         }
 
         $categories=Category::where('lang',session('lang'))->where('type','translate')->get();

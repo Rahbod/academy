@@ -8,19 +8,6 @@ if (session('lang') === 'fa') {
     <div class="topBar">
         <div class="container">
             <div class="row d-flex justify-content-between">
-                <ul class="rightMenu">
-                    {{--                    <li>--}}
-                    {{--                        <a title="@lang('messages.global.contact-us')" class="topbar__buttonLink"--}}
-                    {{--                           href="{{route('contact-us',['lang'=>session('lang')])}}">@lang('messages.global.contact-us')</a>--}}
-                    {{--                    </li>--}}
-                    {{--                    <li>--}}
-                    {{--                        <a title="@lang('messages.global.about-us')" class="topbar__buttonLink"--}}
-                    {{--                           href="{{route('about-us',['lang'=>session('lang')])}}">@lang('messages.global.about-us')</a>--}}
-                    {{--                    </li>--}}
-                    {{--                    <li>--}}
-                    {{--                    <a title="translation" class="topbar__buttonLink" href="{{route('translations',['lang'=>session('lang')])}}">translation</a>--}}
-                    {{--                    </li>--}}
-                </ul>
                 <ul class="leftMenu">
                     <div class="extra-nav">
                         <div class="extra-cell">
@@ -74,6 +61,19 @@ if (session('lang') === 'fa') {
                             </div>
                         </li>
                     @endguest
+                </ul>
+                <ul class="rightMenu">
+                    {{--                    <li>--}}
+                    {{--                        <a title="@lang('messages.global.contact-us')" class="topbar__buttonLink"--}}
+                    {{--                           href="{{route('contact-us',['lang'=>session('lang')])}}">@lang('messages.global.contact-us')</a>--}}
+                    {{--                    </li>--}}
+                    {{--                    <li>--}}
+                    {{--                        <a title="@lang('messages.global.about-us')" class="topbar__buttonLink"--}}
+                    {{--                           href="{{route('about-us',['lang'=>session('lang')])}}">@lang('messages.global.about-us')</a>--}}
+                    {{--                    </li>--}}
+                    {{--                    <li>--}}
+                    {{--                    <a title="translation" class="topbar__buttonLink" href="{{route('translations',['lang'=>session('lang')])}}">translation</a>--}}
+                    {{--                    </li>--}}
                 </ul>
             </div>
         </div>

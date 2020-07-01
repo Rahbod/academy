@@ -119,6 +119,7 @@ return [
         'fill_text' => 'توضیحات را وارد نمایید.',
         'fill_verify_code' => 'کد امنیتی را وارد نمایید.',
         'save_comment' => 'ثبت نظر',
+        'register' => 'ثبت نام',
     ],
     'home' => [
         'course-title' => 'دوره ها',

@@ -7,4 +7,6 @@ return [
     "twitter" => "توییتر",
     "instagram" => "اینستاگرام",
     "linkedin" => "لینکدین",
+    "facebook" => "فیسبوک",
+    "google-plus" => "گوگل پلاس",
 ];
