@@ -116,27 +116,27 @@
                                     {{--                                        وارد شوید.--}}
                                     {{--                                    </p>//--}}
                                     <div class="form-group">
-                                        <label for="first_name" class="font-weight-700">نام</label>
-                                        <input tabindex="1" name="first_name" id="first_name" required
-                                               class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}"
-                                               placeholder="نام را وارد نمایید" value="{{ old('first_name') }}"
+                                        <label for="name" class="font-weight-700">نام و نام خانوادگی</label>
+                                        <input tabindex="1" name="name" id="name" required
+                                               class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
+                                               placeholder="نام و نام خانوادگی را وارد نمایید" value="{{ old('name') }}"
                                                type="text">
-                                        @if ($errors->has('first_name'))
+                                        @if ($errors->has('name'))
                                             <span class="invalid-feedback">
-                                                <strong>{{ $errors->first('first_name') }}</strong>
+                                                <strong>{{ $errors->first('name') }}</strong>
                                             </span>
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="last_name" class="font-weight-700">نام خانوادگی</label>
-                                        <input tabindex="2" name="last_name" id="last_name"
-                                               placeholder="نام خانوادگی را وارد نمایید."
-                                               class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}"
-                                               value="{{ old('last_name') }}" required
+                                        <label for="username" class="font-weight-700">نام کاربری</label>
+                                        <input tabindex="2" name="username" id="username"
+                                               placeholder="نام کاربری را وارد نمایید."
+                                               class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}"
+                                               value="{{ old('username') }}" required
                                                type="text">
-                                        @if ($errors->has('last_name'))
+                                        @if ($errors->has('username'))
                                             <span class="invalid-feedback">
-                                                <strong>{{ $errors->first('last_name') }}</strong>
+                                                <strong>{{ $errors->first('username') }}</strong>
                                             </span>
                                         @endif
                                     </div>

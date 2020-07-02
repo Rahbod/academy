@@ -26,6 +26,8 @@ trait AuthenticatesUsers
      */
     public function showLoginForm()
     {
+        if($r = \request()->get('redirect'))
+            session(['redirect' => $r]);
         return view('auth.login');
     }
 

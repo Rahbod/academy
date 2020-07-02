@@ -128,10 +128,11 @@ class CourseController extends Controller
 
         $related_courses = Category::where('lang', session('lang'))->where(function ($q2) {
             $q2->where('published_at', null)->orWhere('published_at', '<=', Carbon::now());
-        })->with(['courses' => function ($c) {
+        })->with(['courses' => function ($c) use ($id) {
             $c->where('lang', session('lang'))->where('status', 1)->where(function ($q2) {
                 $q2->where('published_at', null)->orWhere('published_at', '<=', Carbon::now());
-            })->take(4);
+            })->where('id', '!=', $id)
+                    ->take(4);
         }])->where('id', isset($course->category) ? $course->category->id : 3)->first();
 
         $breadcrumbs[0]['title'] = __('messages.global.home');

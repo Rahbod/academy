@@ -93,8 +93,6 @@ class RegisterController extends Controller
 
                 $profile = new Profile();
                 $profile->mobile_number = $data['mobile_number'];
-                $profile->melli_code = $data['melli_code'];
-                $profile->gender = $data['gender'];
                 $profile->user_id = $user->id;
                 $profile->save();
 

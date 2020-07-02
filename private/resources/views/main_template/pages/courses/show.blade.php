@@ -50,7 +50,6 @@
                         <div class="d-flex info-bx m-b30">
                             <div class="tour-title">
                                 <h2>{{$course['title_'.session('lang')]}}</h2>
-                                <p>{!! $course['description_'.session('lang')] !!}</p>
                                 {{--<p>--}}
                                 {{--<span class="site-button button-sm button-gray">course</span>--}}
                                 {{--<span class="site-button button-sm">rezae</span>--}}
@@ -78,7 +77,7 @@
                             @endauth
 
                             @guest
-                                <a href="{{url(session('lang').'/login') }}"
+                                <a href="{{url(session('lang').'/login', ['redirect' => request()->url()]) }}"
                                    class="site-button btn-block">
                                     <i class="fas fa-sign-in-alt"></i>
                                     @lang('messages.global.login')
@@ -177,11 +176,8 @@
                                                         </h6>
                                                     </div>
                                                     <div class="dlab-post-meta">
-                                                        <ul class="d-flex align-items-center">
+                                                        <ul class="d-flex align-items-center" style="margin: 0">
                                                             <li class="post-date">{{$related_course['created_at']}}</li>
-                                                            <li class="post-comment"><a
-                                                                        href="#">{{$related_course['show_count']}}</a>
-                                                            </li>
                                                         </ul>
                                                     </div>
                                                 </div>
