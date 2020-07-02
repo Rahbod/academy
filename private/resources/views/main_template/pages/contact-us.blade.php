@@ -35,7 +35,6 @@
                     <div class="col-lg-4 col-md-6 d-lg-flex d-md-flex">
                         <div class="p-a30 border m-b30 contact-area border-1 align-self-stretch ">
                             <h4 class="m-b10">@lang('messages.global.quick-contact')</h4>
-                            <p>If you have any questions simply use the following contact details.</p>
                             <ul class="no-margin">
                                 <li class="icon-bx-wraper left m-b30">
                                     <div class="icon-bx-xs border-1"><a href="#" class="icon-cell"><i
@@ -146,19 +145,19 @@
                         </div>
                     </div>
                     <!-- Left part END -->
-                    <div class="col-lg-4 col-md-12 d-lg-flex m-b30">
-                        <div class="mapouter">
-                            <div class="gmap_canvas">
-                                <iframe width="400" height="500" id="gmap_canvas"
-                                        src="https://maps.google.com/maps?q=tehran&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                                        frameborder="0" scrolling="no" marginheight="0"
-                                        marginwidth="0"></iframe>
-                                {{--<a href="https://www.emojilib.com">emojilib.com</a></div>--}}
+{{--                    <div class="col-lg-4 col-md-12 d-lg-flex m-b30">--}}
+{{--                        <div class="mapouter">--}}
+{{--                            <div class="gmap_canvas">--}}
+{{--                                <iframe width="400" height="500" id="gmap_canvas"--}}
+{{--                                        src="https://maps.google.com/maps?q=tehran&t=&z=13&ie=UTF8&iwloc=&output=embed"--}}
+{{--                                        frameborder="0" scrolling="no" marginheight="0"--}}
+{{--                                        marginwidth="0"></iframe>--}}
+{{--                                --}}{{--<a href="https://www.emojilib.com">emojilib.com</a></div>--}}
 
-                            </div>
+{{--                            </div>--}}
 
-                        </div>
-                    </div>
+{{--                        </div>--}}
+{{--                    </div>--}}
                 </div>
             </div>
     </section>

@@ -527,7 +527,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <h3 class="font-weight-700 m-t0 m-b20">@lang('messages.global.translation-request')</h3>
+                        <h3 class="font-weight-700 m-t0 m-b20">@lang('messages.global.'.$type.'-request')</h3>
                     </div>
                 </div>
                 <div class="row">
@@ -537,7 +537,7 @@
                                 <form action="{{url(session('lang').'/request-store')}}" method="post"
                                       enctype="multipart/form-data"
                                       id="translationForm" class="">
-                                    <input type="hidden" name="type" value="{{ $type }}">
+                                    <input type="hidden" id="type" name="type" value="{{ $type }}">
                                     <h4 class="font-weight-700">@lang('messages.global.translation-request-form')</h4>
                                     <p class="font-weight-600">@lang('messages.global.fill-carefully')</p>
                                     <div class="form-row">
@@ -567,8 +567,8 @@
                                                 *</label>
                                             <select name="source_language" id="source_language"
                                                     class="form-control p-1">
-                                                <option value="english"
-                                                        selected>@lang('messages.global.source-language')</option>
+                                                <option value="" selected>@lang('messages.global.source-language')</option>
+                                                <option value="english">english</option>
                                                 <option value="france">france</option>
                                                 <option value="germany">germany</option>
                                                 <option value="persian">persian</option>
@@ -580,8 +580,9 @@
                                                 *</label>
                                             <select name="translation_language" id="translation_language"
                                                     class="form-control p-1">
-                                                <option value="english"
+                                                <option value=""
                                                         selected>@lang('messages.global.destination-language')</option>
+                                                <option value="english">english</option>
                                                 <option value="france">france</option>
                                                 <option value="germany">germany</option>
                                                 <option value="persian">persian</option>
@@ -624,12 +625,12 @@
 
     <script>
         Dropzone.options.myDropzone = {
-            url: "{{url(session('lang').'/translation-requests')}}",
+            url: "{{url(session('lang').'/request-store')}}",
             autoProcessQueue: false,
             uploadMultiple: true,
             parallelUploads: 100,
             maxFiles: 100,
-            acceptedFiles: ",jpg,.jpeg,.png,.pdf,.rar,.zip,.doc,.docx,.txt",
+            acceptedFiles: ".jpg,.jpeg,.png,.pdf,.rar,.zip,.doc,.docx,.txt",
             addRemoveLinks: true,
             dictResponseError: 'Server not Configured',
 
@@ -684,6 +685,7 @@
 
                 self.on('sendingmultiple', function (data, xhr, formData) {
                     formData.append("category_id", $("#category_id").val());
+                    formData.append("type", $("#type").val());
                     formData.append("title", $("#title").val());
                     formData.append("source_language", $("#source_language").val());
                     formData.append("translation_language", $("#translation_language").val());
@@ -691,9 +693,9 @@
                     formData.append("_token", '{{csrf_token()}}');
                 });
                 self.on("completemultiple", function (file) {
-                    if (self.getUploadingFiles().length === 0 && self.getQueuedFiles().length === 0) {
+                    // if (self.getUploadingFiles().length === 0 && self.getQueuedFiles().length === 0) {
                         submitButton.removeAttribute("disabled");
-                    }
+                    // }
                 });
                 self.on("successmultiple", function (file, response) {
                     $('#translationForm').trigger("reset");
@@ -712,13 +714,14 @@
                         }
                     });
                     submitButton.removeAttribute("disabled");
+                    setTimeout(function(){ window.location.reload(); }, 5000);
                 });
                 self.on("error", function (file, errorMessage) {
                     toaster('error', 'error', errorMessage.message);
 
                     $("body").prepend('<div class="alert alert-danger alert-dismissable">' +
                         '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
-                        '<strong>Error!</strong> ' + errorMessage + '</div >');
+                        '<strong>Error!</strong> ' + errorMessage.message + '</div >');
                     submitButton.removeAttribute("disabled");
                 });
 

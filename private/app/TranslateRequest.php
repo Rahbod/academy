@@ -141,7 +141,7 @@ class TranslateRequest extends Model
                                 'input_type' => 'hidden',
                                 'orderable' => true,
                                 'searchable' => true,
-                                'show_in_table' => false,
+                                'show_in_table' => true,
                                 'show_in_form' => true,
                         ],
                 ]

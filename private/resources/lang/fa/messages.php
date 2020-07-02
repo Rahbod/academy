@@ -2,9 +2,12 @@
 
 return [
     'global' => [
+        "contact_us"=> "تماس با ما",
         "tags"=> "برچسب ها",
         "tags-description"=> "تمامی مطالب با عنوان : ",
 
+        "fa"=> "فارسی",
+        "en"=> "انگلیسی",
         "sorry"=> "با احترام",
         'popover-title'=>'ترم شامل کلاسی نمی باشد و یا ظرفیت آن تکمیل شده است.',
 
@@ -16,6 +19,8 @@ return [
         'fill-carefully' => 'لطفا اطلاعات را با دقت وارد نمایید.',
         'translation-request-form' => 'فرم درخواست ',
         'translation-request' => 'درخواست ترجمه',
+        'consultation-request' => 'درخواست مشاوره',
+        'editing-request' => 'درخواست ویرایش',
         'person' => 'نفر',
 
         'class-information' => 'اطلاعات کلاس',
@@ -120,6 +125,7 @@ return [
         'fill_verify_code' => 'کد امنیتی را وارد نمایید.',
         'save_comment' => 'ثبت نظر',
         'register' => 'ثبت نام',
+        'translation_language_invalid' => 'زبان مقصد با زبان مبدا برابر است.',
     ],
     'home' => [
         'course-title' => 'دوره ها',

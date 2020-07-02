@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6 footer-col-4">
                     <div class="widget widget_getintuch">
-                        <h6 class="m-b15 h6 text-uppercase">@lang('messages.global.address')</h6>
+                        <h6 class="m-b15 h6 text-uppercase">@lang('messages.global.contact_us')</h6>
                         <div class="dlab-separator bg-white"></div>
                         <ul class="info-contact">
                             <li>
@@ -93,7 +93,7 @@
                         <div class="dlab-separator bg-white"></div>
                         <div class="clearfix">
                             <form id="comment_form" method="post"
-                                  action="{{url('new_comment',['lang'=>session('lang')])}}">
+                                  action="{{url(session('lang').'/comment')}}">
                                 <div class="form-group">
                                     {{--                                    <label for="email">ایمیل:</label>--}}
                                     <input required class="form-control" type="email" id="email" name="email"

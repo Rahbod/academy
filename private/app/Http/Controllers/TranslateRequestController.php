@@ -65,8 +65,6 @@ class TranslateRequestController extends Controller
 
     public function store(Request $request)
     {
-//        return $request->all();
-
         $this->validate($request,[
             'category_id'=>'required|exists:categories,id',
             'title'=>'required',
@@ -76,6 +74,9 @@ class TranslateRequestController extends Controller
             'description'=>'nullable',
             'file.*'=>'required|file|max:'.$this->config['attachment']['source']['size'] . '|mimes:' . trimArrayString($this->config['attachment']['source']['extension']),
         ]);
+
+        if($request->source_language == $request->translation_language)
+            return response()->json(['message'=>trans('messages.global.translation_language_invalid')],401);
 
         if(\Auth::check()){
             $user=  \Auth::user();

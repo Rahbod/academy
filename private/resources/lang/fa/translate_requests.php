@@ -17,6 +17,7 @@ return [
         'status' => 'وضعیت',
         'updated_at' => 'تاریخ بروزرسانی',
         'created_at' => 'تاریخ ایجاد',
+        'type' => 'نوع درخواست',
     ],
     'relations' => [
         'author' => 'کاربر',

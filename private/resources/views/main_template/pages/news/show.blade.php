@@ -29,9 +29,9 @@
                             <div class="dlab-post-meta">
                                 <ul class="d-flex align-items-center">
                                     <li class="post-date">{{$content['created_at']}}</li>
-                                    <li class="post-author">@lang('messages.global.by')
-                                        <a href="{{url(session('lang') .'/users/show/'.$content['author']['id'] .'/'.str_replace(' ','-',$content['author']['name']))}}">{{isset($content['author']) ? $content['author']['name'] :'admin'}}</a>
-                                    </li>
+{{--                                    <li class="post-author">@lang('messages.global.by')--}}
+{{--                                        <a href="{{url(session('lang') .'/users/show/'.$content['author']['id'] .'/'.str_replace(' ','-',$content['author']['name']))}}">{{isset($content['author']) ? $content['author']['name'] :'admin'}}</a>--}}
+{{--                                    </li>--}}
                                     <li class="post-comment"><a href="#">{{$content['show_count']}}</a></li>
                                 </ul>
 

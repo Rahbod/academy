@@ -19,7 +19,7 @@ return [
             'site_logo' =>  'http://profsadvice.ir/storage/attachment/site_logo.png?_t=1592847376',
         ],
     'about_us' => [
-            'introduction' =>  'این متن ازمایشی است',
+            'introduction' =>  '&lt;p&gt;این متن ازمایشی است&lt;/p&gt;',
             'email' =>  'info@zaban.com',
             'telegram' =>  'https://telegram.me/test.org',
             'instagram' =>  'https://www.instagram.com/test.org',
@@ -29,8 +29,9 @@ return [
             'phone' =>  '0098253700000',
             'fax' =>  '009823000000',
             'address' =>  'Iran - Tehran',
-            'longitude' =>  '000',
-            'latitude' =>  '000',
+            'longitude' =>  '35.793303',
+            'latitude' =>  '51.444011',
+            'image' =>  'http://profsadvice.ir/storage/attachment/file_5ef232b6ef4bc.jpg?_t=1592930998',
         ],
     'user' => [
             'avatar_size' =>  '500',
@@ -80,7 +81,7 @@ return [
             'image_destination' =>  'slider/image/',
         ],
     'translate_request' => [
-            'translated_file_size' =>  '5000',
+            'translated_file_size' =>  '104000',
             'translated_file_extension' =>  'doc,docx,pdf,zip,rar',
             'translated_file_destination' =>  'translate_request/',
         ],

@@ -12,11 +12,13 @@
                         <img class="" src="{{$slider['image']}}" alt="{{$slider['title']}}"/>
 
                         <div class="mainSlider--title">
-                            <h3 class="-show2Lines">{{$slider['title']}}</h3>
+                            <h3 class="-show3Lines">{{$slider['title']}}</h3>
                             <p class="-show2Lines">{!! $slider['text'] !!}</p>
 
+                            @if(!empty($slider['link']))
                             <a href="{{$slider['link']}}" title="{{ $slider['title'] }}"
                                class="mainSlider__site-button button-md">@lang('messages.global.details')</a>
+                            @endif
                             {{--<a href="{{url(session('lang'). '/contact-us')}}"--}}
                             {{--class="mainSlider__site-button white button-md" title="talk to us">@lang('messages.global.contact')</a>--}}
                         </div>

@@ -50,7 +50,7 @@
                         <div class="d-flex info-bx m-b30">
                             <div class="tour-title">
                                 <h2>{{$course['title_'.session('lang')]}}</h2>
-                                <p>{{$course['description_'.session('lang')]}}</p>
+                                <p>{!! $course['description_'.session('lang')] !!}</p>
                                 {{--<p>--}}
                                 {{--<span class="site-button button-sm button-gray">course</span>--}}
                                 {{--<span class="site-button button-sm">rezae</span>--}}
