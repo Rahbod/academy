@@ -93,7 +93,20 @@
                         <div class="dlab-separator bg-white"></div>
                         <div class="clearfix">
                             <form id="comment_form" method="post"
-                                  action="{{url(session('lang').'/comment')}}">
+                                  action="{{url(session('lang').'/contact-us')}}">
+                                <div class="form-group">
+                                    {{--                                    <label for="email">ایمیل:</label>--}}
+                                    <select style="padding:0 20px;" class="form-control select-lg"
+                                            name="relevant_section" id="">
+                                        {{--@if(isset(config('system.main.related_sections')))--}}
+                                        <option value="">@lang('messages.global.section')</option>
+
+                                        @foreach(explode(',',config('system.main.related_sections')) as $value)
+                                            <option value="{{$value}}">{{$value}}</option>
+                                        @endforeach
+                                        {{--@endif--}}
+                                    </select>
+                                </div>
                                 <div class="form-group">
                                     {{--                                    <label for="email">ایمیل:</label>--}}
                                     <input required class="form-control" type="email" id="email" name="email"
@@ -101,13 +114,13 @@
                                 </div>
                                 <div class="form-group">
                                     {{--                                    <label for="email">ایمیل:</label>--}}
-                                    <input required class="form-control" type="text" id="title" name="title"
-                                           placeholder="@lang('messages.global.fill_title')">
+                                    <input required class="form-control" type="text" id="name" name="name"
+                                           placeholder="@lang('messages.global.fill_name')">
                                 </div>
                                 <div class="form-group">
                                     {{--                                    <label for="description">توضیحات:</label>--}}
-                                    <textarea required class="form-control" name="description"
-                                              id="description" cols="30" rows="4"
+                                    <textarea required class="form-control" name="content"
+                                              id="content" cols="30" rows="4"
                                               placeholder="@lang('messages.global.fill_text')"></textarea>
                                 </div>
                                 <div class="form-group">

@@ -38,13 +38,13 @@ class ContactUsController extends Controller
 //        $feedback->archive = 0;
         $status = $feedback->save();
 
-        return view('main_template.pages.message')->with([
-            'type' => 'success',
-            'title' => trans('notifications.stored_successfully'),
-            'message' => trans('notifications.stored_successfully_content')
-        ]);
+//        return view('main_template.pages.message')->with([
+//            'type' => 'success',
+//            'title' => trans('notifications.stored_successfully'),
+//            'message' => trans('notifications.stored_successfully_content')
+//        ]);
 
-//        return response()->json(['message' => 'information stored successfully'], 200);
+        return response()->json(['message' => 'information stored successfully'], 200);
     }
 
     public function storeNewsLetter(Request $request)

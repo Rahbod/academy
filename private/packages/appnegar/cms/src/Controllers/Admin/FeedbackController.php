@@ -12,7 +12,8 @@ class FeedbackController extends AdminController{
 
 
     protected function getTableConditions(){
-        return ['archive'=>0];
+        return [];
+        return ['archive'=>1];
     }
 
     protected function validationRules($request, $id = null)
@@ -22,7 +23,7 @@ class FeedbackController extends AdminController{
             'name'=>'required',
             'email'=>'required|email',
             'content'=>'required',
-            'archive'=>'required',
+//            'archive'=>'required',
         ];
     }
 
