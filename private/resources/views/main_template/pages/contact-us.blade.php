@@ -34,7 +34,6 @@
                     <!-- right part start -->
                     <div class="col-lg-4 col-md-6 d-lg-flex d-md-flex">
                         <div class="p-a30 border m-b30 contact-area border-1 align-self-stretch ">
-                            <h4 class="m-b10">@lang('messages.global.quick-contact')</h4>
                             <ul class="no-margin">
                                 <li class="icon-bx-wraper left m-b30">
                                     <div class="icon-bx-xs border-1"><a href="#" class="icon-cell"><i
@@ -68,19 +67,19 @@
                             <div class="m-t20">
                                 <ul class="dlab-social-icon dlab-social-icon-lg">
                                     <li><a title="whatsapp account" href="{{config('system.about_us.whatsapp')}}"
-                                           class="site-button whatsapp sharp"><i
+                                           class="site-button whatsapp sharp rounded-circle"><i
                                                     class="fab fa-whatsapp"></i></a></li>
                                     <li><a title="linked_in account" href="{{config('system.about_us.linked_in')}}"
-                                           class="site-button linkedin sharp"><i
+                                           class="site-button linkedin sharp rounded-circle"><i
                                                     class="fab fa-linkedin-in"></i></a></li>
                                     <li><a title="telegram account" href="{{config('system.about_us.telegram')}}"
-                                           class="site-button telegram sharp"><i class="fab fa-telegram-plane"></i></a>
+                                           class="site-button telegram sharp rounded-circle"><i class="fab fa-telegram-plane"></i></a>
                                     </li>
                                     <li><a title="twitter account" href="{{config('system.about_us.twitter')}}"
-                                           class="site-button twitter sharp"><i
+                                           class="site-button twitter sharp rounded-circle"><i
                                                     class="fab fa-twitter"></i></a></li>
                                     <li><a title="instagram account" href="{{config('system.about_us.instagram')}}"
-                                           class="site-button instagram sharp"><i
+                                           class="site-button instagram sharp rounded-circle"><i
                                                     class="fab fa-instagram"></i></a></li>
                                 </ul>
                             </div>
@@ -90,7 +89,6 @@
                     <!-- Left part start -->
                     <div class="col-lg-4 col-md-6">
                         <div class="p-a30 m-b30 bg-gray clearfix">
-                            <h4>@lang('messages.global.send-message-us')</h4>
                             <div class="dzFormMsg"></div>
                             <form enctype="multipart/form-data" method="post" class="contactUsForm"
                                   action="{{url(session('lang').'/contact-us')}}">

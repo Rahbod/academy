@@ -77,7 +77,7 @@
                             @endauth
 
                             @guest
-                                <a href="{{url(session('lang').'/login', ['redirect' => request()->url()]) }}"
+                                <a href="{{url(session('lang').'/login') }}"
                                    class="site-button btn-block">
                                     <i class="fas fa-sign-in-alt"></i>
                                     @lang('messages.global.login')

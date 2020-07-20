@@ -27,7 +27,7 @@
 
                         <div class="col-md-4 text-lg-left"><label>
                                 @lang('messages.global.course-description') :</label></div>
-                        <div class="col-md-8">{{$term['course']['description_'.session('lang')]}}</div>
+                        <div class="col-md-8">{!! $term['course']['description_'.session('lang')] !!}</div>
 
                         <div class="col-md-4 text-lg-left"><label>@lang('messages.global.course-duration') :</label>
                         </div>
@@ -54,7 +54,7 @@
 
                         <div class="col-md-4 text-lg-left"><label>@lang('messages.global.term-description') :</label>
                         </div>
-                        <div class="col-md-8">{{$term['description_'.session('lang')]}}</div>
+                        <div class="col-md-8">{!! $term['description_'.session('lang')] !!}</div>
                     </div>
                 </div>
             </div>
@@ -101,7 +101,7 @@
                                 <div class="row">
                                     @foreach($class_room['class_room_times'] as $class_room_time)
                                         <div class="col-4">
-                                            {{$class_room_time['week_day']}}
+                                            {{trans('main.values.'.$class_room_time['week_day'])}}
                                         </div>
                                         <div class="col-8">
                                             {{session('lang') == 'en' ? $class_room_time['start_time'] : numberConvertor($class_room_time['start_time']) }}

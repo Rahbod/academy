@@ -8,7 +8,7 @@
         <img style="height: 300px!important;" src="{{$course['image']}}" alt="{{$course['image']}}">
         <div class="ml-3">
             <h4 class="m-t0 m-b10">{{$course['title_'.session('lang')]}}</h4>
-            <p class="m-t0 m-b10">{{$course['description_'.session('lang')]}}</p>
+            <p class="m-t0 m-b10">{!! $course['description_'.session('lang')] !!}</p>
             <h2 class="m-t10 m-b20">{{session("lang")=='en' ?  $course['duration'] : numberConvertor($course['duration'])}} @lang('messages.global.month')</h2>
         </div>
     </div>
@@ -47,7 +47,7 @@
                             </td>
                             <td colspan="7">
                                 <label class="form-check-label" for="term_{{$key}}">
-                                    {{$term['description_'.session('lang')]}}
+                                    {!! $term['description_'.session('lang')] !!}
                                 </label>
                             </td>
                         </tr>
@@ -68,7 +68,7 @@
                             </td>
                             <td colspan="7">
                                 <label class="form-check-label" for="term_{{$key}}">
-                                    {{$term['description_'.session('lang')]}}
+                                    {!! $term['description_'.session('lang')] !!}
                                 </label>
                             </td>
                         </tr>

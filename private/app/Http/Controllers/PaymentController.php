@@ -25,7 +25,12 @@ class PaymentController extends Controller
             $user_class->user_id = $user->id;
             $user_class->classroom_id = $request->class_id;
             $user_class->status = 1;
-            $user_class->save();
+            try{
+                $user_class->save();
+            }catch (\Exception $e){
+                if($e->getCode() == 23000)
+                    $user_class = false;
+            }
 
             if ($user_class) {
                 return view('main_template.pages.message')

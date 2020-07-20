@@ -28,6 +28,30 @@
                             </li>
                         </ul>
                     </div>
+                    <div class="row">
+                        <ul class="list-inline mb-5 mb-lg-0" style="margin: 0 auto">
+                            <li class="mb-2"><a target="_blank" title="@lang('messages.social.whatsapp')"
+                                                href="whatsapp://send?abid={{config('system.about_us.whatsapp')}}"
+                                                class="site-button whatsapp sharp rounded-circle"><i
+                                            class="fab fa-whatsapp"></i></a></li>
+                            <li class="mb-2"><a target="_blank" title="@lang('messages.social.linked_in')"
+                                                href="{{config('system.about_us.linked_in')}}"
+                                                class="site-button linkedin sharp rounded-circle"><i
+                                            class="fab fa-linkedin-in"></i></a></li>
+                            <li class="mb-2"><a target="_blank" title="@lang('messages.social.telegram')"
+                                                href="{{config('system.about_us.telegram')}}"
+                                                class="site-button telegram sharp rounded-circle"><i class="fab fa-telegram-plane"></i></a>
+                            </li>
+                            <li class="mb-2"><a target="_blank" title="@lang('messages.social.twitter')"
+                                                href="{{config('system.about_us.twitter')}}"
+                                                class="site-button twitter sharp rounded-circle"><i
+                                            class="fab fa-twitter"></i></a></li>
+                            <li class="mb-2"><a target="_blank" title="@lang('messages.social.instagram')"
+                                                href="{{config('system.about_us.instagram')}}"
+                                                class="site-button instagram sharp rounded-circle"><i
+                                            class="fab fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 footer-col-4">
                     <div class="widget widget_getintuch">
@@ -51,28 +75,9 @@
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 footer-col-4">
                     <div class="widget widget_gallery">
-                        <h6 class="m-b15 h6 text-uppercase">@lang('messages.global.gallery')</h6>
-                        <div class="dlab-separator bg-white"></div>
-                        <ul class="clearfix mfp-gallery">
-                            <li class="img-effect2">
-                                <a class="mfp-link html5lightbox" data-group="mygroup"
-                                   href="{{asset('/assets/site/media/images/promotion/img4.jpg')}}"
-                                   title="Title Come Here"><img
-                                            src="{{asset('/assets/site/media/images/promotion/img4.jpg')}}" alt=""></a>
-                            </li>
-                            <li class="img-effect2">
-                                <a class="mfp-link html5lightbox" data-group="mygroup"
-                                   href="{{asset('/assets/site/media/images/promotion/img5.jpg')}}"
-                                   title="Title Come Here"><img
-                                            src="{{asset('/assets/site/media/images/promotion/img5.jpg')}}" alt=""></a>
-                            </li>
-                            <li class="img-effect2">
-                                <a class="mfp-link html5lightbox" data-group="mygroup"
-                                   href="{{asset('/assets/site/media/images/promotion/img3.jpg')}}"
-                                   title="Title Come Here"><img
-                                            src="{{asset('/assets/site/media/images/promotion/img3.jpg')}}" alt=""></a>
-                            </li>
-                        </ul>
+{{--                        <h6 class="m-b15 h6 text-uppercase">@lang('messages.global.gallery')</h6>--}}
+{{--                        <div class="dlab-separator bg-white"></div>--}}
+
                     </div>
 
 {{--                    <div class="widget  widget_tag_cloud">--}}
@@ -94,19 +99,7 @@
                         <div class="clearfix">
                             <form id="comment_form" method="post"
                                   action="{{url(session('lang').'/contact-us')}}">
-                                <div class="form-group">
-                                    {{--                                    <label for="email">ایمیل:</label>--}}
-                                    <select style="padding:0 20px;" class="form-control select-lg"
-                                            name="relevant_section" id="">
-                                        {{--@if(isset(config('system.main.related_sections')))--}}
-                                        <option value="">@lang('messages.global.section')</option>
-
-                                        @foreach(explode(',',config('system.main.related_sections')) as $value)
-                                            <option value="{{$value}}">{{$value}}</option>
-                                        @endforeach
-                                        {{--@endif--}}
-                                    </select>
-                                </div>
+                                <input type="hidden" name="relevant_section" value="courses">
                                 <div class="form-group">
                                     {{--                                    <label for="email">ایمیل:</label>--}}
                                     <input required class="form-control" type="email" id="email" name="email"
@@ -155,31 +148,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 text-center">
-                    <ul class="list-inline mb-5 mb-lg-0" style="margin: 0 auto">
-                        <li class="mb-2"><a target="_blank" title="@lang('messages.social.whatsapp')"
-                                            href="{{config('system.about_us.whatsapp')}}"
-                                            class="site-button whatsapp sharp"><i
-                                        class="fab fa-whatsapp"></i></a></li>
-                        <li class="mb-2"><a target="_blank" title="@lang('messages.social.linked_in')"
-                                            href="{{config('system.about_us.linked_in')}}"
-                                            class="site-button linkedin sharp"><i
-                                        class="fab fa-linkedin-in"></i></a></li>
-                        <li class="mb-2"><a target="_blank" title="@lang('messages.social.telegram')"
-                                            href="{{config('system.about_us.telegram')}}"
-                                            class="site-button telegram sharp"><i class="fab fa-telegram-plane"></i></a>
-                        </li>
-                        <li class="mb-2"><a target="_blank" title="@lang('messages.social.twitter')"
-                                            href="{{config('system.about_us.twitter')}}"
-                                            class="site-button twitter sharp"><i
-                                        class="fab fa-twitter"></i></a></li>
-                        <li class="mb-2"><a target="_blank" title="@lang('messages.social.instagram')"
-                                            href="{{config('system.about_us.instagram')}}"
-                                            class="site-button instagram sharp"><i
-                                        class="fab fa-instagram"></i></a></li>
-                    </ul>
-                </div>
-
             </div>
         </div>
     </div>

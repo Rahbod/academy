@@ -34,27 +34,27 @@
         <table class="table table-hover">
             <thead class="thead-light">
             <tr>
-                <th colspan="1">@lang('messages.global.choose')</th>
-                <th colspan="4">@lang('messages.global.class-image')</th>
-                <th colspan="7">@lang('messages.global.descriptions')</th>
+                <th>@lang('messages.global.choose')</th>
+                <th>@lang('messages.global.class-image')</th>
+                <th>@lang('messages.global.descriptions')</th>
             </tr>
             </thead>
             <tbody>
             @if(isset($class_rooms) && count($class_rooms) > 0)
                 @foreach($class_rooms as $key => $class_room)
                     <tr onclick="checkRadio(this)" class="my-3">
-                        <td colspan="1">
+                        <td width="1%">
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="term"
                                        id=""
                                        value="{{$class_room['id']}}" {{$loop->first ? 'checked' : ''}}>
                             </div>
                         </td>
-                        <td colspan="4">
-                            <img class="img-fluid" src="{{$class_room['image']}}" onclick="checkRadio(this)"
+                        <td width="1%">
+                            <img style="max-width: 300px" class="img-fluid" src="{{$class_room['image']}}" onclick="checkRadio(this)"
                                  alt="{{$class_room['title_'.session('lang')]}}">
                         </td>
-                        <td colspan="7">
+                        <td>
                             <ul class="list-unstyled ">
                                 <li class=""><b>@lang('messages.global.class-title')</b>
                                     : {{$class_room['title_'.session('lang')]}}</li>
@@ -81,7 +81,7 @@
                                 </li>
                                 @foreach($class_room['class_room_times'] as $class_room_time)
                                     <li class="">
-                                        <b>{{$class_room_time['week_day']}}</b>
+                                        <b>{{ trans('main.values.'.$class_room_time['week_day']) }}</b>
                                         {{ session('lang') == 'en' ? $class_room_time['start_time'] : numberConvertor($class_room_time['start_time'])}}
                                         - {{ session('lang') == 'en' ? $class_room_time['end_time'] : numberConvertor($class_room_time['end_time'])}}
                                     </li>
